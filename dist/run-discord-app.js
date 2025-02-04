@@ -4,8 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const discord_js_1 = require("discord.js");
-require("./type-mappings/client-type-map.ts");
 const dotenv_1 = __importDefault(require("dotenv"));
+require("./type-mappings/client-type-map.ts");
 // Load environment variables from .env file
 dotenv_1.default.config();
 // Create a new Discord client instance

@@ -1,6 +1,6 @@
 import { Client, Collection, Events, GatewayIntentBits, MessageFlags } from 'discord.js';
-import "./type-mappings/client-type-map.ts";
 import dotenv from 'dotenv';
+import "./type-mappings/client-type-map.ts";
 
 // Load environment variables from .env file
 dotenv.config();
