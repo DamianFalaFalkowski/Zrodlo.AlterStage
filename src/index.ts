@@ -1,4 +1,5 @@
-import { Client, GatewayIntentBits } from 'discord.js';
+import { Client, Collection, Events, GatewayIntentBits, MessageFlags } from 'discord.js';
+import "./type-mappings/client-type-map.ts";
 import dotenv from 'dotenv';
 
 // Load environment variables from .env file
@@ -13,6 +14,8 @@ const client = new Client({
     ]
 });
 
+client.commands = new Collection();
+
 // Bot logs when it's ready
 client.once('ready', () => {
     console.log(`${client.user?.username} is online!`);
@@ -25,6 +28,29 @@ client.on('messageCreate', (message) => {
         return;
     }
     console.log(`${message.member.displayName} sent: ${message.content}`);
+});
+
+// dynamically retrieve command files
+client.on(Events.InteractionCreate, async interaction => {
+	if (!interaction.isChatInputCommand()) return;
+
+	const command = interaction.client.commands.get(interaction.commandName);
+
+	if (!command) {
+		console.error(`No command matching ${interaction.commandName} was found.`);
+		return;
+	}
+
+	try {
+		await command.execute(interaction);
+	} catch (error) {
+		console.error(error);
+		if (interaction.replied || interaction.deferred) {
+			await interaction.followUp({ content: 'There was an error while executing this command!', flags: MessageFlags.Ephemeral });
+		} else {
+			await interaction.reply({ content: 'There was an error while executing this command!', flags: MessageFlags.Ephemeral });
+		}
+	}
 });
 
 // Login to Discord with your app's token
