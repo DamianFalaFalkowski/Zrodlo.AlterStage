@@ -1,57 +1,43 @@
 import { Client, Collection, Events, GatewayIntentBits, MessageFlags } from 'discord.js';
 import dotenv from 'dotenv';
-import "./type-mappings/client-type-map.ts";
+import fs = require('node:fs');
+import path = require('node:path');
+import "./type-mappings/client-type-map.js";
 
 // Load environment variables from .env file
 dotenv.config();
 
 // Create a new Discord client instance
-const client = new Client({
-    intents: [
-        GatewayIntentBits.Guilds,
-        GatewayIntentBits.GuildMessages,
-        GatewayIntentBits.MessageContent
-    ]
-});
+const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
+// Read commands from the commands directory
 client.commands = new Collection();
+const commandsFolderPath = path.join(__dirname, 'commands');
 
-// Bot logs when it's ready
-client.once('ready', () => {
-    console.log(`${client.user?.username} is online!`);
-});
-
-// Listen for messages and log the sender's name
-client.on('messageCreate', (message) => {
-    if (!message.member) {
-        // If the message is a DM, stop further execution
-        return;
-    }
-    console.log(`${message.member.displayName} sent: ${message.content}`);
-});
-
-// dynamically retrieve command files
-client.on(Events.InteractionCreate, async interaction => {
-	if (!interaction.isChatInputCommand()) return;
-
-	const command = interaction.client.commands.get(interaction.commandName);
-
-	if (!command) {
-		console.error(`No command matching ${interaction.commandName} was found.`);
-		return;
+const commandFiles = fs.readdirSync(commandsFolderPath).filter((file: any) => file.endsWith('.js'));
+for (const file of commandFiles) {
+	const filePath = path.join(commandsFolderPath, file);
+	const command = require(filePath);
+	if ('data' in command && 'execute' in command) {
+		client.commands.set(command.data.name, command);
+	} else {
+		console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
 	}
+}
 
-	try {
-		await command.execute(interaction);
-	} catch (error) {
-		console.error(error);
-		if (interaction.replied || interaction.deferred) {
-			await interaction.followUp({ content: 'There was an error while executing this command!', flags: MessageFlags.Ephemeral });
-		} else {
-			await interaction.reply({ content: 'There was an error while executing this command!', flags: MessageFlags.Ephemeral });
-		}
+// Read event handlers from the events directory
+const eventsPath = path.join(__dirname, 'events');
+const eventFiles = fs.readdirSync(eventsPath).filter((file: any) => file.endsWith('.js'));
+
+for (const file of eventFiles) {
+	const filePath = path.join(eventsPath, file);
+	const event = require(filePath);
+	if (event.once) {
+		client.once(event.name, (...args) => event.execute(...args));
+	} else {
+		client.on(event.name, (...args) => event.execute(...args));
 	}
-});
+}
 
 // Login to Discord with your app's token
 client.login(process.env.TOKEN);

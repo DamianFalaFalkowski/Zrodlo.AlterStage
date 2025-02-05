@@ -1,0 +1,12 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "d_3",
+			"problemMatcher": [],
+			"label": "npm: d_3",
+			"detail": "tsx watch src/run-discord-app.ts"
+		}
+	]
+}

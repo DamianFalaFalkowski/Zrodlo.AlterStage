@@ -1,29 +1,29 @@
 import { REST, Routes, Client, Collection, Events, GatewayIntentBits, MessageFlags  } from 'discord.js';
 import dotenv from 'dotenv';
-using fs = require('node:fs');
+import fs = require('node:fs');
 import path = require('node:path');
-import "./type-mappings/client-type-map.js";
+import "./type-mappings/client-type-map.ts";
+//import type {Config from 'jest';
 
+// Load environment variables from .env file
 dotenv.config();
-const commands = [];
-// Grab all the command folders from the commands directory you created earlier
-const foldersPath = path.join(__dirname, 'commands');
-const commandFolders = fs.readdirSync(foldersPath);
 
-for (const folder of commandFolders) {
-	// Grab all the command files from the commands directory you created earlier
-	const commandsPath = path.join(foldersPath, folder);
-	const commandFiles = fs.readdirSync(commandsPath).filter((file: any) => file.endsWith('.js'));
-	// Grab the SlashCommandBuilder#toJSON() output of each command's data for deployment
-	for (const file of commandFiles) {
-		const filePath = path.join(commandsPath, file);
-		const command = require(filePath);
-		if ('data' in command && 'execute' in command) {
-			commands.push(command.data.toJSON());
-		} else {
-			console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
-		}
-	}
+// Create a new Discord client instance
+const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+
+// Read commands from the commands directory
+client.commands = new Collection();
+const commandsFolderPath = path.join(__dirname, 'commands');
+
+const commandFiles = fs.readdirSync(commandsFolderPath).filter((file: any) => file.endsWith('.ts'));
+for (const file of commandFiles) {
+    const filePath = path.join(commandsFolderPath, file);
+    const command = require(filePath);
+    if ('data' in command && 'execute' in command) {
+        client.commands.set(command.data.name, command.data);
+    } else {
+        console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
+    }
 }
 
 // Construct and prepare an instance of the REST module
@@ -32,12 +32,12 @@ const rest = new REST().setToken(process.env.TOKEN as string);
 // and deploy your commands!
 (async () => {
 	try {
-		console.log(`Started refreshing ${commands.length} application (/) commands.`);
+		console.log(`Started refreshing ${client.commands.size} application (/) commands.`);
 
 		// The put method is used to fully refresh all commands in the guild with the current set
 		const data: any = await rest.put(
 			Routes.applicationGuildCommands(process.env.CLIENT_ID as string, process.env.GUILD_ID as string),
-			{ body: commands },
+			{ body: client.commands },
 		);
 
         // The put method is used to fully refresh all global commands

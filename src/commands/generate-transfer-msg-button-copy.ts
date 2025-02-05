@@ -1,7 +1,8 @@
-import { Events, MessageFlags } from "discord.js";
+import { ActivityType, Events, MessageFlags } from "discord.js";
 
 module.exports = {
     name: Events.InteractionCreate,
+    type: ActivityType.Competing,
     async execute(interaction: any) {
         if (interaction.isButton()) {
             if (interaction.customId === 'copy') {

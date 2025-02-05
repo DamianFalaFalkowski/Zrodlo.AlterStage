@@ -3,14 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const discord_js_1 = require("discord.js");
 module.exports = {
     name: discord_js_1.Events.InteractionCreate,
-    type: discord_js_1.ActivityType.Competing,
     async execute(interaction) {
-        if (interaction.isButton()) {
-            if (interaction.customId === 'copy') {
-                await interaction.reply({ content: 'Skopiowano wiadomość!', flags: discord_js_1.MessageFlags.Ephemeral });
-            }
-            return;
-        }
         if (!interaction.isChatInputCommand())
             return;
         const command = interaction.client.commands.get(interaction.commandName);
@@ -20,7 +13,6 @@ module.exports = {
         }
         try {
             await command.execute(interaction);
-            console.log(interaction.commandName + " executed");
         }
         catch (error) {
             console.error(error);
