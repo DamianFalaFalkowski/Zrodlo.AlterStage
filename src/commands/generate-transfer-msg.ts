@@ -1,6 +1,6 @@
 import { ActionRowBuilder, ButtonBuilder, ButtonStyle, MessageFlags, SlashCommandBuilder, ChatInputCommandInteraction, InteractionReplyOptions, GuildMemberRoleManager } from 'discord.js';
 
-private const allowedRoles = ['member', 'admin', 'moderator', 'owner', 'honored-member', 'super-moderator'];
+const allowedRoles = ['member', 'admin', 'moderator', 'owner', 'honored-member', 'super-moderator'];
 
 module.exports = {
     data: new SlashCommandBuilder()
