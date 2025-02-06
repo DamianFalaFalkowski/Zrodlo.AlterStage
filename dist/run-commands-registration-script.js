@@ -33,7 +33,6 @@ const rest = new discord_js_1.REST().setToken(process.env.TOKEN);
 (async () => {
     try {
         console.log(`Started refreshing ${client.commands.size} application (/) commands.`);
-        console.log(client.commands.toJSON());
         // The put method is used to fully refresh all commands in the guild with the current set
         const data = await rest.put(discord_js_1.Routes.applicationGuildCommands(process.env.CLIENT_ID, process.env.GUILD_ID), { body: client.commands });
         // The put method is used to fully refresh all global commands

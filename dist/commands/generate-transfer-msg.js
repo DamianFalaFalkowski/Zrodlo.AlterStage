@@ -14,6 +14,11 @@ module.exports = {
     }
 };
 const execute = async (interaction) => {
+    // Sprawdzenie czy przekazana rola istnieje w systemie i czy jest rolą ozanczoną jako do kupienia
+    if (interaction.guild.roles.cache.find(role => role.name === interaction.options.data[0].role.name) === undefined)
+        return interaction.reply('Rola nie istnieje w systemie.');
+    if (interaction.options.data[0].role.name.charAt(0) !== '+')
+        return interaction.reply('Rola nie jest przeznaczona do kupienia.');
     let reply = { content: undefined, flags: discord_js_1.MessageFlags.Ephemeral };
     let itemName = interaction.options.data.find((x) => x !== undefined).role.name;
     let globalName = interaction.user.globalName;
@@ -30,6 +35,7 @@ const execute = async (interaction) => {
     // Sprawdzenie czy respMess nie jest dłuższa niż 140 znaków
     if (respMess.length > 140) {
         reply.content = 'Wiadomość jest zbyt długa. Maksymalna długość to 140 znaków.';
+        reply.flags = discord_js_1.MessageFlags.Ephemeral;
         return interaction.reply(reply);
     }
     reply.content = `Aby dokonać zakupu produktu **${itemName.toString()}** wklej tą wiadomość w tytule przelewu:\n\n **${respMess}**`;

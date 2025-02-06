@@ -66,3 +66,4 @@ package-lock.json
 /lib/
 .DS_Store
 .env
+/dist
