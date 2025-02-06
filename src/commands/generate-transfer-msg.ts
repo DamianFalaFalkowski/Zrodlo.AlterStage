@@ -1,4 +1,5 @@
 import { ActionRowBuilder, ButtonBuilder, ButtonStyle, MessageFlags, SlashCommandBuilder, ChatInputCommandInteraction, InteractionReplyOptions, GuildMemberRoleManager } from 'discord.js';
+import dcLogger from '../utils/dc-logger';
 
 const allowedRoles = ['member', 'admin', 'moderator', 'owner', 'honored-member', 'super-moderator'];
 
@@ -16,6 +17,7 @@ module.exports = {
 };
 
 export const execute = async (interaction: ChatInputCommandInteraction) => {
+    dcLogger.logCommand(interaction);
     let reply: InteractionReplyOptions = { content: undefined, flags: MessageFlags.Ephemeral };
 
     if (!interaction.isCommand()) return;
@@ -28,11 +30,18 @@ export const execute = async (interaction: ChatInputCommandInteraction) => {
 
     // Sprawdzenie czy przekazana rola istnieje w systemie ...
     if (interaction.guild!.roles.cache.find(role => role.name === interaction.options.data[0].role!.name) === undefined) 
-        return interaction.reply(reply.content = 'Rola nie istnieje w systemie.');
+    {
+        reply.content = 'Rola nie istnieje w systemie.';
+        return interaction.reply(dcLogger.logReplyAndReturn(interaction, reply));
+    }
 
     // ... i czy jest rolą ozanczoną jako do kupienia
     if(interaction.options.data[0].role!.name.charAt(0) !== '+') 
-        return interaction.reply(reply.content = 'Rola nie jest przeznaczona do kupienia.'); 
+    {
+        reply.content = 'Rola nie jest przeznaczona do kupienia.';
+        return interaction.reply(dcLogger.logReplyAndReturn(interaction, reply)); 
+    }
+        
 
     // rozpoczęcie generowania wiadomości
     let itemName = interaction.options.data.find((x: any) => x !== undefined)!.role!.name;
@@ -44,14 +53,14 @@ export const execute = async (interaction: ChatInputCommandInteraction) => {
     const ValidRespMess = /[a-z A-Z0-9ąćęłńóśźżĄĆĘŁŃÓŚŹŻ()_=\-:'.?\/\\]+$/.test(respMess);
     if (!ValidRespMess) {
         reply.content = 'Nazwa roli zawiera niedozwolone znaki.';
-        return interaction.reply(reply);
+        return interaction.reply(dcLogger.logReplyAndReturn(interaction, reply));
     }
 
     // Sprawdzenie czy respMess nie jest dłuższa niż 140 znaków
     if (respMess.length > 140) {
         reply.content = 'Wiadomość jest zbyt długa. Maksymalna długość to 140 znaków.';
         reply.flags = MessageFlags.Ephemeral;
-        return interaction.reply(reply);
+        return interaction.reply(dcLogger.logReplyAndReturn(interaction, reply));
     }
 
     reply.content = `Aby dokonać zakupu produktu **${itemName.toString()}** wklej tą wiadomość w tytule przelewu:\n\n **${respMess}**`
@@ -65,7 +74,7 @@ export const execute = async (interaction: ChatInputCommandInteraction) => {
 
     reply.components = [row];
 
-    await interaction.reply(reply);
+    await interaction.reply(dcLogger.logReplyAndReturn(interaction, reply));
 };
 
 // TODO: dodać logowanie
