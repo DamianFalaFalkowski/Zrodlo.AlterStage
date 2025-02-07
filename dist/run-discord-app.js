@@ -24,11 +24,10 @@ exports.sequelizeContext = new sequelize_1.Sequelize('database', 'user', 'passwo
     storage: 'database.sqlite',
 });
 exports.sequelizeContext.afterSync(() => (0, node_console_1.log)('Database synchronized'));
-exports.sequelizeContext.sync();
 // Read commands from the commands directory
 client.commands = new discord_js_1.Collection();
 const commandsFolderPath = path.join(__dirname, 'commands');
-const commandFiles = fs.readdirSync(commandsFolderPath).filter((file) => file.endsWith('.js'));
+const commandFiles = fs.readdirSync(commandsFolderPath).filter((file) => file.endsWith('.js') || file.endsWith('.ts'));
 for (const file of commandFiles) {
     const filePath = path.join(commandsFolderPath, file);
     const command = require(filePath);
@@ -41,7 +40,7 @@ for (const file of commandFiles) {
 }
 // Read event handlers from the events directory
 const eventsPath = path.join(__dirname, 'events');
-const eventFiles = fs.readdirSync(eventsPath).filter((file) => file.endsWith('.js'));
+const eventFiles = fs.readdirSync(eventsPath).filter((file) => file.endsWith('.js') || file.endsWith('.ts'));
 for (const file of eventFiles) {
     const filePath = path.join(eventsPath, file);
     const event = require(filePath);

@@ -29,3 +29,13 @@
 [2025-02-07T06:27:34.885Z] Reply to bozydarminimal234: Aby dokonać zakupu produktu **+EVENT_04-26_tribe-meets-kosmos** wklej tą wiadomość w tytule przelewu:
 
  **1333216822522286082 Bożydar Minimal +EVENT_04-26_tribe-meets-kosmos**
+[2025-02-07T15:50:23.662Z] Command executed by falalala_wav: /generate-transfer-msg role-to-buy: 1335760767936630804
+[2025-02-07T15:50:23.664Z] Reply to falalala_wav: Rola którą próbujesz zakupić nie jest przeznaczona do kupienia.
+[2025-02-07T15:51:06.139Z] Command executed by falalala_wav: /generate-transfer-msg role-to-buy: 1335760767936630804
+[2025-02-07T15:51:13.631Z] Reply to falalala_wav: Rola którą próbujesz zakupić nie jest przeznaczona do kupienia.
+[2025-02-07T15:51:56.327Z] Command executed by falalala_wav: /generate-transfer-msg role-to-buy: 1334019132630372442
+[2025-02-07T15:51:56.329Z] Reply to falalala_wav: Invalid command. RoleToBuyName parameter is missing.
+[2025-02-07T15:52:13.902Z] Command executed by falalala_wav: /generate-transfer-msg role-to-buy: 1334019132630372442
+[2025-02-07T15:52:13.904Z] Reply to falalala_wav: Invalid command. RoleToBuyName parameter is missing.
+[2025-02-07T16:03:35.595Z] Command executed by falalala_wav: /generate-transfer-msg role-to-buy: 1334019132630372442
+[2025-02-07T16:04:14.466Z] Reply to falalala_wav: Invalid command. RoleToBuyName parameter is missing.

@@ -26,7 +26,7 @@ sequelizeContext.afterSync(() => log('Database synchronized'));
 client.commands = new Collection();
 const commandsFolderPath = path.join(__dirname, 'commands');
 
-const commandFiles = fs.readdirSync(commandsFolderPath).filter((file: any) => file.endsWith('.js'));
+const commandFiles = fs.readdirSync(commandsFolderPath).filter((file: any) => file.endsWith('.js') || file.endsWith('.ts'));
 for (const file of commandFiles) {
 	const filePath = path.join(commandsFolderPath, file);
 	const command = require(filePath);
@@ -39,7 +39,7 @@ for (const file of commandFiles) {
 
 // Read event handlers from the events directory
 const eventsPath = path.join(__dirname, 'events');
-const eventFiles = fs.readdirSync(eventsPath).filter((file: any) => file.endsWith('.js'));
+const eventFiles = fs.readdirSync(eventsPath).filter((file: any) => file.endsWith('.js') || file.endsWith('.ts'));
 
 for (const file of eventFiles) {
 	const filePath = path.join(eventsPath, file);

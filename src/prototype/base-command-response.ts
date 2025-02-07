@@ -8,6 +8,8 @@ export class BaseCommandResponse {
     protected readonly isEphemeral: boolean;
 
     public get Reply(): InteractionReplyOptions {
+        if(!this.IsReady)
+            this.prepeareFailureResponse('Response is not ready yet.');
         return this._reply;
     }
     public set Reply(value: InteractionReplyOptions) {
@@ -48,5 +50,6 @@ export class BaseCommandResponse {
         this._reply.content = errorMessage;
         this._reply.flags = MessageFlags.Ephemeral;
         this.IsFailure = true;
+        this.IsReady = true;
     }
 }

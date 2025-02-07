@@ -1,20 +1,26 @@
-import { APIInteractionGuildMember, ChatInputCommandInteraction, GuildMember } from "discord.js";
 import { BaseCommand } from "./base-command";
 import { BaseCommandResponse } from "./base-command-response";
+import dcLogger from "../utils/dc-logger";
 
-export class BaseChatInputCommandHandler<C extends BaseCommand<R>, R extends BaseCommandResponse> {
+export class BaseChatInputCommandHandler<C extends BaseCommand<BaseCommandResponse>> {
 
-    constructor() {
+    protected command: C;
+
+    constructor(command: C) {
+        this.command= command;
     }
 
-    protected baseHandle = async (command: C) => {
+    public baseHandle = async () => {
+        dcLogger.logCommand(this.command.Interaction);
         //
-        this.handle(command);
+        this.handle();
         //
+        // Odeślij odpowiedź
+        await this.command.Interaction.reply(dcLogger.logReplyAndReturn(this.command.Interaction, this.command.Response.Reply));
     }
 
 
-    async handle(command: C) {
- 
+    protected async handle() {
+        throw new Error('Method not implemented.');
     }
 }
