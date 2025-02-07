@@ -25,3 +25,7 @@
 [2025-02-07T05:21:30.378Z] Command executed by falalala_wav: /db-tags-add user-id: 1333216822522286082, name: bozia
 [2025-02-07T05:22:17.752Z] Command executed by falalala_wav: /db-tags-add user-id: 1333216822522286082, name: bozia
 [2025-02-07T05:22:17.766Z] Reply to falalala_wav: Tag with name: bozia and userId: 1333216822522286082 already exists.
+[2025-02-07T06:27:34.873Z] Command executed by bozydarminimal234: /generate-transfer-msg role-to-buy: 1334019132630372442
+[2025-02-07T06:27:34.885Z] Reply to bozydarminimal234: Aby dokonać zakupu produktu **+EVENT_04-26_tribe-meets-kosmos** wklej tą wiadomość w tytule przelewu:
+
+ **1333216822522286082 Bożydar Minimal +EVENT_04-26_tribe-meets-kosmos**
