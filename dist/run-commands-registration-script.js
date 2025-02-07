@@ -7,7 +7,7 @@ const discord_js_1 = require("discord.js");
 const dotenv_1 = __importDefault(require("dotenv"));
 const fs = require("node:fs");
 const path = require("node:path");
-require("./type-mappings/client-type-map.ts");
+require("./type-mappings/client-type-map");
 //import type {Config from 'jest';
 // Load environment variables from .env file
 dotenv_1.default.config();

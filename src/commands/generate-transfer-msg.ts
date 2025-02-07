@@ -74,9 +74,9 @@ export const execute = async (interaction: ChatInputCommandInteraction) => {
             .setCustomId('copy')
             .setLabel('Copy')
             .setStyle(ButtonStyle.Primary));
-
     reply.components = [row];
 
+    // Odeślij odpowiedź
     await interaction.reply(dcLogger.logReplyAndReturn(interaction, reply));
 };
 

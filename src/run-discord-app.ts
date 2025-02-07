@@ -1,14 +1,27 @@
-import { Client, Collection, Events, GatewayIntentBits, MessageFlags } from 'discord.js';
+import { Client, Collection, GatewayIntentBits } from 'discord.js';
+import { Sequelize } from 'sequelize';
 import dotenv from 'dotenv';
 import fs = require('node:fs');
 import path = require('node:path');
 import "./type-mappings/client-type-map.js";
+import { log } from 'node:console';
 
 // Load environment variables from .env file
 dotenv.config();
 
 // Create a new Discord client instance
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+
+// Zdefiniowanie polaczenia z baza danych
+export const sequelizeContext = new Sequelize('database', 'user', 'password', {
+	host: 'localhost',
+	dialect: 'sqlite',
+	logging: false,
+	// SQLite only
+	storage: 'database.sqlite',
+});
+sequelizeContext.afterSync(() => log('Database synchronized'));
+sequelizeContext.sync();
 
 // Read commands from the commands directory
 client.commands = new Collection();

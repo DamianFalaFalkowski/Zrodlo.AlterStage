@@ -69,3 +69,4 @@ package-lock.json
 /dist
 /logs
 logs/discord.log
+database.sqlite

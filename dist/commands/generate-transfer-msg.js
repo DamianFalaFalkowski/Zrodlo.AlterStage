@@ -24,40 +24,43 @@ const execute = async (interaction) => {
     if (!interaction.isCommand())
         return;
     // Sprawdzenie czy uzytkownik na uprawnienia do uruchomienia polecenia
-    const member = interaction.member; // TODO: resp mess
-    if (!member || !('roles' in member))
-        return; // TODO: resp mess
+    const member = interaction.member;
+    if (!member || !('roles' in member)) {
+        reply.content = 'Brak uprawnień do uruchomienia tego polecenia.';
+        return interaction.reply(dc_logger_1.default.logReplyAndReturn(interaction, reply));
+    }
     const roles = member.roles.cache;
-    if (!roles.some(role => allowedRoles.includes(role.name)))
-        return; // TODO: resp mess
+    if (!roles.some(role => allowedRoles.includes(role.name))) {
+        reply.content = 'Brak uprawnień do uruchomienia tego polecenia.';
+        return interaction.reply(dc_logger_1.default.logReplyAndReturn(interaction, reply));
+    }
     // Sprawdzenie czy przekazana rola istnieje w systemie ...
     if (interaction.guild.roles.cache.find(role => role.name === interaction.options.data[0].role.name) === undefined) {
-        reply.content = 'Rola nie istnieje w systemie.';
+        reply.content = 'Rola którą próbujesz zakupić nie istnieje w systemie.';
         return interaction.reply(dc_logger_1.default.logReplyAndReturn(interaction, reply));
     }
     // ... i czy jest rolą ozanczoną jako do kupienia
     if (interaction.options.data[0].role.name.charAt(0) !== '+') {
-        reply.content = 'Rola nie jest przeznaczona do kupienia.';
+        reply.content = 'Rola którą próbujesz zakupić nie jest przeznaczona do kupienia.';
         return interaction.reply(dc_logger_1.default.logReplyAndReturn(interaction, reply));
     }
     // rozpoczęcie generowania wiadomości
     let itemName = interaction.options.data.find((x) => x !== undefined).role.name;
     let globalName = interaction.user.globalName;
     let userId = interaction.user.id;
-    let respMess = userId.toString() + ' ' + globalName.toString() + ' ' + itemName.toString();
-    // Sprawdzenie czy respMess zawiera tylko dozwolone znaki
-    const ValidRespMess = /[a-z A-Z0-9ąćęłńóśźżĄĆĘŁŃÓŚŹŻ()_=\-:'.?\/\\]+$/.test(respMess);
+    let generatedTransferMessage = userId.toString() + ' ' + globalName.toString() + ' ' + itemName.toString();
+    // Sprawdzenie czy generatedTransferMessage zawiera tylko dozwolone znaki
+    const ValidRespMess = /[a-z A-Z0-9ąćęłńóśźżĄĆĘŁŃÓŚŹŻ()_=\-:'.?\/\\]+$/.test(generatedTransferMessage);
     if (!ValidRespMess) {
-        reply.content = 'Nazwa roli zawiera niedozwolone znaki.';
-        return interaction.reply(dc_logger_1.default.logReplyAndReturn(interaction, reply));
+        // Jeśli tak to zastąp niedozwolone znaki podkreślnikiem
+        generatedTransferMessage = generatedTransferMessage.replace(/[^a-z A-Z0-9ąćęłńóśźżĄĆĘŁŃÓŚŹŻ()_=\-:'.?\/\\]+/g, '_');
     }
-    // Sprawdzenie czy respMess nie jest dłuższa niż 140 znaków
-    if (respMess.length > 140) {
-        reply.content = 'Wiadomość jest zbyt długa. Maksymalna długość to 140 znaków.';
-        reply.flags = discord_js_1.MessageFlags.Ephemeral;
-        return interaction.reply(dc_logger_1.default.logReplyAndReturn(interaction, reply));
+    // Sprawdzenie czy generatedTransferMessage nie jest dłuższa niż 140 znaków
+    if (generatedTransferMessage.length > 140) {
+        // JHeśli tak to skróć generatedTransferMessage do 140 znaków
+        generatedTransferMessage = generatedTransferMessage.substring(0, 140);
     }
-    reply.content = `Aby dokonać zakupu produktu **${itemName.toString()}** wklej tą wiadomość w tytule przelewu:\n\n **${respMess}**`;
+    reply.content = `Aby dokonać zakupu produktu **${itemName.toString()}** wklej tą wiadomość w tytule przelewu:\n\n **${generatedTransferMessage}**`;
     // Utwórz przycisk do kopiowania
     const row = new discord_js_1.ActionRowBuilder()
         .addComponents(new discord_js_1.ButtonBuilder()
@@ -65,10 +68,9 @@ const execute = async (interaction) => {
         .setLabel('Copy')
         .setStyle(discord_js_1.ButtonStyle.Primary));
     reply.components = [row];
+    // Odeślij odpowiedź
     await interaction.reply(dc_logger_1.default.logReplyAndReturn(interaction, reply));
 };
 exports.execute = execute;
-// TODO: dodać logowanie
 // TODO: dodać przycisk do kopiowania
 // TODO: mona te dodać rodzaj produktu
-// TODO: ograniczyć tylko do ról po rozpoczętej walidacji (@member)

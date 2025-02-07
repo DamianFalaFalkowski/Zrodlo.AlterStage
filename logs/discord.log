@@ -6,3 +6,22 @@
 [2025-02-06T21:31:34.247Z] Reply to szyyall: Aby dokonać zakupu produktu **+EVENT_04-26_tribe-meets-kosmos** wklej tą wiadomość w tytule przelewu:
 
  **1077664690622169108 SZYYALL +EVENT_04-26_tribe-meets-kosmos**
+[2025-02-07T04:40:07.237Z] Command executed by falalala_wav: /db-tags-add user-id: 1333159955913773188, name: 1333159955913773188
+[2025-02-07T04:40:07.242Z] Reply to falalala_wav: No content
+[2025-02-07T04:43:21.937Z] Command executed by falalala_wav: /db-tags-add user-id: 1333159955913773188, name: 1333159955913773188
+[2025-02-07T04:43:21.939Z] Reply to falalala_wav: No content
+[2025-02-07T04:44:43.531Z] Command executed by falalala_wav: /db-tags-add user-id: 1333159955913773188, name: 1333159955913773188
+[2025-02-07T04:47:08.166Z] Command executed by falalala_wav: /db-tags-add user-id: 1333159955913773188, name: 1333159955913773188
+[2025-02-07T04:53:28.835Z] Command executed by falalala_wav: /db-tags-add user-id: 1024238253060145193, name: 1333159955913773188
+[2025-02-07T04:56:31.096Z] Command executed by falalala_wav: /db-tags-add user-id: 1024238253060145193, name: testtag
+[2025-02-07T05:09:13.447Z] Command executed by falalala_wav: /db-tags-add user-id: 1333216822522286082, name: taggg
+[2025-02-07T05:09:13.452Z] Command executed by falalala_wav: /db-tags-add user-id: 1333216822522286082, name: taggg
+[2025-02-07T05:09:13.461Z] Reply to falalala_wav: SQLITE_ERROR: no such column: createdUserId
+[2025-02-07T05:15:28.338Z] Command executed by falalala_wav: /db-tags-add user-id: 1333216822522286082, name: bozia
+[2025-02-07T05:15:28.340Z] Command executed by falalala_wav: /db-tags-add user-id: 1333216822522286082, name: bozia
+[2025-02-07T05:15:28.344Z] Reply to falalala_wav: SQLITE_ERROR: no such column: createdUserId
+[2025-02-07T05:20:12.927Z] Command executed by falalala_wav: /db-tags-add user-id: 1333216822522286082, name: bozia
+[2025-02-07T05:20:12.936Z] Reply to falalala_wav: SQLITE_ERROR: no such column: createdUserId
+[2025-02-07T05:21:30.378Z] Command executed by falalala_wav: /db-tags-add user-id: 1333216822522286082, name: bozia
+[2025-02-07T05:22:17.752Z] Command executed by falalala_wav: /db-tags-add user-id: 1333216822522286082, name: bozia
+[2025-02-07T05:22:17.766Z] Reply to falalala_wav: Tag with name: bozia and userId: 1333216822522286082 already exists.

@@ -2,7 +2,7 @@ import { REST, Routes, Client, Collection, Events, GatewayIntentBits, MessageFla
 import dotenv from 'dotenv';
 import fs = require('node:fs');
 import path = require('node:path');
-import "./type-mappings/client-type-map.ts";
+import "./type-mappings/client-type-map";
 //import type {Config from 'jest';
 
 // Load environment variables from .env file
