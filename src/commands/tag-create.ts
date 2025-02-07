@@ -69,8 +69,7 @@ export const execute = async (interaction: ChatInputCommandInteraction) => {
                 userId: userId,
                 createdUserId: interaction.user.id
             });
-
-            return interaction.reply(`Tag ${tag.name} added.`);
+            reply.content = `Tag ${tag.name} added.`;
         }
         catch (error: Error | any) {
             if (error.name === 'SequelizeUniqueConstraintError') {

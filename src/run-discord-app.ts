@@ -21,7 +21,6 @@ export const sequelizeContext = new Sequelize('database', 'user', 'password', {
 	storage: 'database.sqlite',
 });
 sequelizeContext.afterSync(() => log('Database synchronized'));
-sequelizeContext.sync();
 
 // Read commands from the commands directory
 client.commands = new Collection();
