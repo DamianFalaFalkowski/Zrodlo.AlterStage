@@ -2,7 +2,7 @@ import { StartupInstance } from './startup.instance';
 import {ScriptBuilder} from './startup.builder';
 import {StartupManager, StartupScripts } from './startup.manager';
 
-export class MultiStartupModule {
+ class MultiStartupModule {
     private static _startupModule: MultiStartupModule;
 
     private _instances: Map<string, StartupInstance>;

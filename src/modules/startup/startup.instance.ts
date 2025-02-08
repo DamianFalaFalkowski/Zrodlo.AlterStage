@@ -1,5 +1,5 @@
 
-export class StartupInstance {
+ class StartupInstance {
     constructor() {
         console.log('Startup instance created');
     }

@@ -23,8 +23,12 @@ export class DcLogger {
         console.log(formattedMessage);
     }
 
-    private logToFile(message: string) {
+    public logToFile(message: string) {
         this.log(message);
+    }
+
+    public logWarning(message: string) {
+        this.log("WARN: "+message);
     }
 
     public logCommand(interaction: CommandInteraction) {
@@ -44,7 +48,12 @@ export class DcLogger {
     }
 
     public logError(error: Error) {
-        const logMessage = `Error: ${error.message}\nStack: ${error.stack}`;
+        const logMessage = `ERROR: ${error.message}\nStack: ${error.stack}`;
+        this.logToFile(logMessage);
+    }
+
+    public logStringError(error: string) {
+        const logMessage = `ERROR: ${error}`;
         this.logToFile(logMessage);
     }
 }

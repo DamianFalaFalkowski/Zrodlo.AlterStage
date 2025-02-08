@@ -2,12 +2,12 @@ import {ScriptBuilder} from "./startup.builder";
 import {StartupInstance} from './startup.instance';
 
 
-export enum StartupScripts {
+ enum StartupScripts {
     RunDiscordApp = 1,
     RunCommandsRegistration = 2
 }
 
-export class StartupManager {
+ class StartupManager {
 
     private _builder: ScriptBuilder;
 

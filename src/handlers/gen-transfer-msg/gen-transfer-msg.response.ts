@@ -1,6 +1,6 @@
 import { ActionRowBuilder, ButtonBuilder, ButtonStyle} from 'discord.js';
-import { BaseCommandResponse } from '../prototype/base-command-response';
-import dcLogger from "../utils/dc-logger";
+import { BaseCommandResponse } from '../../modules/messaging/commands/base.response';
+import dcLogger from "../../utils/dc-logger";
 
 export class GenerateTransferMessageResponse extends BaseCommandResponse {
 

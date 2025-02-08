@@ -6,11 +6,11 @@ import path = require('node:path');
 import "./type-mappings/client-type-map.js";
 import { log } from 'node:console';
 import MultiStartupModule from "./modules/startup/startup.module.js";
+import { FindCommandHandlersUtil } from './utils/find-command-handlers-definitions.util.js';
 
 
 // Load environment variables from .env file
 dotenv.config();
-
 // Create a new Discord client instance
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
@@ -21,23 +21,18 @@ export const sequelizeContext = new Sequelize('database', 'user', 'password', {
 	logging: false,
 	// SQLite only
 	storage: 'database.sqlite',
-});
+}); 
 sequelizeContext.afterSync(() => log('Database synchronized'));
 
 // Read commands from the commands directory
-client.commands = new Collection();
-const commandsFolderPath = path.join(__dirname, 'commands');
+// client.commands = FindCommandHandlersUtil.GetCommandDefinitions('/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src');
 
-const commandFiles = fs.readdirSync(commandsFolderPath).filter((file: any) => file.endsWith('.js') || file.endsWith('.ts'));
-for (const file of commandFiles) {
-	const filePath = path.join(commandsFolderPath, file);
-	const command = require(filePath);
-	if ('data' in command && 'execute' in command) {
-		client.commands.set(command.data.name, command);
-	} else {
-		console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
-	}
-}
+let commands = FindCommandHandlersUtil.GetCommandDefinitions(client, '/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/.dist');
+if(commands.length>0)
+	client.commands = new Collection();
+commands.forEach(command => {
+	client.commands.set(command.data.name, command.data)
+});
 
 // Read event handlers from the events directory
 const eventsPath = path.join(__dirname, 'events');

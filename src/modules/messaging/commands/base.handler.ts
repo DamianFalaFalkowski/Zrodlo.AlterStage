@@ -1,6 +1,7 @@
-import { BaseCommand } from "./base-command";
-import { BaseCommandResponse } from "./base-command-response";
-import dcLogger from "../utils/dc-logger";
+import { BaseCommand } from "./base.command";
+
+import dcLogger from "../../../utils/dc-logger";
+import { BaseCommandResponse } from "./base.response";
 
 export class BaseChatInputCommandHandler<C extends BaseCommand<BaseCommandResponse>> {
 

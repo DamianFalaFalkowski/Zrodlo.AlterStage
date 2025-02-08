@@ -1,6 +1,7 @@
-import { APIInteractionGuildMember, ChatInputCommandInteraction, GuildMember, GuildMemberRoleManager, MessageFlags, Role } from "discord.js";
-import { BaseCommandResponse } from "./base-command-response";
-import dcLogger from "../utils/dc-logger";
+import { APIInteractionGuildMember, ChatInputCommandInteraction, GuildMember, GuildMemberRoleManager, Role } from "discord.js";
+
+import dcLogger from "../../../utils/dc-logger";
+import { BaseCommandResponse } from "./base.response";
 
 export class BaseCommand<R extends BaseCommandResponse> {
 

@@ -1,7 +1,6 @@
-import IBuilderSequelizeSqLite from './builder.interfaces/builder.sequelize.sqlite.interface';
-import { StartupInstance } from './startup.instance';
+import { Ibuilder, IBuilderSequelizeSqLite } from './builder.interfaces/builder.sequelize.sqlite.interface';
 
-export class ScriptBuilder implements IBuilderSequelizeSqLite {
+ class ScriptBuilder implements Ibuilder, IBuilderSequelizeSqLite<ScriptBuilder> {
 
     constructor() {
 

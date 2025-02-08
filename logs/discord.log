@@ -85,3 +85,899 @@
 [2025-02-08T00:32:29.210Z] Reply to falalala_wav: Tag tag-testowy added.
 [2025-02-08T02:37:16.293Z] Command executed by falalala_wav: /generate-transfer-msg role-to-buy: 1335760767936630804
 [2025-02-08T02:37:16.297Z] Reply to falalala_wav: Rola którą próbujesz zakupić nie jest przeznaczona do kupienia.
+[2025-02-08T05:00:54.390Z] Error: Cannot find module 'generate-payment-transfer-msg_chat-input'
+Require stack:
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/generate-transfer-message.command.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/gen-transfer-msg.definition.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/run-discord-app.ts
+Stack: Error: Cannot find module 'generate-payment-transfer-msg_chat-input'
+Require stack:
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/generate-transfer-message.command.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/gen-transfer-msg.definition.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/run-discord-app.ts
+    at node:internal/modules/cjs/loader:1394:15
+    at nextResolveSimple (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:3:942)
+    at /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:2:2550
+    at /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:2:1624
+    at resolveTsPaths (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:3:760)
+    at /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:3:1038
+    at m._resolveFilename (file:///Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-RyGUjI6j.mjs:1:789)
+    at defaultResolveImpl (node:internal/modules/cjs/loader:1050:19)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1055:22)
+    at Function._load (node:internal/modules/cjs/loader:1204:37)
+[2025-02-08T10:57:32.720Z] Szukam definicji poleceń $rootFolderPath=src.
+[2025-02-08T10:57:32.738Z] Szukam definicji poleceń $rootFolderPath=src.
+[2025-02-08T10:57:32.741Z] Szukam definicji poleceń $rootFolderPath=src.
+[2025-02-08T11:01:46.493Z] Szukam definicji poleceń $rootFolderPath=../src.
+[2025-02-08T11:01:46.515Z] Szukam definicji poleceń $rootFolderPath=../src.
+[2025-02-08T11:01:46.517Z] Szukam definicji poleceń $rootFolderPath=../src.
+[2025-02-08T11:02:14.093Z] Szukam definicji poleceń $rootFolderPath=../.
+[2025-02-08T11:02:14.108Z] Szukam definicji poleceń $rootFolderPath=../.
+[2025-02-08T11:02:14.110Z] Szukam definicji poleceń $rootFolderPath=../.
+[2025-02-08T11:02:45.369Z] Szukam definicji poleceń $rootFolderPath=../src/.
+[2025-02-08T11:02:45.384Z] Szukam definicji poleceń $rootFolderPath=../src/.
+[2025-02-08T11:02:45.386Z] Szukam definicji poleceń $rootFolderPath=../src/.
+[2025-02-08T11:03:14.743Z] Szukam definicji poleceń $rootFolderPath=/.
+[2025-02-08T11:03:14.762Z] Szukam definicji poleceń $rootFolderPath=/.
+[2025-02-08T11:03:14.766Z] Szukam definicji poleceń $rootFolderPath=/.
+[2025-02-08T11:03:22.877Z] Szukam definicji poleceń $rootFolderPath=/src.
+[2025-02-08T11:03:22.894Z] Szukam definicji poleceń $rootFolderPath=/src.
+[2025-02-08T11:03:22.896Z] Szukam definicji poleceń $rootFolderPath=/src.
+[2025-02-08T11:03:49.697Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T11:03:49.820Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T11:03:49.823Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T11:05:12.590Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T11:05:55.390Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T11:05:55.390Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T11:05:55.426Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T11:05:55.429Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T11:06:11.803Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T11:07:04.151Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T11:07:04.193Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T11:07:04.196Z] Szukam definicji poleceń $rootFolderPath=/nosuchpath/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T11:07:05.312Z] Szukam definicji poleceń $rootFolderPath=/nosuchpath/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T11:08:19.401Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T11:08:19.430Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T11:10:55.038Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/.dist.
+[2025-02-08T11:13:49.871Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/.dist.
+[2025-02-08T11:13:57.049Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T11:16:08.075Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T11:16:15.202Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T11:17:28.830Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T11:17:28.862Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T11:17:42.421Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T11:27:36.255Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T11:27:39.690Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T11:29:55.580Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T11:30:40.362Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T11:30:42.060Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T11:31:23.064Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T11:33:22.501Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T11:33:50.146Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T11:34:16.777Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T11:34:18.867Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T11:34:39.221Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T11:35:34.089Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T11:36:11.771Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T11:36:26.808Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T11:36:36.174Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T11:38:21.993Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T11:46:57.050Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T11:46:57.050Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T11:47:03.348Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T12:23:45.474Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T12:23:45.564Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T12:23:48.970Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T12:24:33.591Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T12:24:33.591Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T12:24:38.576Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T12:32:14.191Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T12:32:14.191Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T12:32:18.944Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T12:33:02.636Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T12:33:02.636Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T12:33:09.168Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T12:34:07.227Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T12:34:07.227Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T12:34:07.917Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T12:34:41.929Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T12:34:41.930Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T12:34:49.349Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T12:35:23.941Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T12:35:23.941Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T12:35:29.951Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T12:37:44.823Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T12:37:44.951Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T12:37:45.581Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T12:39:08.579Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T12:39:08.579Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T12:39:12.943Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T12:40:28.601Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T12:40:28.602Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T12:40:37.544Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T12:41:56.461Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T12:41:56.478Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T12:41:58.638Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T12:42:37.001Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T12:42:37.248Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T12:42:38.097Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T12:48:14.961Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T12:48:15.073Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T12:48:15.627Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T12:48:21.830Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T12:48:42.574Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T12:48:53.018Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T12:52:39.282Z] Szukam definicji poleceń $rootFolderPath=undefined.
+[2025-02-08T12:52:39.606Z] Szukam definicji poleceń $rootFolderPath=undefined.
+[2025-02-08T12:52:40.755Z] Szukam definicji poleceń $rootFolderPath=undefined.
+[2025-02-08T12:52:48.684Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T12:52:48.721Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T12:52:50.109Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T12:53:42.471Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T12:54:52.548Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T12:54:52.557Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T12:57:48.838Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T12:57:48.889Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T12:58:27.140Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T13:01:07.692Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T13:01:07.728Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T13:01:09.935Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T13:04:49.281Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T13:04:49.281Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T13:04:49.592Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T13:05:28.461Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T13:07:59.225Z] ERROR: Cannot find module 'generate-payment-transfer-msg_chat-input'
+Require stack:
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/gen-transfer-msg/gen-transfer-msg.command.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/gen-transfer-msg/gen-transfer-msg.definition.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/utils/find-command-handlers-definitions.util.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/run-discord-app.ts
+Stack: Error: Cannot find module 'generate-payment-transfer-msg_chat-input'
+Require stack:
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/gen-transfer-msg/gen-transfer-msg.command.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/gen-transfer-msg/gen-transfer-msg.definition.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/utils/find-command-handlers-definitions.util.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/run-discord-app.ts
+    at node:internal/modules/cjs/loader:1394:15
+    at nextResolveSimple (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:3:942)
+    at /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:2:2550
+    at /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:2:1624
+    at resolveTsPaths (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:3:760)
+    at /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:3:1038
+    at m._resolveFilename (file:///Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-RyGUjI6j.mjs:1:789)
+    at defaultResolveImpl (node:internal/modules/cjs/loader:1050:19)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1055:22)
+    at Function._load (node:internal/modules/cjs/loader:1204:37)
+[2025-02-08T13:07:59.225Z] ERROR: Cannot find module 'generate-payment-transfer-msg_chat-input'
+Require stack:
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/gen-transfer-msg/gen-transfer-msg.command.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/gen-transfer-msg/gen-transfer-msg.definition.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/utils/find-command-handlers-definitions.util.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/run-discord-app.ts
+Stack: Error: Cannot find module 'generate-payment-transfer-msg_chat-input'
+Require stack:
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/gen-transfer-msg/gen-transfer-msg.command.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/gen-transfer-msg/gen-transfer-msg.definition.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/utils/find-command-handlers-definitions.util.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/run-discord-app.ts
+    at node:internal/modules/cjs/loader:1394:15
+    at nextResolveSimple (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:3:942)
+    at /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:2:2550
+    at /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:2:1624
+    at resolveTsPaths (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:3:760)
+    at /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:3:1038
+    at m._resolveFilename (file:///Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-RyGUjI6j.mjs:1:789)
+    at defaultResolveImpl (node:internal/modules/cjs/loader:1050:19)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1055:22)
+    at Function._load (node:internal/modules/cjs/loader:1204:37)
+[2025-02-08T13:08:06.268Z] ERROR: Cannot find module 'generate-payment-transfer-msg_chat-input'
+Require stack:
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/gen-transfer-msg/gen-transfer-msg.command.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/gen-transfer-msg/gen-transfer-msg.definition.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/utils/find-command-handlers-definitions.util.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/run-discord-app.ts
+Stack: Error: Cannot find module 'generate-payment-transfer-msg_chat-input'
+Require stack:
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/gen-transfer-msg/gen-transfer-msg.command.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/gen-transfer-msg/gen-transfer-msg.definition.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/utils/find-command-handlers-definitions.util.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/run-discord-app.ts
+    at node:internal/modules/cjs/loader:1394:15
+    at nextResolveSimple (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:3:942)
+    at /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:2:2550
+    at /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:2:1624
+    at resolveTsPaths (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:3:760)
+    at /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:3:1038
+    at m._resolveFilename (file:///Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-RyGUjI6j.mjs:1:789)
+    at defaultResolveImpl (node:internal/modules/cjs/loader:1050:19)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1055:22)
+    at Function._load (node:internal/modules/cjs/loader:1204:37)
+[2025-02-08T13:09:01.649Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T13:11:31.894Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T13:11:32.146Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T13:11:44.965Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T13:15:16.082Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T13:15:24.106Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T13:15:30.472Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T13:16:54.254Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T13:16:54.500Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T13:17:09.835Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T13:17:58.406Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T13:17:58.660Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T13:18:07.027Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T13:23:39.604Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T13:23:40.042Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T13:23:46.389Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T13:27:25.331Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T13:27:25.541Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T13:28:01.868Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T13:28:20.451Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T13:29:45.104Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T13:29:45.114Z] ERROR: command.toJSON is not a function
+Stack: TypeError: command.toJSON is not a function
+    at <anonymous> (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/run-commands-registration-script.ts:30:68)
+    at <anonymous> (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/@discordjs/collection/src/collection.ts:424:11)
+    at Function.from (<anonymous>)
+    at _Collection.map (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/@discordjs/collection/src/collection.ts:422:16)
+    at <anonymous> (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/run-commands-registration-script.ts:30:45)
+    at dcLogger (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/run-commands-registration-script.ts:51:1)
+    at Object.<anonymous> (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/run-commands-registration-script.ts:51:4)
+    at Module._compile (node:internal/modules/cjs/loader:1723:14)
+    at Object.transformer (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:2:1186)
+    at Module.load (node:internal/modules/cjs/loader:1458:32)
+[2025-02-08T13:31:18.221Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T13:31:18.232Z] Request body: [
+  "{\"internalId\":\"generate-payment-transfer-message_chat-input\",\"isEphemeral\":true,\"allowedRoles\":[\"member\",\"admin\",\"moderator\",\"owner\",\"honored-member\",\"super-moderator\"],\"name\":0,\"type\":1,\"data\":{\"options\":[{\"name\":\"role-to-buy\",\"description\":\"The role to buy.\",\"required\":true,\"type\":8}],\"name\":\"gen-transfer-msg\",\"description\":\"Generates a transfer message for specific role (role has to begin with '+' sign)\",\"type\":1}}"
+]
+[2025-02-08T13:31:18.722Z] ERROR: Invalid Form Body
+0[MODEL_TYPE_CONVERT]: Expected an object/dictionary.
+Stack: DiscordAPIError[50035]: Invalid Form Body
+0[MODEL_TYPE_CONVERT]: Expected an object/dictionary.
+    at handleErrors (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/@discordjs/rest/src/lib/handlers/Shared.ts:148:10)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async SequentialHandler.runRequest (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/@discordjs/rest/src/lib/handlers/SequentialHandler.ts:417:20)
+    at async SequentialHandler.queueRequest (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/@discordjs/rest/src/lib/handlers/SequentialHandler.ts:169:11)
+    at async _REST.request (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/@discordjs/rest/src/lib/REST.ts:210:20)
+    at async <anonymous> (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/run-commands-registration-script.ts:34:27)
+[2025-02-08T13:31:23.501Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T13:31:23.507Z] Request body: [
+  "{\"internalId\":\"generate-payment-transfer-message_chat-input\",\"isEphemeral\":true,\"allowedRoles\":[\"member\",\"admin\",\"moderator\",\"owner\",\"honored-member\",\"super-moderator\"],\"name\":0,\"type\":1,\"data\":{\"options\":[{\"name\":\"role-to-buy\",\"description\":\"The role to buy.\",\"required\":true,\"type\":8}],\"name\":\"gen-transfer-msg\",\"description\":\"Generates a transfer message for specific role (role has to begin with '+' sign)\",\"type\":1}}"
+]
+[2025-02-08T13:31:23.766Z] ERROR: Invalid Form Body
+0[MODEL_TYPE_CONVERT]: Expected an object/dictionary.
+Stack: DiscordAPIError[50035]: Invalid Form Body
+0[MODEL_TYPE_CONVERT]: Expected an object/dictionary.
+    at handleErrors (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/@discordjs/rest/src/lib/handlers/Shared.ts:148:10)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async SequentialHandler.runRequest (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/@discordjs/rest/src/lib/handlers/SequentialHandler.ts:417:20)
+    at async SequentialHandler.queueRequest (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/@discordjs/rest/src/lib/handlers/SequentialHandler.ts:169:11)
+    at async _REST.request (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/@discordjs/rest/src/lib/REST.ts:210:20)
+    at async <anonymous> (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/run-commands-registration-script.ts:34:27)
+[2025-02-08T13:34:39.864Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T13:34:39.874Z] Request body: [
+  "{\"internalId\":\"generate-payment-transfer-message_chat-input\",\"isEphemeral\":true,\"allowedRoles\":[\"member\",\"admin\",\"moderator\",\"owner\",\"honored-member\",\"super-moderator\"],\"name\":0,\"type\":1,\"data\":{\"options\":[{\"name\":\"role-to-buy\",\"description\":\"The role to buy.\",\"required\":true,\"type\":8}],\"name\":\"gen-transfer-msg\",\"description\":\"Generates a transfer message for specific role (role has to begin with '+' sign)\",\"type\":1}}"
+]
+[2025-02-08T13:34:40.157Z] ERROR: Invalid Form Body
+0.description[BASE_TYPE_REQUIRED]: This field is required
+Stack: DiscordAPIError[50035]: Invalid Form Body
+0.description[BASE_TYPE_REQUIRED]: This field is required
+    at handleErrors (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/@discordjs/rest/src/lib/handlers/Shared.ts:148:10)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async SequentialHandler.runRequest (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/@discordjs/rest/src/lib/handlers/SequentialHandler.ts:417:20)
+    at async SequentialHandler.queueRequest (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/@discordjs/rest/src/lib/handlers/SequentialHandler.ts:169:11)
+    at async _REST.request (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/@discordjs/rest/src/lib/REST.ts:210:20)
+    at async <anonymous> (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/run-commands-registration-script.ts:34:27)
+[2025-02-08T13:34:44.976Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T13:34:44.983Z] Request body: [
+  "{\"internalId\":\"generate-payment-transfer-message_chat-input\",\"isEphemeral\":true,\"allowedRoles\":[\"member\",\"admin\",\"moderator\",\"owner\",\"honored-member\",\"super-moderator\"],\"name\":0,\"type\":1,\"data\":{\"options\":[{\"name\":\"role-to-buy\",\"description\":\"The role to buy.\",\"required\":true,\"type\":8}],\"name\":\"gen-transfer-msg\",\"description\":\"Generates a transfer message for specific role (role has to begin with '+' sign)\",\"type\":1}}"
+]
+[2025-02-08T13:34:45.250Z] ERROR: Invalid Form Body
+0.description[BASE_TYPE_REQUIRED]: This field is required
+Stack: DiscordAPIError[50035]: Invalid Form Body
+0.description[BASE_TYPE_REQUIRED]: This field is required
+    at handleErrors (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/@discordjs/rest/src/lib/handlers/Shared.ts:148:10)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async SequentialHandler.runRequest (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/@discordjs/rest/src/lib/handlers/SequentialHandler.ts:417:20)
+    at async SequentialHandler.queueRequest (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/@discordjs/rest/src/lib/handlers/SequentialHandler.ts:169:11)
+    at async _REST.request (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/@discordjs/rest/src/lib/REST.ts:210:20)
+    at async <anonymous> (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/run-commands-registration-script.ts:34:27)
+[2025-02-08T13:34:50.803Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T13:34:50.810Z] Request body: [
+  "{\"internalId\":\"generate-payment-transfer-message_chat-input\",\"isEphemeral\":true,\"allowedRoles\":[\"member\",\"admin\",\"moderator\",\"owner\",\"honored-member\",\"super-moderator\"],\"name\":0,\"type\":1,\"data\":{\"options\":[{\"name\":\"role-to-buy\",\"description\":\"The role to buy.\",\"required\":true,\"type\":8}],\"name\":\"gen-transfer-msg\",\"description\":\"Generates a transfer message for specific role (role has to begin with '+' sign)\",\"type\":1}}"
+]
+[2025-02-08T13:35:14.172Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T13:35:22.078Z] ERROR: Cannot find module 'generate-payment-transfer-msg_chat-input'
+Require stack:
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/gen-transfer-msg/gen-transfer-msg.command.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/gen-transfer-msg/gen-transfer-msg.definition.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/utils/find-command-handlers-definitions.util.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/run-discord-app.ts
+Stack: Error: Cannot find module 'generate-payment-transfer-msg_chat-input'
+Require stack:
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/gen-transfer-msg/gen-transfer-msg.command.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/gen-transfer-msg/gen-transfer-msg.definition.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/utils/find-command-handlers-definitions.util.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/run-discord-app.ts
+    at node:internal/modules/cjs/loader:1394:15
+    at nextResolveSimple (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:3:942)
+    at /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:2:2550
+    at /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:2:1624
+    at resolveTsPaths (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:3:760)
+    at /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:3:1038
+    at m._resolveFilename (file:///Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-RyGUjI6j.mjs:1:789)
+    at defaultResolveImpl (node:internal/modules/cjs/loader:1050:19)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1055:22)
+    at Function._load (node:internal/modules/cjs/loader:1204:37)
+[2025-02-08T13:35:22.091Z] ERROR: Cannot find module 'generate-payment-transfer-msg_chat-input'
+Require stack:
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/gen-transfer-msg/gen-transfer-msg.command.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/gen-transfer-msg/gen-transfer-msg.definition.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/utils/find-command-handlers-definitions.util.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/run-discord-app.ts
+Stack: Error: Cannot find module 'generate-payment-transfer-msg_chat-input'
+Require stack:
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/gen-transfer-msg/gen-transfer-msg.command.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/gen-transfer-msg/gen-transfer-msg.definition.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/utils/find-command-handlers-definitions.util.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/run-discord-app.ts
+    at node:internal/modules/cjs/loader:1394:15
+    at nextResolveSimple (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:3:942)
+    at /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:2:2550
+    at /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:2:1624
+    at resolveTsPaths (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:3:760)
+    at /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:3:1038
+    at m._resolveFilename (file:///Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-RyGUjI6j.mjs:1:789)
+    at defaultResolveImpl (node:internal/modules/cjs/loader:1050:19)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1055:22)
+    at Function._load (node:internal/modules/cjs/loader:1204:37)
+[2025-02-08T13:37:24.792Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T13:37:24.793Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T13:37:33.386Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T13:37:33.392Z] Request body: [
+  "{\"internalId\":\"generate-payment-transfer-message_chat-input\",\"isEphemeral\":true,\"allowedRoles\":[\"member\",\"admin\",\"moderator\",\"owner\",\"honored-member\",\"super-moderator\"],\"name\":0,\"type\":1,\"data\":{\"options\":[{\"name\":\"role-to-buy\",\"description\":\"The role to buy.\",\"required\":true,\"type\":8}],\"name\":\"gen-transfer-msg\",\"description\":\"Generates a transfer message for specific role (role has to begin with '+' sign)\",\"type\":1}}"
+]
+[2025-02-08T13:37:33.623Z] ERROR: Invalid Form Body
+0.description[BASE_TYPE_REQUIRED]: This field is required
+Stack: DiscordAPIError[50035]: Invalid Form Body
+0.description[BASE_TYPE_REQUIRED]: This field is required
+    at handleErrors (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/@discordjs/rest/src/lib/handlers/Shared.ts:148:10)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async SequentialHandler.runRequest (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/@discordjs/rest/src/lib/handlers/SequentialHandler.ts:417:20)
+    at async SequentialHandler.queueRequest (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/@discordjs/rest/src/lib/handlers/SequentialHandler.ts:169:11)
+    at async _REST.request (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/@discordjs/rest/src/lib/REST.ts:210:20)
+    at async <anonymous> (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/run-commands-registration-script.ts:34:27)
+[2025-02-08T13:38:52.195Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T13:41:26.462Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T13:41:26.469Z] Request body: [
+  "{\"internalId\":\"generate-payment-transfer-message_chat-input\",\"isEphemeral\":true,\"allowedRoles\":[\"member\",\"admin\",\"moderator\",\"owner\",\"honored-member\",\"super-moderator\"],\"name\":0,\"type\":1,\"data\":{\"options\":[{\"name\":\"role-to-buy\",\"description\":\"The role to buy.\",\"required\":true,\"type\":8}],\"name\":\"gen-transfer-msg\",\"description\":\"Generates a transfer message for specific role (role has to begin with '+' sign)\",\"type\":1}}"
+]
+[2025-02-08T13:41:26.889Z] ERROR: Invalid Form Body
+0.description[BASE_TYPE_REQUIRED]: This field is required
+Stack: DiscordAPIError[50035]: Invalid Form Body
+0.description[BASE_TYPE_REQUIRED]: This field is required
+    at handleErrors (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/@discordjs/rest/src/lib/handlers/Shared.ts:148:10)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async SequentialHandler.runRequest (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/@discordjs/rest/src/lib/handlers/SequentialHandler.ts:417:20)
+    at async SequentialHandler.queueRequest (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/@discordjs/rest/src/lib/handlers/SequentialHandler.ts:169:11)
+    at async _REST.request (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/@discordjs/rest/src/lib/REST.ts:210:20)
+    at async <anonymous> (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/run-commands-registration-script.ts:34:27)
+[2025-02-08T13:51:36.492Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T13:53:55.441Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T13:54:03.407Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T13:54:03.413Z] Request body: [
+  "{\"internalId\":\"generate-payment-transfer-message_chat-input\",\"isEphemeral\":true,\"allowedRoles\":[\"member\",\"admin\",\"moderator\",\"owner\",\"honored-member\",\"super-moderator\"],\"name\":0,\"type\":1,\"data\":{\"options\":[{\"name\":\"role-to-buy\",\"description\":\"The role to buy.\",\"required\":true,\"type\":8}],\"name\":\"gen-transfer-msg\",\"description\":\"Generates a transfer message for specific role (role has to begin with '+' sign)\",\"type\":1}}"
+]
+[2025-02-08T13:54:03.700Z] ERROR: Invalid Form Body
+0.description[BASE_TYPE_REQUIRED]: This field is required
+Stack: DiscordAPIError[50035]: Invalid Form Body
+0.description[BASE_TYPE_REQUIRED]: This field is required
+    at handleErrors (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/@discordjs/rest/src/lib/handlers/Shared.ts:148:10)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async SequentialHandler.runRequest (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/@discordjs/rest/src/lib/handlers/SequentialHandler.ts:417:20)
+    at async SequentialHandler.queueRequest (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/@discordjs/rest/src/lib/handlers/SequentialHandler.ts:169:11)
+    at async _REST.request (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/@discordjs/rest/src/lib/REST.ts:210:20)
+    at async <anonymous> (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/run-commands-registration-script.ts:34:27)
+[2025-02-08T14:05:28.471Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T14:05:28.483Z] Request body: [
+  "{\"internalId\":\"generate-payment-transfer-message_chat-input\",\"isEphemeral\":true,\"allowedRoles\":[\"member\",\"admin\",\"moderator\",\"owner\",\"honored-member\",\"super-moderator\"],\"name\":0,\"type\":1,\"data\":{\"options\":[{\"name\":\"role-to-buy\",\"description\":\"The role to buy.\",\"required\":true,\"type\":8}],\"name\":\"gen-transfer-msg\",\"description\":\"Generates a transfer message for specific role (role has to begin with '+' sign)\",\"type\":1}}"
+]
+[2025-02-08T14:05:28.667Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T14:05:28.884Z] ERROR: DiscordAPIError[50035]: Invalid Form Body
+0.description[BASE_TYPE_REQUIRED]: This field is required
+[2025-02-08T14:05:36.747Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T14:05:36.755Z] Request body: [
+  "{\"internalId\":\"generate-payment-transfer-message_chat-input\",\"isEphemeral\":true,\"allowedRoles\":[\"member\",\"admin\",\"moderator\",\"owner\",\"honored-member\",\"super-moderator\"],\"name\":0,\"type\":1,\"data\":{\"options\":[{\"name\":\"role-to-buy\",\"description\":\"The role to buy.\",\"required\":true,\"type\":8}],\"name\":\"gen-transfer-msg\",\"description\":\"Generates a transfer message for specific role (role has to begin with '+' sign)\",\"type\":1}}"
+]
+[2025-02-08T14:05:38.094Z] ERROR: Invalid Form Body
+0.description[BASE_TYPE_REQUIRED]: This field is required
+Stack: DiscordAPIError[50035]: Invalid Form Body
+0.description[BASE_TYPE_REQUIRED]: This field is required
+    at handleErrors (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/@discordjs/rest/src/lib/handlers/Shared.ts:148:10)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async SequentialHandler.runRequest (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/@discordjs/rest/src/lib/handlers/SequentialHandler.ts:417:20)
+    at async SequentialHandler.queueRequest (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/@discordjs/rest/src/lib/handlers/SequentialHandler.ts:169:11)
+    at async _REST.request (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/@discordjs/rest/src/lib/REST.ts:210:20)
+    at async <anonymous> (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/run-commands-registration-script.ts:34:27)
+[2025-02-08T14:05:38.802Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T14:05:46.583Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T14:05:46.593Z] Request body: [
+  "{\"internalId\":\"generate-payment-transfer-message_chat-input\",\"isEphemeral\":true,\"allowedRoles\":[\"member\",\"admin\",\"moderator\",\"owner\",\"honored-member\",\"super-moderator\"],\"name\":0,\"type\":1,\"data\":{\"options\":[{\"name\":\"role-to-buy\",\"description\":\"The role to buy.\",\"required\":true,\"type\":8}],\"name\":\"gen-transfer-msg\",\"description\":\"Generates a transfer message for specific role (role has to begin with '+' sign)\",\"type\":1}}"
+]
+[2025-02-08T14:07:24.525Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T14:07:24.533Z] Request body: [
+  "{\"internalId\":\"generate-payment-transfer-message_chat-input\",\"isEphemeral\":true,\"allowedRoles\":[\"member\",\"admin\",\"moderator\",\"owner\",\"honored-member\",\"super-moderator\"],\"name\":0,\"type\":1,\"data\":{\"options\":[{\"name\":\"role-to-buy\",\"description\":\"The role to buy.\",\"required\":true,\"type\":8}],\"name\":\"gen-transfer-msg\",\"description\":\"Generates a transfer message for specific role (role has to begin with '+' sign)\",\"type\":1}}"
+]
+[2025-02-08T14:07:24.802Z] ERROR: {"requestBody":{"json":[{"internalId":"generate-payment-transfer-message_chat-input","isEphemeral":true,"allowedRoles":["member","admin","moderator","owner","honored-member","super-moderator"],"name":0,"type":1,"data":{"options":[{"name":"role-to-buy","description":"The role to buy.","required":true,"type":8}],"name":"gen-transfer-msg","description":"Generates a transfer message for specific role (role has to begin with '+' sign)","type":1}}]},"rawError":{"message":"Invalid Form Body","code":50035,"errors":{"0":{"description":{"_errors":[{"code":"BASE_TYPE_REQUIRED","message":"This field is required"}]}}}},"code":50035,"status":400,"method":"PUT","url":"https://discord.com/api/v10/applications/1335919556908028056/guilds/1333153060930846781/commands"}
+[2025-02-08T14:19:28.038Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T14:19:28.320Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T14:21:07.674Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T14:21:31.978Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T14:21:39.793Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T14:21:39.800Z] Request body: [
+  "{\"internalId\":\"generate-payment-transfer-message_chat-input\",\"isEphemeral\":true,\"allowedRoles\":[\"member\",\"admin\",\"moderator\",\"owner\",\"honored-member\",\"super-moderator\"],\"name\":0,\"type\":1,\"data\":{\"options\":[{\"name\":\"role-to-buy\",\"description\":\"The role to buy.\",\"required\":true,\"type\":8}],\"name\":\"gen-transfer-msg\",\"description\":\"Generates a transfer message for specific role (role has to begin with + sign)\",\"type\":1}}"
+]
+[2025-02-08T14:21:40.055Z] ERROR: {"requestBody":{"json":[{"internalId":"generate-payment-transfer-message_chat-input","isEphemeral":true,"allowedRoles":["member","admin","moderator","owner","honored-member","super-moderator"],"name":0,"type":1,"data":{"options":[{"name":"role-to-buy","description":"The role to buy.","required":true,"type":8}],"name":"gen-transfer-msg","description":"Generates a transfer message for specific role (role has to begin with + sign)","type":1}}]},"rawError":{"message":"Invalid Form Body","code":50035,"errors":{"0":{"description":{"_errors":[{"code":"BASE_TYPE_REQUIRED","message":"This field is required"}]}}}},"code":50035,"status":400,"method":"PUT","url":"https://discord.com/api/v10/applications/1335919556908028056/guilds/1333153060930846781/commands"}
+[2025-02-08T14:24:52.914Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T14:24:52.933Z] Request body: [
+  "{\"internalId\":\"generate-payment-transfer-message_chat-input\",\"isEphemeral\":true,\"allowedRoles\":[\"member\",\"admin\",\"moderator\",\"owner\",\"honored-member\",\"super-moderator\"],\"name\":0,\"type\":1,\"data\":{\"options\":[{\"name\":\"role-to-buy\",\"description\":\"The role to buy.\",\"required\":true,\"type\":8}],\"name\":\"gen-transfer-msg\",\"description\":\"Generates a transfer message for specific role (role has to begin with + sign)\",\"type\":1}}"
+]
+[2025-02-08T14:24:53.103Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T14:24:53.174Z] ERROR: {"requestBody":{"json":[{"internalId":"generate-payment-transfer-message_chat-input","isEphemeral":true,"allowedRoles":["member","admin","moderator","owner","honored-member","super-moderator"],"name":0,"type":1,"data":{"options":[{"name":"role-to-buy","description":"The role to buy.","required":true,"type":8}],"name":"gen-transfer-msg","description":"Generates a transfer message for specific role (role has to begin with + sign)","type":1}}]},"rawError":{"message":"Invalid Form Body","code":50035,"errors":{"0":{"description":{"_errors":[{"code":"BASE_TYPE_REQUIRED","message":"This field is required"}]}}}},"code":50035,"status":400,"method":"PUT","url":"https://discord.com/api/v10/applications/1335919556908028056/guilds/1333153060930846781/commands"}
+[2025-02-08T14:24:57.902Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T14:24:57.908Z] Request body: [
+  "{\"internalId\":\"generate-payment-transfer-message_chat-input\",\"isEphemeral\":true,\"allowedRoles\":[\"member\",\"admin\",\"moderator\",\"owner\",\"honored-member\",\"super-moderator\"],\"name\":0,\"type\":1,\"data\":{\"options\":[{\"name\":\"role-to-buy\",\"description\":\"The role to buy.\",\"required\":true,\"type\":8}],\"name\":\"gen-transfer-msg\",\"description\":\"Generates a transfer message for specific role (role has to begin with + sign)\",\"type\":1}}"
+]
+[2025-02-08T14:24:58.144Z] ERROR: {"requestBody":{"json":[{"internalId":"generate-payment-transfer-message_chat-input","isEphemeral":true,"allowedRoles":["member","admin","moderator","owner","honored-member","super-moderator"],"name":0,"type":1,"data":{"options":[{"name":"role-to-buy","description":"The role to buy.","required":true,"type":8}],"name":"gen-transfer-msg","description":"Generates a transfer message for specific role (role has to begin with + sign)","type":1}}]},"rawError":{"message":"Invalid Form Body","code":50035,"errors":{"0":{"description":{"_errors":[{"code":"BASE_TYPE_REQUIRED","message":"This field is required"}]}}}},"code":50035,"status":400,"method":"PUT","url":"https://discord.com/api/v10/applications/1335919556908028056/guilds/1333153060930846781/commands"}
+[2025-02-08T14:33:14.057Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T14:33:14.181Z] Request body: [
+  "{\"internalId\":\"generate-payment-transfer-message_chat-input\",\"isEphemeral\":true,\"allowedRoles\":[\"member\",\"admin\",\"moderator\",\"owner\",\"honored-member\",\"super-moderator\"],\"name\":0,\"type\":1,\"data\":{\"options\":[{\"name\":\"role-to-buy\",\"description\":\"The role to buy.\",\"required\":true,\"type\":8}],\"name\":\"gen-transfer-msg\",\"description\":\"Generates a transfer message for specific role (role has to begin with + sign)\",\"type\":1}}"
+]
+[2025-02-08T14:33:14.429Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T14:33:14.648Z] ERROR: {"requestBody":{"json":[{"internalId":"generate-payment-transfer-message_chat-input","isEphemeral":true,"allowedRoles":["member","admin","moderator","owner","honored-member","super-moderator"],"name":0,"type":1,"data":{"options":[{"name":"role-to-buy","description":"The role to buy.","required":true,"type":8}],"name":"gen-transfer-msg","description":"Generates a transfer message for specific role (role has to begin with + sign)","type":1}}]},"rawError":{"message":"Invalid Form Body","code":50035,"errors":{"0":{"description":{"_errors":[{"code":"BASE_TYPE_REQUIRED","message":"This field is required"}]}}}},"code":50035,"status":400,"method":"PUT","url":"https://discord.com/api/v10/applications/1335919556908028056/guilds/1333153060930846781/commands"}
+[2025-02-08T14:33:27.784Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T14:33:27.791Z] Request body: [
+  "{\"internalId\":\"generate-payment-transfer-message_chat-input\",\"isEphemeral\":true,\"allowedRoles\":[\"member\",\"admin\",\"moderator\",\"owner\",\"honored-member\",\"super-moderator\"],\"name\":0,\"type\":1,\"data\":{\"options\":[{\"name\":\"role-to-buy\",\"description\":\"The role to buy.\",\"required\":true,\"type\":8}],\"name\":\"gen-transfer-msg\",\"description\":\"Generates a transfer message for specific role (role has to begin with + sign)\",\"type\":1}}"
+]
+[2025-02-08T14:33:28.280Z] ERROR: {"requestBody":{"json":[{"internalId":"generate-payment-transfer-message_chat-input","isEphemeral":true,"allowedRoles":["member","admin","moderator","owner","honored-member","super-moderator"],"name":0,"type":1,"data":{"options":[{"name":"role-to-buy","description":"The role to buy.","required":true,"type":8}],"name":"gen-transfer-msg","description":"Generates a transfer message for specific role (role has to begin with + sign)","type":1}}]},"rawError":{"message":"Invalid Form Body","code":50035,"errors":{"0":{"description":{"_errors":[{"code":"BASE_TYPE_REQUIRED","message":"This field is required"}]}}}},"code":50035,"status":400,"method":"PUT","url":"https://discord.com/api/v10/applications/1335919556908028056/guilds/1333153060930846781/commands"}
+[2025-02-08T14:37:54.552Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T14:37:54.731Z] Request body: [
+  "{\"internalId\":\"generate-payment-transfer-message_chat-input\",\"isEphemeral\":true,\"allowedRoles\":[\"member\",\"admin\",\"moderator\",\"owner\",\"honored-member\",\"super-moderator\"],\"data\":{\"options\":[{\"name\":\"role-to-buy\",\"description\":\"The role to buy.\",\"required\":true,\"type\":8}],\"name\":\"gen-transfer-msg\",\"description\":\"Generates a transfer message for specific role (role has to begin with + sign)\",\"type\":1}}"
+]
+[2025-02-08T14:37:54.898Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T14:37:55.054Z] ERROR: {"requestBody":{"json":[{"internalId":"generate-payment-transfer-message_chat-input","isEphemeral":true,"allowedRoles":["member","admin","moderator","owner","honored-member","super-moderator"],"data":{"options":[{"name":"role-to-buy","description":"The role to buy.","required":true,"type":8}],"name":"gen-transfer-msg","description":"Generates a transfer message for specific role (role has to begin with + sign)","type":1}}]},"rawError":{"message":"Invalid Form Body","code":50035,"errors":{"0":{"name":{"_errors":[{"code":"BASE_TYPE_REQUIRED","message":"This field is required"}]}}}},"code":50035,"status":400,"method":"PUT","url":"https://discord.com/api/v10/applications/1335919556908028056/guilds/1333153060930846781/commands"}
+[2025-02-08T14:38:02.566Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T14:38:02.617Z] Request body: [
+  "{\"internalId\":\"generate-payment-transfer-message_chat-input\",\"isEphemeral\":true,\"allowedRoles\":[\"member\",\"admin\",\"moderator\",\"owner\",\"honored-member\",\"super-moderator\"],\"data\":{\"options\":[{\"name\":\"role-to-buy\",\"description\":\"The role to buy.\",\"required\":true,\"type\":8}],\"name\":\"gen-transfer-msg\",\"description\":\"Generates a transfer message for specific role (role has to begin with '+' sign)\",\"type\":1}}"
+]
+[2025-02-08T14:38:02.846Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T14:38:02.904Z] ERROR: {"requestBody":{"json":[{"internalId":"generate-payment-transfer-message_chat-input","isEphemeral":true,"allowedRoles":["member","admin","moderator","owner","honored-member","super-moderator"],"data":{"options":[{"name":"role-to-buy","description":"The role to buy.","required":true,"type":8}],"name":"gen-transfer-msg","description":"Generates a transfer message for specific role (role has to begin with '+' sign)","type":1}}]},"rawError":{"message":"Invalid Form Body","code":50035,"errors":{"0":{"name":{"_errors":[{"code":"BASE_TYPE_REQUIRED","message":"This field is required"}]}}}},"code":50035,"status":400,"method":"PUT","url":"https://discord.com/api/v10/applications/1335919556908028056/guilds/1333153060930846781/commands"}
+[2025-02-08T14:38:14.161Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T14:38:14.168Z] Request body: [
+  "{\"internalId\":\"generate-payment-transfer-message_chat-input\",\"isEphemeral\":true,\"allowedRoles\":[\"member\",\"admin\",\"moderator\",\"owner\",\"honored-member\",\"super-moderator\"],\"data\":{\"options\":[{\"name\":\"role-to-buy\",\"description\":\"The role to buy.\",\"required\":true,\"type\":8}],\"name\":\"gen-transfer-msg\",\"description\":\"Generates a transfer message for specific role (role has to begin with '+' sign)\",\"type\":1}}"
+]
+[2025-02-08T14:38:23.542Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T14:38:23.548Z] Request body: [
+  "{\"internalId\":\"generate-payment-transfer-message_chat-input\",\"isEphemeral\":true,\"allowedRoles\":[\"member\",\"admin\",\"moderator\",\"owner\",\"honored-member\",\"super-moderator\"],\"data\":{\"options\":[{\"name\":\"role-to-buy\",\"description\":\"The role to buy.\",\"required\":true,\"type\":8}],\"name\":\"gen-transfer-msg\",\"description\":\"Generates a transfer message for specific role (role has to begin with '+' sign)\",\"type\":1}}"
+]
+[2025-02-08T14:38:31.915Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T14:38:38.042Z] ERROR: Cannot find module 'gen-transfer-msg'
+Require stack:
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/gen-transfer-msg/gen-transfer-msg.command.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/gen-transfer-msg/gen-transfer-msg.definition.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/utils/find-command-handlers-definitions.util.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/run-discord-app.ts
+Stack: Error: Cannot find module 'gen-transfer-msg'
+Require stack:
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/gen-transfer-msg/gen-transfer-msg.command.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/gen-transfer-msg/gen-transfer-msg.definition.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/utils/find-command-handlers-definitions.util.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/run-discord-app.ts
+    at node:internal/modules/cjs/loader:1394:15
+    at nextResolveSimple (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:3:942)
+    at /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:2:2550
+    at /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:2:1624
+    at resolveTsPaths (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:3:760)
+    at /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:3:1038
+    at m._resolveFilename (file:///Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-RyGUjI6j.mjs:1:789)
+    at defaultResolveImpl (node:internal/modules/cjs/loader:1050:19)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1055:22)
+    at Function._load (node:internal/modules/cjs/loader:1204:37)
+[2025-02-08T14:38:38.043Z] ERROR: Cannot find module 'gen-transfer-msg'
+Require stack:
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/gen-transfer-msg/gen-transfer-msg.command.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/gen-transfer-msg/gen-transfer-msg.definition.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/utils/find-command-handlers-definitions.util.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/run-discord-app.ts
+Stack: Error: Cannot find module 'gen-transfer-msg'
+Require stack:
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/gen-transfer-msg/gen-transfer-msg.command.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/gen-transfer-msg/gen-transfer-msg.definition.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/utils/find-command-handlers-definitions.util.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/run-discord-app.ts
+    at node:internal/modules/cjs/loader:1394:15
+    at nextResolveSimple (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:3:942)
+    at /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:2:2550
+    at /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:2:1624
+    at resolveTsPaths (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:3:760)
+    at /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:3:1038
+    at m._resolveFilename (file:///Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-RyGUjI6j.mjs:1:789)
+    at defaultResolveImpl (node:internal/modules/cjs/loader:1050:19)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1055:22)
+    at Function._load (node:internal/modules/cjs/loader:1204:37)
+[2025-02-08T14:42:37.765Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T14:42:37.766Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T14:42:42.955Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T14:42:52.139Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T14:42:52.192Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T14:43:05.188Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T14:43:10.811Z] ERROR: Cannot find module 'gen-transfer-msg'
+Require stack:
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/gen-transfer-msg/gen-transfer-msg.command.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/gen-transfer-msg/gen-transfer-msg.definition.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/utils/find-command-handlers-definitions.util.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/run-discord-app.ts
+Stack: Error: Cannot find module 'gen-transfer-msg'
+Require stack:
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/gen-transfer-msg/gen-transfer-msg.command.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/gen-transfer-msg/gen-transfer-msg.definition.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/utils/find-command-handlers-definitions.util.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/run-discord-app.ts
+    at node:internal/modules/cjs/loader:1394:15
+    at nextResolveSimple (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:3:942)
+    at /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:2:2550
+    at /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:2:1624
+    at resolveTsPaths (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:3:760)
+    at /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:3:1038
+    at m._resolveFilename (file:///Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-RyGUjI6j.mjs:1:789)
+    at defaultResolveImpl (node:internal/modules/cjs/loader:1050:19)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1055:22)
+    at Function._load (node:internal/modules/cjs/loader:1204:37)
+[2025-02-08T14:43:10.811Z] ERROR: Cannot find module 'gen-transfer-msg'
+Require stack:
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/gen-transfer-msg/gen-transfer-msg.command.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/gen-transfer-msg/gen-transfer-msg.definition.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/utils/find-command-handlers-definitions.util.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/run-discord-app.ts
+Stack: Error: Cannot find module 'gen-transfer-msg'
+Require stack:
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/gen-transfer-msg/gen-transfer-msg.command.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/gen-transfer-msg/gen-transfer-msg.definition.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/utils/find-command-handlers-definitions.util.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/run-discord-app.ts
+    at node:internal/modules/cjs/loader:1394:15
+    at nextResolveSimple (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:3:942)
+    at /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:2:2550
+    at /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:2:1624
+    at resolveTsPaths (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:3:760)
+    at /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:3:1038
+    at m._resolveFilename (file:///Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-RyGUjI6j.mjs:1:789)
+    at defaultResolveImpl (node:internal/modules/cjs/loader:1050:19)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1055:22)
+    at Function._load (node:internal/modules/cjs/loader:1204:37)
+[2025-02-08T14:43:33.287Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T14:43:39.367Z] ERROR: Cannot find module 'gen-transfer-msg'
+Require stack:
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/gen-transfer-msg/gen-transfer-msg.command.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/gen-transfer-msg/gen-transfer-msg.definition.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/utils/find-command-handlers-definitions.util.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/run-discord-app.ts
+Stack: Error: Cannot find module 'gen-transfer-msg'
+Require stack:
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/gen-transfer-msg/gen-transfer-msg.command.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/gen-transfer-msg/gen-transfer-msg.definition.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/utils/find-command-handlers-definitions.util.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/run-discord-app.ts
+    at node:internal/modules/cjs/loader:1394:15
+    at nextResolveSimple (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:3:942)
+    at /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:2:2550
+    at /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:2:1624
+    at resolveTsPaths (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:3:760)
+    at /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:3:1038
+    at m._resolveFilename (file:///Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-RyGUjI6j.mjs:1:789)
+    at defaultResolveImpl (node:internal/modules/cjs/loader:1050:19)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1055:22)
+    at Function._load (node:internal/modules/cjs/loader:1204:37)
+[2025-02-08T14:48:59.023Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T14:48:59.023Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T14:49:00.596Z] ERROR: Cannot find module 'gen-transfer-msg'
+Require stack:
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/gen-transfer-msg/gen-transfer-msg.command.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/gen-transfer-msg/gen-transfer-msg.definition.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/utils/find-command-handlers-definitions.util.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/run-discord-app.ts
+Stack: Error: Cannot find module 'gen-transfer-msg'
+Require stack:
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/gen-transfer-msg/gen-transfer-msg.command.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/gen-transfer-msg/gen-transfer-msg.definition.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/utils/find-command-handlers-definitions.util.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/run-discord-app.ts
+    at node:internal/modules/cjs/loader:1394:15
+    at nextResolveSimple (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:3:942)
+    at /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:2:2550
+    at /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:2:1624
+    at resolveTsPaths (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:3:760)
+    at /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:3:1038
+    at m._resolveFilename (file:///Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-RyGUjI6j.mjs:1:789)
+    at defaultResolveImpl (node:internal/modules/cjs/loader:1050:19)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1055:22)
+    at Function._load (node:internal/modules/cjs/loader:1204:37)
+[2025-02-08T14:49:01.946Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T14:49:36.517Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T14:51:17.111Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T14:56:38.758Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T14:56:38.759Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T14:57:11.964Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T14:57:11.975Z] Request body: [
+  "{\"internalId\":\"generate-payment-transfer-message_chat-input\",\"isEphemeral\":true,\"allowedRoles\":[\"member\",\"admin\",\"moderator\",\"owner\",\"honored-member\",\"super-moderator\"],\"data\":{\"options\":[{\"name\":\"role-to-buy\",\"description\":\"The role to buy.\",\"required\":true,\"type\":8}],\"name\":\"gen-transfer-msg\",\"description\":\"Generates a transfer message for specific role (role has to begin with '+' sign)\",\"type\":1}}"
+]
+[2025-02-08T14:57:12.229Z] ERROR: {"requestBody":{"json":[{"internalId":"generate-payment-transfer-message_chat-input","isEphemeral":true,"allowedRoles":["member","admin","moderator","owner","honored-member","super-moderator"],"data":{"options":[{"name":"role-to-buy","description":"The role to buy.","required":true,"type":8}],"name":"gen-transfer-msg","description":"Generates a transfer message for specific role (role has to begin with '+' sign)","type":1}}]},"rawError":{"message":"Invalid Form Body","code":50035,"errors":{"0":{"name":{"_errors":[{"code":"BASE_TYPE_REQUIRED","message":"This field is required"}]}}}},"code":50035,"status":400,"method":"PUT","url":"https://discord.com/api/v10/applications/1335919556908028056/guilds/1333153060930846781/commands"}
+[2025-02-08T14:59:34.610Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T14:59:34.668Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T14:59:35.907Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T14:59:35.915Z] Request body: [
+  "{\"internalId\":\"generate-payment-transfer-message_chat-input\",\"isEphemeral\":true,\"allowedRoles\":[\"member\",\"admin\",\"moderator\",\"owner\",\"honored-member\",\"super-moderator\"],\"data\":{\"options\":[{\"name\":\"role-to-buy\",\"description\":\"The role to buy.\",\"required\":true,\"type\":8}],\"name\":\"gen-transfer-msg\",\"description\":\"Generates a transfer message for specific role (role has to begin with '+' sign)\",\"type\":1}}"
+]
+[2025-02-08T14:59:36.178Z] ERROR: {"requestBody":{"json":[{"internalId":"generate-payment-transfer-message_chat-input","isEphemeral":true,"allowedRoles":["member","admin","moderator","owner","honored-member","super-moderator"],"data":{"options":[{"name":"role-to-buy","description":"The role to buy.","required":true,"type":8}],"name":"gen-transfer-msg","description":"Generates a transfer message for specific role (role has to begin with '+' sign)","type":1}}]},"rawError":{"message":"Invalid Form Body","code":50035,"errors":{"0":{"name":{"_errors":[{"code":"BASE_TYPE_REQUIRED","message":"This field is required"}]}}}},"code":50035,"status":400,"method":"PUT","url":"https://discord.com/api/v10/applications/1335919556908028056/guilds/1333153060930846781/commands"}
+[2025-02-08T14:59:45.770Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T14:59:45.778Z] Request body: [
+  "{\"internalId\":\"generate-payment-transfer-message_chat-input\",\"isEphemeral\":true,\"allowedRoles\":[\"member\",\"admin\",\"moderator\",\"owner\",\"honored-member\",\"super-moderator\"],\"data\":{\"options\":[{\"name\":\"role-to-buy\",\"description\":\"The role to buy.\",\"required\":true,\"type\":8}],\"name\":\"gen-transfer-msg\",\"description\":\"Generates a transfer message for specific role (role has to begin with '+' sign)\",\"type\":1}}"
+]
+[2025-02-08T14:59:46.014Z] ERROR: {"requestBody":{"json":[{"internalId":"generate-payment-transfer-message_chat-input","isEphemeral":true,"allowedRoles":["member","admin","moderator","owner","honored-member","super-moderator"],"data":{"options":[{"name":"role-to-buy","description":"The role to buy.","required":true,"type":8}],"name":"gen-transfer-msg","description":"Generates a transfer message for specific role (role has to begin with '+' sign)","type":1}}]},"rawError":{"message":"Invalid Form Body","code":50035,"errors":{"0":{"name":{"_errors":[{"code":"BASE_TYPE_REQUIRED","message":"This field is required"}]}}}},"code":50035,"status":400,"method":"PUT","url":"https://discord.com/api/v10/applications/1335919556908028056/guilds/1333153060930846781/commands"}
+[2025-02-08T15:00:05.141Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T15:00:14.065Z] ERROR: Cannot find module 'gen-transfer-msg.definition'
+Require stack:
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/gen-transfer-msg/gen-transfer-msg.command.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/gen-transfer-msg/gen-transfer-msg.definition.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/utils/find-command-handlers-definitions.util.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/run-discord-app.ts
+Stack: Error: Cannot find module 'gen-transfer-msg.definition'
+Require stack:
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/gen-transfer-msg/gen-transfer-msg.command.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/gen-transfer-msg/gen-transfer-msg.definition.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/utils/find-command-handlers-definitions.util.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/run-discord-app.ts
+    at node:internal/modules/cjs/loader:1394:15
+    at nextResolveSimple (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:3:942)
+    at /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:2:2550
+    at /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:2:1624
+    at resolveTsPaths (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:3:760)
+    at /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:3:1038
+    at m._resolveFilename (file:///Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-RyGUjI6j.mjs:1:789)
+    at defaultResolveImpl (node:internal/modules/cjs/loader:1050:19)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1055:22)
+    at Function._load (node:internal/modules/cjs/loader:1204:37)
+[2025-02-08T15:00:14.066Z] ERROR: Cannot find module 'gen-transfer-msg.definition'
+Require stack:
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/gen-transfer-msg/gen-transfer-msg.command.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/gen-transfer-msg/gen-transfer-msg.definition.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/utils/find-command-handlers-definitions.util.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/run-discord-app.ts
+Stack: Error: Cannot find module 'gen-transfer-msg.definition'
+Require stack:
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/gen-transfer-msg/gen-transfer-msg.command.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/gen-transfer-msg/gen-transfer-msg.definition.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/utils/find-command-handlers-definitions.util.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/run-discord-app.ts
+    at node:internal/modules/cjs/loader:1394:15
+    at nextResolveSimple (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:3:942)
+    at /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:2:2550
+    at /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:2:1624
+    at resolveTsPaths (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:3:760)
+    at /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:3:1038
+    at m._resolveFilename (file:///Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-RyGUjI6j.mjs:1:789)
+    at defaultResolveImpl (node:internal/modules/cjs/loader:1050:19)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1055:22)
+    at Function._load (node:internal/modules/cjs/loader:1204:37)
+[2025-02-08T15:00:14.067Z] ERROR: Cannot find module 'gen-transfer-msg.definition'
+Require stack:
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/gen-transfer-msg/gen-transfer-msg.command.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/gen-transfer-msg/gen-transfer-msg.definition.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/utils/find-command-handlers-definitions.util.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/run-discord-app.ts
+Stack: Error: Cannot find module 'gen-transfer-msg.definition'
+Require stack:
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/gen-transfer-msg/gen-transfer-msg.command.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/handlers/gen-transfer-msg/gen-transfer-msg.definition.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/utils/find-command-handlers-definitions.util.ts
+- /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/run-discord-app.ts
+    at node:internal/modules/cjs/loader:1394:15
+    at nextResolveSimple (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:3:942)
+    at /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:2:2550
+    at /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:2:1624
+    at resolveTsPaths (/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:3:760)
+    at /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-DCnOAxY2.cjs:3:1038
+    at m._resolveFilename (file:///Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/node_modules/tsx/dist/register-RyGUjI6j.mjs:1:789)
+    at defaultResolveImpl (node:internal/modules/cjs/loader:1050:19)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1055:22)
+    at Function._load (node:internal/modules/cjs/loader:1204:37)
+[2025-02-08T15:02:18.160Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T15:02:35.715Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T15:02:35.715Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T15:02:42.847Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T15:05:21.560Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T15:05:21.560Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T15:05:33.936Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T15:06:33.717Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T15:06:33.736Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T15:10:08.737Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T15:10:08.737Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T15:10:18.503Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T15:11:40.956Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T15:14:30.439Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/.dist.
+[2025-02-08T15:19:18.087Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T15:19:18.087Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T15:19:27.223Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/.dist.
+[2025-02-08T15:19:27.225Z] Request body: []
+[2025-02-08T15:19:56.916Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/.dist.
+[2025-02-08T15:19:56.919Z] Request body: []
+[2025-02-08T15:20:33.762Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/.dist.
+[2025-02-08T15:21:26.125Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/.dist.
+[2025-02-08T15:22:49.726Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/.dist.
+[2025-02-08T15:23:20.469Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T15:23:28.792Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/.dist.
+[2025-02-08T15:23:28.796Z] Request body: [
+  "{\"internalId\":\"generate-payment-transfer-message_chat-input\",\"isEphemeral\":true,\"allowedRoles\":[\"member\",\"admin\",\"moderator\",\"owner\",\"honored-member\",\"super-moderator\"],\"data\":{\"options\":[{\"name\":\"role-to-buy\",\"description\":\"The role to buy.\",\"required\":true,\"type\":8}],\"name\":\"gen-transfer-msg\",\"description\":\"Generates a transfer message for specific role (role has to begin with '+' sign)\",\"type\":1}}"
+]
+[2025-02-08T15:23:29.014Z] ERROR: {"requestBody":{"json":[{"internalId":"generate-payment-transfer-message_chat-input","isEphemeral":true,"allowedRoles":["member","admin","moderator","owner","honored-member","super-moderator"],"data":{"options":[{"name":"role-to-buy","description":"The role to buy.","required":true,"type":8}],"name":"gen-transfer-msg","description":"Generates a transfer message for specific role (role has to begin with '+' sign)","type":1}}]},"rawError":{"message":"Invalid Form Body","code":50035,"errors":{"0":{"name":{"_errors":[{"code":"BASE_TYPE_REQUIRED","message":"This field is required"}]}}}},"code":50035,"status":400,"method":"PUT","url":"https://discord.com/api/v10/applications/1335919556908028056/guilds/1333153060930846781/commands"}
+[2025-02-08T15:24:20.160Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T15:24:33.865Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/.dist.
+[2025-02-08T15:24:33.870Z] Request body: [
+  "{\"internalId\":\"generate-payment-transfer-message_chat-input\",\"isEphemeral\":true,\"allowedRoles\":[\"member\",\"admin\",\"moderator\",\"owner\",\"honored-member\",\"super-moderator\"],\"data\":{\"options\":[{\"name\":\"role-to-buy\",\"description\":\"The role to buy.\",\"required\":true,\"type\":8}],\"name\":\"gen-transfer-msg\",\"description\":\"Generates a transfer message for specific role (role has to begin with '+' sign)\",\"type\":1}}"
+]
+[2025-02-08T15:24:34.124Z] ERROR: {"requestBody":{"json":[{"internalId":"generate-payment-transfer-message_chat-input","isEphemeral":true,"allowedRoles":["member","admin","moderator","owner","honored-member","super-moderator"],"data":{"options":[{"name":"role-to-buy","description":"The role to buy.","required":true,"type":8}],"name":"gen-transfer-msg","description":"Generates a transfer message for specific role (role has to begin with '+' sign)","type":1}}]},"rawError":{"message":"Invalid Form Body","code":50035,"errors":{"0":{"name":{"_errors":[{"code":"BASE_TYPE_REQUIRED","message":"This field is required"}]}}}},"code":50035,"status":400,"method":"PUT","url":"https://discord.com/api/v10/applications/1335919556908028056/guilds/1333153060930846781/commands"}
+[2025-02-08T15:25:11.464Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T15:25:12.072Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T15:25:23.903Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/.dist.
+[2025-02-08T15:25:23.908Z] Request body: [
+  "{\"internalId\":\"generate-payment-transfer-message_chat-input\",\"isEphemeral\":true,\"allowedRoles\":[\"member\",\"admin\",\"moderator\",\"owner\",\"honored-member\",\"super-moderator\"],\"data\":{\"options\":[{\"name\":\"role-to-buy\",\"description\":\"The role to buy.\",\"required\":false,\"type\":8}],\"name\":\"gen-transfer-msg\",\"description\":\"Generates a transfer message for specific role (role has to begin with '+' sign)\",\"type\":1}}"
+]
+[2025-02-08T15:25:24.153Z] ERROR: {"requestBody":{"json":[{"internalId":"generate-payment-transfer-message_chat-input","isEphemeral":true,"allowedRoles":["member","admin","moderator","owner","honored-member","super-moderator"],"data":{"options":[{"name":"role-to-buy","description":"The role to buy.","required":false,"type":8}],"name":"gen-transfer-msg","description":"Generates a transfer message for specific role (role has to begin with '+' sign)","type":1}}]},"rawError":{"message":"Invalid Form Body","code":50035,"errors":{"0":{"name":{"_errors":[{"code":"BASE_TYPE_REQUIRED","message":"This field is required"}]}}}},"code":50035,"status":400,"method":"PUT","url":"https://discord.com/api/v10/applications/1335919556908028056/guilds/1333153060930846781/commands"}
+[2025-02-08T15:25:39.729Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T15:25:46.498Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/.dist.
+[2025-02-08T15:25:46.503Z] Request body: [
+  "{\"data\":{\"options\":[{\"name\":\"role-to-buy\",\"description\":\"The role to buy.\",\"required\":false,\"type\":8}],\"name\":\"gen-transfer-msg\",\"description\":\"Generates a transfer message for specific role (role has to begin with '+' sign)\",\"type\":1}}"
+]
+[2025-02-08T15:25:46.730Z] ERROR: {"requestBody":{"json":[{"data":{"options":[{"name":"role-to-buy","description":"The role to buy.","required":false,"type":8}],"name":"gen-transfer-msg","description":"Generates a transfer message for specific role (role has to begin with '+' sign)","type":1}}]},"rawError":{"message":"Invalid Form Body","code":50035,"errors":{"0":{"name":{"_errors":[{"code":"BASE_TYPE_REQUIRED","message":"This field is required"}]}}}},"code":50035,"status":400,"method":"PUT","url":"https://discord.com/api/v10/applications/1335919556908028056/guilds/1333153060930846781/commands"}
+[2025-02-08T15:25:54.786Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/.dist.
+[2025-02-08T15:25:54.790Z] Request body: [
+  "{\"data\":{\"options\":[{\"name\":\"role-to-buy\",\"description\":\"The role to buy.\",\"required\":false,\"type\":8}],\"name\":\"gen-transfer-msg\",\"description\":\"Generates a transfer message for specific role (role has to begin with '+' sign)\",\"type\":1}}"
+]
+[2025-02-08T15:25:55.193Z] ERROR: {"requestBody":{"json":[{"data":{"options":[{"name":"role-to-buy","description":"The role to buy.","required":false,"type":8}],"name":"gen-transfer-msg","description":"Generates a transfer message for specific role (role has to begin with '+' sign)","type":1}}]},"rawError":{"message":"Invalid Form Body","code":50035,"errors":{"0":{"name":{"_errors":[{"code":"BASE_TYPE_REQUIRED","message":"This field is required"}]}}}},"code":50035,"status":400,"method":"PUT","url":"https://discord.com/api/v10/applications/1335919556908028056/guilds/1333153060930846781/commands"}
+[2025-02-08T15:26:20.957Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T15:26:58.826Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T15:27:20.203Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/.dist.
+[2025-02-08T15:27:20.207Z] Request body: [
+  "{\"data\":{\"options\":[],\"name\":\"gen-transfer-msg\",\"description\":\"Generates a transfer message for specific role (role has to begin with '+' sign)\",\"type\":1}}"
+]
+[2025-02-08T15:27:20.472Z] ERROR: {"requestBody":{"json":[{"data":{"options":[],"name":"gen-transfer-msg","description":"Generates a transfer message for specific role (role has to begin with '+' sign)","type":1}}]},"rawError":{"message":"Invalid Form Body","code":50035,"errors":{"0":{"name":{"_errors":[{"code":"BASE_TYPE_REQUIRED","message":"This field is required"}]}}}},"code":50035,"status":400,"method":"PUT","url":"https://discord.com/api/v10/applications/1335919556908028056/guilds/1333153060930846781/commands"}
+[2025-02-08T15:27:57.556Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/.dist.
+[2025-02-08T15:27:57.561Z] Request body: [
+  "{\"data\":{\"options\":[],\"name\":\"gen-transfer-msg\",\"description\":\"Generates a transfer message for specific role (role has to begin with '+' sign)\",\"type\":1}}"
+]
+[2025-02-08T15:27:57.836Z] ERROR: {"requestBody":{"json":[{"data":{"options":[],"name":"gen-transfer-msg","description":"Generates a transfer message for specific role (role has to begin with '+' sign)","type":1}}]},"rawError":{"message":"Invalid Form Body","code":50035,"errors":{"0":{"name":{"_errors":[{"code":"BASE_TYPE_REQUIRED","message":"This field is required"}]}}}},"code":50035,"status":400,"method":"PUT","url":"https://discord.com/api/v10/applications/1335919556908028056/guilds/1333153060930846781/commands"}
+[2025-02-08T15:30:30.488Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T15:30:38.639Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/.dist.
+[2025-02-08T15:30:38.643Z] Request body: [
+  "{\"type\":1,\"data\":{\"options\":[{\"name\":\"role-to-buy\",\"description\":\"The role to buy.\",\"required\":true,\"type\":8}],\"name\":\"gen-transfer-msg\",\"description\":\"Generates a transfer message for specific role (role has to begin with '+' sign)\",\"type\":1}}"
+]
+[2025-02-08T15:30:38.892Z] ERROR: {"requestBody":{"json":[{"type":1,"data":{"options":[{"name":"role-to-buy","description":"The role to buy.","required":true,"type":8}],"name":"gen-transfer-msg","description":"Generates a transfer message for specific role (role has to begin with '+' sign)","type":1}}]},"rawError":{"message":"Invalid Form Body","code":50035,"errors":{"0":{"name":{"_errors":[{"code":"BASE_TYPE_REQUIRED","message":"This field is required"}]}}}},"code":50035,"status":400,"method":"PUT","url":"https://discord.com/api/v10/applications/1335919556908028056/guilds/1333153060930846781/commands"}
+[2025-02-08T15:32:29.401Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/.dist.
+[2025-02-08T15:32:29.408Z] Request body: [
+  "{\"type\":1,\"data\":{\"options\":[{\"name\":\"role-to-buy\",\"description\":\"The role to buy.\",\"required\":true,\"type\":8}],\"name\":\"gen-transfer-msg\",\"description\":\"Generates a transfer message for specific role (role has to begin with '+' sign)\",\"type\":1}}"
+]
+[2025-02-08T15:32:29.649Z] ERROR: {"requestBody":{"json":[{"type":1,"data":{"options":[{"name":"role-to-buy","description":"The role to buy.","required":true,"type":8}],"name":"gen-transfer-msg","description":"Generates a transfer message for specific role (role has to begin with '+' sign)","type":1}}]},"rawError":{"message":"Invalid Form Body","code":50035,"errors":{"0":{"name":{"_errors":[{"code":"BASE_TYPE_REQUIRED","message":"This field is required"}]}}}},"code":50035,"status":400,"method":"PUT","url":"https://discord.com/api/v10/applications/1335919556908028056/guilds/1333153060930846781/commands"}
+[2025-02-08T15:38:34.857Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T15:38:53.982Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/.dist.
+[2025-02-08T15:38:53.986Z] Request body: [
+  "{\"type\":1,\"data\":{\"options\":[{\"name\":\"role-to-buy\",\"description\":\"The role to buy.\",\"required\":true,\"type\":8}],\"name\":\"gen-transfer-msg\",\"description\":\"Generates a transfer message for specific role (role has to begin with '+' sign)\",\"type\":1}}"
+]
+[2025-02-08T15:38:54.494Z] ERROR: {"requestBody":{"json":[{"type":1,"data":{"options":[{"name":"role-to-buy","description":"The role to buy.","required":true,"type":8}],"name":"gen-transfer-msg","description":"Generates a transfer message for specific role (role has to begin with '+' sign)","type":1}}]},"rawError":{"message":"Invalid Form Body","code":50035,"errors":{"0":{"name":{"_errors":[{"code":"BASE_TYPE_REQUIRED","message":"This field is required"}]}}}},"code":50035,"status":400,"method":"PUT","url":"https://discord.com/api/v10/applications/1335919556908028056/guilds/1333153060930846781/commands"}
+[2025-02-08T15:42:08.266Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/.dist.
+[2025-02-08T15:42:08.271Z] Request body: [
+  "{\"type\":1,\"data\":{\"options\":[{\"name\":\"role-to-buy\",\"description\":\"The role to buy.\",\"required\":true,\"type\":8}],\"name\":\"gen-transfer-msg\",\"description\":\"Generates a transfer message for specific role (role has to begin with '+' sign)\",\"type\":1}}"
+]
+[2025-02-08T15:42:08.528Z] ERROR: {"requestBody":{"json":[{"type":1,"data":{"options":[{"name":"role-to-buy","description":"The role to buy.","required":true,"type":8}],"name":"gen-transfer-msg","description":"Generates a transfer message for specific role (role has to begin with '+' sign)","type":1}}]},"rawError":{"message":"Invalid Form Body","code":50035,"errors":{"0":{"name":{"_errors":[{"code":"BASE_TYPE_REQUIRED","message":"This field is required"}]}}}},"code":50035,"status":400,"method":"PUT","url":"https://discord.com/api/v10/applications/1335919556908028056/guilds/1333153060930846781/commands"}
+[2025-02-08T15:53:34.724Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/.dist.
+[2025-02-08T15:53:34.728Z] Request body: [
+  "{\"type\":1,\"data\":{\"options\":[{\"name\":\"role-to-buy\",\"description\":\"The role to buy.\",\"required\":true,\"type\":8}],\"name\":\"gen-transfer-msg\",\"description\":\"Generates a transfer message for specific role (role has to begin with '+' sign)\",\"type\":1}}"
+]
+[2025-02-08T15:53:34.990Z] ERROR: {"requestBody":{"json":[{"type":1,"data":{"options":[{"name":"role-to-buy","description":"The role to buy.","required":true,"type":8}],"name":"gen-transfer-msg","description":"Generates a transfer message for specific role (role has to begin with '+' sign)","type":1}}]},"rawError":{"message":"Invalid Form Body","code":50035,"errors":{"0":{"name":{"_errors":[{"code":"BASE_TYPE_REQUIRED","message":"This field is required"}]}}}},"code":50035,"status":400,"method":"PUT","url":"https://discord.com/api/v10/applications/1335919556908028056/guilds/1333153060930846781/commands"}
+[2025-02-08T15:57:55.866Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T15:58:04.201Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/.dist.
+[2025-02-08T15:58:04.206Z] Request body: [
+  "{\"name\":\"gen-transfer-msg\",\"type\":0,\"data\":{\"options\":[{\"name\":\"role-to-buy\",\"description\":\"The role to buy.\",\"required\":true,\"type\":8}],\"name\":\"gen-transfer-msg\",\"description\":\"Generates a transfer message for specific role (role has to begin with '+' sign)\",\"type\":1}}"
+]
+[2025-02-08T15:58:15.144Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T15:58:22.811Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/.dist.
+[2025-02-08T15:58:22.815Z] Request body: [
+  "{\"name\":\"gen-transfer-msg\",\"type\":0,\"internalId\":\"generate-payment-transfer-message_chat-input\",\"isEphemeral\":true,\"allowedRoles\":[\"member\",\"admin\",\"moderator\",\"owner\",\"honored-member\",\"super-moderator\"],\"data\":{\"options\":[{\"name\":\"role-to-buy\",\"description\":\"The role to buy.\",\"required\":true,\"type\":8}],\"name\":\"gen-transfer-msg\",\"description\":\"Generates a transfer message for specific role (role has to begin with '+' sign)\",\"type\":1}}"
+]
+[2025-02-08T15:58:28.672Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T15:59:25.399Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/.dist.
+[2025-02-08T15:59:25.406Z] Request body: [
+  "{\"name\":\"gen-transfer-msg\",\"type\":0,\"internalId\":\"generate-payment-transfer-message_chat-input\",\"isEphemeral\":true,\"allowedRoles\":[\"member\",\"admin\",\"moderator\",\"owner\",\"honored-member\",\"super-moderator\"],\"data\":{\"options\":[{\"name\":\"role-to-buy\",\"description\":\"The role to buy.\",\"required\":true,\"type\":8}],\"name\":\"gen-transfer-msg\",\"description\":\"Generates a transfer message for specific role (role has to begin with '+' sign)\",\"type\":1}}"
+]
+[2025-02-08T15:59:30.147Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/.dist.
+[2025-02-08T15:59:30.151Z] Request body: [
+  "{\"name\":\"gen-transfer-msg\",\"type\":0,\"internalId\":\"generate-payment-transfer-message_chat-input\",\"isEphemeral\":true,\"allowedRoles\":[\"member\",\"admin\",\"moderator\",\"owner\",\"honored-member\",\"super-moderator\"],\"data\":{\"options\":[{\"name\":\"role-to-buy\",\"description\":\"The role to buy.\",\"required\":true,\"type\":8}],\"name\":\"gen-transfer-msg\",\"description\":\"Generates a transfer message for specific role (role has to begin with '+' sign)\",\"type\":1}}"
+]
+[2025-02-08T15:59:36.213Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T16:00:11.594Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T16:00:48.981Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T16:00:48.980Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T16:01:03.734Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/.dist.
+[2025-02-08T16:01:03.740Z] Request body: [
+  "{\"name\":\"gen-transfer-msg\",\"type\":0,\"internalId\":\"generate-payment-transfer-message_chat-input\",\"isEphemeral\":true,\"allowedRoles\":[\"member\",\"admin\",\"moderator\",\"owner\",\"honored-member\",\"super-moderator\"],\"data\":{\"options\":[{\"name\":\"role-to-buy\",\"description\":\"The role to buy.\",\"required\":true,\"type\":8}],\"name\":\"gen-transfer-msg\",\"description\":\"Generates a transfer message for specific role (role has to begin with '+' sign)\",\"type\":1}}"
+]
+[2025-02-08T16:01:11.547Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T16:07:00.954Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T16:07:00.955Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T16:07:30.772Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/.dist.
+[2025-02-08T16:07:30.777Z] Request body: [
+  "{\"data\":{\"options\":[{\"name\":\"role-to-buy\",\"description\":\"The role to buy.\",\"required\":true,\"type\":8}],\"name\":\"generate-transfer-msg\",\"description\":\"Generates a transfer message for specific role (role has to begin with '+' sign)\",\"type\":1}}"
+]
+[2025-02-08T16:07:31.051Z] ERROR: {"requestBody":{"json":[{"data":{"options":[{"name":"role-to-buy","description":"The role to buy.","required":true,"type":8}],"name":"generate-transfer-msg","description":"Generates a transfer message for specific role (role has to begin with '+' sign)","type":1}}]},"rawError":{"message":"Invalid Form Body","code":50035,"errors":{"0":{"name":{"_errors":[{"code":"BASE_TYPE_REQUIRED","message":"This field is required"}]}}}},"code":50035,"status":400,"method":"PUT","url":"https://discord.com/api/v10/applications/1335919556908028056/guilds/1333153060930846781/commands"}
+[2025-02-08T16:07:42.867Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/.dist.
+[2025-02-08T16:07:42.873Z] Request body: [
+  "{\"data\":{\"options\":[{\"name\":\"role-to-buy\",\"description\":\"The role to buy.\",\"required\":true,\"type\":8}],\"name\":\"generate-transfer-msg\",\"description\":\"Generates a transfer message for specific role (role has to begin with '+' sign)\",\"type\":1}}"
+]
+[2025-02-08T16:07:43.151Z] ERROR: {"requestBody":{"json":[{"data":{"options":[{"name":"role-to-buy","description":"The role to buy.","required":true,"type":8}],"name":"generate-transfer-msg","description":"Generates a transfer message for specific role (role has to begin with '+' sign)","type":1}}]},"rawError":{"message":"Invalid Form Body","code":50035,"errors":{"0":{"name":{"_errors":[{"code":"BASE_TYPE_REQUIRED","message":"This field is required"}]}}}},"code":50035,"status":400,"method":"PUT","url":"https://discord.com/api/v10/applications/1335919556908028056/guilds/1333153060930846781/commands"}
+[2025-02-08T16:08:18.596Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T16:08:31.718Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/.dist.
+[2025-02-08T16:08:31.723Z] Request body: [
+  "{\"name\":\"gen-transfer-msg\",\"internalId\":\"generate-payment-transfer-message_chat-input\",\"isEphemeral\":true,\"allowedRoles\":[\"member\",\"admin\",\"moderator\",\"owner\",\"honored-member\",\"super-moderator\"],\"data\":{\"options\":[{\"name\":\"role-to-buy\",\"description\":\"The role to buy.\",\"required\":true,\"type\":8}],\"name\":\"generate-transfer-msg\",\"description\":\"Generates a transfer message for specific role (role has to begin with '+' sign)\",\"type\":1}}"
+]
+[2025-02-08T16:08:31.942Z] ERROR: {"requestBody":{"json":[{"name":"gen-transfer-msg","internalId":"generate-payment-transfer-message_chat-input","isEphemeral":true,"allowedRoles":["member","admin","moderator","owner","honored-member","super-moderator"],"data":{"options":[{"name":"role-to-buy","description":"The role to buy.","required":true,"type":8}],"name":"generate-transfer-msg","description":"Generates a transfer message for specific role (role has to begin with '+' sign)","type":1}}]},"rawError":{"message":"Invalid Form Body","code":50035,"errors":{"0":{"description":{"_errors":[{"code":"BASE_TYPE_REQUIRED","message":"This field is required"}]}}}},"code":50035,"status":400,"method":"PUT","url":"https://discord.com/api/v10/applications/1335919556908028056/guilds/1333153060930846781/commands"}
+[2025-02-08T16:09:11.592Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T16:09:19.338Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/.dist.
+[2025-02-08T16:09:19.343Z] Request body: [
+  "{\"name\":\"gen-transfer-msg\",\"type\":0,\"internalId\":\"generate-payment-transfer-message_chat-input\",\"isEphemeral\":true,\"allowedRoles\":[\"member\",\"admin\",\"moderator\",\"owner\",\"honored-member\",\"super-moderator\"],\"data\":{\"options\":[{\"name\":\"role-to-buy\",\"description\":\"The role to buy.\",\"required\":true,\"type\":8}],\"name\":\"generate-transfer-msg\",\"description\":\"Generates a transfer message for specific role (role has to begin with '+' sign)\",\"type\":1}}"
+]
+[2025-02-08T16:09:24.024Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T16:09:57.424Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T17:37:45.914Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T17:37:45.914Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T17:41:10.657Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/.dist.
+[2025-02-08T17:41:10.663Z] Request body: [
+  "{\"name\":\"gen-transfer-msg\",\"type\":0,\"internalId\":\"generate-payment-transfer-message_chat-input\",\"isEphemeral\":true,\"allowedRoles\":[\"member\",\"admin\",\"moderator\",\"owner\",\"honored-member\",\"super-moderator\"],\"data\":{\"options\":[{\"name\":\"role-to-buy\",\"description\":\"The role to buy.\",\"required\":true,\"type\":8}],\"name\":\"generate-transfer-msg\",\"description\":\"Generates a transfer message for specific role (role has to begin with '+' sign)\",\"type\":1}}"
+]
+[2025-02-08T17:41:17.180Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T17:42:54.305Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T17:43:54.372Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T17:48:28.383Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/.dist.
+[2025-02-08T17:48:28.389Z] Request body: [
+  "{\"name\":\"gen-transfer-msg\",\"type\":0,\"internalId\":\"generate-payment-transfer-message_chat-input\",\"isEphemeral\":true,\"allowedRoles\":[\"member\",\"admin\",\"moderator\",\"owner\",\"honored-member\",\"super-moderator\"],\"data\":{\"options\":[{\"name\":\"role-to-buy\",\"description\":\"The role to buy.\",\"required\":true,\"type\":8}],\"name\":\"generate-transfer-msg\",\"description\":\"Generates a transfer message for specific role (role has to begin with '+' sign)\",\"type\":1}}"
+]
+[2025-02-08T17:48:47.267Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T18:01:01.137Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/.dist.
+[2025-02-08T18:01:01.143Z] Request body: [
+  "{\"name\":\"gen-transfer-msg\",\"type\":0,\"internalId\":\"generate-payment-transfer-message_chat-input\",\"isEphemeral\":true,\"allowedRoles\":[\"member\",\"admin\",\"moderator\",\"owner\",\"honored-member\",\"super-moderator\"],\"data\":{\"options\":[{\"name\":\"role-to-buy\",\"description\":\"The role to buy.\",\"required\":true,\"type\":8}],\"name\":\"generate-transfer-msg\",\"description\":\"Generates a transfer message for specific role (role has to begin with '+' sign)\",\"type\":1}}"
+]
+[2025-02-08T18:10:06.348Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T18:10:16.007Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/.dist.
+[2025-02-08T18:10:27.280Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/.dist.
+[2025-02-08T18:10:34.813Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/.dist.
+[2025-02-08T18:10:34.818Z] Request body: [
+  "{\"name\":\"gen-transfer-msg\",\"type\":0,\"internalId\":\"generate-payment-transfer-message_chat-input\",\"isEphemeral\":true,\"allowedRoles\":[\"member\",\"admin\",\"moderator\",\"owner\",\"honored-member\",\"super-moderator\"],\"data\":{\"options\":[{\"name\":\"role-to-buy\",\"description\":\"The role to buy.\",\"required\":true,\"type\":8}],\"name\":\"generate-transfer-msg\",\"description\":\"Generates a transfer message for specific role (role has to begin with '+' sign)\",\"type\":1}}"
+]
+[2025-02-08T18:10:39.830Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T18:12:26.923Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/.dist.
+[2025-02-08T18:12:31.614Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src.
+[2025-02-08T18:15:36.826Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/.dist.
+[2025-02-08T18:17:36.952Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/.dist.
+[2025-02-08T18:17:45.826Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/.dist.
+[2025-02-08T18:17:45.830Z] Request body: [
+  "{\"name\":\"gen-transfer-msg\",\"type\":0,\"internalId\":\"generate-payment-transfer-message_chat-input\",\"isEphemeral\":true,\"allowedRoles\":[\"member\",\"admin\",\"moderator\",\"owner\",\"honored-member\",\"super-moderator\"],\"data\":{\"options\":[{\"name\":\"role-to-buy\",\"description\":\"The role to buy.\",\"required\":true,\"type\":8}],\"name\":\"generate-transfer-msg\",\"description\":\"Generates a transfer message for specific role (role has to begin with '+' sign)\",\"type\":1}}"
+]
+[2025-02-08T18:17:54.984Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/.dist.
+[2025-02-08T18:30:06.345Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/.dist.
+[2025-02-08T18:30:19.827Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/.dist.
+[2025-02-08T18:30:19.833Z] Request body: [
+  "{\"name\":\"gen-transfer-msg\",\"type\":0,\"internalId\":\"generate-payment-transfer-message_chat-input\",\"isEphemeral\":true,\"allowedRoles\":[\"member\",\"admin\",\"moderator\",\"owner\",\"honored-member\",\"super-moderator\"],\"data\":{\"options\":[{\"name\":\"role-to-buy\",\"description\":\"The role to buy.\",\"required\":true,\"type\":8}],\"name\":\"generate-transfer-msg\",\"description\":\"Generates a transfer message for specific role (role has to begin with '+' sign)\",\"type\":1}}"
+]
+[2025-02-08T18:30:20.087Z] ERROR: {"requestBody":{"json":["{\"name\":\"gen-transfer-msg\",\"type\":0,\"internalId\":\"generate-payment-transfer-message_chat-input\",\"isEphemeral\":true,\"allowedRoles\":[\"member\",\"admin\",\"moderator\",\"owner\",\"honored-member\",\"super-moderator\"],\"data\":{\"options\":[{\"name\":\"role-to-buy\",\"description\":\"The role to buy.\",\"required\":true,\"type\":8}],\"name\":\"generate-transfer-msg\",\"description\":\"Generates a transfer message for specific role (role has to begin with '+' sign)\",\"type\":1}}"]},"rawError":{"message":"Invalid Form Body","code":50035,"errors":{"0":{"_errors":[{"code":"MODEL_TYPE_CONVERT","message":"Expected an object/dictionary."}]}}},"code":50035,"status":400,"method":"PUT","url":"https://discord.com/api/v10/applications/1335919556908028056/commands"}
+[2025-02-08T18:34:38.387Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/.dist.
+[2025-02-08T18:34:38.393Z] Request body: [
+  "{\"name\":\"gen-transfer-msg\",\"type\":0,\"internalId\":\"generate-payment-transfer-message_chat-input\",\"isEphemeral\":true,\"allowedRoles\":[\"member\",\"admin\",\"moderator\",\"owner\",\"honored-member\",\"super-moderator\"],\"data\":{\"options\":[{\"name\":\"role-to-buy\",\"description\":\"The role to buy.\",\"required\":true,\"type\":8}],\"name\":\"generate-transfer-msg\",\"description\":\"Generates a transfer message for specific role (role has to begin with '+' sign)\",\"type\":1}}"
+]
+[2025-02-08T18:34:51.888Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/.dist.

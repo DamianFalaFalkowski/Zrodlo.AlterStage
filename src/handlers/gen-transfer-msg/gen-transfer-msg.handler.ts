@@ -1,13 +1,13 @@
-import { BaseChatInputCommandHandler } from '../prototype/base-chat-input-command-handler';
-import { GenerateTransferMessageCommand } from './generate-transfer-message.command';
-import dcLogger from "../utils/dc-logger";
+import { BaseChatInputCommandHandler } from '../../modules/messaging/commands/base.handler';
+import { GenerateTransferMessageCommand } from './gen-transfer-msg.command';
+import dcLogger from "../../utils/dc-logger";
 
 export class GenerateTransferMessageHandler extends BaseChatInputCommandHandler<GenerateTransferMessageCommand>{
     constructor(command: GenerateTransferMessageCommand) {
         super(command);
     }
 
-    protected override async handle() {
+     override async handle() {
         try {
             // Sprawdzenie czy przekazana rola istnieje w systemie ...
             if (this.command.AllGuildRoles.find(role => role.name === this.command.RoleToBuyName) === undefined) {

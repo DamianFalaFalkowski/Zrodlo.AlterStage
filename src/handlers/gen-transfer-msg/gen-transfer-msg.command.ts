@@ -1,33 +1,28 @@
-import { ChatInputCommandInteraction,  } from 'discord.js';
-import { BaseCommand } from '../prototype/base-command';
-import { GenerateTransferMessageResponse } from './generate-transfer-message.response';
-import dcLogger from "../utils/dc-logger";
+import { ChatInputCommandInteraction } from 'discord.js';
+import { BaseCommand } from '../../modules/messaging/commands/base.command';
+import dcLogger from "../../utils/dc-logger";
+import { GenerateTransferMessageResponse,  } from './gen-transfer-msg.response';
 
 export class GenerateTransferMessageCommand extends BaseCommand<GenerateTransferMessageResponse> {
-// COMMAND SETTINGS
-public static readonly __allowedRoles 
-    = ['member', 'admin', 'moderator', 'owner', 'honored-member', 'super-moderator'];
-protected static readonly __isEphemeral: boolean 
-    = true;
-// COMMAND SETTINGS
-
-
-// OPTIONS
-public readonly RoleToBuyName: string | undefined;
-// OPTIONS
-
+    public readonly RoleToBuyName: string | undefined;
 
     constructor(interaction: ChatInputCommandInteraction) {
         try {
+            module.exports;
+            let definition = module.require(interaction.commandName + '.definition');
+            // let definition = module.require(interaction.commandName + '.command');
+            // let definition = module.require(interaction.commandName + '.response');
+            // let definition = module.require(interaction.commandName + '.handler');
             let tempRoleToBuy = interaction.options.data[0].role!.name;
             console.log('Option found tempRoleToBuy: ' + tempRoleToBuy);
-            super(interaction, GenerateTransferMessageCommand.__allowedRoles,
+            super(
+                interaction, 
+                definition.allowedRoles!, 
                 new GenerateTransferMessageResponse(
-                    GenerateTransferMessageCommand.__isEphemeral, 
-                    tempRoleToBuy
-                ));
+                    definition.isEphemeral, 
+                    tempRoleToBuy))
             this.RoleToBuyName = tempRoleToBuy;
-            this.CheckAuthorisation();
+            this.CheckAuthorisation(); 
         } catch (error) {
             dcLogger.logError(error as Error);
             throw error;
