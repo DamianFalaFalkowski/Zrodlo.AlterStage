@@ -1,6 +1,7 @@
 import { ChatInputCommandInteraction,  } from 'discord.js';
 import { BaseCommand } from '../prototype/base-command';
 import { GenerateTransferMessageResponse } from './generate-transfer-message.response';
+import dcLogger from "../utils/dc-logger";
 
 export class GenerateTransferMessageCommand extends BaseCommand<GenerateTransferMessageResponse> {
 // COMMAND SETTINGS
@@ -17,25 +18,34 @@ public readonly RoleToBuyName: string | undefined;
 
 
     constructor(interaction: ChatInputCommandInteraction) {
-        let tempRoleToBuy = interaction.options.data[0].role!.name;
-        console.log('Option found tempRoleToBuy: ' + tempRoleToBuy);
-        super(interaction, GenerateTransferMessageCommand.__allowedRoles,
-            new GenerateTransferMessageResponse(
-                GenerateTransferMessageCommand.__isEphemeral, 
-                tempRoleToBuy
-            ));
-        this.RoleToBuyName = tempRoleToBuy;
-        this.CheckAuthorisation();
+        try {
+            let tempRoleToBuy = interaction.options.data[0].role!.name;
+            console.log('Option found tempRoleToBuy: ' + tempRoleToBuy);
+            super(interaction, GenerateTransferMessageCommand.__allowedRoles,
+                new GenerateTransferMessageResponse(
+                    GenerateTransferMessageCommand.__isEphemeral, 
+                    tempRoleToBuy
+                ));
+            this.RoleToBuyName = tempRoleToBuy;
+            this.CheckAuthorisation();
+        } catch (error) {
+            dcLogger.logError(error as Error);
+            throw error;
+        }
     }
 
     // sprawdzenie czy GenerateTransferMessageCommand moze byc wykonany
     public CheckAuthorisation(): boolean {
-        //super.CheckAuthorisation(); // chyba tu jest nie potrzebne
-        if (this.RoleToBuyName === undefined || this.RoleToBuyName === null || this.RoleToBuyName.length === 0) {
-            this.IsSucess = false;
-            this.Response.prepeareFailureResponse('Invalid command. RoleToBuyName parameter is missing.');
-            return false;
+        try {
+            if (this.RoleToBuyName === undefined || this.RoleToBuyName === null || this.RoleToBuyName.length === 0) {
+                this.IsSucess = false;
+                this.Response.prepeareFailureResponse('Invalid command. RoleToBuyName parameter is missing.');
+                return false;
+            }
+            return true;
+        } catch (error) {
+            dcLogger.logError(error as Error);
+            throw error;
         }
-        return true;
     }
 }

@@ -16,9 +16,15 @@ export class DcLogger {
         }
     }
 
-    private logToFile(message: string) {
+    private log(message: string) {
         const timestamp = new Date().toISOString();
-        fs.appendFileSync(this.logFilePath, `[${timestamp}] ${message}\n`);
+        const formattedMessage = `[${timestamp}] ${message}`;
+        fs.appendFileSync(this.logFilePath, `${formattedMessage}\n`);
+        console.log(formattedMessage);
+    }
+
+    private logToFile(message: string) {
+        this.log(message);
     }
 
     public logCommand(interaction: CommandInteraction) {
@@ -27,7 +33,6 @@ export class DcLogger {
         const options = interaction.options.data.map(option => `${option.name}: ${option.value}`).join(', ');
         const logMessage = `Command executed by ${user}: /${commandName} ${options}`;
         this.logToFile(logMessage);
-        console.log(logMessage);
     }
 
     public logReplyAndReturn(interaction: CommandInteraction, reply: InteractionReplyOptions): InteractionReplyOptions {
@@ -35,14 +40,12 @@ export class DcLogger {
         const replyContent = reply.content || 'No content';
         const logMessage = `Reply to ${user}: ${replyContent}`;
         this.logToFile(logMessage);
-        console.log(logMessage);
         return reply;
     }
 
     public logError(error: Error) {
         const logMessage = `Error: ${error.message}\nStack: ${error.stack}`;
         this.logToFile(logMessage);
-        console.error(logMessage);
     }
 }
 

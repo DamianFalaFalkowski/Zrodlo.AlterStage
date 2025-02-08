@@ -1,5 +1,6 @@
 import { ActionRowBuilder, ButtonBuilder, ButtonStyle} from 'discord.js';
 import { BaseCommandResponse } from '../prototype/base-command-response';
+import dcLogger from "../utils/dc-logger";
 
 export class GenerateTransferMessageResponse extends BaseCommandResponse {
 
@@ -13,28 +14,43 @@ export class GenerateTransferMessageResponse extends BaseCommandResponse {
 
     // sprawdzenie czy komponent został poprawnie zbudowany oraz czy jest kompletny
     protected ensureReady(markReadyIfReady: boolean = true): boolean {
-        //if (super.ensureReady(false)) // TODO: poprawic
-        // TODO: sprawdzenie czy zawiera przycisk do kopiowania
-        {
-            if (markReadyIfReady)
-                this.IsReady = true;
-            return true;
+        try {
+            if (super.ensureReady(false)) // TODO: poprawic
+            // TODO: sprawdzenie czy zawiera przycisk do kopiowania
+            {
+                if (markReadyIfReady)
+                    this.IsReady = true;
+                return true;
+            }
+            return false;
+        } catch (error) {
+            dcLogger.logError(error as Error);
+            throw error;
         }
-        return false;
     }
 
     public prepeareFailureResponse(errorMessage: string) {
-        // stuff can be done here
-        super.prepeareFailureResponse(errorMessage);
+        try {
+            // stuff can be done here
+            super.prepeareFailureResponse(errorMessage);
+        } catch (error) {
+            dcLogger.logError(error as Error);
+            throw error;
+        }
     }
 
     public TryFinalize(generatedTransferMessage: string) {
-        this.generatedTransferMessage = generatedTransferMessage;
-        if (this.ensureReady()) {
-            this.prepeareSuccessResponse();
-        }
-        else {
-            this.prepeareFailureResponse("Odpowiedź nie spełnia wymogów kompletności!");
+        try {
+            this.generatedTransferMessage = generatedTransferMessage;
+            if (this.ensureReady()) {
+                this.prepeareSuccessResponse();
+            }
+            else {
+                this.prepeareFailureResponse("Odpowiedź nie spełnia wymogów kompletności!");
+            }
+        } catch (error) {
+            dcLogger.logError(error as Error);
+            throw error;
         }
     }
 

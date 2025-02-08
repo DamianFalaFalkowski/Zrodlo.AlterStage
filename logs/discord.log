@@ -83,3 +83,5 @@
  **1024238253060145193 falalala +EVENT_04-26_tribe-meets-kosmos**
 [2025-02-08T00:32:29.168Z] Command executed by falalala_wav: /db-tags-add user-id: 1024238253060145193, name: tag-testowy, description: opis bahdbiwehfbiurehbvi
 [2025-02-08T00:32:29.210Z] Reply to falalala_wav: Tag tag-testowy added.
+[2025-02-08T02:37:16.293Z] Command executed by falalala_wav: /generate-transfer-msg role-to-buy: 1335760767936630804
+[2025-02-08T02:37:16.297Z] Reply to falalala_wav: Rola którą próbujesz zakupić nie jest przeznaczona do kupienia.
