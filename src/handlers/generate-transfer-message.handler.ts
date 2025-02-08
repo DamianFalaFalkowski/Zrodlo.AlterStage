@@ -1,7 +1,7 @@
 import { BaseChatInputCommandHandler } from '../prototype/base-chat-input-command-handler';
 import { GenerateTransferMessageCommand } from './generate-transfer-message.command';
 
-export class GenerateTransferMessageCommandHandler extends BaseChatInputCommandHandler<GenerateTransferMessageCommand>{
+export class GenerateTransferMessageHandler extends BaseChatInputCommandHandler<GenerateTransferMessageCommand>{
     constructor(command: GenerateTransferMessageCommand) {
         super(command);
     }
@@ -35,8 +35,11 @@ export class GenerateTransferMessageCommandHandler extends BaseChatInputCommandH
 
         // Sprawdzenie czy generatedTransferMessage nie jest dłuższa niż 140 znaków
         if (generatedTransferMessage.length > 140) {
-            // JHeśli tak to skróć generatedTransferMessage do 140 znaków
+            // Jeśli tak to skróć generatedTransferMessage do 140 znaków
             generatedTransferMessage = generatedTransferMessage.substring(0, 140);
         }
+
+        // Przygotuj odpowiedz
+        this.command.Response.TryFinalize(generatedTransferMessage);
     }
 }

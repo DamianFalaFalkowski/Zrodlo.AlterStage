@@ -1,20 +1,29 @@
 import { ChatInputCommandInteraction,  } from 'discord.js';
 import { BaseCommand } from '../prototype/base-command';
-import { GenerateTransferMessageCommandResponse } from './generate-transfer-message.command-response';
+import { GenerateTransferMessageResponse } from './generate-transfer-message.response';
 
-export class GenerateTransferMessageCommand extends BaseCommand<GenerateTransferMessageCommandResponse> {
-    // command config
-    public static readonly AllowedRoles = ['member', 'admin', 'moderator', 'owner', 'honored-member', 'super-moderator'];
-    protected static readonly isEphemeral: boolean = true;
+export class GenerateTransferMessageCommand extends BaseCommand<GenerateTransferMessageResponse> {
+// COMMAND SETTINGS
+public static readonly __allowedRoles 
+    = ['member', 'admin', 'moderator', 'owner', 'honored-member', 'super-moderator'];
+protected static readonly __isEphemeral: boolean 
+    = true;
+// COMMAND SETTINGS
 
-    // Params
-    public readonly RoleToBuyName: string | undefined;
 
-    // ctor with authorisation check
+// OPTIONS
+public readonly RoleToBuyName: string | undefined;
+// OPTIONS
+
+
     constructor(interaction: ChatInputCommandInteraction) {
         let tempRoleToBuy = interaction.options.data[0].role!.name;
-        super(interaction, GenerateTransferMessageCommand.AllowedRoles,
-            new GenerateTransferMessageCommandResponse(GenerateTransferMessageCommand.isEphemeral, tempRoleToBuy));
+        console.log('Option found tempRoleToBuy: ' + tempRoleToBuy);
+        super(interaction, GenerateTransferMessageCommand.__allowedRoles,
+            new GenerateTransferMessageResponse(
+                GenerateTransferMessageCommand.__isEphemeral, 
+                tempRoleToBuy
+            ));
         this.RoleToBuyName = tempRoleToBuy;
         this.CheckAuthorisation();
     }

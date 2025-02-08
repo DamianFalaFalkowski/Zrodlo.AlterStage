@@ -1,4 +1,4 @@
-import { InteractionReplyOptions, MessageFlags, BitFieldResolvable } from "discord.js";
+import { InteractionReplyOptions, MessageFlags } from "discord.js";
 
 export class BaseCommandResponse {
 
@@ -25,14 +25,11 @@ export class BaseCommandResponse {
     // sprawdzenie czy komponent został poprawnie zbudowany oraz czy jest kompletny na poziomie bazowym
     protected ensureReady(markReadyIfReady :boolean = true): boolean {
         if(this._reply.content !== undefined 
-            && this._reply.flags !== undefined
-            && this._reply.flags !== null
-            && this._reply.content !== null 
-            && (typeof this._reply.content !== 'string' 
-                || (typeof this._reply.content === 'string' 
-                    && this._reply.content.length > 0)
-                )
-            ) {
+            && this.isEphemeral 
+            && this._reply.flags != null 
+            && this._reply.flags.toString().toLocaleLowerCase().includes("Ephemeral".toLocaleLowerCase())
+            && this._reply.content !== null) 
+        {
             if(markReadyIfReady)
                 this.IsReady = true;
             return true;

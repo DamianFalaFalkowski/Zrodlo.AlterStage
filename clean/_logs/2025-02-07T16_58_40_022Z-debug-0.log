@@ -1,0 +1,17 @@
+0 verbose cli /opt/homebrew/Cellar/node/23.7.0/bin/node /opt/homebrew/bin/npm
+1 info using npm@10.9.2
+2 info using node@v23.7.0
+3 silly config load:file:/opt/homebrew/lib/node_modules/npm/npmrc
+4 silly config load:file:/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/.npmrc
+5 silly config load:file:/Users/damianfalkowski/.npmrc
+6 silly config load:file:/opt/homebrew/etc/npmrc
+7 verbose title npm
+8 verbose argv "--cache" "clean"
+9 verbose logfile logs-max:10 dir:/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/clean/_logs/2025-02-07T16_58_40_022Z-
+10 verbose logfile /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/clean/_logs/2025-02-07T16_58_40_022Z-debug-0.log
+11 verbose cwd /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs
+12 verbose os Darwin 23.6.0
+13 verbose node v23.7.0
+14 verbose npm  v10.9.2
+15 verbose exit 1
+16 verbose code 1

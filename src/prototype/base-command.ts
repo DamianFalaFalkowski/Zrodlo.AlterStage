@@ -31,7 +31,7 @@ export class BaseCommand<R extends BaseCommandResponse> {
         this.AllGuildRoles = this.Interaction.guild!.roles.cache.map((role: Role) => role);
 
         this.Response = initialResponse;
-        this.CheckAuthorisation();
+        //this.CheckAuthorisation();
     }
 
     // sprawdzanie czy base command moze byc wykonany

@@ -1,10 +1,11 @@
 import { SlashCommandBuilder, ChatInputCommandInteraction} from 'discord.js';
-import { GenerateTransferMessageCommandHandler } from '../handlers/generate-transfer-message.command-handler';
+import { GenerateTransferMessageHandler } from '../handlers/generate-transfer-message.handler';
 import { GenerateTransferMessageCommand } from '../handlers/generate-transfer-message.command';
 
 
 // Command definition
 module.exports = {
+    altStgId: 'generate-transfer-msg',
     data: new SlashCommandBuilder()
         .setName('generate-transfer-msg')
         .setDescription('Generates a transfer message for specific role (role has to begin with \'+\' sign)')
@@ -13,16 +14,21 @@ module.exports = {
                 .setDescription('The role to buy.')
                 .setRequired(true)),
     async execute(interaction: ChatInputCommandInteraction) {
-        await execute(interaction);
+        let command = new GenerateTransferMessageCommand(interaction);
+        let handler = new GenerateTransferMessageHandler(command);
+        await handler.baseHandle();
     }
 };
+// TODO: dodać przycisk do kopiowania
+// TODO: mona te dodać rodzaj produktu
 
-export const execute = async (interaction: ChatInputCommandInteraction) => {
+// export const execute = async (interaction: ChatInputCommandInteraction) => {
+//     let handler = new GenerateTransferMessageCommandHandler(
+//         new GenerateTransferMessageCommand(interaction)
+//     );
+//     await handler.baseHandle();
+// };
 
-    let handler = new GenerateTransferMessageCommandHandler(
-        new GenerateTransferMessageCommand(interaction)
-    );
-    await handler.baseHandle();
 
 
     // dcLogger.logCommand(interaction);
@@ -86,13 +92,3 @@ export const execute = async (interaction: ChatInputCommandInteraction) => {
 
     // // Odeślij odpowiedź
     // await interaction.reply(dcLogger.logReplyAndReturn(interaction, reply));
-};
-
-// TODO: dodać przycisk do kopiowania
-// TODO: mona te dodać rodzaj produktu
-
-
-
-
-
-

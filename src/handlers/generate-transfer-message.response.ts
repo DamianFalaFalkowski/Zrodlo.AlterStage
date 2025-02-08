@@ -1,7 +1,7 @@
 import { ActionRowBuilder, ButtonBuilder, ButtonStyle} from 'discord.js';
 import { BaseCommandResponse } from '../prototype/base-command-response';
 
-export class GenerateTransferMessageCommandResponse extends BaseCommandResponse {
+export class GenerateTransferMessageResponse extends BaseCommandResponse {
 
     protected generatedTransferMessage: string | null = null;
     protected roleToBuy: string;
@@ -13,7 +13,7 @@ export class GenerateTransferMessageCommandResponse extends BaseCommandResponse 
 
     // sprawdzenie czy komponent został poprawnie zbudowany oraz czy jest kompletny
     protected ensureReady(markReadyIfReady: boolean = true): boolean {
-        if (super.ensureReady(false))
+        //if (super.ensureReady(false)) // TODO: poprawic
         // TODO: sprawdzenie czy zawiera przycisk do kopiowania
         {
             if (markReadyIfReady)

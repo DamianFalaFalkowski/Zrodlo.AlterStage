@@ -5,6 +5,8 @@ import fs = require('node:fs');
 import path = require('node:path');
 import "./type-mappings/client-type-map.js";
 import { log } from 'node:console';
+import MultiStartupModule from "./modules/startup/startup.module.js";
+
 
 // Load environment variables from .env file
 dotenv.config();

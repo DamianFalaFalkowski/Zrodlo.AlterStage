@@ -13,7 +13,7 @@ export class BaseChatInputCommandHandler<C extends BaseCommand<BaseCommandRespon
     public baseHandle = async () => {
         dcLogger.logCommand(this.command.Interaction);
         //
-        this.handle();
+        await this.handle();
         //
         // Odeślij odpowiedź
         await this.command.Interaction.reply(dcLogger.logReplyAndReturn(this.command.Interaction, this.command.Response.Reply));

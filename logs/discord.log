@@ -39,3 +39,47 @@
 [2025-02-07T15:52:13.904Z] Reply to falalala_wav: Invalid command. RoleToBuyName parameter is missing.
 [2025-02-07T16:03:35.595Z] Command executed by falalala_wav: /generate-transfer-msg role-to-buy: 1334019132630372442
 [2025-02-07T16:04:14.466Z] Reply to falalala_wav: Invalid command. RoleToBuyName parameter is missing.
+[2025-02-07T16:28:53.973Z] Command executed by falalala_wav: /generate-transfer-msg role-to-buy: 1334019132630372442
+[2025-02-07T16:28:53.988Z] Reply to falalala_wav: Invalid command. RoleToBuyName parameter is missing.
+[2025-02-07T22:26:18.609Z] Command executed by falalala_wav: /generate-transfer-msg role-to-buy: 1334019132630372442
+[2025-02-07T22:26:18.611Z] Reply to falalala_wav: Invalid command. RoleToBuyName parameter is missing.
+[2025-02-07T22:27:31.997Z] Command executed by falalala_wav: /generate-transfer-msg role-to-buy: 1334019132630372442
+[2025-02-07T22:27:32.000Z] Reply to falalala_wav: Invalid command. RoleToBuyName parameter is missing.
+[2025-02-07T22:33:22.648Z] Command executed by falalala_wav: /generate-transfer-msg role-to-buy: 1334019132630372442
+[2025-02-07T22:33:22.652Z] Reply to falalala_wav: Response is not ready yet.
+[2025-02-07T22:33:29.805Z] Command executed by falalala_wav: /generate-transfer-msg role-to-buy: 1334019132630372442
+[2025-02-07T22:33:32.180Z] Reply to falalala_wav: Response is not ready yet.
+[2025-02-07T22:34:14.996Z] Command executed by falalala_wav: /generate-transfer-msg role-to-buy: 1334019132630372442
+[2025-02-07T22:34:15.000Z] Reply to falalala_wav: Response is not ready yet.
+[2025-02-07T22:34:19.534Z] Command executed by falalala_wav: /generate-transfer-msg role-to-buy: 1334019132630372442
+[2025-02-07T22:34:19.535Z] Reply to falalala_wav: Response is not ready yet.
+[2025-02-07T22:38:50.380Z] Command executed by falalala_wav: /generate-transfer-msg role-to-buy: 1334019132630372442
+[2025-02-07T22:38:50.383Z] Reply to falalala_wav: Odpowiedź nie spełnia wymogów kompletności!
+[2025-02-07T22:59:11.115Z] Command executed by falalala_wav: /generate-transfer-msg role-to-buy: 1334019132630372442
+[2025-02-07T22:59:11.128Z] Reply to falalala_wav: Aby dokonać zakupu produktu **+EVENT_04-26_tribe-meets-kosmos** wklej tą wiadomość w tytule przelewu:
+
+ **1024238253060145193 falalala +EVENT_04-26_tribe-meets-kosmos**
+[2025-02-07T22:59:45.494Z] Command executed by falalala_wav: /db-tags-add user-id: 1024238253060145193, name: dddd
+[2025-02-07T22:59:45.534Z] Reply to falalala_wav: Tag dddd added.
+[2025-02-07T23:00:47.073Z] Command executed by falalala_wav: /db-tags-add user-id: 1024238253060145193, name: dddd, description: to jest admin
+[2025-02-07T23:00:47.105Z] Reply to falalala_wav: Tag with name: dddd and userId: 1024238253060145193 already exists.
+[2025-02-07T23:00:54.870Z] Command executed by falalala_wav: /db-tags-add user-id: 1024238253060145193, name: dddd2, description: to jest admin
+[2025-02-07T23:00:54.883Z] Reply to falalala_wav: Tag dddd2 added.
+[2025-02-07T23:02:29.788Z] Command executed by falalala_wav: /generate-transfer-msg role-to-buy: 1334019132630372442
+[2025-02-07T23:02:29.795Z] Reply to falalala_wav: Aby dokonać zakupu produktu **+EVENT_04-26_tribe-meets-kosmos** wklej tą wiadomość w tytule przelewu:
+
+ **1024238253060145193 falalala +EVENT_04-26_tribe-meets-kosmos**
+[2025-02-07T23:30:01.410Z] Command executed by falalala_wav: /generate-transfer-msg role-to-buy: 1334741428978454550
+[2025-02-07T23:30:01.419Z] Reply to falalala_wav: Rola którą próbujesz zakupić nie jest przeznaczona do kupienia.
+[2025-02-07T23:30:16.631Z] Command executed by falalala_wav: /generate-transfer-msg role-to-buy: 1334019132630372442
+[2025-02-07T23:30:16.634Z] Reply to falalala_wav: Aby dokonać zakupu produktu **+EVENT_04-26_tribe-meets-kosmos** wklej tą wiadomość w tytule przelewu:
+
+ **1024238253060145193 falalala +EVENT_04-26_tribe-meets-kosmos**
+[2025-02-07T23:31:01.141Z] Command executed by falalala_wav: /db-tags-add user-id: 1024238253060145193, name: debil, description: uwazać na typa xD
+[2025-02-07T23:31:01.160Z] Reply to falalala_wav: Tag debil added.
+[2025-02-08T00:31:43.042Z] Command executed by falalala_wav: /generate-transfer-msg role-to-buy: 1334019132630372442
+[2025-02-08T00:31:43.051Z] Reply to falalala_wav: Aby dokonać zakupu produktu **+EVENT_04-26_tribe-meets-kosmos** wklej tą wiadomość w tytule przelewu:
+
+ **1024238253060145193 falalala +EVENT_04-26_tribe-meets-kosmos**
+[2025-02-08T00:32:29.168Z] Command executed by falalala_wav: /db-tags-add user-id: 1024238253060145193, name: tag-testowy, description: opis bahdbiwehfbiurehbvi
+[2025-02-08T00:32:29.210Z] Reply to falalala_wav: Tag tag-testowy added.

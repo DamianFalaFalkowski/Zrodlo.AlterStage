@@ -27,6 +27,7 @@ export class DcLogger {
         const options = interaction.options.data.map(option => `${option.name}: ${option.value}`).join(', ');
         const logMessage = `Command executed by ${user}: /${commandName} ${options}`;
         this.logToFile(logMessage);
+        console.log(logMessage);
     }
 
     public logReplyAndReturn(interaction: CommandInteraction, reply: InteractionReplyOptions): InteractionReplyOptions {
@@ -34,12 +35,14 @@ export class DcLogger {
         const replyContent = reply.content || 'No content';
         const logMessage = `Reply to ${user}: ${replyContent}`;
         this.logToFile(logMessage);
+        console.log(logMessage);
         return reply;
     }
 
     public logError(error: Error) {
         const logMessage = `Error: ${error.message}\nStack: ${error.stack}`;
         this.logToFile(logMessage);
+        console.error(logMessage);
     }
 }
 
