@@ -5,14 +5,45 @@ import fs = require('node:fs');
 import path = require('node:path');
 import "./type-mappings/client-type-map.js";
 import { log } from 'node:console';
-import MultiStartupModule from "./modules/startup/startup.module.js";
 import { FindCommandHandlersUtil } from './utils/find-command-handlers-definitions.util.js';
+import dcLogger from './utils/dc-logger.js';
 
 
 // Load environment variables from .env file
 dotenv.config();
 // Create a new Discord client instance
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+const client = new Client({ 
+	intents: [
+		"Guilds",
+		'GuildExpressions',
+		"GuildMessages",
+		"MessageContent",
+		"GuildMembers", 
+		"GuildModeration",
+		"MessageContent",
+		"AutoModerationExecution",
+		"DirectMessagePolls",
+		"DirectMessageReactions",
+		"DirectMessageTyping",
+		'DirectMessagePolls',
+		'DirectMessageTyping',
+		'GuildIntegrations',
+		'GuildMessageTyping',
+		
+	]
+// 	intents: [
+// 	GatewayIntentBits.Guilds,
+// 	GatewayIntentBits.GuildMessages,
+// 	GatewayIntentBits.MessageContent,
+// 	GatewayIntentBits.GuildMembers, 
+// 	GatewayIntentBits.GuildModeration,
+// 	GatewayIntentBits.MessageContent,
+// 	GatewayIntentBits.AutoModerationExecution,
+// 	GatewayIntentBits.DirectMessagePolls,
+// 	GatewayIntentBits.DirectMessageReactions,
+// 	GatewayIntentBits.DirectMessageTyping
+// ] 
+});
 
 // Zdefiniowanie polaczenia z baza danych
 export const sequelizeContext = new Sequelize('database', 'user', 'password', {
@@ -27,12 +58,12 @@ sequelizeContext.afterSync(() => log('Database synchronized'));
 // Read commands from the commands directory
 // client.commands = FindCommandHandlersUtil.GetCommandDefinitions('/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src');
 
-let commands = FindCommandHandlersUtil.GetCommandDefinitions(client, '/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/.dist');
-if(commands.length>0)
-	client.commands = new Collection();
-commands.forEach(command => {
-	client.commands.set(command.data.name, command.data)
-});
+FindCommandHandlersUtil.GetCommandDefinitions(client, path.join(__dirname, 'handlers'));
+// if(commands.length>0)
+// 	client.commands = new Collection();
+// commands.forEach(command => {
+// 	client.commands.set(command.data.name, command.data)
+// });
 
 // Read event handlers from the events directory
 const eventsPath = path.join(__dirname, 'events');
@@ -46,6 +77,7 @@ for (const file of eventFiles) {
 	} else {
 		client.on(event.name, (...args) => event.execute(...args));
 	}
+	dcLogger.logToFile(`Exevution of event ${event.name} has been added`);
 }
 
 // Login to Discord with your app's token

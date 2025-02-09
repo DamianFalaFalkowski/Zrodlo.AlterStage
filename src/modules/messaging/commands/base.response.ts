@@ -1,7 +1,7 @@
 import { InteractionReplyOptions, MessageFlags } from "discord.js";
 import dcLogger from "../../../utils/dc-logger";
 
-export class BaseCommandResponse {
+export class BaseCommandResponse { // TODO: add components {
     
     public IsReady: boolean = false;
     public IsFailure: boolean = false;

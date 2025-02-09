@@ -1,4 +1,4 @@
-import { ChatInputCommandInteraction, GatewayIntentBits, GuildMemberRoleManager, InteractionReplyOptions, MessageFlags, SlashCommandBuilder } from "discord.js";
+import { ChatInputCommandInteraction, GuildMemberRoleManager, InteractionReplyOptions, MessageFlags, SlashCommandBuilder } from "discord.js";
 import dcLogger from "../utils/dc-logger";
 import { TagsRepository } from "../model/tags.model";
 

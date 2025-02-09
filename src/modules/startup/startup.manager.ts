@@ -1,5 +1,6 @@
-import {ScriptBuilder} from "./startup.builder";
-import {StartupInstance} from './startup.instance';
+import { ScriptBuilder } from "./startup.builder";
+import { StartupInstance } from "./startup.instance";
+
 
 
  enum StartupScripts {
@@ -7,7 +8,7 @@ import {StartupInstance} from './startup.instance';
     RunCommandsRegistration = 2
 }
 
- class StartupManager {
+export class StartupManager {
 
     private _builder: ScriptBuilder;
 

@@ -2,21 +2,19 @@ import { ActionRowBuilder, ButtonBuilder, ButtonStyle} from 'discord.js';
 import { BaseCommandResponse } from '../../modules/messaging/commands/base.response';
 import dcLogger from "../../utils/dc-logger";
 
-export class GenerateTransferMessageResponse extends BaseCommandResponse {
+export class ReloadCommandResponse extends BaseCommandResponse {
 
-    protected generatedTransferMessage: string | null = null;
-    protected roleToBuy: string;
+    protected commandOpt: string;
 
-    constructor(isEphemeral: boolean = false, roleToBuy: string) {
+    constructor(isEphemeral: boolean = false, command: string) {
         super(isEphemeral);
-        this.roleToBuy = roleToBuy;
+        this.commandOpt = command;
     }
 
     // sprawdzenie czy komponent został poprawnie zbudowany oraz czy jest kompletny
     protected ensureReady(markReadyIfReady: boolean = true): boolean {
         try {
-            if (super.ensureReady(false)) // TODO: poprawic
-            // TODO: sprawdzenie czy zawiera przycisk do kopiowania
+            if (super.ensureReady(false)) 
             {
                 if (markReadyIfReady)
                     this.IsReady = true;
@@ -39,9 +37,9 @@ export class GenerateTransferMessageResponse extends BaseCommandResponse {
         }
     }
 
-    public TryFinalize(generatedTransferMessage: string) {
+    public TryFinalize(command: string) {
         try {
-            this.generatedTransferMessage = generatedTransferMessage;
+            this.commandOpt = command;
             if (this.ensureReady()) {
                 this.prepeareSuccessResponse();
             }
@@ -55,15 +53,6 @@ export class GenerateTransferMessageResponse extends BaseCommandResponse {
     }
 
     protected prepeareSuccessResponse() {
-        this._reply.content = `Aby dokonać zakupu produktu **${this.roleToBuy}** wklej tą wiadomość w tytule przelewu:\n\n **${this.generatedTransferMessage}**`;
-
-        // Utwórz przycisk do kopiowania
-        const row = new ActionRowBuilder<ButtonBuilder>()
-            .addComponents(new ButtonBuilder()
-                .setCustomId('copy')
-                .setLabel('Copy')
-                .setStyle(ButtonStyle.Primary));
-        this._reply.components = [row];
-        super.prepeareSuccessResponse();
+        this._reply.content = ``;
     }
 }

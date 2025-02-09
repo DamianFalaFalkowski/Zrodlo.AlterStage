@@ -1,52 +1,36 @@
-import { REST, Routes, Client, Collection, GatewayIntentBits } from 'discord.js';
+import { REST, Routes, Client, GatewayIntentBits } from 'discord.js';
 import dotenv from 'dotenv';
 import { FindCommandHandlersUtil } from './utils/find-command-handlers-definitions.util';
 import dcLogger from './utils/dc-logger';
+import "./type-mappings/client-type-map.js";
+import path from 'path';
 
-// Load environment variables from .env file
+// Config
 dotenv.config();
 
-// Create a new Discord client instance
-const client = new Client({ intents: [GatewayIntentBits.Guilds] }); // sprawdzac czy intends nie sa nullem
-
-// Read commands from the commands directory
-let commands = FindCommandHandlersUtil.GetCommandDefinitions(client, '/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/.dist');
-
-if (commands.length > 0) {
-    client.commands = new Collection();
-    commands.forEach(command => {
-        client.commands.set(command.data.name, command.data);
-    });
-}
-
-// Construct and prepare an instance of the REST module
+// Utworzenie klienta i zaladowanie commandsów z plików .definition
+export const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 const rest = new REST().setToken(process.env.TOKEN as string);
+FindCommandHandlersUtil.GetCommandDefinitions(client, path.join(__dirname, 'handlers'));
 
-// and deploy your commands!
-(async () => {
-    try {
-        console.log(`Started refreshing ${client.commands.size} application (/) commands.`);
-
-        // Logowanie ciała żądania
-        const requestBody = client.commands.map(command =>JSON.stringify(command));
-        dcLogger.logToFile(`Request body: ${JSON.stringify(requestBody, null, 2)}`);
-		
-        //The put method is used to fully refresh all commands in the guild with the current set
-        const data: any = await rest.put(
-            Routes.applicationGuildCommands(process.env.CLIENT_ID as string, process.env.GUILD_ID as string),
-            { body: client.commands }
-        );
-
-        // The put method is used to fully refresh all global commands
-        // const data: any = await rest.put(
-        //     Routes.applicationCommands(process.env.CLIENT_ID as string),
-        //     { body: client.commands.toJSON() }
-        // );
-
-        console.log(`Successfully reloaded ${data.length} application (/) commands.`);
-    } catch (error) {
-        // And of course, make sure you catch and log any errors!
-        console.error(error);
-        dcLogger.logStringError(JSON.stringify(error as Error));
-    }
-})();
+// Aktualizacja polecen na serwerze
+console.log(`Started refreshing ${client.commands.size} application (/) commands.`);
+let putAppCommandsRequestBody = client.commands.toJSON();
+client.commands.forEach(clientCommand => {
+    dcLogger.logToFile(`Request body: ${JSON.stringify(putAppCommandsRequestBody, null, 2)}`);
+    (async () => {
+        try { // Wykonaj wysyłką polecenia
+            await rest.put(Routes.applicationGuildCommands(
+                process.env.CLIENT_ID as string,
+                process.env.GUILD_ID as string),
+            {
+                body: putAppCommandsRequestBody
+            });
+        }
+        catch (error) { // Obsluga bledu z API!
+            console.error(error);
+            dcLogger.logStringError(JSON.stringify(error as Error));
+        }
+    });
+    console.log(`Successfully reloaded ${client.commands.toJSON().length} application (/) commands.`);
+});

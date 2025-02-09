@@ -16,6 +16,7 @@ export class TagsRepository extends Model {
     declare createdUserId: string;
 }
 
+// konfiguracja modelu bazy
 TagsRepository.init(
     {
         name: {

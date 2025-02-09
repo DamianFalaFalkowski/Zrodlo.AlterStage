@@ -1,8 +1,8 @@
-import { BaseChatInputCommandHandler } from '../../modules/messaging/commands/base.handler';
+import { BaseCommandHandler } from '../../modules/messaging/commands/base.handler';
 import { GenerateTransferMessageCommand } from './gen-transfer-msg.command';
 import dcLogger from "../../utils/dc-logger";
 
-export class GenerateTransferMessageHandler extends BaseChatInputCommandHandler<GenerateTransferMessageCommand>{
+export class GenerateTransferMessageHandler extends BaseCommandHandler<GenerateTransferMessageCommand>{
     constructor(command: GenerateTransferMessageCommand) {
         super(command);
     }

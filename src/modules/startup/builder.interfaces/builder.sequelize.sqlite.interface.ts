@@ -1,3 +1,5 @@
+import { StartupInstance } from "../startup.instance";
+
 export interface Ibuilder{
 
 }
