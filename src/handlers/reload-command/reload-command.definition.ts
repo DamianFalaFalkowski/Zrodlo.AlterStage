@@ -1,4 +1,5 @@
 import { ChatInputCommandInteraction, 
+    InteractionResponseType, 
     SlashCommandBuilder } from 'discord.js';
 import dcLogger from '../../utils/dc-logger';
 import { ReloadCommandCommand } from './reload-command.command';
@@ -7,6 +8,9 @@ import { ReloadCommandHandler } from './reload-command.handler';
 
 // https://discord.com/developers/docs/interactions/application-commands#contexts
 module.exports = {
+    name: 'reload-command',
+    description: 'Reloads a command.',
+    type: InteractionResponseType.ChannelMessageWithSource,
     data: new SlashCommandBuilder()
     .setName('reload-command')
     .setDescription('Reloads a command.')

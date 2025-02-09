@@ -4,6 +4,7 @@ import { FindCommandHandlersUtil } from './utils/find-command-handlers-definitio
 import dcLogger from './utils/dc-logger';
 import "./type-mappings/client-type-map.js";
 import path from 'path';
+import { json } from 'sequelize';
 
 // Config
 dotenv.config();
@@ -11,23 +12,25 @@ dotenv.config();
 // Utworzenie klienta i zaladowanie commandsów z plików .definition
 export const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 const rest = new REST().setToken(process.env.TOKEN as string);
-FindCommandHandlersUtil.GetCommandDefinitions(client, path.join(__dirname, 'handlers'));
+FindCommandHandlersUtil.LoadCommmandsToClient(client, path.join(__dirname, 'handlers'));
 
 // Aktualizacja polecen na serwerze
 console.log(`Started refreshing ${client.commands.size} application (/) commands.`);
 let putAppCommandsRequestBody = client.commands.toJSON();
 client.commands.forEach(clientCommand => {
     dcLogger.logToFile(`Request body: ${JSON.stringify(putAppCommandsRequestBody, null, 2)}`);
+    //dcLogger.logToFile(`Request body: ${putAppCommandsRequestBody.toJSON()}`);
     (async () => {
-        try { // Wykonaj wysyłką polecenia
+        try { 
+            // Wykonaj wysyłkę pijedynczego polecenia
             await rest.put(Routes.applicationGuildCommands(
                 process.env.CLIENT_ID as string,
                 process.env.GUILD_ID as string),
-            {
-                body: putAppCommandsRequestBody
-            });
+            { body: { json: putAppCommandsRequestBody } }
+            );
         }
-        catch (error) { // Obsluga bledu z API!
+        catch (error) { 
+            // Obsluga bledu z API!
             console.error(error);
             dcLogger.logStringError(JSON.stringify(error as Error));
         }

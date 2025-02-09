@@ -29,7 +29,7 @@ const client = new Client({
 		'DirectMessageTyping',
 		'GuildIntegrations',
 		'GuildMessageTyping',
-		
+
 	]
 // 	intents: [
 // 	GatewayIntentBits.Guilds,
@@ -58,7 +58,7 @@ sequelizeContext.afterSync(() => log('Database synchronized'));
 // Read commands from the commands directory
 // client.commands = FindCommandHandlersUtil.GetCommandDefinitions('/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src');
 
-FindCommandHandlersUtil.GetCommandDefinitions(client, path.join(__dirname, 'handlers'));
+FindCommandHandlersUtil.LoadCommmandsToClient(client, path.join(__dirname, 'handlers'));
 // if(commands.length>0)
 // 	client.commands = new Collection();
 // commands.forEach(command => {

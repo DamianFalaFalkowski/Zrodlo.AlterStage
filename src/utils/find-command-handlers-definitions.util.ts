@@ -4,20 +4,19 @@ import { ApplicationCommand, Client, Collection, CommandInteraction } from 'disc
 import dcLogger from './dc-logger';
 
 export class FindCommandHandlersUtil {
-    public static GetCommandDefinitions(client: Client, rootFolderPath: string): any {
-        dcLogger.logToFile(`Szukam definicji poleceń $rootFolderPath=${rootFolderPath}.`)
-        const singleHandlerFolders = fs.readdirSync(rootFolderPath)
-            .map(x => path.join(rootFolderPath, x.substring(0, x.length)));
-        dcLogger.logToFile(`Found ${singleHandlerFolders.length} folders to check.`)
-        client.commands = new Collection();
+    public static LoadCommmandsToClient(client: Client, rootFolderPath: string) {
 
+        dcLogger.logToFile(`Szukam definicji poleceń $rootFolderPath=${rootFolderPath}`);
+        const singleHandlerFolders = fs.readdirSync(rootFolderPath)
+            .map(x => path.join(rootFolderPath, x));
+        dcLogger.logToFile(`Found ${singleHandlerFolders.length} folders to check.`);
+
+        client.commands = new Collection();
         for (const singleHandlerFolder of singleHandlerFolders) {
-            let fileName = fs.readdirSync(singleHandlerFolder).filter(x =>
+            let fileName = fs.readdirSync(singleHandlerFolder).find(x =>
                 x.endsWith('.definition.ts') ||
                 x.endsWith('.definition.js')
-            )[0];
-            if(singleHandlerFolder != undefined && fileName != undefined)
-            {
+            );
                 let filePath = singleHandlerFolder + "/" + fileName;
                 dcLogger.logToFile(`Looking for file ${filePath}`);
                 const command = require(filePath);
@@ -27,9 +26,9 @@ export class FindCommandHandlersUtil {
                 } else {
                     console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
                 }
-            }
+            
+
         }
-        return client;
     };
 }
 
