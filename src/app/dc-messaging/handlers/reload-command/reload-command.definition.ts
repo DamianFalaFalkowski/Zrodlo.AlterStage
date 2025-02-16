@@ -1,9 +1,10 @@
 import { ChatInputCommandInteraction, 
     InteractionResponseType, 
     SlashCommandBuilder } from 'discord.js';
-import dcLogger from '../../utils/dc-logger';
+
 import { ReloadCommandCommand } from './reload-command.command';
 import { ReloadCommandHandler } from './reload-command.handler';
+import dcLogger from '../../../../utils/dc-logger';
 
 
 // https://discord.com/developers/docs/interactions/application-commands#contexts
@@ -21,7 +22,7 @@ module.exports = {
         ,
     async execute(interaction: ChatInputCommandInteraction)
     {
-        dcLogger.logToFile(`Interaction '${interaction.commandName}' execution started!`);
+        dcLogger.logInfo(`Interaction '${interaction.commandName}' execution started!`);
         let command = new ReloadCommandCommand(interaction);
         let handler = new ReloadCommandHandler(command);
         await handler.baseHandle();

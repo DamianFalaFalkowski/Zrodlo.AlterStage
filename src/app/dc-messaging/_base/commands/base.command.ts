@@ -1,6 +1,5 @@
-import { APIInteractionGuildMember, ChatInputCommandInteraction, GuildMember, GuildMemberRoleManager, Role } from "discord.js";
-
-import dcLogger from "../../../utils/dc-logger";
+import { APIInteractionGuildMember, GuildMember, GuildMemberRoleManager, Role } from "discord.js";
+import dcLogger from "../../../../utils/dc-logger";
 import { BaseCommandResponse } from "./base.response";
 
 export class BaseCommand<R extends BaseCommandResponse> {
@@ -16,11 +15,11 @@ export class BaseCommand<R extends BaseCommandResponse> {
 
     // publiczne
     public IsSucess: boolean = false;
-    public readonly Interaction: ChatInputCommandInteraction;
+    public readonly Interaction: any;
     public readonly AllGuildRoles: Role[];
 
     // Konstruktor będący mapperem interakcji na komendę
-    constructor(interaction: ChatInputCommandInteraction, allowedRoles: string[], initialResponse: R) {
+    constructor(interaction: any, allowedRoles: string[], initialResponse: R) {
         try {
             if (!interaction) throw new Error('Invalid Command. Missing interaction.');
             if (!interaction.isCommand()) throw new Error('Invalid Command. Interaction is not a command.');

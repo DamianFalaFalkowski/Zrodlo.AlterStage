@@ -1,8 +1,6 @@
 
-import { BaseCommandHandler } from "../../modules/messaging/commands/base.handler";
-import dcLogger from "../../utils/dc-logger";
+import { BaseCommandHandler } from "../../_base/commands/base.handler";
 import { ReloadCommandCommand } from './reload-command.command';
-import { Interaction } from 'discord.js';
 
 export class ReloadCommandHandler extends BaseCommandHandler<ReloadCommandCommand>{
     constructor(command: ReloadCommandCommand) {

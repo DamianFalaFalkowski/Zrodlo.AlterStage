@@ -1,5 +1,5 @@
 import { InteractionReplyOptions, MessageFlags } from "discord.js";
-import dcLogger from "../../../utils/dc-logger";
+import dcLogger from "../../../../utils/dc-logger";
 
 export class BaseCommandResponse { // TODO: add components {
     
@@ -38,17 +38,19 @@ export class BaseCommandResponse { // TODO: add components {
     // sprawdzenie czy komponent został poprawnie zbudowany oraz czy jest kompletny na poziomie bazowym
     protected ensureReady(markReadyIfReady :boolean = true): boolean {
         try {
-            if(this._reply.content !== undefined 
-                && this.isEphemeral 
-                && this._reply.flags != null 
-                && this._reply.flags.toString().toLocaleLowerCase().includes("Ephemeral".toLocaleLowerCase())
-                && this._reply.content !== null) 
-            {
-                if(markReadyIfReady)
-                    this.IsReady = true;
-                return true;
-            }
-            return false;
+            return true;
+            // TODO: ogarnąć to gówno
+            // if(this._reply.content !== undefined 
+            //     && this.isEphemeral 
+            //     && this._reply.flags != null 
+            //     && this._reply.flags.toString().toLocaleLowerCase().includes("Ephemeral".toLocaleLowerCase())
+            //     && this._reply.content !== null) 
+            // {
+            //     if(markReadyIfReady)
+            //         this.IsReady = true;
+            //     return true;
+            // }
+            // return false;
         } catch (error) {
             dcLogger.logError(error as Error);
             throw error;

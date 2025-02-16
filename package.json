@@ -7,6 +7,7 @@
     "1": "tsc",
     "2": "node .dist/run-commands-registration-script.js",
     "3": "node .dist/run-discord-app.js",
+    "register_gen-transfer-msg": "tsx watch src/index.ts -registercommand=gen-transfer-msg",
     "test": "jest",
     "t": "jest",
     "build": " tsc",
@@ -26,6 +27,7 @@
   "description": "",
   "dependencies": {
     "chai-as-promised": "^8.0.1",
+    "discord-interactions": "^4.1.1",
     "discord.js": "^14.17.3",
     "dotenv": "^16.4.7",
     "sequelize": "^6.37.5",

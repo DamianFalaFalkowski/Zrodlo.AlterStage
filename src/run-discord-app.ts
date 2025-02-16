@@ -58,7 +58,7 @@ sequelizeContext.afterSync(() => log('Database synchronized'));
 // Read commands from the commands directory
 // client.commands = FindCommandHandlersUtil.GetCommandDefinitions('/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src');
 
-FindCommandHandlersUtil.LoadCommmandsToClient(client, path.join(__dirname, 'handlers'));
+FindCommandHandlersUtil.LoadCommmandsToClient(client, path.join(__dirname, 'app/dc-messaging/handlers'));
 // if(commands.length>0)
 // 	client.commands = new Collection();
 // commands.forEach(command => {
@@ -66,7 +66,7 @@ FindCommandHandlersUtil.LoadCommmandsToClient(client, path.join(__dirname, 'hand
 // });
 
 // Read event handlers from the events directory
-const eventsPath = path.join(__dirname, 'events');
+const eventsPath = path.join(__dirname, 'app/dc-messaging/events');
 const eventFiles = fs.readdirSync(eventsPath).filter((file: any) => file.endsWith('.js') || file.endsWith('.ts'));
 
 for (const file of eventFiles) {
@@ -77,7 +77,7 @@ for (const file of eventFiles) {
 	} else {
 		client.on(event.name, (...args) => event.execute(...args));
 	}
-	dcLogger.logToFile(`Exevution of event ${event.name} has been added`);
+	dcLogger.logInfo(`Exevution of event ${event.name} has been added`);
 }
 
 // Login to Discord with your app's token

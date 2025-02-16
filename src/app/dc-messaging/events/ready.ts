@@ -1,5 +1,5 @@
 import { Client, Events } from "discord.js";
-import { TagsRepository } from "../model/tags.model";
+import { TagsRepository } from "../../../model/tags.model";
 
 // Informuje o tym, ze klient jest polaczony z api i gotowy.
 module.exports = {

@@ -1,12 +1,12 @@
 import { Events, MessageFlags } from 'discord.js';
-import dcLogger from '../utils/dc-logger';
-import { client } from '../run-commands-registration-script';
+import { client } from '../../../run-commands-registration-script';
+import dcLogger from '../../../utils/dc-logger';
 
 module.exports = {
 	name: Events.InteractionCreate,
 
 	async execute(interaction: any) {
-		dcLogger.logToFile(`Interaction '${interaction.commandName}' recieved!`);
+		dcLogger.logInfo(`Interaction '${interaction.commandName}' recieved!`);
 
 		// check interaction
 		if (!interaction.isChatInputCommand()) return;

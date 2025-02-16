@@ -12,13 +12,13 @@ dotenv.config();
 // Utworzenie klienta i zaladowanie commandsów z plików .definition
 export const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 const rest = new REST().setToken(process.env.TOKEN as string);
-FindCommandHandlersUtil.LoadCommmandsToClient(client, path.join(__dirname, 'handlers'));
+FindCommandHandlersUtil.LoadCommmandsToClient(client, path.join(__dirname, 'app/dc-messaging/handlers'));
 
 // Aktualizacja polecen na serwerze
 console.log(`Started refreshing ${client.commands.size} application (/) commands.`);
 let putAppCommandsRequestBody = client.commands.toJSON();
 client.commands.forEach(clientCommand => {
-    dcLogger.logToFile(`Request body: ${JSON.stringify(putAppCommandsRequestBody, null, 2)}`);
+    dcLogger.logInfo(`Request body: ${JSON.stringify(putAppCommandsRequestBody, null, 2)}`);
     //dcLogger.logToFile(`Request body: ${putAppCommandsRequestBody.toJSON()}`);
     (async () => {
         try { 

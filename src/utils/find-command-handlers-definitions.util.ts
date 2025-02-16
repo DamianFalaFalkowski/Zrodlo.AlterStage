@@ -6,10 +6,10 @@ import dcLogger from './dc-logger';
 export class FindCommandHandlersUtil {
     public static LoadCommmandsToClient(client: Client, rootFolderPath: string) {
 
-        dcLogger.logToFile(`Szukam definicji poleceń $rootFolderPath=${rootFolderPath}`);
+        dcLogger.logInfo(`Szukam definicji poleceń $rootFolderPath=${rootFolderPath}`);
         const singleHandlerFolders = fs.readdirSync(rootFolderPath)
             .map(x => path.join(rootFolderPath, x));
-        dcLogger.logToFile(`Found ${singleHandlerFolders.length} folders to check.`);
+        dcLogger.logInfo(`Found ${singleHandlerFolders.length} folders to check.`);
 
         client.commands = new Collection();
         for (const singleHandlerFolder of singleHandlerFolders) {
@@ -18,11 +18,11 @@ export class FindCommandHandlersUtil {
                 x.endsWith('.definition.js')
             );
                 let filePath = singleHandlerFolder + "/" + fileName;
-                dcLogger.logToFile(`Looking for file ${filePath}`);
+                dcLogger.logInfo(`Looking for file ${filePath}`);
                 const command = require(filePath);
                 if ('data' in command && 'execute' in command) {
                     client.commands.set(command.data.name, command);
-                    dcLogger.logToFile(command.data.name + " set");
+                    dcLogger.logInfo(command.data.name + " set");
                 } else {
                     console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
                 }

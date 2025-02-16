@@ -23,7 +23,7 @@ export class DcLogger {
         console.log(formattedMessage);
     }
 
-    public logToFile(message: string) {
+    public logInfo(message: string) {
         this.log(message);
     }
 
@@ -36,25 +36,25 @@ export class DcLogger {
         const commandName = interaction.commandName;
         const options = interaction.options.data.map(option => `${option.name}: ${option.value}`).join(', ');
         const logMessage = `Command executed by ${user}: /${commandName} ${options}`;
-        this.logToFile(logMessage);
+        this.logInfo(logMessage);
     }
 
     public logReplyAndReturn(interaction: CommandInteraction, reply: InteractionReplyOptions): InteractionReplyOptions {
         const user = interaction.user.tag;
-        const replyContent = reply.content || 'No content';
+        const replyContent = reply.content ?? 'No content';
         const logMessage = `Reply to ${user}: ${replyContent}`;
-        this.logToFile(logMessage);
+        this.logInfo(logMessage);
         return reply;
     }
 
     public logError(error: Error) {
         const logMessage = `ERROR: ${error.message}\nStack: ${error.stack}`;
-        this.logToFile(logMessage);
+        this.logInfo(logMessage);
     }
 
     public logStringError(error: string) {
         const logMessage = `ERROR: ${error}`;
-        this.logToFile(logMessage);
+        this.logInfo(logMessage);
     }
 }
 

@@ -1,7 +1,7 @@
 import { ChatInputCommandInteraction } from "discord.js";
-import dcLogger from "../../utils/dc-logger";
 import { ReloadCommandResponse } from "./reload-command.response";
-import { BaseCommand } from "../../modules/messaging/commands/base.command";
+import { BaseCommand } from "../../_base/commands/base.command";
+import dcLogger from "../../../../utils/dc-logger";
 
 export class ReloadCommandCommand extends BaseCommand<ReloadCommandResponse> {
     public readonly CommandName: string | undefined;

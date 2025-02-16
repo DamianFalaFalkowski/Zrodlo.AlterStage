@@ -1,7 +1,7 @@
 import { BaseCommand } from "./base.command";
-
-import dcLogger from "../../../utils/dc-logger";
+import dcLogger from "../../../../utils/dc-logger";
 import { BaseCommandResponse } from "./base.response";
+import { MessageFlags } from 'discord.js';
 
 export class BaseCommandHandler<C extends BaseCommand<BaseCommandResponse>> {
 
@@ -15,7 +15,7 @@ export class BaseCommandHandler<C extends BaseCommand<BaseCommandResponse>> {
         try {
             dcLogger.logCommand(this.command.Interaction);
             await this.handle();
-            await this.command.Interaction.reply(dcLogger.logReplyAndReturn(this.command.Interaction, this.command.Response.Reply));
+            await this.command.Interaction.reply({ content: this.command.Response.Reply.content, components: this.command.Response.Reply.components, flags: MessageFlags.Ephemeral });
         } catch (error) {
             dcLogger.logError(error as Error);
             throw error;

@@ -1,8 +1,7 @@
 import { ChatInputCommandInteraction } from 'discord.js';
-import { BaseCommand } from '../../modules/messaging/commands/base.command';
-import dcLogger from "../../utils/dc-logger";
-import { GenerateTransferMessageResponse,  } from './gen-transfer-msg.response';
-//import "gen-transfer-msg.definition";
+import { BaseCommand } from '../../_base/commands/base.command';
+import dcLogger from '../../../../utils/dc-logger';
+import { GenerateTransferMessageResponse } from './gen-transfer-msg.response';
 
 export class GenerateTransferMessageCommand extends BaseCommand<GenerateTransferMessageResponse> {
     public readonly RoleToBuyName: string | undefined;
