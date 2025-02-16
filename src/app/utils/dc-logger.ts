@@ -1,7 +1,8 @@
 import { CommandInteraction, InteractionReplyOptions } from 'discord.js';
 import fs from 'fs';
 import path from 'path';
-import { __util } from '../startup';
+import { format } from 'node:util';
+
 export class DcLogger {
     private logFilePath: string;
 
@@ -19,7 +20,7 @@ export class DcLogger {
     private log(message: string, ...optionalParams: any[]) {
         const timestamp = new Date().toISOString();
         const formattedMessage = optionalParams.length > 0 ?
-            `[${timestamp}] ${__util.format(message, ...optionalParams)}`
+            `[${timestamp}] ${format(message, ...optionalParams)}`
             : `[${timestamp}] ${message}`;
 
         fs.appendFileSync(this.logFilePath, `[${timestamp}] ${formattedMessage}\n`);

@@ -13,7 +13,7 @@ if (args.length === 0) {
     dcLogger.logInfo('Arguments:', args);
 }
 
-    /// Odczytywanie konkretnych parametrów:
+/// Odczytywanie konkretnych parametrów:
 
 // -registercommand
 const registerDiscordCommandParam = args.find(arg => arg.startsWith('-registercommand'));

@@ -1,6 +1,6 @@
 import { APIApplicationCommand, Collection, Routes } from 'discord.js';
 import dcLogger from '../../../../app/utils/dc-logger';
-import { __rest } from '../../../../app/startup';
+import { __rest } from '../../../../startup';
 
 export class DiscordCommandOperations {
     public static async ProceedOperation_ReloadCommand(dcCommandDefinitionFilePath: string) {      

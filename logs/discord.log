@@ -390,3 +390,1709 @@ Rezultat operacji:
 [2025-02-16T12:57:35.558Z] [2025-02-16T12:57:35.558Z] Interaction 'gen-transfer-msg' recieved!
 [2025-02-16T12:57:35.559Z] [2025-02-16T12:57:35.559Z] Interaction 'gen-transfer-msg' execution started!
 [2025-02-16T12:57:35.561Z] [2025-02-16T12:57:35.561Z] Command executed by falalala_wav: /gen-transfer-msg role-to-buy: 1334019132630372442
+[2025-02-16T13:04:48.015Z] [2025-02-16T13:04:48.015Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers
+[2025-02-16T13:04:48.018Z] [2025-02-16T13:04:48.018Z] Found 2 folders to check.
+[2025-02-16T13:04:48.018Z] [2025-02-16T13:04:48.018Z] Looking for file /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers/gen-transfer-msg/gen-transfer-msg.definition.ts
+[2025-02-16T13:04:48.025Z] [2025-02-16T13:04:48.025Z] gen-transfer-msg set
+[2025-02-16T13:04:48.026Z] [2025-02-16T13:04:48.026Z] Looking for file /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers/reload-command/reload-command.definition.ts
+[2025-02-16T13:04:48.029Z] [2025-02-16T13:04:48.029Z] reload-command set
+[2025-02-16T13:04:48.031Z] [2025-02-16T13:04:48.031Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers
+[2025-02-16T13:04:48.031Z] [2025-02-16T13:04:48.031Z] Found 2 folders to check.
+[2025-02-16T13:04:48.032Z] [2025-02-16T13:04:48.032Z] Looking for file /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers/gen-transfer-msg/gen-transfer-msg.definition.ts
+[2025-02-16T13:04:48.032Z] [2025-02-16T13:04:48.032Z] gen-transfer-msg set
+[2025-02-16T13:04:48.032Z] [2025-02-16T13:04:48.032Z] Looking for file /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers/reload-command/reload-command.definition.ts
+[2025-02-16T13:04:48.032Z] [2025-02-16T13:04:48.032Z] reload-command set
+[2025-02-16T13:04:48.032Z] [2025-02-16T13:04:48.032Z] Request body: [
+  {
+    "name": "gen-transfer-msg",
+    "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+    "type": 1,
+    "allowedRoles": [
+      "member",
+      "admin",
+      "moderator",
+      "owner",
+      "honored-member",
+      "super-moderator"
+    ],
+    "data": {
+      "options": [
+        {
+          "name": "role-to-buy",
+          "description": "The role to buy.",
+          "required": true,
+          "type": 8
+        }
+      ],
+      "name": "gen-transfer-msg",
+      "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+      "contexts": [
+        0
+      ],
+      "integration_types": [
+        0
+      ],
+      "type": 1
+    }
+  },
+  {
+    "name": "reload-command",
+    "description": "Reloads a command.",
+    "type": 4,
+    "data": {
+      "options": [
+        {
+          "type": 3,
+          "name": "command",
+          "description": "The command to reload.",
+          "required": true
+        }
+      ],
+      "name": "reload-command",
+      "description": "Reloads a command.",
+      "type": 1
+    }
+  }
+]
+[2025-02-16T13:04:48.032Z] [2025-02-16T13:04:48.032Z] Request body: [
+  {
+    "name": "gen-transfer-msg",
+    "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+    "type": 1,
+    "allowedRoles": [
+      "member",
+      "admin",
+      "moderator",
+      "owner",
+      "honored-member",
+      "super-moderator"
+    ],
+    "data": {
+      "options": [
+        {
+          "name": "role-to-buy",
+          "description": "The role to buy.",
+          "required": true,
+          "type": 8
+        }
+      ],
+      "name": "gen-transfer-msg",
+      "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+      "contexts": [
+        0
+      ],
+      "integration_types": [
+        0
+      ],
+      "type": 1
+    }
+  },
+  {
+    "name": "reload-command",
+    "description": "Reloads a command.",
+    "type": 4,
+    "data": {
+      "options": [
+        {
+          "type": 3,
+          "name": "command",
+          "description": "The command to reload.",
+          "required": true
+        }
+      ],
+      "name": "reload-command",
+      "description": "Reloads a command.",
+      "type": 1
+    }
+  }
+]
+[2025-02-16T13:04:48.032Z] [2025-02-16T13:04:48.032Z] Exevution of event interactionCreate has been added
+[2025-02-16T13:04:48.037Z] [2025-02-16T13:04:48.037Z] Exevution of event ready has been added
+[2025-02-16T13:08:48.461Z] [2025-02-16T13:08:48.461Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers
+[2025-02-16T13:08:48.462Z] [2025-02-16T13:08:48.462Z] Found 2 folders to check.
+[2025-02-16T13:08:48.462Z] [2025-02-16T13:08:48.462Z] Looking for file /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers/gen-transfer-msg/gen-transfer-msg.definition.ts
+[2025-02-16T13:08:48.469Z] [2025-02-16T13:08:48.469Z] gen-transfer-msg set
+[2025-02-16T13:08:48.469Z] [2025-02-16T13:08:48.469Z] Looking for file /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers/reload-command/reload-command.definition.ts
+[2025-02-16T13:08:48.472Z] [2025-02-16T13:08:48.472Z] reload-command set
+[2025-02-16T13:08:48.474Z] [2025-02-16T13:08:48.474Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers
+[2025-02-16T13:08:48.474Z] [2025-02-16T13:08:48.474Z] Found 2 folders to check.
+[2025-02-16T13:08:48.474Z] [2025-02-16T13:08:48.474Z] Looking for file /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers/gen-transfer-msg/gen-transfer-msg.definition.ts
+[2025-02-16T13:08:48.474Z] [2025-02-16T13:08:48.474Z] gen-transfer-msg set
+[2025-02-16T13:08:48.475Z] [2025-02-16T13:08:48.475Z] Looking for file /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers/reload-command/reload-command.definition.ts
+[2025-02-16T13:08:48.475Z] [2025-02-16T13:08:48.475Z] reload-command set
+[2025-02-16T13:08:48.475Z] [2025-02-16T13:08:48.475Z] Request body: [
+  {
+    "name": "gen-transfer-msg",
+    "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+    "type": 1,
+    "allowedRoles": [
+      "member",
+      "admin",
+      "moderator",
+      "owner",
+      "honored-member",
+      "super-moderator"
+    ],
+    "data": {
+      "options": [
+        {
+          "name": "role-to-buy",
+          "description": "The role to buy.",
+          "required": true,
+          "type": 8
+        }
+      ],
+      "name": "gen-transfer-msg",
+      "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+      "contexts": [
+        0
+      ],
+      "integration_types": [
+        0
+      ],
+      "type": 1
+    }
+  },
+  {
+    "name": "reload-command",
+    "description": "Reloads a command.",
+    "type": 4,
+    "data": {
+      "options": [
+        {
+          "type": 3,
+          "name": "command",
+          "description": "The command to reload.",
+          "required": true
+        }
+      ],
+      "name": "reload-command",
+      "description": "Reloads a command.",
+      "type": 1
+    }
+  }
+]
+[2025-02-16T13:08:48.475Z] [2025-02-16T13:08:48.475Z] Request body: [
+  {
+    "name": "gen-transfer-msg",
+    "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+    "type": 1,
+    "allowedRoles": [
+      "member",
+      "admin",
+      "moderator",
+      "owner",
+      "honored-member",
+      "super-moderator"
+    ],
+    "data": {
+      "options": [
+        {
+          "name": "role-to-buy",
+          "description": "The role to buy.",
+          "required": true,
+          "type": 8
+        }
+      ],
+      "name": "gen-transfer-msg",
+      "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+      "contexts": [
+        0
+      ],
+      "integration_types": [
+        0
+      ],
+      "type": 1
+    }
+  },
+  {
+    "name": "reload-command",
+    "description": "Reloads a command.",
+    "type": 4,
+    "data": {
+      "options": [
+        {
+          "type": 3,
+          "name": "command",
+          "description": "The command to reload.",
+          "required": true
+        }
+      ],
+      "name": "reload-command",
+      "description": "Reloads a command.",
+      "type": 1
+    }
+  }
+]
+[2025-02-16T13:08:48.475Z] [2025-02-16T13:08:48.475Z] Exevution of event interactionCreate has been added
+[2025-02-16T13:08:48.480Z] [2025-02-16T13:08:48.480Z] Exevution of event ready has been added
+[2025-02-16T13:08:58.356Z] [2025-02-16T13:08:58.356Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers
+[2025-02-16T13:08:58.357Z] [2025-02-16T13:08:58.357Z] Found 2 folders to check.
+[2025-02-16T13:08:58.357Z] [2025-02-16T13:08:58.357Z] Looking for file /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers/gen-transfer-msg/gen-transfer-msg.definition.ts
+[2025-02-16T13:08:58.363Z] [2025-02-16T13:08:58.363Z] gen-transfer-msg set
+[2025-02-16T13:08:58.363Z] [2025-02-16T13:08:58.363Z] Looking for file /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers/reload-command/reload-command.definition.ts
+[2025-02-16T13:08:58.367Z] [2025-02-16T13:08:58.367Z] reload-command set
+[2025-02-16T13:08:58.370Z] [2025-02-16T13:08:58.370Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers
+[2025-02-16T13:08:58.370Z] [2025-02-16T13:08:58.370Z] Found 2 folders to check.
+[2025-02-16T13:08:58.370Z] [2025-02-16T13:08:58.370Z] Looking for file /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers/gen-transfer-msg/gen-transfer-msg.definition.ts
+[2025-02-16T13:08:58.370Z] [2025-02-16T13:08:58.370Z] gen-transfer-msg set
+[2025-02-16T13:08:58.370Z] [2025-02-16T13:08:58.370Z] Looking for file /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers/reload-command/reload-command.definition.ts
+[2025-02-16T13:08:58.370Z] [2025-02-16T13:08:58.370Z] reload-command set
+[2025-02-16T13:08:58.371Z] [2025-02-16T13:08:58.371Z] Request body: [
+  {
+    "name": "gen-transfer-msg",
+    "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+    "type": 1,
+    "allowedRoles": [
+      "member",
+      "admin",
+      "moderator",
+      "owner",
+      "honored-member",
+      "super-moderator"
+    ],
+    "data": {
+      "options": [
+        {
+          "name": "role-to-buy",
+          "description": "The role to buy.",
+          "required": true,
+          "type": 8
+        }
+      ],
+      "name": "gen-transfer-msg",
+      "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+      "contexts": [
+        0
+      ],
+      "integration_types": [
+        0
+      ],
+      "type": 1
+    }
+  },
+  {
+    "name": "reload-command",
+    "description": "Reloads a command.",
+    "type": 4,
+    "data": {
+      "options": [
+        {
+          "type": 3,
+          "name": "command",
+          "description": "The command to reload.",
+          "required": true
+        }
+      ],
+      "name": "reload-command",
+      "description": "Reloads a command.",
+      "type": 1
+    }
+  }
+]
+[2025-02-16T13:08:58.371Z] [2025-02-16T13:08:58.371Z] Request body: [
+  {
+    "name": "gen-transfer-msg",
+    "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+    "type": 1,
+    "allowedRoles": [
+      "member",
+      "admin",
+      "moderator",
+      "owner",
+      "honored-member",
+      "super-moderator"
+    ],
+    "data": {
+      "options": [
+        {
+          "name": "role-to-buy",
+          "description": "The role to buy.",
+          "required": true,
+          "type": 8
+        }
+      ],
+      "name": "gen-transfer-msg",
+      "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+      "contexts": [
+        0
+      ],
+      "integration_types": [
+        0
+      ],
+      "type": 1
+    }
+  },
+  {
+    "name": "reload-command",
+    "description": "Reloads a command.",
+    "type": 4,
+    "data": {
+      "options": [
+        {
+          "type": 3,
+          "name": "command",
+          "description": "The command to reload.",
+          "required": true
+        }
+      ],
+      "name": "reload-command",
+      "description": "Reloads a command.",
+      "type": 1
+    }
+  }
+]
+[2025-02-16T13:08:58.371Z] [2025-02-16T13:08:58.371Z] Exevution of event interactionCreate has been added
+[2025-02-16T13:08:58.375Z] [2025-02-16T13:08:58.375Z] Exevution of event ready has been added
+[2025-02-16T13:09:21.085Z] [2025-02-16T13:09:21.085Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers
+[2025-02-16T13:09:21.088Z] [2025-02-16T13:09:21.088Z] Found 2 folders to check.
+[2025-02-16T13:09:21.089Z] [2025-02-16T13:09:21.089Z] Looking for file /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers/gen-transfer-msg/gen-transfer-msg.definition.ts
+[2025-02-16T13:09:21.116Z] [2025-02-16T13:09:21.116Z] gen-transfer-msg set
+[2025-02-16T13:09:21.117Z] [2025-02-16T13:09:21.117Z] Looking for file /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers/reload-command/reload-command.definition.ts
+[2025-02-16T13:09:21.123Z] [2025-02-16T13:09:21.123Z] reload-command set
+[2025-02-16T13:09:21.131Z] [2025-02-16T13:09:21.131Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers
+[2025-02-16T13:09:21.131Z] [2025-02-16T13:09:21.131Z] Found 2 folders to check.
+[2025-02-16T13:09:21.132Z] [2025-02-16T13:09:21.132Z] Looking for file /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers/gen-transfer-msg/gen-transfer-msg.definition.ts
+[2025-02-16T13:09:21.132Z] [2025-02-16T13:09:21.132Z] gen-transfer-msg set
+[2025-02-16T13:09:21.133Z] [2025-02-16T13:09:21.133Z] Looking for file /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers/reload-command/reload-command.definition.ts
+[2025-02-16T13:09:21.133Z] [2025-02-16T13:09:21.133Z] reload-command set
+[2025-02-16T13:09:21.134Z] [2025-02-16T13:09:21.134Z] Request body: [
+  {
+    "name": "gen-transfer-msg",
+    "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+    "type": 1,
+    "allowedRoles": [
+      "member",
+      "admin",
+      "moderator",
+      "owner",
+      "honored-member",
+      "super-moderator"
+    ],
+    "data": {
+      "options": [
+        {
+          "name": "role-to-buy",
+          "description": "The role to buy.",
+          "required": true,
+          "type": 8
+        }
+      ],
+      "name": "gen-transfer-msg",
+      "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+      "contexts": [
+        0
+      ],
+      "integration_types": [
+        0
+      ],
+      "type": 1
+    }
+  },
+  {
+    "name": "reload-command",
+    "description": "Reloads a command.",
+    "type": 4,
+    "data": {
+      "options": [
+        {
+          "type": 3,
+          "name": "command",
+          "description": "The command to reload.",
+          "required": true
+        }
+      ],
+      "name": "reload-command",
+      "description": "Reloads a command.",
+      "type": 1
+    }
+  }
+]
+[2025-02-16T13:09:21.135Z] [2025-02-16T13:09:21.135Z] Request body: [
+  {
+    "name": "gen-transfer-msg",
+    "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+    "type": 1,
+    "allowedRoles": [
+      "member",
+      "admin",
+      "moderator",
+      "owner",
+      "honored-member",
+      "super-moderator"
+    ],
+    "data": {
+      "options": [
+        {
+          "name": "role-to-buy",
+          "description": "The role to buy.",
+          "required": true,
+          "type": 8
+        }
+      ],
+      "name": "gen-transfer-msg",
+      "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+      "contexts": [
+        0
+      ],
+      "integration_types": [
+        0
+      ],
+      "type": 1
+    }
+  },
+  {
+    "name": "reload-command",
+    "description": "Reloads a command.",
+    "type": 4,
+    "data": {
+      "options": [
+        {
+          "type": 3,
+          "name": "command",
+          "description": "The command to reload.",
+          "required": true
+        }
+      ],
+      "name": "reload-command",
+      "description": "Reloads a command.",
+      "type": 1
+    }
+  }
+]
+[2025-02-16T13:09:21.135Z] [2025-02-16T13:09:21.135Z] Exevution of event interactionCreate has been added
+[2025-02-16T13:09:21.141Z] [2025-02-16T13:09:21.141Z] Exevution of event ready has been added
+[2025-02-16T13:09:56.026Z] [2025-02-16T13:09:56.026Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers
+[2025-02-16T13:09:56.027Z] [2025-02-16T13:09:56.027Z] Found 2 folders to check.
+[2025-02-16T13:09:56.028Z] [2025-02-16T13:09:56.028Z] Looking for file /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers/gen-transfer-msg/gen-transfer-msg.definition.ts
+[2025-02-16T13:09:56.063Z] [2025-02-16T13:09:56.063Z] gen-transfer-msg set
+[2025-02-16T13:09:56.064Z] [2025-02-16T13:09:56.064Z] Looking for file /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers/reload-command/reload-command.definition.ts
+[2025-02-16T13:09:56.071Z] [2025-02-16T13:09:56.071Z] reload-command set
+[2025-02-16T13:09:56.083Z] [2025-02-16T13:09:56.083Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers
+[2025-02-16T13:09:56.083Z] [2025-02-16T13:09:56.083Z] Found 2 folders to check.
+[2025-02-16T13:09:56.084Z] [2025-02-16T13:09:56.084Z] Looking for file /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers/gen-transfer-msg/gen-transfer-msg.definition.ts
+[2025-02-16T13:09:56.084Z] [2025-02-16T13:09:56.084Z] gen-transfer-msg set
+[2025-02-16T13:09:56.085Z] [2025-02-16T13:09:56.085Z] Looking for file /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers/reload-command/reload-command.definition.ts
+[2025-02-16T13:09:56.085Z] [2025-02-16T13:09:56.085Z] reload-command set
+[2025-02-16T13:09:56.086Z] [2025-02-16T13:09:56.086Z] Request body: [
+  {
+    "name": "gen-transfer-msg",
+    "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+    "type": 1,
+    "allowedRoles": [
+      "member",
+      "admin",
+      "moderator",
+      "owner",
+      "honored-member",
+      "super-moderator"
+    ],
+    "data": {
+      "options": [
+        {
+          "name": "role-to-buy",
+          "description": "The role to buy.",
+          "required": true,
+          "type": 8
+        }
+      ],
+      "name": "gen-transfer-msg",
+      "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+      "contexts": [
+        0
+      ],
+      "integration_types": [
+        0
+      ],
+      "type": 1
+    }
+  },
+  {
+    "name": "reload-command",
+    "description": "Reloads a command.",
+    "type": 4,
+    "data": {
+      "options": [
+        {
+          "type": 3,
+          "name": "command",
+          "description": "The command to reload.",
+          "required": true
+        }
+      ],
+      "name": "reload-command",
+      "description": "Reloads a command.",
+      "type": 1
+    }
+  }
+]
+[2025-02-16T13:09:56.087Z] [2025-02-16T13:09:56.087Z] Request body: [
+  {
+    "name": "gen-transfer-msg",
+    "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+    "type": 1,
+    "allowedRoles": [
+      "member",
+      "admin",
+      "moderator",
+      "owner",
+      "honored-member",
+      "super-moderator"
+    ],
+    "data": {
+      "options": [
+        {
+          "name": "role-to-buy",
+          "description": "The role to buy.",
+          "required": true,
+          "type": 8
+        }
+      ],
+      "name": "gen-transfer-msg",
+      "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+      "contexts": [
+        0
+      ],
+      "integration_types": [
+        0
+      ],
+      "type": 1
+    }
+  },
+  {
+    "name": "reload-command",
+    "description": "Reloads a command.",
+    "type": 4,
+    "data": {
+      "options": [
+        {
+          "type": 3,
+          "name": "command",
+          "description": "The command to reload.",
+          "required": true
+        }
+      ],
+      "name": "reload-command",
+      "description": "Reloads a command.",
+      "type": 1
+    }
+  }
+]
+[2025-02-16T13:09:56.087Z] [2025-02-16T13:09:56.087Z] Exevution of event interactionCreate has been added
+[2025-02-16T13:09:56.097Z] [2025-02-16T13:09:56.097Z] Exevution of event ready has been added
+[2025-02-16T14:38:38.230Z] [2025-02-16T14:38:38.230Z] ~ ~ ~ Setting up AlterStage - discord server integration application (version: 1.0.0.0-alpha.1) ~ ~ ~
+[2025-02-16T14:38:47.271Z] [2025-02-16T14:38:47.271Z] Arguments: [ '-registercommand=gen-transfer-msg' ]
+[2025-02-16T14:38:49.026Z] [2025-02-16T14:38:49.026Z] Rozpoczynam procesowanie operacji 'gen-transfer-msg'.
+Definicja operacji:
+{
+  "name": "gen-transfer-msg",
+  "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+  "type": 1,
+  "allowedRoles": [
+    "member",
+    "admin",
+    "moderator",
+    "owner",
+    "honored-member",
+    "super-moderator"
+  ],
+  "data": {
+    "options": [
+      {
+        "name": "role-to-buy",
+        "description": "The role to buy.",
+        "required": true,
+        "type": 8
+      }
+    ],
+    "name": "gen-transfer-msg",
+    "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+    "contexts": [
+      0
+    ],
+    "integration_types": [
+      0
+    ],
+    "type": 1
+  }
+}
+[2025-02-16T14:38:51.430Z] [2025-02-16T14:38:51.430Z] ERROR: getaddrinfo ENOTFOUND discord.com
+Stack: Error: getaddrinfo ENOTFOUND discord.com
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:120:26)
+    at GetAddrInfoReqWrap.callbackTrampoline (node:internal/async_hooks:130:17)
+[2025-02-16T14:38:52.283Z] [2025-02-16T14:38:52.283Z] ERROR: Treść błędu:
+{
+  "errno": -3008,
+  "code": "ENOTFOUND",
+  "syscall": "getaddrinfo",
+  "hostname": "discord.com"
+}
+[2025-02-16T15:00:59.789Z] [2025-02-16T15:00:59.789Z] ~ ~ ~ Setting up AlterStage - discord server integration application (version: 1.0.0.0-alpha.1) ~ ~ ~
+[2025-02-16T15:00:59.820Z] [2025-02-16T15:00:59.820Z] Arguments: [ '-registercommand=gen-transfer-msg' ]
+[2025-02-16T15:00:59.825Z] [2025-02-16T15:00:59.825Z] Rozpoczynam procesowanie operacji 'gen-transfer-msg'.
+Definicja operacji:
+{
+  "name": "gen-transfer-msg",
+  "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+  "type": 1,
+  "allowedRoles": [
+    "member",
+    "admin",
+    "moderator",
+    "owner",
+    "honored-member",
+    "super-moderator"
+  ],
+  "data": {
+    "options": [
+      {
+        "name": "role-to-buy",
+        "description": "The role to buy.",
+        "required": true,
+        "type": 8
+      }
+    ],
+    "name": "gen-transfer-msg",
+    "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+    "contexts": [
+      0
+    ],
+    "integration_types": [
+      0
+    ],
+    "type": 1
+  }
+}
+[2025-02-16T15:00:59.851Z] [2025-02-16T15:00:59.851Z] ERROR: getaddrinfo ENOTFOUND discord.com
+Stack: Error: getaddrinfo ENOTFOUND discord.com
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:120:26)
+[2025-02-16T15:00:59.851Z] [2025-02-16T15:00:59.851Z] ERROR: Treść błędu:
+{
+  "errno": -3008,
+  "code": "ENOTFOUND",
+  "syscall": "getaddrinfo",
+  "hostname": "discord.com"
+}
+[2025-02-16T15:02:17.980Z] [2025-02-16T15:02:17.980Z] ~ ~ ~ Setting up AlterStage - discord server integration application (version: 1.0.0.0-alpha.1) ~ ~ ~
+[2025-02-16T15:02:18.029Z] [2025-02-16T15:02:18.029Z] Arguments: [ '-registercommand=gen-transfer-msg' ]
+[2025-02-16T15:02:18.045Z] [2025-02-16T15:02:18.045Z] Rozpoczynam procesowanie operacji 'gen-transfer-msg'.
+Definicja operacji:
+{
+  "name": "gen-transfer-msg",
+  "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+  "type": 1,
+  "allowedRoles": [
+    "member",
+    "admin",
+    "moderator",
+    "owner",
+    "honored-member",
+    "super-moderator"
+  ],
+  "data": {
+    "options": [
+      {
+        "name": "role-to-buy",
+        "description": "The role to buy.",
+        "required": true,
+        "type": 8
+      }
+    ],
+    "name": "gen-transfer-msg",
+    "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+    "contexts": [
+      0
+    ],
+    "integration_types": [
+      0
+    ],
+    "type": 1
+  }
+}
+[2025-02-16T15:02:18.694Z] [2025-02-16T15:02:18.694Z] Operacja PUT polecenia (/) gen-transfer-msg została wykonana.
+Rezultat operacji:
+[
+  {
+    "id": "1340589528162893864",
+    "application_id": "1335919556908028056",
+    "version": "1340648690288951347",
+    "default_member_permissions": null,
+    "type": 1,
+    "name": "gen-transfer-msg",
+    "name_localizations": null,
+    "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+    "description_localizations": null,
+    "guild_id": "1333153060930846781",
+    "options": [
+      {
+        "type": 8,
+        "name": "role-to-buy",
+        "name_localizations": null,
+        "description": "The role to buy.",
+        "description_localizations": null,
+        "required": true
+      }
+    ],
+    "nsfw": false
+  }
+]
+[2025-02-16T15:02:41.680Z] [2025-02-16T15:02:41.680Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers
+[2025-02-16T15:02:41.682Z] [2025-02-16T15:02:41.682Z] Found 2 folders to check.
+[2025-02-16T15:02:41.682Z] [2025-02-16T15:02:41.682Z] Looking for file /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers/gen-transfer-msg/gen-transfer-msg.definition.ts
+[2025-02-16T15:02:41.691Z] [2025-02-16T15:02:41.691Z] gen-transfer-msg set
+[2025-02-16T15:02:41.691Z] [2025-02-16T15:02:41.691Z] Looking for file /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers/reload-command/reload-command.definition.ts
+[2025-02-16T15:02:41.695Z] [2025-02-16T15:02:41.695Z] reload-command set
+[2025-02-16T15:02:41.698Z] [2025-02-16T15:02:41.698Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers
+[2025-02-16T15:02:41.698Z] [2025-02-16T15:02:41.698Z] Found 2 folders to check.
+[2025-02-16T15:02:41.698Z] [2025-02-16T15:02:41.698Z] Looking for file /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers/gen-transfer-msg/gen-transfer-msg.definition.ts
+[2025-02-16T15:02:41.699Z] [2025-02-16T15:02:41.699Z] gen-transfer-msg set
+[2025-02-16T15:02:41.699Z] [2025-02-16T15:02:41.699Z] Looking for file /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers/reload-command/reload-command.definition.ts
+[2025-02-16T15:02:41.699Z] [2025-02-16T15:02:41.699Z] reload-command set
+[2025-02-16T15:02:41.699Z] [2025-02-16T15:02:41.699Z] Request body: [
+  {
+    "name": "gen-transfer-msg",
+    "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+    "type": 1,
+    "allowedRoles": [
+      "member",
+      "admin",
+      "moderator",
+      "owner",
+      "honored-member",
+      "super-moderator"
+    ],
+    "data": {
+      "options": [
+        {
+          "name": "role-to-buy",
+          "description": "The role to buy.",
+          "required": true,
+          "type": 8
+        }
+      ],
+      "name": "gen-transfer-msg",
+      "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+      "contexts": [
+        0
+      ],
+      "integration_types": [
+        0
+      ],
+      "type": 1
+    }
+  },
+  {
+    "name": "reload-command",
+    "description": "Reloads a command.",
+    "type": 4,
+    "data": {
+      "options": [
+        {
+          "type": 3,
+          "name": "command",
+          "description": "The command to reload.",
+          "required": true
+        }
+      ],
+      "name": "reload-command",
+      "description": "Reloads a command.",
+      "type": 1
+    }
+  }
+]
+[2025-02-16T15:02:41.699Z] [2025-02-16T15:02:41.699Z] Request body: [
+  {
+    "name": "gen-transfer-msg",
+    "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+    "type": 1,
+    "allowedRoles": [
+      "member",
+      "admin",
+      "moderator",
+      "owner",
+      "honored-member",
+      "super-moderator"
+    ],
+    "data": {
+      "options": [
+        {
+          "name": "role-to-buy",
+          "description": "The role to buy.",
+          "required": true,
+          "type": 8
+        }
+      ],
+      "name": "gen-transfer-msg",
+      "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+      "contexts": [
+        0
+      ],
+      "integration_types": [
+        0
+      ],
+      "type": 1
+    }
+  },
+  {
+    "name": "reload-command",
+    "description": "Reloads a command.",
+    "type": 4,
+    "data": {
+      "options": [
+        {
+          "type": 3,
+          "name": "command",
+          "description": "The command to reload.",
+          "required": true
+        }
+      ],
+      "name": "reload-command",
+      "description": "Reloads a command.",
+      "type": 1
+    }
+  }
+]
+[2025-02-16T15:02:41.699Z] [2025-02-16T15:02:41.699Z] Exevution of event interactionCreate has been added
+[2025-02-16T15:02:41.705Z] [2025-02-16T15:02:41.705Z] Exevution of event ready has been added
+[2025-02-16T15:22:41.200Z] [2025-02-16T15:22:41.200Z] ~ ~ ~ Setting up AlterStage - discord server integration application (version: 1.0.0.0-alpha.1) ~ ~ ~
+[2025-02-16T15:22:41.228Z] [2025-02-16T15:22:41.228Z] Arguments: [ '-registercommand=gen-transfer-msg' ]
+[2025-02-16T15:22:41.234Z] [2025-02-16T15:22:41.234Z] Rozpoczynam procesowanie operacji 'gen-transfer-msg'.
+Definicja operacji:
+{
+  "name": "gen-transfer-msg",
+  "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+  "type": 1,
+  "allowedRoles": [
+    "member",
+    "admin",
+    "moderator",
+    "owner",
+    "honored-member",
+    "super-moderator"
+  ],
+  "data": {
+    "options": [
+      {
+        "name": "role-to-buy",
+        "description": "The role to buy.",
+        "required": true,
+        "type": 8
+      }
+    ],
+    "name": "gen-transfer-msg",
+    "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+    "contexts": [
+      0
+    ],
+    "integration_types": [
+      0
+    ],
+    "type": 1
+  }
+}
+[2025-02-16T15:22:41.494Z] [2025-02-16T15:22:41.494Z] Operacja PUT polecenia (/) gen-transfer-msg została wykonana.
+Rezultat operacji:
+[
+  {
+    "id": "1340589528162893864",
+    "application_id": "1335919556908028056",
+    "version": "1340648690288951347",
+    "default_member_permissions": null,
+    "type": 1,
+    "name": "gen-transfer-msg",
+    "name_localizations": null,
+    "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+    "description_localizations": null,
+    "guild_id": "1333153060930846781",
+    "options": [
+      {
+        "type": 8,
+        "name": "role-to-buy",
+        "name_localizations": null,
+        "description": "The role to buy.",
+        "description_localizations": null,
+        "required": true
+      }
+    ],
+    "nsfw": false
+  }
+]
+[2025-02-16T15:22:50.843Z] [2025-02-16T15:22:50.843Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers
+[2025-02-16T15:22:50.844Z] [2025-02-16T15:22:50.844Z] Found 2 folders to check.
+[2025-02-16T15:22:50.844Z] [2025-02-16T15:22:50.844Z] Looking for file /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers/gen-transfer-msg/gen-transfer-msg.definition.ts
+[2025-02-16T15:22:50.861Z] [2025-02-16T15:22:50.861Z] gen-transfer-msg set
+[2025-02-16T15:22:50.861Z] [2025-02-16T15:22:50.861Z] Looking for file /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers/reload-command/reload-command.definition.ts
+[2025-02-16T15:22:50.864Z] [2025-02-16T15:22:50.864Z] reload-command set
+[2025-02-16T15:22:50.866Z] [2025-02-16T15:22:50.866Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers
+[2025-02-16T15:22:50.866Z] [2025-02-16T15:22:50.866Z] Found 2 folders to check.
+[2025-02-16T15:22:50.867Z] [2025-02-16T15:22:50.867Z] Looking for file /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers/gen-transfer-msg/gen-transfer-msg.definition.ts
+[2025-02-16T15:22:50.867Z] [2025-02-16T15:22:50.867Z] gen-transfer-msg set
+[2025-02-16T15:22:50.867Z] [2025-02-16T15:22:50.867Z] Looking for file /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers/reload-command/reload-command.definition.ts
+[2025-02-16T15:22:50.867Z] [2025-02-16T15:22:50.867Z] reload-command set
+[2025-02-16T15:22:50.867Z] [2025-02-16T15:22:50.867Z] Request body: [
+  {
+    "name": "gen-transfer-msg",
+    "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+    "type": 1,
+    "allowedRoles": [
+      "member",
+      "admin",
+      "moderator",
+      "owner",
+      "honored-member",
+      "super-moderator"
+    ],
+    "data": {
+      "options": [
+        {
+          "name": "role-to-buy",
+          "description": "The role to buy.",
+          "required": true,
+          "type": 8
+        }
+      ],
+      "name": "gen-transfer-msg",
+      "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+      "contexts": [
+        0
+      ],
+      "integration_types": [
+        0
+      ],
+      "type": 1
+    }
+  },
+  {
+    "name": "reload-command",
+    "description": "Reloads a command.",
+    "type": 4,
+    "data": {
+      "options": [
+        {
+          "type": 3,
+          "name": "command",
+          "description": "The command to reload.",
+          "required": true
+        }
+      ],
+      "name": "reload-command",
+      "description": "Reloads a command.",
+      "type": 1
+    }
+  }
+]
+[2025-02-16T15:22:50.867Z] [2025-02-16T15:22:50.867Z] Request body: [
+  {
+    "name": "gen-transfer-msg",
+    "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+    "type": 1,
+    "allowedRoles": [
+      "member",
+      "admin",
+      "moderator",
+      "owner",
+      "honored-member",
+      "super-moderator"
+    ],
+    "data": {
+      "options": [
+        {
+          "name": "role-to-buy",
+          "description": "The role to buy.",
+          "required": true,
+          "type": 8
+        }
+      ],
+      "name": "gen-transfer-msg",
+      "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+      "contexts": [
+        0
+      ],
+      "integration_types": [
+        0
+      ],
+      "type": 1
+    }
+  },
+  {
+    "name": "reload-command",
+    "description": "Reloads a command.",
+    "type": 4,
+    "data": {
+      "options": [
+        {
+          "type": 3,
+          "name": "command",
+          "description": "The command to reload.",
+          "required": true
+        }
+      ],
+      "name": "reload-command",
+      "description": "Reloads a command.",
+      "type": 1
+    }
+  }
+]
+[2025-02-16T15:22:50.868Z] [2025-02-16T15:22:50.868Z] Exevution of event interactionCreate has been added
+[2025-02-16T15:22:50.872Z] [2025-02-16T15:22:50.872Z] Exevution of event ready has been added
+[2025-02-16T15:23:11.328Z] [2025-02-16T15:23:11.328Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers
+[2025-02-16T15:23:23.864Z] [2025-02-16T15:23:23.864Z] Found 2 folders to check.
+[2025-02-16T15:23:29.725Z] [2025-02-16T15:23:29.725Z] Looking for file /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers/gen-transfer-msg/gen-transfer-msg.definition.ts
+[2025-02-16T15:23:33.254Z] [2025-02-16T15:23:33.254Z] gen-transfer-msg set
+[2025-02-16T15:23:33.254Z] [2025-02-16T15:23:33.254Z] Looking for file /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers/reload-command/reload-command.definition.ts
+[2025-02-16T15:23:33.262Z] [2025-02-16T15:23:33.262Z] reload-command set
+[2025-02-16T15:23:33.270Z] [2025-02-16T15:23:33.270Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers
+[2025-02-16T15:23:33.271Z] [2025-02-16T15:23:33.271Z] Found 2 folders to check.
+[2025-02-16T15:23:33.271Z] [2025-02-16T15:23:33.271Z] Looking for file /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers/gen-transfer-msg/gen-transfer-msg.definition.ts
+[2025-02-16T15:23:33.271Z] [2025-02-16T15:23:33.271Z] gen-transfer-msg set
+[2025-02-16T15:23:33.272Z] [2025-02-16T15:23:33.272Z] Looking for file /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers/reload-command/reload-command.definition.ts
+[2025-02-16T15:23:33.272Z] [2025-02-16T15:23:33.272Z] reload-command set
+[2025-02-16T15:23:33.273Z] [2025-02-16T15:23:33.273Z] Request body: [
+  {
+    "name": "gen-transfer-msg",
+    "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+    "type": 1,
+    "allowedRoles": [
+      "member",
+      "admin",
+      "moderator",
+      "owner",
+      "honored-member",
+      "super-moderator"
+    ],
+    "data": {
+      "options": [
+        {
+          "name": "role-to-buy",
+          "description": "The role to buy.",
+          "required": true,
+          "type": 8
+        }
+      ],
+      "name": "gen-transfer-msg",
+      "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+      "contexts": [
+        0
+      ],
+      "integration_types": [
+        0
+      ],
+      "type": 1
+    }
+  },
+  {
+    "name": "reload-command",
+    "description": "Reloads a command.",
+    "type": 4,
+    "data": {
+      "options": [
+        {
+          "type": 3,
+          "name": "command",
+          "description": "The command to reload.",
+          "required": true
+        }
+      ],
+      "name": "reload-command",
+      "description": "Reloads a command.",
+      "type": 1
+    }
+  }
+]
+[2025-02-16T15:23:33.273Z] [2025-02-16T15:23:33.273Z] Request body: [
+  {
+    "name": "gen-transfer-msg",
+    "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+    "type": 1,
+    "allowedRoles": [
+      "member",
+      "admin",
+      "moderator",
+      "owner",
+      "honored-member",
+      "super-moderator"
+    ],
+    "data": {
+      "options": [
+        {
+          "name": "role-to-buy",
+          "description": "The role to buy.",
+          "required": true,
+          "type": 8
+        }
+      ],
+      "name": "gen-transfer-msg",
+      "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+      "contexts": [
+        0
+      ],
+      "integration_types": [
+        0
+      ],
+      "type": 1
+    }
+  },
+  {
+    "name": "reload-command",
+    "description": "Reloads a command.",
+    "type": 4,
+    "data": {
+      "options": [
+        {
+          "type": 3,
+          "name": "command",
+          "description": "The command to reload.",
+          "required": true
+        }
+      ],
+      "name": "reload-command",
+      "description": "Reloads a command.",
+      "type": 1
+    }
+  }
+]
+[2025-02-16T15:23:33.274Z] [2025-02-16T15:23:33.274Z] Exevution of event interactionCreate has been added
+[2025-02-16T15:23:33.282Z] [2025-02-16T15:23:33.282Z] Exevution of event ready has been added
+[2025-02-16T15:24:44.190Z] [2025-02-16T15:24:44.190Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers
+[2025-02-16T15:24:44.192Z] [2025-02-16T15:24:44.192Z] Found 2 folders to check.
+[2025-02-16T15:24:44.192Z] [2025-02-16T15:24:44.192Z] Looking for file /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers/gen-transfer-msg/gen-transfer-msg.definition.ts
+[2025-02-16T15:24:44.216Z] [2025-02-16T15:24:44.216Z] gen-transfer-msg set
+[2025-02-16T15:24:44.216Z] [2025-02-16T15:24:44.216Z] Looking for file /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers/reload-command/reload-command.definition.ts
+[2025-02-16T15:24:44.222Z] [2025-02-16T15:24:44.222Z] reload-command set
+[2025-02-16T15:24:44.228Z] [2025-02-16T15:24:44.228Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers
+[2025-02-16T15:24:44.229Z] [2025-02-16T15:24:44.229Z] Found 2 folders to check.
+[2025-02-16T15:24:44.229Z] [2025-02-16T15:24:44.229Z] Looking for file /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers/gen-transfer-msg/gen-transfer-msg.definition.ts
+[2025-02-16T15:24:44.230Z] [2025-02-16T15:24:44.230Z] gen-transfer-msg set
+[2025-02-16T15:24:44.230Z] [2025-02-16T15:24:44.230Z] Looking for file /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers/reload-command/reload-command.definition.ts
+[2025-02-16T15:24:44.231Z] [2025-02-16T15:24:44.231Z] reload-command set
+[2025-02-16T15:24:44.231Z] [2025-02-16T15:24:44.231Z] Request body: [
+  {
+    "name": "gen-transfer-msg",
+    "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+    "type": 1,
+    "allowedRoles": [
+      "member",
+      "admin",
+      "moderator",
+      "owner",
+      "honored-member",
+      "super-moderator"
+    ],
+    "data": {
+      "options": [
+        {
+          "name": "role-to-buy",
+          "description": "The role to buy.",
+          "required": true,
+          "type": 8
+        }
+      ],
+      "name": "gen-transfer-msg",
+      "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+      "contexts": [
+        0
+      ],
+      "integration_types": [
+        0
+      ],
+      "type": 1
+    }
+  },
+  {
+    "name": "reload-command",
+    "description": "Reloads a command.",
+    "type": 4,
+    "data": {
+      "options": [
+        {
+          "type": 3,
+          "name": "command",
+          "description": "The command to reload.",
+          "required": true
+        }
+      ],
+      "name": "reload-command",
+      "description": "Reloads a command.",
+      "type": 1
+    }
+  }
+]
+[2025-02-16T15:24:44.232Z] [2025-02-16T15:24:44.232Z] Request body: [
+  {
+    "name": "gen-transfer-msg",
+    "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+    "type": 1,
+    "allowedRoles": [
+      "member",
+      "admin",
+      "moderator",
+      "owner",
+      "honored-member",
+      "super-moderator"
+    ],
+    "data": {
+      "options": [
+        {
+          "name": "role-to-buy",
+          "description": "The role to buy.",
+          "required": true,
+          "type": 8
+        }
+      ],
+      "name": "gen-transfer-msg",
+      "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+      "contexts": [
+        0
+      ],
+      "integration_types": [
+        0
+      ],
+      "type": 1
+    }
+  },
+  {
+    "name": "reload-command",
+    "description": "Reloads a command.",
+    "type": 4,
+    "data": {
+      "options": [
+        {
+          "type": 3,
+          "name": "command",
+          "description": "The command to reload.",
+          "required": true
+        }
+      ],
+      "name": "reload-command",
+      "description": "Reloads a command.",
+      "type": 1
+    }
+  }
+]
+[2025-02-16T15:24:44.232Z] [2025-02-16T15:24:44.232Z] Exevution of event interactionCreate has been added
+[2025-02-16T15:24:44.239Z] [2025-02-16T15:24:44.239Z] Exevution of event ready has been added
+[2025-02-16T15:27:40.689Z] [2025-02-16T15:27:40.689Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers
+[2025-02-16T15:27:40.696Z] [2025-02-16T15:27:40.696Z] Found 2 folders to check.
+[2025-02-16T15:27:40.697Z] [2025-02-16T15:27:40.697Z] Looking for file /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers/gen-transfer-msg/gen-transfer-msg.definition.ts
+[2025-02-16T15:27:40.766Z] [2025-02-16T15:27:40.766Z] gen-transfer-msg set
+[2025-02-16T15:27:40.767Z] [2025-02-16T15:27:40.767Z] Looking for file /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers/reload-command/reload-command.definition.ts
+[2025-02-16T15:27:40.772Z] [2025-02-16T15:27:40.772Z] reload-command set
+[2025-02-16T15:28:44.355Z] [2025-02-16T15:28:44.355Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers
+[2025-02-16T15:28:44.359Z] [2025-02-16T15:28:44.359Z] Found 2 folders to check.
+[2025-02-16T15:28:44.361Z] [2025-02-16T15:28:44.361Z] Looking for file /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers/gen-transfer-msg/gen-transfer-msg.definition.ts
+[2025-02-16T15:28:44.362Z] [2025-02-16T15:28:44.362Z] gen-transfer-msg set
+[2025-02-16T15:28:44.365Z] [2025-02-16T15:28:44.365Z] Looking for file /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers/reload-command/reload-command.definition.ts
+[2025-02-16T15:28:44.365Z] [2025-02-16T15:28:44.365Z] reload-command set
+[2025-02-16T15:28:49.669Z] [2025-02-16T15:28:49.669Z] Request body: [
+  {
+    "name": "gen-transfer-msg",
+    "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+    "type": 1,
+    "allowedRoles": [
+      "member",
+      "admin",
+      "moderator",
+      "owner",
+      "honored-member",
+      "super-moderator"
+    ],
+    "data": {
+      "options": [
+        {
+          "name": "role-to-buy",
+          "description": "The role to buy.",
+          "required": true,
+          "type": 8
+        }
+      ],
+      "name": "gen-transfer-msg",
+      "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+      "contexts": [
+        0
+      ],
+      "integration_types": [
+        0
+      ],
+      "type": 1
+    }
+  },
+  {
+    "name": "reload-command",
+    "description": "Reloads a command.",
+    "type": 4,
+    "data": {
+      "options": [
+        {
+          "type": 3,
+          "name": "command",
+          "description": "The command to reload.",
+          "required": true
+        }
+      ],
+      "name": "reload-command",
+      "description": "Reloads a command.",
+      "type": 1
+    }
+  }
+]
+[2025-02-16T15:28:49.670Z] [2025-02-16T15:28:49.670Z] Request body: [
+  {
+    "name": "gen-transfer-msg",
+    "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+    "type": 1,
+    "allowedRoles": [
+      "member",
+      "admin",
+      "moderator",
+      "owner",
+      "honored-member",
+      "super-moderator"
+    ],
+    "data": {
+      "options": [
+        {
+          "name": "role-to-buy",
+          "description": "The role to buy.",
+          "required": true,
+          "type": 8
+        }
+      ],
+      "name": "gen-transfer-msg",
+      "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+      "contexts": [
+        0
+      ],
+      "integration_types": [
+        0
+      ],
+      "type": 1
+    }
+  },
+  {
+    "name": "reload-command",
+    "description": "Reloads a command.",
+    "type": 4,
+    "data": {
+      "options": [
+        {
+          "type": 3,
+          "name": "command",
+          "description": "The command to reload.",
+          "required": true
+        }
+      ],
+      "name": "reload-command",
+      "description": "Reloads a command.",
+      "type": 1
+    }
+  }
+]
+[2025-02-16T15:28:54.233Z] [2025-02-16T15:28:54.233Z] Exevution of event interactionCreate has been added
+[2025-02-16T15:28:54.248Z] [2025-02-16T15:28:54.248Z] Exevution of event ready has been added
+[2025-02-16T15:40:53.644Z] [2025-02-16T15:40:53.644Z] ~ ~ ~ Setting up AlterStage - discord server integration application (version: 1.0.0.0-alpha.1) ~ ~ ~
+[2025-02-16T15:40:53.680Z] [2025-02-16T15:40:53.680Z] Arguments: [ '-registercommand=gen-transfer-msg' ]
+[2025-02-16T15:40:53.689Z] [2025-02-16T15:40:53.689Z] Rozpoczynam procesowanie operacji 'gen-transfer-msg'.
+Definicja operacji:
+{
+  "name": "gen-transfer-msg",
+  "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+  "type": 1,
+  "allowedRoles": [
+    "member",
+    "admin",
+    "moderator",
+    "owner",
+    "honored-member",
+    "super-moderator"
+  ],
+  "data": {
+    "options": [
+      {
+        "name": "role-to-buy",
+        "description": "The role to buy.",
+        "required": true,
+        "type": 8
+      }
+    ],
+    "name": "gen-transfer-msg",
+    "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+    "contexts": [
+      0
+    ],
+    "integration_types": [
+      0
+    ],
+    "type": 1
+  }
+}
+[2025-02-16T15:40:54.029Z] [2025-02-16T15:40:54.029Z] Operacja PUT polecenia (/) gen-transfer-msg została wykonana.
+Rezultat operacji:
+[
+  {
+    "id": "1340589528162893864",
+    "application_id": "1335919556908028056",
+    "version": "1340648690288951347",
+    "default_member_permissions": null,
+    "type": 1,
+    "name": "gen-transfer-msg",
+    "name_localizations": null,
+    "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+    "description_localizations": null,
+    "guild_id": "1333153060930846781",
+    "options": [
+      {
+        "type": 8,
+        "name": "role-to-buy",
+        "name_localizations": null,
+        "description": "The role to buy.",
+        "description_localizations": null,
+        "required": true
+      }
+    ],
+    "nsfw": false
+  }
+]
+[2025-02-16T15:41:09.806Z] [2025-02-16T15:41:09.806Z] ~ ~ ~ Setting up AlterStage - discord server integration application (version: 1.0.0.0-alpha.1) ~ ~ ~
+[2025-02-16T15:41:10.024Z] [2025-02-16T15:41:10.024Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers
+[2025-02-16T15:41:10.024Z] [2025-02-16T15:41:10.024Z] Found 2 folders to check.
+[2025-02-16T15:41:10.024Z] [2025-02-16T15:41:10.024Z] Looking for file /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers/gen-transfer-msg/gen-transfer-msg.definition.ts
+[2025-02-16T15:41:10.031Z] [2025-02-16T15:41:10.031Z] gen-transfer-msg set
+[2025-02-16T15:41:10.032Z] [2025-02-16T15:41:10.032Z] Looking for file /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers/reload-command/reload-command.definition.ts
+[2025-02-16T15:41:10.036Z] [2025-02-16T15:41:10.036Z] reload-command set
+[2025-02-16T15:41:10.039Z] [2025-02-16T15:41:10.039Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers
+[2025-02-16T15:41:10.039Z] [2025-02-16T15:41:10.039Z] Found 2 folders to check.
+[2025-02-16T15:41:10.039Z] [2025-02-16T15:41:10.039Z] Looking for file /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers/gen-transfer-msg/gen-transfer-msg.definition.ts
+[2025-02-16T15:41:10.039Z] [2025-02-16T15:41:10.039Z] gen-transfer-msg set
+[2025-02-16T15:41:10.039Z] [2025-02-16T15:41:10.039Z] Looking for file /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers/reload-command/reload-command.definition.ts
+[2025-02-16T15:41:10.039Z] [2025-02-16T15:41:10.039Z] reload-command set
+[2025-02-16T15:41:10.039Z] [2025-02-16T15:41:10.039Z] Request body: [
+  {
+    "name": "gen-transfer-msg",
+    "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+    "type": 1,
+    "allowedRoles": [
+      "member",
+      "admin",
+      "moderator",
+      "owner",
+      "honored-member",
+      "super-moderator"
+    ],
+    "data": {
+      "options": [
+        {
+          "name": "role-to-buy",
+          "description": "The role to buy.",
+          "required": true,
+          "type": 8
+        }
+      ],
+      "name": "gen-transfer-msg",
+      "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+      "contexts": [
+        0
+      ],
+      "integration_types": [
+        0
+      ],
+      "type": 1
+    }
+  },
+  {
+    "name": "reload-command",
+    "description": "Reloads a command.",
+    "type": 4,
+    "data": {
+      "options": [
+        {
+          "type": 3,
+          "name": "command",
+          "description": "The command to reload.",
+          "required": true
+        }
+      ],
+      "name": "reload-command",
+      "description": "Reloads a command.",
+      "type": 1
+    }
+  }
+]
+[2025-02-16T15:41:10.040Z] [2025-02-16T15:41:10.040Z] Request body: [
+  {
+    "name": "gen-transfer-msg",
+    "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+    "type": 1,
+    "allowedRoles": [
+      "member",
+      "admin",
+      "moderator",
+      "owner",
+      "honored-member",
+      "super-moderator"
+    ],
+    "data": {
+      "options": [
+        {
+          "name": "role-to-buy",
+          "description": "The role to buy.",
+          "required": true,
+          "type": 8
+        }
+      ],
+      "name": "gen-transfer-msg",
+      "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+      "contexts": [
+        0
+      ],
+      "integration_types": [
+        0
+      ],
+      "type": 1
+    }
+  },
+  {
+    "name": "reload-command",
+    "description": "Reloads a command.",
+    "type": 4,
+    "data": {
+      "options": [
+        {
+          "type": 3,
+          "name": "command",
+          "description": "The command to reload.",
+          "required": true
+        }
+      ],
+      "name": "reload-command",
+      "description": "Reloads a command.",
+      "type": 1
+    }
+  }
+]
+[2025-02-16T15:41:10.040Z] [2025-02-16T15:41:10.040Z] Exevution of event interactionCreate has been added
+[2025-02-16T15:41:10.045Z] [2025-02-16T15:41:10.045Z] Exevution of event ready has been added
+[2025-02-16T15:41:31.418Z] [2025-02-16T15:41:31.418Z] Interaction 'gen-transfer-msg' recieved!
+[2025-02-16T15:41:31.420Z] [2025-02-16T15:41:31.420Z] Interaction 'gen-transfer-msg' execution started!
+[2025-02-16T15:41:31.422Z] [2025-02-16T15:41:31.422Z] Command executed by falalala_wav: /gen-transfer-msg role-to-buy: 1334019132630372442
+[2025-02-16T15:41:40.333Z] [2025-02-16T15:41:40.333Z] Interaction 'gen-transfer-msg' recieved!
+[2025-02-16T15:41:40.335Z] [2025-02-16T15:41:40.335Z] Interaction 'gen-transfer-msg' execution started!
+[2025-02-16T15:41:40.337Z] [2025-02-16T15:41:40.337Z] Command executed by falalala_wav: /gen-transfer-msg role-to-buy: 1335335605323956327
+[2025-02-16T15:44:18.094Z] [2025-02-16T15:44:18.094Z] ~ ~ ~ Setting up AlterStage - discord server integration application (version: 1.0.0.0-alpha.1) ~ ~ ~
+[2025-02-16T15:44:18.301Z] [2025-02-16T15:44:18.301Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers
+[2025-02-16T15:44:18.301Z] [2025-02-16T15:44:18.301Z] Found 2 folders to check.
+[2025-02-16T15:44:18.301Z] [2025-02-16T15:44:18.301Z] Looking for file /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers/gen-transfer-msg/gen-transfer-msg.definition.ts
+[2025-02-16T15:44:18.307Z] [2025-02-16T15:44:18.307Z] gen-transfer-msg set
+[2025-02-16T15:44:18.308Z] [2025-02-16T15:44:18.308Z] Looking for file /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers/reload-command/reload-command.definition.ts
+[2025-02-16T15:44:18.311Z] [2025-02-16T15:44:18.311Z] reload-command set
+[2025-02-16T15:44:18.313Z] [2025-02-16T15:44:18.313Z] Szukam definicji poleceń $rootFolderPath=/Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers
+[2025-02-16T15:44:18.313Z] [2025-02-16T15:44:18.313Z] Found 2 folders to check.
+[2025-02-16T15:44:18.313Z] [2025-02-16T15:44:18.313Z] Looking for file /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers/gen-transfer-msg/gen-transfer-msg.definition.ts
+[2025-02-16T15:44:18.313Z] [2025-02-16T15:44:18.313Z] gen-transfer-msg set
+[2025-02-16T15:44:18.313Z] [2025-02-16T15:44:18.313Z] Looking for file /Users/damianfalkowski/Documents/Source/Zrodlo.AlterStage/Zrodlo.AlterStage.DiscordAppTs/src/app/dc-messaging/handlers/reload-command/reload-command.definition.ts
+[2025-02-16T15:44:18.313Z] [2025-02-16T15:44:18.313Z] reload-command set
+[2025-02-16T15:44:18.314Z] [2025-02-16T15:44:18.314Z] Request body: [
+  {
+    "name": "gen-transfer-msg",
+    "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+    "type": 1,
+    "allowedRoles": [
+      "member",
+      "admin",
+      "moderator",
+      "owner",
+      "honored-member",
+      "super-moderator"
+    ],
+    "data": {
+      "options": [
+        {
+          "name": "role-to-buy",
+          "description": "The role to buy.",
+          "required": true,
+          "type": 8
+        }
+      ],
+      "name": "gen-transfer-msg",
+      "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+      "contexts": [
+        0
+      ],
+      "integration_types": [
+        0
+      ],
+      "type": 1
+    }
+  },
+  {
+    "name": "reload-command",
+    "description": "Reloads a command.",
+    "type": 4,
+    "data": {
+      "options": [
+        {
+          "type": 3,
+          "name": "command",
+          "description": "The command to reload.",
+          "required": true
+        }
+      ],
+      "name": "reload-command",
+      "description": "Reloads a command.",
+      "type": 1
+    }
+  }
+]
+[2025-02-16T15:44:18.314Z] [2025-02-16T15:44:18.314Z] Request body: [
+  {
+    "name": "gen-transfer-msg",
+    "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+    "type": 1,
+    "allowedRoles": [
+      "member",
+      "admin",
+      "moderator",
+      "owner",
+      "honored-member",
+      "super-moderator"
+    ],
+    "data": {
+      "options": [
+        {
+          "name": "role-to-buy",
+          "description": "The role to buy.",
+          "required": true,
+          "type": 8
+        }
+      ],
+      "name": "gen-transfer-msg",
+      "description": "Generates a transfer message for specific role (role has to begin with '+' sign)",
+      "contexts": [
+        0
+      ],
+      "integration_types": [
+        0
+      ],
+      "type": 1
+    }
+  },
+  {
+    "name": "reload-command",
+    "description": "Reloads a command.",
+    "type": 4,
+    "data": {
+      "options": [
+        {
+          "type": 3,
+          "name": "command",
+          "description": "The command to reload.",
+          "required": true
+        }
+      ],
+      "name": "reload-command",
+      "description": "Reloads a command.",
+      "type": 1
+    }
+  }
+]
+[2025-02-16T15:44:18.314Z] [2025-02-16T15:44:18.314Z] Exevution of event interactionCreate has been added
+[2025-02-16T15:44:18.318Z] [2025-02-16T15:44:18.318Z] Exevution of event ready has been added
