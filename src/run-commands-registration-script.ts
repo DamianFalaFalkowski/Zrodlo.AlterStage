@@ -1,13 +1,9 @@
 import { REST, Routes, Client, GatewayIntentBits } from 'discord.js';
 import dotenv from 'dotenv';
-import { FindCommandHandlersUtil } from './utils/find-command-handlers-definitions.util';
-import dcLogger from './utils/dc-logger';
+import { FindCommandHandlersUtil } from './app/utils/find-command-handlers-definitions.util';
+import dcLogger from './app/utils/dc-logger';
 import "./type-mappings/client-type-map.js";
 import path from 'path';
-import { json } from 'sequelize';
-
-// Config
-dotenv.config();
 
 // Utworzenie klienta i zaladowanie commandsów z plików .definition
 export const client = new Client({ intents: [GatewayIntentBits.Guilds] });

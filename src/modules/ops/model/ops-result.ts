@@ -1,5 +1,8 @@
 import { OpsStatus } from "../ops-status.enum";
 
+/**
+ * Klasa informująca o wynik
+ */
 export class OpsResult {
     public succeded: boolean | undefined = undefined;
     public status: OpsStatus;

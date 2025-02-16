@@ -1,5 +1,5 @@
 import { BaseCommand } from "./base.command";
-import dcLogger from "../../../../utils/dc-logger";
+import dcLogger from "../../../utils/dc-logger";
 import { BaseCommandResponse } from "./base.response";
 import { MessageFlags } from 'discord.js';
 

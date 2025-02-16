@@ -6,6 +6,7 @@ import { StartupInstance } from './startup.instance';
     constructor() {
 
     }
+
     addSequelizeContext(instance: StartupInstance, database: string, user: string, password: string, options?: any): ScriptBuilder {
         throw new Error('Method not implemented.');
     }

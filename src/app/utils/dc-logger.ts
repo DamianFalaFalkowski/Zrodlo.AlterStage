@@ -1,12 +1,12 @@
 import { CommandInteraction, InteractionReplyOptions } from 'discord.js';
 import fs from 'fs';
 import path from 'path';
-
+import { __util } from '../startup';
 export class DcLogger {
     private logFilePath: string;
 
     constructor() {
-        this.logFilePath = path.join(__dirname, '../../logs/discord.log');
+        this.logFilePath = path.join(__dirname, '../../../logs/discord.log');
         this.ensureLogFileExists();
     }
 
@@ -16,19 +16,25 @@ export class DcLogger {
         }
     }
 
-    private log(message: string) {
+    private log(message: string, ...optionalParams: any[]) {
         const timestamp = new Date().toISOString();
-        const formattedMessage = `[${timestamp}] ${message}`;
-        fs.appendFileSync(this.logFilePath, `${formattedMessage}\n`);
+        const formattedMessage = optionalParams.length > 0 ?
+            `[${timestamp}] ${__util.format(message, ...optionalParams)}`
+            : `[${timestamp}] ${message}`;
+
+        fs.appendFileSync(this.logFilePath, `[${timestamp}] ${formattedMessage}\n`);
         console.log(formattedMessage);
     }
 
-    public logInfo(message: string) {
-        this.log(message);
+    public logInfo(message: string, ...optionalParams: any[]) {
+        if (optionalParams.length > 0)
+            this.log(message, ...optionalParams);
+        else
+            this.log(message);
     }
 
-    public logWarning(message: string) {
-        this.log("WARN: "+message);
+    public logWarning(message: string, ...optionalParams: any[]) {
+        this.log("WARN: " + message, ...optionalParams);
     }
 
     public logCommand(interaction: CommandInteraction) {
@@ -52,9 +58,9 @@ export class DcLogger {
         this.logInfo(logMessage);
     }
 
-    public logStringError(error: string) {
+    public logStringError(error: string, ...optionalParams: any[]) {
         const logMessage = `ERROR: ${error}`;
-        this.logInfo(logMessage);
+        this.logInfo(logMessage, ...optionalParams);
     }
 }
 

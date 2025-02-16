@@ -1,5 +1,5 @@
 import { APIInteractionGuildMember, GuildMember, GuildMemberRoleManager, Role } from "discord.js";
-import dcLogger from "../../../../utils/dc-logger";
+import dcLogger from "../../../utils/dc-logger";
 import { BaseCommandResponse } from "./base.response";
 
 export class BaseCommand<R extends BaseCommandResponse> {

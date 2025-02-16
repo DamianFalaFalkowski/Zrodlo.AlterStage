@@ -1,5 +1,5 @@
 import { ApplicationCommandType, ApplicationIntegrationType, CacheType, ChatInputCommandInteraction, InteractionContextType, SlashCommandBuilder } from "discord.js";
-import dcLogger from "../../../../utils/dc-logger";
+import dcLogger from "../../../utils/dc-logger";
 import { GenerateTransferMessageCommand } from "./gen-transfer-msg.command";
 import { GenerateTransferMessageHandler } from "./gen-transfer-msg.handler";
 

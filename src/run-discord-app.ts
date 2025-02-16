@@ -1,16 +1,12 @@
-import { Client, Collection, GatewayIntentBits } from 'discord.js';
+import { Client} from 'discord.js';
 import { Sequelize } from 'sequelize';
-import dotenv from 'dotenv';
 import fs = require('node:fs');
 import path = require('node:path');
 import "./type-mappings/client-type-map.js";
 import { log } from 'node:console';
-import { FindCommandHandlersUtil } from './utils/find-command-handlers-definitions.util.js';
-import dcLogger from './utils/dc-logger.js';
+import { FindCommandHandlersUtil } from './app/utils/find-command-handlers-definitions.util.js';
+import dcLogger from './app/utils/dc-logger.js';
 
-
-// Load environment variables from .env file
-dotenv.config();
 // Create a new Discord client instance
 const client = new Client({ 
 	intents: [

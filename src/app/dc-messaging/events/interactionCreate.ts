@@ -1,6 +1,6 @@
 import { Events, MessageFlags } from 'discord.js';
 import { client } from '../../../run-commands-registration-script';
-import dcLogger from '../../../utils/dc-logger';
+import dcLogger from '../../utils/dc-logger';
 
 module.exports = {
 	name: Events.InteractionCreate,
