@@ -1,23 +1,88 @@
 import { DcCommandsAdministrationOptsConsumer } from './app/consumers/terminal/dc-commands-administration.consumer.js'
 import dcLogger from './app/utils/dc-logger.js';
+import AlterStageAppStartup from './startup';
 
 
-// Odczytywanie argumentów wiersza poleceń
-// ADN: Pomijamy pierwsze dwa elementy, ponieważ są to ścieżki do node i skryptu
-const args = process.argv.slice(2); 
+async function main() {
+    try {
+        // Odczytywanie argumentów wiersza poleceń
+        // ADN: Pomijamy pierwsze dwa elementy, ponieważ są to ścieżki do node i skryptu
+        let userParamInput = process.argv.slice(2);
+        await readInputAndStartOperation(userParamInput);
+    } catch (error) {
+        console.error("Error in main function response:", error);
+    }
+}
+main();
 
-// Wyświetl informację o odczytanych parametrach
-if (args.length === 0) {
-    dcLogger.logStringError('No arguments provided.');
-} else {
-    dcLogger.logInfo('Arguments:', args);
+
+async function readInputAndStartOperation(splittedUserInput: string[]): Promise<void> {
+    if (splittedUserInput[0] == 'stop')
+        dcLogger.logInfo("exiting the opt mode...")
+
+    let foreachIterationsLeft = splittedUserInput.length;
+    // Wyświetl informację o odczytanych parametrach
+    if (splittedUserInput.length > 0) {
+        dcLogger.logInfo('Arguments:', splittedUserInput);
+
+
+        splittedUserInput.forEach(await (async (arg) => {
+            let argPair = arg.split('=', 2);
+            if (argPair.length < 2) // value-less
+            {
+                let valueLessParam = argPair[0];
+                switch (valueLessParam) {
+                    case "-hostapp":
+                        try {
+                            await hostApp();
+                        }
+                        catch { hostApp(); }
+                        break;
+                    default:
+                        dcLogger.logInfo(`Parametr ${valueLessParam} nie został rozpoznany`);
+                        break;
+                }
+            }
+            else {
+                let value = argPair.pop() as string;
+                let param = argPair.pop() as string;
+                switch (param) {
+                    case "-registercommand":
+                        await DcCommandsAdministrationOptsConsumer.RegisterCommand(value);
+                        break;
+                    default:
+                        dcLogger.logInfo(`Parametr ${param} nie został rozpoznany`);
+                        break;
+                };
+            }
+            foreachIterationsLeft--;
+            if (foreachIterationsLeft === 0) {
+                const readline = require('readline').createInterface({
+                    input: process.stdin,
+                    output: process.stdout
+                });
+                readline.question('Type next operation name and value or \'stop\' to exit.\n You have 20 min for entering next command.\n\n>', (name: string) => {
+                    if (name === 'stop')
+                        process.exit();
+                    readInputAndStartOperation(name.split(' '));
+                });
+                await sleep(20 * 60 * 1000);
+                //         min * sec * m.sec
+                dcLogger.logInfo('time left.');
+            }
+        }), foreachIterationsLeft);
+    }
+    else {
+        dcLogger.logStringError('No arguments provided.');
+    }
+    if (foreachIterationsLeft <= 0)
+        process.exit();
 }
 
-/// Odczytywanie konkretnych parametrów:
+async function sleep(ms: number): Promise<void> {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+}
 
-// -registercommand
-const registerDiscordCommandParam = args.find(arg => arg.startsWith('-registercommand'));
-if (registerDiscordCommandParam) {
-    const value = registerDiscordCommandParam.split('=')[1];
-    DcCommandsAdministrationOptsConsumer.RegisterCommand(value);
+async function hostApp() {
+    await AlterStageAppStartup.ClientLogin();
 }

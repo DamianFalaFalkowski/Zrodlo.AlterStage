@@ -1,5 +1,4 @@
-import { DataTypes, Model } from 'sequelize';
-import { sequelizeContext } from '../run-discord-app';
+import { Model } from 'sequelize';
 
 /*
  * equivalent to: CREATE TABLE tags(
@@ -15,20 +14,3 @@ export class TagsRepository extends Model {
     declare userId: string;
     declare createdUserId: string;
 }
-
-// konfiguracja modelu bazy
-TagsRepository.init(
-    {
-        name: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        description: DataTypes.STRING,
-        userId: { type: DataTypes.NUMBER, allowNull: false},
-        createdUserId: { type: DataTypes.NUMBER, allowNull: false},
-    },
-    {
-        sequelize: sequelizeContext, // We need to pass the connection instance
-        modelName: 'Tags', // We need to choose the model name
-    }
-);

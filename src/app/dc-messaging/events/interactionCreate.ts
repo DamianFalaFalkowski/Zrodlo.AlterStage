@@ -1,6 +1,6 @@
 import { Events, MessageFlags } from 'discord.js';
-import { client } from '../../../run-commands-registration-script';
 import dcLogger from '../../utils/dc-logger';
+import AlterStageAppStartup from '../../../startup';
 
 module.exports = {
 	name: Events.InteractionCreate,
@@ -11,8 +11,11 @@ module.exports = {
 		// check interaction
 		if (!interaction.isChatInputCommand()) return;
 
+		if(!AlterStageAppStartup.client)
+			throw Error("Client is missing!");
+
 		// get and check commands
-		const command = client.commands.get(interaction.commandName) as any;
+		const command = AlterStageAppStartup.client.commands.get(interaction.commandName) as any;
 		if (!command) {
 			dcLogger.logStringError(`No command matching ${interaction.commandName} was found.`);
 			return;

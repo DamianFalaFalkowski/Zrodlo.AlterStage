@@ -16,15 +16,15 @@ export class DcCommandsAdministrationOptsConsumer {
      * @param commandName unikalna nazwa polecenia
      * @returns rezultat wykonania operacji 
      */
-    public static RegisterCommand(commandName: string): OpsResult {
-        try {
-            DiscordCommandOperations.ProceedOperation_ReloadCommand(`${DcCommandsAdministrationOptsConsumer._dcCommandHandlersPath}/${commandName}/${commandName}.definition`);
-        }
-        catch (e: Error | any) {
-            dcLogger.logError(e);
-            return (new OpsResult()).CompleteOps(false);
-        }
-        return (new OpsResult()).CompleteOps(true);
+    public static async RegisterCommand(commandName: string): Promise<OpsResult> {
+            try {
+                await DiscordCommandOperations.ProceedOperation_ReloadCommand(`${DcCommandsAdministrationOptsConsumer._dcCommandHandlersPath}/${commandName}/${commandName}.definition`);
+                return new OpsResult().CompleteOps(true);
+            }
+            catch (e: Error | any) {
+                dcLogger.logError(e);
+                return new OpsResult().CompleteOps(false);
+            }
     }
 }
 
