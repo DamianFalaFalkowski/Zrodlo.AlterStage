@@ -4,7 +4,7 @@ import path from 'node:path';
 import "./type-mappings/client-type-map.js";
 import { log } from 'node:console';
 import { FindCommandHandlersUtil } from './app/utils/find-command-handlers-definitions.util.js';
-import dcLogger from './app/utils/dc-logger.js';
+import dcLogger from './app/utils/dc-logger.util.js';
 import AlterStageAppStartup from './startup';
 
 // Zdefiniowanie polaczenia z baza danych

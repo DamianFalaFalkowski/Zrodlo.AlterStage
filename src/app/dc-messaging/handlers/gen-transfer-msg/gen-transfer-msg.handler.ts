@@ -1,4 +1,4 @@
-import dcLogger from '../../../utils/dc-logger';
+import dcLogger from '../../../utils/dc-logger.util';
 import { BaseCommandHandler } from '../../_base/commands/base.handler';
 import { GenerateTransferMessageCommand } from './gen-transfer-msg.command';
 

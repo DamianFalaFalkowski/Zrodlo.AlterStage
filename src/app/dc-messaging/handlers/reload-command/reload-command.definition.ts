@@ -4,7 +4,7 @@ import { ChatInputCommandInteraction,
 
 import { ReloadCommandCommand } from './reload-command.command';
 import { ReloadCommandHandler } from './reload-command.handler';
-import dcLogger from '../../../utils/dc-logger';
+import dcLogger from '../../../utils/dc-logger.util';
 
 
 // https://discord.com/developers/docs/interactions/application-commands#contexts

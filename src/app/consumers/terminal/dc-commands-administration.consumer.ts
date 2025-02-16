@@ -1,6 +1,6 @@
 import { DiscordCommandOperations } from "../../../modules/discord-client/js-client/dc-command-opts/register-dc-command.operation";
 import { OpsResult } from "../../../modules/ops/model/ops-result";
-import dcLogger from "../../utils/dc-logger";
+import dcLogger from "../../utils/dc-logger.util";
 
 /**
  * Klasa konsumera odpowiedzialnego za konsumpcję operacji zarządzających poleceniami na serwerze discord.

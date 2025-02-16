@@ -1,5 +1,5 @@
 import { InteractionReplyOptions, MessageFlags } from "discord.js";
-import dcLogger from "../../../utils/dc-logger";
+import dcLogger from "../../../utils/dc-logger.util";
 
 export class BaseCommandResponse { // TODO: add components {
     

@@ -3,7 +3,7 @@ import { IDiscordRestBuilder } from './modules/discord-client/startup-builders/b
 import { IDiscordClientBuilder } from './modules/discord-client/startup-builders/builder.client.interface';
 import { IBuilderSequelizeSqLite } from './modules/sqlite/startup-builders/builder.sequelize.sqlite.interface';
 import { DataTypes, Sequelize } from 'sequelize';
-import dcLogger from './app/utils/dc-logger';
+import dcLogger from './app/utils/dc-logger.util';
 import { IBuilderDiscordEvents } from './app/dc-messaging/startup-builders/builder.dc-events.interface';
 import path from 'node:path';
 import fs from 'node:fs';

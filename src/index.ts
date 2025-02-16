@@ -1,7 +1,7 @@
 import { DcCommandsAdministrationOptsConsumer } from './app/consumers/terminal/dc-commands-administration.consumer.js'
-import dcLogger from './app/utils/dc-logger.js';
+import dcLogger from './app/utils/dc-logger.util.js';
+import { __sleep } from './app/utils/sleep.util.js';
 import AlterStageAppStartup from './startup';
-
 
 async function main() {
     try {
@@ -14,7 +14,6 @@ async function main() {
     }
 }
 main();
-
 
 async function readInputAndStartOperation(splittedUserInput: string[]): Promise<void> {
     if (splittedUserInput[0] == 'stop')
@@ -66,7 +65,7 @@ async function readInputAndStartOperation(splittedUserInput: string[]): Promise<
                         process.exit();
                     readInputAndStartOperation(name.split(' '));
                 });
-                await sleep(20 * 60 * 1000);
+                await __sleep(20 * 60 * 1000);
                 //         min * sec * m.sec
                 dcLogger.logInfo('time left.');
             }
@@ -79,9 +78,7 @@ async function readInputAndStartOperation(splittedUserInput: string[]): Promise<
         process.exit();
 }
 
-async function sleep(ms: number): Promise<void> {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-}
+
 
 async function hostApp() {
     await AlterStageAppStartup.ClientLogin();

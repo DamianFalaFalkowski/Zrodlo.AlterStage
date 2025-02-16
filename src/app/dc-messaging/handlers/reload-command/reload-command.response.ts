@@ -1,6 +1,6 @@
 import { ActionRowBuilder, ButtonBuilder, ButtonStyle} from 'discord.js';
 import { BaseCommandResponse } from '../../_base/commands/base.response';
-import dcLogger from '../../../utils/dc-logger';
+import dcLogger from '../../../utils/dc-logger.util';
 
 
 export class ReloadCommandResponse extends BaseCommandResponse {

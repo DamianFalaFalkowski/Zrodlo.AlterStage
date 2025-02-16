@@ -1,7 +1,7 @@
 import path from 'node:path';
 import fs from 'node:fs';
 import { Client, Collection } from 'discord.js';
-import dcLogger from './dc-logger';
+import dcLogger from './dc-logger.util';
 
 export class FindCommandHandlersUtil {
     public static LoadCommmandsToClient(client: Client, rootFolderPath: string) {

@@ -1,5 +1,5 @@
 import { APIApplicationCommand, Collection, Routes } from 'discord.js';
-import dcLogger from '../../../../app/utils/dc-logger';
+import dcLogger from '../../../../app/utils/dc-logger.util';
 import AlterStageAppStartup from '../../../../startup';
 
 export class DiscordCommandOperations {

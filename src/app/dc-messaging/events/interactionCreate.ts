@@ -1,5 +1,5 @@
 import { Events, MessageFlags } from 'discord.js';
-import dcLogger from '../../utils/dc-logger';
+import dcLogger from '../../utils/dc-logger.util';
 import AlterStageAppStartup from '../../../startup';
 
 module.exports = {
