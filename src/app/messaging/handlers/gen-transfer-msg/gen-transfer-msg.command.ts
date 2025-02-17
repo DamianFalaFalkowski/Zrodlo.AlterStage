@@ -1,4 +1,4 @@
-import { ChatInputCommandInteraction } from 'discord.js';
+import { ChatInputCommandInteraction, MessageFlags } from 'discord.js';
 import { BaseCommand } from '../../_base/commands/base.command';
 import dcLogger from '../../../utils/dc-logger.util';
 import { GenerateTransferMessageResponse } from './gen-transfer-msg.response';
@@ -6,19 +6,19 @@ import { GenerateTransferMessageResponse } from './gen-transfer-msg.response';
 export class GenerateTransferMessageCommand extends BaseCommand<GenerateTransferMessageResponse> {
     public readonly RoleToBuyName: string | undefined;
 
+public CreateResponseObject(): GenerateTransferMessageResponse {
+        return new GenerateTransferMessageResponse(this);
+    }
+
+
     constructor(interaction: ChatInputCommandInteraction) {
         try {
-            let definition = module.require(`./${interaction.commandName}.definition`);
             let tempRoleToBuy = interaction.options.getRole('role-to-buy', true) ;
             console.log('Option found tempRoleToBuy: ' + tempRoleToBuy.name);
             super(
-                interaction, 
-                definition.allowedRoles!, 
-                new GenerateTransferMessageResponse(
-                    definition.isEphemeral, 
-                    tempRoleToBuy.name))
+                interaction)
             this.RoleToBuyName = tempRoleToBuy.name;
-            this.CheckAuthorisation(); 
+            this.CheckAuthorisationAndValidity(); 
         } catch (error) {
             dcLogger.logError(error as Error);
             throw error;
@@ -26,11 +26,11 @@ export class GenerateTransferMessageCommand extends BaseCommand<GenerateTransfer
     }
 
     // sprawdzenie czy GenerateTransferMessageCommand moze byc wykonany
-    public CheckAuthorisation(): boolean {
+    public override CheckAuthorisationAndValidity(): boolean {
         try {
             if (this.RoleToBuyName === undefined || this.RoleToBuyName === null || this.RoleToBuyName.length === 0) {
                 this.IsSucess = false;
-                this.Response.PepeareFailureResponse('Invalid command. RoleToBuyName parameter is missing.');
+                this.Response!.PepeareFailureResponseBase('Invalid command. RoleToBuyName parameter is missing.');
                 return false;
             }
             return true;

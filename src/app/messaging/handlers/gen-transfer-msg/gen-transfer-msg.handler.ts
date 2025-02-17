@@ -1,5 +1,7 @@
 import dcLogger from '../../../utils/dc-logger.util';
+import { BaseCommand } from '../../_base/commands/base.command';
 import { BaseCommandHandler } from '../../_base/commands/base.handler';
+import { BaseCommandResponse } from '../../_base/commands/base.response';
 import { GenerateTransferMessageCommand } from './gen-transfer-msg.command';
 export class GenerateTransferMessageHandler extends BaseCommandHandler<GenerateTransferMessageCommand>{
     constructor(command: GenerateTransferMessageCommand) {
@@ -9,14 +11,14 @@ export class GenerateTransferMessageHandler extends BaseCommandHandler<GenerateT
      override async handle() {
         try {
             // Sprawdzenie czy przekazana rola istnieje w systemie ...
-            if (this.command.AllGuildRoles.find(role => role.name === this.command.RoleToBuyName) === undefined) {
-                this.command.Response.PepeareFailureResponse('Rola którą próbujesz zakupić nie istnieje w systemie.');
+            if (this.command.AllGuildRoles!.find(role => role.name === this.command.RoleToBuyName) === undefined) {
+                this.command.Response!.PepeareFailureResponseBase('Rola którą próbujesz zakupić nie istnieje w systemie.');
                 return;
             }
 
             // ... i czy jest rolą ozanczoną jako do kupienia
             if (this.command.RoleToBuyName!.charAt(0) !== '+') {
-                this.command.Response.PepeareFailureResponse('Rola którą próbujesz zakupić nie jest przeznaczona do kupienia.');
+                this.command.Response!.PepeareFailureResponseBase('Rola którą próbujesz zakupić nie jest przeznaczona do kupienia.');
                 return;
             }
 
@@ -38,7 +40,7 @@ export class GenerateTransferMessageHandler extends BaseCommandHandler<GenerateT
                 // Jeśli tak to skróć generatedTransferMessage do 140 znaków
                 generatedTransferMessage = generatedTransferMessage.substring(0, 140);
             }
-            this.command.Response.PrepeareSuccessResponse(generatedTransferMessage);
+            this.command.Response!.PrepeareSuccessResponseBase(generatedTransferMessage);
         } catch (error) {
             dcLogger.logError(error as Error);
             throw error;

@@ -1,32 +1,32 @@
-import { BaseCommandResponse } from '../../_base/commands/base.response';
-import dcLogger from '../../../utils/dc-logger.util';
+// import { BaseCommandResponse } from '../../_base/commands/base.response';
+// import dcLogger from '../../../utils/dc-logger.util';
 
 
-export class ReloadCommandResponse extends BaseCommandResponse {
+// export class ReloadCommandResponse extends BaseCommandResponse {
 
-    protected commandOpt: string;
+//     protected commandOpt: string;
 
-    constructor(isEphemeral: boolean = false, command: string) {
-        super(isEphemeral);
-        this.commandOpt = command;
-    }
+//     constructor(isEphemeral: boolean = false, command: string) {
+//         super(isEphemeral);
+//         this.commandOpt = command;
+//     }
 
-    // sprawdzenie czy komponent został poprawnie zbudowany oraz czy jest kompletny
-    protected ensureReady(): boolean {
-        throw Error("Not implemented.")
-    }
+//     // sprawdzenie czy komponent został poprawnie zbudowany oraz czy jest kompletny
+//     protected ensureReady(): boolean {
+//         throw Error("Not implemented.")
+//     }
 
-    public PepeareFailureResponse(errorMessage: string) {
-        try {
-            // stuff can be done here
-            super.PepeareFailureResponse(errorMessage);
-        } catch (error) {
-            dcLogger.logError(error as Error);
-            throw error;
-        }
-    }
+//     public PepeareFailureResponse(errorMessage: string) {
+//         try {
+//             // stuff can be done here
+//             super.PepeareFailureResponse(errorMessage);
+//         } catch (error) {
+//             dcLogger.logError(error as Error);
+//             throw error;
+//         }
+//     }
 
-    public PrepeareSuccessResponse() {
-        this._reply.content = ``;
-    }
-}
+//     public PrepeareSuccessResponse() {
+//         this._reply.content = ``;
+//     }
+// }

@@ -3,7 +3,7 @@ import { CommandAdministrationOperationNames } from '../enums/command-administra
 import { OperationsPrefixes } from '../enums/ops-prefixes.enum';
 
 class OperationsMapper {
-    private _fileExtensions: string = '.operation.ts';
+    private _fileExtensions: string = '.operation';
 
     private _prefixes = [
         {key: OperationsPrefixes.AppHost, value:'./../operations/app-host/'},
