@@ -12,16 +12,21 @@ class TerminalInputService{
         if (splittedUserInput.length > 0) {
             dcLogger.logInfo('Arguments:', splittedUserInput); 
             splittedUserInput.forEach(await (async (arg) => {
-                let argPair = arg.split('=', 2);
-                if (argPair.length < 2)
-                {
+                let argPair = arg.split('=', 2); // TODO: przeniesc to do env           
+                if (argPair.length < 2 )    // no parameters
+                { 
                     let valueLessParam = argPair[0];
                     await OperationsModule.OperationsRouter.Push(valueLessParam);
-                }
-                else {
+                } 
+                else if (!argPair[1].includes('--')){   // single param
+                    let value = argPair.reverse().pop() as string;
                     let param = argPair.pop() as string;
-                    let value = argPair.pop() as string;
                     await OperationsModule.OperationsRouter.Push(value, param);
+                }
+                else {      // multiple params
+                    let value = argPair.reverse().pop() as string;
+                    let params = argPair.pop()!.split('--', 20); // TODO: dorzucic do configa i opisać zasady dot polecen
+                    await OperationsModule.OperationsRouter.Push(value, ...params);
                 }
                 foreachIterationsLeft--;
                 if (foreachIterationsLeft === 0) {

@@ -1,7 +1,6 @@
 import dotenv from 'dotenv';
 import dcLogger from './app/utils/dc-logger.util';
 import { AlterStageModuleBuilder } from './startup.builder';
-import DiscordRestBuilder from './modules/discord-client/startup-builders/discord-rest.builder';
 
 class AlterStageAppStartup {
     private static readonly appVersion = '1.0.0.0-alpha.1'; // TODO: przeniesc do .env

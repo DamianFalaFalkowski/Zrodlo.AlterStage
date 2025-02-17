@@ -6,20 +6,13 @@ npm run b
 node .dist/index.js -app-host
 node .dist/index.js -adm-cmd-reload=gen-transfer-msg
 node .dist/index.js -adm-cmd-reload=tag-create
+node .dist/index.js -adm-msg-fetch-channels=text--voice--general
 
 
 
 tsx watch src/index.ts -app-host
 tsx watch src/index.ts -adm-cmd-reload=tag-create
 tsx watch src/index.ts -adm-cmd-reload=gen-transfer-msg
-
-
-
-
-
-
-
-
 
 
 

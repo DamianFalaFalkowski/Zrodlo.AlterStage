@@ -6,4 +6,4 @@ export interface IDiscordRestBuilder extends IAlterStageModuleBuilder
     SetUpRest(): AlterStageModuleBuilder
 
     rest: REST | null;
-}
+} 
