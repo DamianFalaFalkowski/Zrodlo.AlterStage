@@ -1,9 +1,12 @@
 
 import { OpsResult } from './model/ops-result';
-import { OpsStatus } from './ops-status.enum';
+import { OpsStatus } from './enums/ops-status.enum';
+import OperationsRouter from './services/ops-router.service';
 
-module.exports =
+
+export default {    
     OpsResult,
-    OpsStatus
-    ;
+    OpsStatus,
+    OperationsRouter
+}
 

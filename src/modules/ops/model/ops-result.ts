@@ -1,4 +1,4 @@
-import { OpsStatus } from "../ops-status.enum";
+import { OpsStatus } from "../enums/ops-status.enum";
 
 /**
  * Klasa informująca o wynik

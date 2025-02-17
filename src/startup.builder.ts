@@ -4,7 +4,7 @@ import { IDiscordClientBuilder } from './modules/discord-client/startup-builders
 import { IBuilderSequelizeSqLite } from './modules/sqlite/startup-builders/builder.sequelize.sqlite.interface';
 import { DataTypes, Sequelize } from 'sequelize';
 import dcLogger from './app/utils/dc-logger.util';
-import { IBuilderDiscordEvents } from './app/dc-messaging/startup-builders/builder.dc-events.interface';
+import { IBuilderDiscordEvents } from './app/messaging/startup-builders/builder.dc-events.interface';
 import path from 'node:path';
 import fs from 'node:fs';
 import { FindCommandHandlersUtil } from './app/utils/find-command-handlers-definitions.util';
@@ -71,7 +71,7 @@ export class AlterStageModuleBuilder
         dcLogger.logInfo("Rejestruję polecenia...");
         if(!this.client)
             throw Error("Client is missing");
-        FindCommandHandlersUtil.LoadCommmandsToClient(this.client, path.join(__dirname, 'app/dc-messaging/handlers'));
+        FindCommandHandlersUtil.LoadCommmandsToClient(this.client, path.join(__dirname, 'app/messaging/handlers'));
         return this;
     }
 
@@ -88,7 +88,7 @@ export class AlterStageModuleBuilder
         if(!this.client)
             throw Error("Client is missing");
         // Read event handlers from the events directory
-        const eventsPath = path.join(__dirname, 'app/dc-messaging/events');
+        const eventsPath = path.join(__dirname, 'app/messaging/events');
         const eventFiles = fs.readdirSync(eventsPath).filter((file: any) => file.endsWith('.js') || file.endsWith('.ts'));
         
         for (const file of eventFiles) {
