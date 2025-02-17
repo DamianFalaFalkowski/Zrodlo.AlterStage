@@ -71,3 +71,4 @@ package-lock.json
 logs/discord.log
 database.sqlite
 /logs
+*.log

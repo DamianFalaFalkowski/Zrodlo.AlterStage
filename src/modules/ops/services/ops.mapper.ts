@@ -7,7 +7,7 @@ class OperationsMapper {
 
     private _prefixes = [
         {key: OperationsPrefixes.AppHost, value:'./../operations/app-host/'},
-        {key: OperationsPrefixes.DiscordCommandAdministration , value:'./../app/operations/dc-command-administration/'}
+        {key: OperationsPrefixes.DiscordCommandAdministration , value:'./../operations/command-administration/'}
     ];
 
     private _appHostNames = [
@@ -15,8 +15,8 @@ class OperationsMapper {
     ];
 
     private _commandAdministrationNames = [
-        {key:CommandAdministrationOperationNames.Reload, value:'reload-dc-command'},
-        {key:CommandAdministrationOperationNames.Delete, value:'delete-dc-command'}
+        {key:CommandAdministrationOperationNames.Reload, value:'reload-command'},
+        {key:CommandAdministrationOperationNames.Delete, value:'delete-command'}
     ];
 
     private getOperationNamesEnum(prefixKey :OperationsPrefixes) {

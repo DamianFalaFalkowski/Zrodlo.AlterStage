@@ -3,7 +3,7 @@ import { __sleep } from '../../../../app/utils/sleep.util';
 import AlterStageAppStartup from '../../../../startup';
 
 module.exports = {
-    messageName: '-host-app',
+    messageName: 'host-app',
 
     _failsCount: 0,
 

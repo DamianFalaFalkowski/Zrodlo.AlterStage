@@ -8,8 +8,6 @@ export class ReloadCommandHandler extends BaseCommandHandler<ReloadCommandComman
     }
 
      override async handle() {
-        const commandName = this.command.CommandName;
-
         delete require.cache[require.resolve(`./${this.command.CommandName}.definition.js`)];
         delete require.cache[require.resolve(`./${this.command.CommandName}.command.js`)];
         delete require.cache[require.resolve(`./${this.command.CommandName}.response.js`)];
