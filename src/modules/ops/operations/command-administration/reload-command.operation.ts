@@ -11,7 +11,7 @@ module.exports = {
         // pobierz moduł z definicją polecenia (/) aplikacji
         const definition = require(`../../../../app/messaging/handlers/${options[0]}/${options[0]}.definition`);
         dcLoggerUtil.logInfo(
-            `Rozpoczynam procesowanie operacji '${definition.data.name}'.`);//\nDefinicja operacji:\n${JSON.stringify(definition, null, 2)}`);
+            `Rozpoczynam procesowanie operacji '${definition.data.name}'.`);
 
         // utwórz kolekcję a w niej pojedyńcze polecenie do aktualizacji
         let commands = new Collection<string, APIApplicationCommand>();
@@ -21,7 +21,7 @@ module.exports = {
             if (!AlterStageAppStartup.rest)
                 throw Error("REST is missing!")
             // wykonaj zapytanie PUT do discord api
-            const data = await AlterStageAppStartup.rest.put(
+            await AlterStageAppStartup.rest.put(
                 Routes.applicationGuildCommands(process.env.CLIENT_ID! as string, process.env.GUILD_ID! as string),
                 { body: commands.toJSON() }
             );

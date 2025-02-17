@@ -1,6 +1,6 @@
-import { Client, GatewayIntentBits, REST } from 'discord.js';
-import { IDiscordRestBuilder } from './modules/discord-client/startup-builders/builder.discord-rest.interface';
-import { IDiscordClientBuilder } from './modules/discord-client/startup-builders/builder.client.interface';
+import { Client, REST } from 'discord.js';
+import { IDiscordRestBuilder } from './modules/discord-client/builders-interfaces/discord-rest.builder.interface';
+import { IDiscordClientBuilder } from './modules/discord-client/builders-interfaces/discord-client.builder.interface';
 import { IBuilderSequelizeSqLite } from './modules/sqlite/startup-builders/builder.sequelize.sqlite.interface';
 import { DataTypes, Sequelize } from 'sequelize';
 import dcLogger from './app/utils/dc-logger.util';
@@ -9,6 +9,8 @@ import path from 'node:path';
 import fs from 'node:fs';
 import { FindCommandHandlersUtil } from './app/utils/find-command-handlers-definitions.util';
 import { TagsRepository } from './model/tags.model';
+import DiscordClientBuilder from './modules/discord-client/startup-builders/discord-client.builder';
+import DiscordRestBuilder from './modules/discord-client/startup-builders/discord-rest.builder';
 
 export interface IAlterStageModuleBuilder {
     appVersion: string | null;
@@ -22,18 +24,7 @@ export class AlterStageModuleBuilder
         IBuilderSequelizeSqLite,
         IBuilderDiscordEvents
 {
-    private readonly _intends = [ // TODO: przeniesc do .env
-            GatewayIntentBits.Guilds,
-            GatewayIntentBits.GuildMessages,
-            GatewayIntentBits.MessageContent,
-            GatewayIntentBits.GuildMembers,
-            GatewayIntentBits.GuildModeration,
-            GatewayIntentBits.MessageContent,
-            GatewayIntentBits.AutoModerationExecution,
-            GatewayIntentBits.DirectMessagePolls,
-            GatewayIntentBits.DirectMessageReactions,
-            GatewayIntentBits.DirectMessageTyping
-        ];
+    
 
     public appVersion: string | null = null;
     public rest: REST | null = null;    
@@ -41,6 +32,11 @@ export class AlterStageModuleBuilder
     public sequelizeContext: Sequelize | null = null;
 
     constructor() {
+    }
+
+    SetUpRest(): AlterStageModuleBuilder {
+        this.rest = DiscordRestBuilder.SetUpRest()
+        return this;      
     }
 
     InitRepositories(): AlterStageModuleBuilder {
@@ -76,10 +72,7 @@ export class AlterStageModuleBuilder
     }
 
     async ClientLogin(): Promise<AlterStageModuleBuilder> {
-        dcLogger.logInfo("Loguję się do clienta discord...");
-        if(!this.client) 
-            throw Error("Client is missing");
-        await this.client.login(process.env.TOKEN);
+        this.client = await DiscordClientBuilder.ClientLogin(this.client);
         return this;
     }
 
@@ -131,15 +124,7 @@ export class AlterStageModuleBuilder
     }
 
     public SetUpClient(): AlterStageModuleBuilder {
-        dcLogger.logInfo("Tworzę klienta discord...");
-        this.client = new Client({ intents: this._intends });
-        return this;
-    }
-
-    public SetUpRest(): AlterStageModuleBuilder {
-        dcLogger.logInfo("Tworzę REST...");
-        this.rest = new REST()
-            .setToken(process.env.TOKEN as string);
+        this.client = DiscordClientBuilder.SetUpClient();
         return this;
     }
 };
