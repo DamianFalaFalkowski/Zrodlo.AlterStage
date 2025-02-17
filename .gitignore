@@ -72,3 +72,4 @@ logs/discord.log
 database.sqlite
 /logs
 *.log
+logs/discord.log

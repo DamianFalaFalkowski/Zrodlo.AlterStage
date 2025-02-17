@@ -24,7 +24,7 @@ export class AlterStageModuleBuilder
         IBuilderSequelizeSqLite,
         IBuilderDiscordEvents
 {
-    
+    // TODO: przeniesc logikę metod do odseperownmych klas tak jak w przypadku discord rest i discord client
 
     public appVersion: string | null = null;
     public rest: REST | null = null;    
@@ -71,10 +71,9 @@ export class AlterStageModuleBuilder
         return this;
     }
 
-    async ClientLogin(): Promise<AlterStageModuleBuilder> {
-        this.client = await DiscordClientBuilder.ClientLogin(this.client);
-        return this;
-    }
+    async ClientLogin() : Promise<AlterStageModuleBuilder> 
+    { return await DiscordClientBuilder.ClientLogin(this); }
+        
 
     LoadEventHandlers(): AlterStageModuleBuilder {
         dcLogger.logInfo("Rejestruję event handlery...");
@@ -123,8 +122,6 @@ export class AlterStageModuleBuilder
         return this;
     }
 
-    public SetUpClient(): AlterStageModuleBuilder {
-        this.client = DiscordClientBuilder.SetUpClient();
-        return this;
-    }
+    public SetUpClient() :AlterStageModuleBuilder 
+    { return DiscordClientBuilder.SetUpClient(this); }
 };

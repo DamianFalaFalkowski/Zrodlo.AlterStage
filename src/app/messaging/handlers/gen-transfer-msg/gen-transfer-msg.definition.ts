@@ -35,7 +35,5 @@ module.exports = {
         await handler.baseHandle();
     }
 };
-// export const GenerateTransferMessageDefinition: require('./gen-transfer-msg.definition') ;
-//export default { GenerateTransferMessageCommand }
 // TODO: dodać przycisk do kopiowania
 // TODO: mona te dodać rodzaj produktu

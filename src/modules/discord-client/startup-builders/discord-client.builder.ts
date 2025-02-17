@@ -1,6 +1,6 @@
 import { Client, GatewayIntentBits } from "discord.js";
 import dcLoggerUtil from "../../../app/utils/dc-logger.util";
-import AlterStageAppStartup from '../../../startup';
+import { AlterStageModuleBuilder } from "../../../startup.builder";
 
 class DiscordClientBuilder {
     private readonly _intends = [ // TODO: przeniesc do .env
@@ -16,17 +16,18 @@ class DiscordClientBuilder {
         GatewayIntentBits.DirectMessageTyping
     ];
 
-    public async ClientLogin(client :Client | null): Promise<Client> {
+    public async ClientLogin(builder :AlterStageModuleBuilder): Promise<AlterStageModuleBuilder> {
         dcLoggerUtil.logInfo("Loguję się do clienta discord...");
-        if (!client)
+        if (!builder.client)
             throw Error("Client is missing");
-        await client.login(process.env.TOKEN);
-        return client;
+        await builder.client.login(process.env.TOKEN);
+        return builder;
     }
 
-    public SetUpClient(): Client {
+    public SetUpClient(builder :AlterStageModuleBuilder): AlterStageModuleBuilder {
         dcLoggerUtil.logInfo("Tworzę klienta discord...");
-        return new Client({ intents: this._intends });
+        builder.client = new Client({ intents: this._intends });
+        return builder;
     }
 }
 export default new DiscordClientBuilder();
