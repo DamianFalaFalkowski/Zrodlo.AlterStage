@@ -12,7 +12,7 @@ module.exports = {
     type: ApplicationCommandType.ChatInput,
     // interactionType: InteractionType.ApplicationCommandAutocomplete,
     // internalId: 'generate-payment-transfer-message_chat-input',
-    // isEphemeral: true,   
+    isEphemeral: true,   
     // integrationTypes: ApplicationIntegrationType.GuildInstall,
     // handler: EntryPointCommandHandlerType.AppHandler,
     allowedRoles: ['member', 'admin', 'moderator', 'owner', 'honored-member', 'super-moderator'],
@@ -29,10 +29,8 @@ module.exports = {
                 .setRequired(true)),
     async execute(interaction: any)
     {
-        dcLogger.logInfo(`Interaction '${interaction.commandName}' execution started!`);
-        let command = new GenerateTransferMessageCommand(interaction);
-        let handler = new GenerateTransferMessageHandler(command);
-        await handler.baseHandle();
+        await new GenerateTransferMessageHandler(
+            new GenerateTransferMessageCommand(interaction)).baseHandle();
     }
 };
 // TODO: dodać przycisk do kopiowania

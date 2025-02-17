@@ -45,7 +45,7 @@ export class BaseCommand<R extends BaseCommandResponse> {
         try {
             if (!this.InteractingMemberRoleNames.some(roleName => this._allowedRoles.includes(roleName))) {
                 this.IsSucess = false;
-                this.Response.prepeareFailureResponse('Invalid command. Brak uprawnień do uruchomienia tego polecenia.');
+                this.Response.PepeareFailureResponse('Invalid command. Brak uprawnień do uruchomienia tego polecenia.');
                 return false;
             }
             return true;

@@ -30,7 +30,7 @@ export class ReloadCommandCommand extends BaseCommand<ReloadCommandResponse> {
         try {
             if (this.CommandName === undefined || this.CommandName === null || this.CommandName.length === 0) {
                 this.IsSucess = false;
-                this.Response.prepeareFailureResponse('Invalid command. \'command\' parameter is missing.');
+                this.Response.PepeareFailureResponse('Invalid command. \'command\' parameter is missing.');
                 return false;
             }
             return true;

@@ -1,4 +1,3 @@
-import { ActionRowBuilder, ButtonBuilder, ButtonStyle} from 'discord.js';
 import { BaseCommandResponse } from '../../_base/commands/base.response';
 import dcLogger from '../../../utils/dc-logger.util';
 
@@ -13,47 +12,21 @@ export class ReloadCommandResponse extends BaseCommandResponse {
     }
 
     // sprawdzenie czy komponent został poprawnie zbudowany oraz czy jest kompletny
-    protected ensureReady(markReadyIfReady: boolean = true): boolean {
-        try {
-            if (super.ensureReady(false)) 
-            {
-                if (markReadyIfReady)
-                    this.IsReady = true;
-                return true;
-            }
-            return false;
-        } catch (error) {
-            dcLogger.logError(error as Error);
-            throw error;
-        }
+    protected ensureReady(): boolean {
+        throw Error("Not implemented.")
     }
 
-    public prepeareFailureResponse(errorMessage: string) {
+    public PepeareFailureResponse(errorMessage: string) {
         try {
             // stuff can be done here
-            super.prepeareFailureResponse(errorMessage);
+            super.PepeareFailureResponse(errorMessage);
         } catch (error) {
             dcLogger.logError(error as Error);
             throw error;
         }
     }
 
-    public TryFinalize(command: string) {
-        try {
-            this.commandOpt = command;
-            if (this.ensureReady()) {
-                this.prepeareSuccessResponse();
-            }
-            else {
-                this.prepeareFailureResponse("Odpowiedź nie spełnia wymogów kompletności!");
-            }
-        } catch (error) {
-            dcLogger.logError(error as Error);
-            throw error;
-        }
-    }
-
-    protected prepeareSuccessResponse() {
+    public PrepeareSuccessResponse() {
         this._reply.content = ``;
     }
 }

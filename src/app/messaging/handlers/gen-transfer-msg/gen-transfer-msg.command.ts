@@ -9,9 +9,6 @@ export class GenerateTransferMessageCommand extends BaseCommand<GenerateTransfer
     constructor(interaction: ChatInputCommandInteraction) {
         try {
             let definition = module.require(`./${interaction.commandName}.definition`);
-            // let definition = module.require(interaction.commandName + '.command');
-            // let definition = module.require(interaction.commandName + '.response');
-            // let definition = module.require(interaction.commandName + '.handler');
             let tempRoleToBuy = interaction.options.getRole('role-to-buy', true) ;
             console.log('Option found tempRoleToBuy: ' + tempRoleToBuy.name);
             super(
@@ -33,7 +30,7 @@ export class GenerateTransferMessageCommand extends BaseCommand<GenerateTransfer
         try {
             if (this.RoleToBuyName === undefined || this.RoleToBuyName === null || this.RoleToBuyName.length === 0) {
                 this.IsSucess = false;
-                this.Response.prepeareFailureResponse('Invalid command. RoleToBuyName parameter is missing.');
+                this.Response.PepeareFailureResponse('Invalid command. RoleToBuyName parameter is missing.');
                 return false;
             }
             return true;

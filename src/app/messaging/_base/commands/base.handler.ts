@@ -13,9 +13,12 @@ export class BaseCommandHandler<C extends BaseCommand<BaseCommandResponse>> {
 
     public baseHandle = async () => {
         try {
+            dcLogger.logInfo(`Interaction '${this.command.Interaction.commandName}' execution started!\n`);
             dcLogger.logCommand(this.command.Interaction);
             await this.handle();
-            await this.command.Interaction.reply({ content: this.command.Response.Reply.content, components: this.command.Response.Reply.components, flags: MessageFlags.Ephemeral });
+            let rpl = this.command.Response.Reply;
+            dcLogger.logInfo(`Reply content: ${JSON.stringify({ content: rpl.content, components: rpl.components, flags: rpl.flags })}`)
+            await this.command.Interaction.reply({ content: rpl.content, components: rpl.components, flags: rpl.flags });
         } catch (error) {
             dcLogger.logError(error as Error);
             throw error;

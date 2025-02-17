@@ -1,4 +1,4 @@
-import { InteractionReplyOptions, MessageFlags } from "discord.js";
+import { BitFieldResolvable, InteractionReplyOptions, MessageFlags } from "discord.js";
 import dcLogger from "../../../utils/dc-logger.util";
 
 export class BaseCommandResponse { // TODO: add components {
@@ -6,28 +6,12 @@ export class BaseCommandResponse { // TODO: add components {
     public IsReady: boolean = false;
     public IsFailure: boolean = false;
 
-
-    protected _reply: InteractionReplyOptions = {};
+    protected _reply: InteractionReplyOptions;
     protected readonly isEphemeral: boolean;
 
     public get Reply(): InteractionReplyOptions {
-        try {
-            if(!this.IsReady)
-                this.prepeareFailureResponse('Response is not ready yet.');
-            return this._reply;
-        } catch (error) {
-            dcLogger.logError(error as Error);
-            throw error;
-        }
-    }
-    public set Reply(value: InteractionReplyOptions) {
-        try {
-            if (this.IsReady || this.IsFailure) throw new Error('Response is already ready and you cant change anything.');
-            this._reply = value;
-        } catch (error) {
-            dcLogger.logError(error as Error);
-            throw error;
-        }
+        if(!this.ensureReady()) throw Error("Odpoweidź nie jest gotowa do wysyłki.");
+        return this._reply;
     }
 
     constructor(isEphemeral: boolean = false) {
@@ -36,41 +20,39 @@ export class BaseCommandResponse { // TODO: add components {
     }
 
     // sprawdzenie czy komponent został poprawnie zbudowany oraz czy jest kompletny na poziomie bazowym
-    protected ensureReady(markReadyIfReady :boolean = true): boolean {
+    protected ensureReady(): boolean {
         try {
+            if(!this.IsReady ||
+                this._reply.content === undefined  ||
+               (this.isEphemeral && this._reply.flags !== MessageFlags.Ephemeral))
+                return false;
             return true;
-            // TODO: ogarnąć to gówno
-            // if(this._reply.content !== undefined 
-            //     && this.isEphemeral 
-            //     && this._reply.flags != null 
-            //     && this._reply.flags.toString().toLocaleLowerCase().includes("Ephemeral".toLocaleLowerCase())
-            //     && this._reply.content !== null) 
-            // {
-            //     if(markReadyIfReady)
-            //         this.IsReady = true;
-            //     return true;
-            // }
-            // return false;
         } catch (error) {
-            dcLogger.logError(error as Error);
             throw error;
         }
     }
 
-    protected prepeareSuccessResponse()
+    public PrepeareSuccessResponse(
+        content :string, 
+        components: any[] | null = null, 
+        flags: BitFieldResolvable<"SuppressEmbeds" | "Ephemeral" | "SuppressNotifications", MessageFlags.SuppressEmbeds | MessageFlags.Ephemeral | MessageFlags.SuppressNotifications> | null = null)
     {
-        this._reply.flags = this.isEphemeral ? MessageFlags.Ephemeral : undefined;
+        this._reply = { 
+            content: content,
+            components: components!,
+            flags: flags!
+        }
+        this._reply.flags = this.isEphemeral ? MessageFlags.Ephemeral : this._reply.flags;       
         this.IsReady = true;
     }
 
-    public prepeareFailureResponse(errorMessage: string) {
+    public PepeareFailureResponse(errorMessage: string) {
         try {
             this._reply.content = errorMessage;
             this._reply.flags = MessageFlags.Ephemeral;
             this.IsFailure = true;
             this.IsReady = true;
         } catch (error) {
-            dcLogger.logError(error as Error);
             throw error;
         }
     }

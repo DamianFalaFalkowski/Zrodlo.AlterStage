@@ -1,8 +1,6 @@
 import dcLogger from '../../../utils/dc-logger.util';
 import { BaseCommandHandler } from '../../_base/commands/base.handler';
 import { GenerateTransferMessageCommand } from './gen-transfer-msg.command';
-
-
 export class GenerateTransferMessageHandler extends BaseCommandHandler<GenerateTransferMessageCommand>{
     constructor(command: GenerateTransferMessageCommand) {
         super(command);
@@ -12,16 +10,15 @@ export class GenerateTransferMessageHandler extends BaseCommandHandler<GenerateT
         try {
             // Sprawdzenie czy przekazana rola istnieje w systemie ...
             if (this.command.AllGuildRoles.find(role => role.name === this.command.RoleToBuyName) === undefined) {
-                this.command.Response.prepeareFailureResponse('Rola którą próbujesz zakupić nie istnieje w systemie.');
+                this.command.Response.PepeareFailureResponse('Rola którą próbujesz zakupić nie istnieje w systemie.');
                 return;
             }
 
             // ... i czy jest rolą ozanczoną jako do kupienia
             if (this.command.RoleToBuyName!.charAt(0) !== '+') {
-                this.command.Response.prepeareFailureResponse('Rola którą próbujesz zakupić nie jest przeznaczona do kupienia.');
+                this.command.Response.PepeareFailureResponse('Rola którą próbujesz zakupić nie jest przeznaczona do kupienia.');
                 return;
             }
-
 
             // rozpoczęcie generowania wiadomości
             let itemName = this.command.RoleToBuyName!;
@@ -41,9 +38,7 @@ export class GenerateTransferMessageHandler extends BaseCommandHandler<GenerateT
                 // Jeśli tak to skróć generatedTransferMessage do 140 znaków
                 generatedTransferMessage = generatedTransferMessage.substring(0, 140);
             }
-
-            // Przygotuj odpowiedz
-            this.command.Response.TryFinalize(generatedTransferMessage);
+            this.command.Response.PrepeareSuccessResponse(generatedTransferMessage);
         } catch (error) {
             dcLogger.logError(error as Error);
             throw error;
