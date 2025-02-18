@@ -54,7 +54,7 @@ export abstract class BaseCommandResponse {
     public PrepeareSuccessResponseBase(
         content :string, 
         components: any[] | null = null, 
-        flags: BitFieldResolvable<"SuppressEmbeds" | "Ephemeral" | "SuppressNotifications", MessageFlags.SuppressEmbeds | MessageFlags.Ephemeral | MessageFlags.SuppressNotifications> | null = null)
+        flags: BitFieldResolvable<"SuppressEmbeds" | "Ephemeral" | "SuppressNotifications", MessageFlags.SuppressEmbeds | MessageFlags.Ephemeral | MessageFlags.SuppressNotifications> | null = null): InteractionReplyOptions
     {
         if (this.ensureReadyAndValidBase()) 
             throw new Error('Sprawdzanie poprawności odpowiedzi zakonczone niepowodzneiem.');
@@ -66,20 +66,20 @@ export abstract class BaseCommandResponse {
             }
             this._reply.flags = this._isEphemeral ? MessageFlags.Ephemeral : this._reply.flags;       
             this._isReady = true;
-            this.PrepeareSuccessResponse();
+            return this.PrepeareSuccessResponse();
         }catch(error){
             throw error;
         }      
     }
 
     /** Przygotowuje i zwraca odpowiedź informującą o błędzie na poziomie bazowym */
-    public PepeareFailureResponseBase(errorMessage: string) {
+    public PepeareFailureResponseBase(errorMessage: string): InteractionReplyOptions {
         try {
             this._reply!.content = errorMessage;
             this._reply!.flags = MessageFlags.Ephemeral;
             this._isFailure = true;
             this._isReady = true;
-            this.PepeareFailureResponse();
+            return this.PepeareFailureResponse();
         } catch (error) {
             throw error;
         }

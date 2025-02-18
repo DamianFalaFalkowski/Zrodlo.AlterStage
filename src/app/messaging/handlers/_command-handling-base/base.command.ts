@@ -11,8 +11,6 @@ import { BaseCommandDefinition } from "./base.definition.interface";
  - sprawdzania uprawnień uutkowników i poprawności polecenia
  */
 export abstract class BaseCommand<R extends BaseCommandResponse> {
-    
-
 // Metody do implementacji w klasach dziedziczących
     /** */
     protected abstract CheckAuthorisationAndValidity(): boolean;

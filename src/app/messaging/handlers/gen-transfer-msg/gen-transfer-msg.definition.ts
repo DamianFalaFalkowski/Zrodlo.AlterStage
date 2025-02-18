@@ -2,19 +2,24 @@ import { ApplicationCommandType, ApplicationIntegrationType, InteractionContextT
 import { baseHandlerExecute } from "../_command-handling-base/base.handler";
 
 // DOKUMENTAJA POLECEN (/): https://discord.com/developers/docs/interactions/application-commands#contexts
+
+
 /** Definicja polecenia wygenerowania tresci wiadomosci do platnosci payPal lub blik. */
-export class Definition_GenerateTransferMessageCommand {
+const commandName: string = 'gen-transfer-msg';
+const commandDescription: string = 'Generates a transfer message for specific role (role has to begin with \'+\' sign)';
+
+export class GenerateTransferMessageDefinition {
     // TODO: mona te dodać rodzaj produktu (nice to have)
 
     public static __commandDefinition = {
-        name: 'gen-transfer-msg',
-        description: 'Generates a transfer message for specific role (role has to begin with \'+\' sign)',
+        name: commandName,
+        description: commandDescription,
         type: ApplicationCommandType.ChatInput,
         isEphemeral: true,
         allowedRoles: ['member', 'admin', 'moderator', 'owner', 'honored-member', 'super-moderator'],
         data: new SlashCommandBuilder()
-            .setName('gen-transfer-msg')
-            .setDescription('Generates a transfer message for specific role (role has to begin with \'+\' sign)')
+            .setName(commandName)
+            .setDescription(commandDescription)
             .setIntegrationTypes(ApplicationIntegrationType.GuildInstall)
             .setContexts(InteractionContextType.Guild)
             .addRoleOption((option: any) =>
@@ -26,8 +31,8 @@ export class Definition_GenerateTransferMessageCommand {
         async execute(interaction: any) {
             await baseHandlerExecute(
                 interaction,
-                require('./gen-transfer-msg.command'),
-                require('./gen-transfer-msg.response')
+                require(`./${commandName}.command`),
+                require(`./${commandName}.response`)
             )
         }
     };

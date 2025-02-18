@@ -1,18 +1,17 @@
 import { ChatInputCommandInteraction } from 'discord.js';
-import { BaseCommand } from '../../_base/commands/base.command';
 import { TagCreateResponse } from './tag-create.response';
+import { BaseCommand } from '../_command-handling-base/base.command';
 
+
+// TODO: upewnic sie ze wszystko jest ok
+// TODO: dodac komentarze
+// TODO: dodac logowanie
 export class TagCreateCommand extends BaseCommand<TagCreateResponse> {
     /**
      *
      */
-    constructor(interaction : ChatInputCommandInteraction) {
-        super(interaction);
-        
-    }
-    /** Metoda potrzebna wyłącznie do zapewnienia klasie basower obiektu response */
-    public override CreateResponseObject(): TagCreateResponse {
-        return new TagCreateResponse(this);
+    constructor(interaction : ChatInputCommandInteraction, response: TagCreateResponse) {
+        super(interaction, response);       
     }
 
     public override CheckAuthorisationAndValidity(): boolean {
