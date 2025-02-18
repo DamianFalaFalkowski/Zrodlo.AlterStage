@@ -1,27 +1,31 @@
-import { InteractionReplyOptions } from "discord.js";
+import { InteractionReplyOptions, MessageFlags } from "discord.js";
+import { BaseCommandResponse } from "../_command-handling-base/base.response";
 
-
+// TODO: upewnic sie ze wszystko jest ok
+// TODO: dodac komentarze
+// TODO: dodac logowanie
 
 export class TagCreateResponse extends BaseCommandResponse {
-
-    constructor(command :TagCreateCommand) {
-        super(command); this._reply = { content: "", flags: MessageFlags.Ephemeral };
+    
+    constructor(isEphemeral: boolean) {
+        super(isEphemeral); this._reply = { content: "", flags: MessageFlags.Ephemeral };
     }
-    // sprawdzenie czy komponent został poprawnie zbudowany oraz czy jest kompletny
-    protected ensureReady(): boolean {
-        // additional logic here
-        return true;
-    }
+    
 
     // przygotowanie wiadomosci o błędzie
-    public PepeareFailureResponse(): InteractionReplyOptions
+    public PepeareFailureResponse(reply: InteractionReplyOptions): InteractionReplyOptions
     {
-        // additional logic here
+        return reply;
     }
 
     // przygotowanie wiadomości sukcesu
-    public PrepeareSuccessResponse(): InteractionReplyOptions
+    public PrepeareSuccessResponse(reply: InteractionReplyOptions): InteractionReplyOptions
     {
-        // additional logic here
+        return reply;
+    }
+
+    // sprawdzenie czy komponent został poprawnie zbudowany oraz czy jest kompletny
+    protected EnsureReadyAndValid(): boolean {
+        throw new Error("Method not implemented.");
     }
 }

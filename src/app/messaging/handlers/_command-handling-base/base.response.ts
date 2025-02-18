@@ -1,6 +1,8 @@
 import { BitFieldResolvable, InteractionReplyOptions, MessageFlags } from "discord.js";
 
-// TODO: dodać logowanie
+// TODO: dodac komentarze
+// TODO: dodac logowanie
+
 
 /** Klasa bazowa reprezentująca odpowiedz na polecenie wysłane z aplikacji Discord 
 Klasy dziedziczące powinny zawierać (*):
@@ -14,10 +16,10 @@ Klasy dziedziczące powinny zawierać (*):
 export abstract class BaseCommandResponse {
 // Metody do implementacji w klasach dziedziczących
     /** Przygotowuje i zwraca odpowiedź informującą o błędzie. */
-    protected abstract PepeareFailureResponse(): InteractionReplyOptions;  
+    protected abstract PepeareFailureResponse(reply: InteractionReplyOptions): InteractionReplyOptions;  
 
     /** Przygotowuje i zwraca odpowiedź informującą o sukcesie */
-    protected abstract PrepeareSuccessResponse(): InteractionReplyOptions;
+    protected abstract PrepeareSuccessResponse(reply: InteractionReplyOptions): InteractionReplyOptions;
 
     /** Przestrzeń na implementację zasad kompletności specyficznych dla danego polecenia dziedziczącego */
     protected abstract EnsureReadyAndValid(): boolean;
@@ -39,8 +41,9 @@ export abstract class BaseCommandResponse {
     /** Określa czy aplikacja ma być widoczna w aplikacji Discord tylko dla uzytkownika inicjującego interakcję. Ustawiana w konstruktorze i wyłacznie do odczytu. */
     private readonly _isEphemeral: boolean;
 
+    protected _reply: InteractionReplyOptions | undefined;
+
 // Zmienne prywatne
-    private _reply: InteractionReplyOptions | undefined;
     private _isReady: boolean = false;
     private _isFailure: boolean = false;
 
@@ -66,7 +69,7 @@ export abstract class BaseCommandResponse {
             }
             this._reply.flags = this._isEphemeral ? MessageFlags.Ephemeral : this._reply.flags;       
             this._isReady = true;
-            return this.PrepeareSuccessResponse();
+            return this.PrepeareSuccessResponse(this._reply);
         }catch(error){
             throw error;
         }      
@@ -79,7 +82,7 @@ export abstract class BaseCommandResponse {
             this._reply!.flags = MessageFlags.Ephemeral;
             this._isFailure = true;
             this._isReady = true;
-            return this.PepeareFailureResponse();
+            return this.PepeareFailureResponse(this._reply!);
         } catch (error) {
             throw error;
         }

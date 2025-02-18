@@ -16,8 +16,9 @@ export abstract class BaseCommand<R extends BaseCommandResponse> {
     protected abstract CheckAuthorisationAndValidity(): boolean;
 
 // Zmienne publiczne
-public get IsEphemeral(): boolean { return this.isEphemeral;}
-public readonly AllowedRoles: string[];
+    public get IsEphemeral(): boolean { return this.isEphemeral;}
+    public readonly AllowedRoles: string[];
+    public readonly AllGuildRoles: Role[];
 
 // Zmienne chronione
     protected readonly Response: R;
@@ -25,7 +26,6 @@ public readonly AllowedRoles: string[];
     protected readonly Interaction: ChatInputCommandInteraction;
     protected readonly InteractingMember: APIInteractionGuildMember | GuildMember;
     protected readonly InteractingMemberRoleNames: string[];
-    protected readonly AllGuildRoles: Role[];
 
 // Zmienne prywatne
     private readonly Definition: BaseCommandDefinition;

@@ -1,21 +1,22 @@
 import { TagsRepository } from '../../../../model/tags.model';
 import dcLogger from '../../../utils/dc-logger.util';
-import { BaseCommandHandler } from '../../_base/base.handler';
-import { TagCreateCommand } from './tag-create.command';
-export class TagCreateHandler extends BaseCommandHandler<TagCreateCommand>{
-    
-    constructor(command: TagCreateCommand) {
-        super(command);
-    }
+import { GenerateTransferMessageCommand } from '../gen-transfer-msg/gen-transfer-msg.command';
+import { GenerateTransferMessageResponse } from '../gen-transfer-msg/gen-transfer-msg.response';
 
-     override async handle() {
+// TODO: upewnic sie ze wszystko jest ok
+// TODO: dodac komentarze
+// TODO: dodac logowanie
+
+module.exports = {
+    _baseHandler: require('./../c_command-handling-base/base.handler'),
+     async handle(interaction: any, command: GenerateTransferMessageCommand, response: GenerateTransferMessageResponse) {
         try {
-            const { commandName } = this.command.Interaction;
+            const { commandName } = interaction;
             
-                if (commandName === this.command.Interaction.commandName) {
-                    const tagName = this.command.Interaction.options.getString('name');
-                    const userId = this.command.Interaction.options.getUser('user-id')?.id;
-                    const tagDescription = this.command.Interaction.options.getString('description');
+                if (commandName === interaction.commandName) {
+                    const tagName = interaction.options.getString('name');
+                    const userId = interaction.options.getUser('user-id')?.id;
+                    const tagDescription = interaction.options.getString('description');
             
                     try {
                         if ((await TagsRepository.findAll({
@@ -34,22 +35,22 @@ export class TagCreateHandler extends BaseCommandHandler<TagCreateCommand>{
                             name: tagName,
                             description: tagDescription,
                             userId: userId,
-                            createdUserId: this.command.Interaction.user.id
+                            createdUserId: interaction.user.id
                         });
-                        this.command.Response!.PrepeareSuccessResponseBase();
+                        return response!.PrepeareSuccessResponseBase("Tag added!");
                     }
                     catch (error: Error | any) {
                         if (error.name === 'SequelizeUniqueConstraintError') {
-                            this.command.Response!.PepeareFailureResponseBase(error.message === null ? 'That tag already exists.': error.message);
+                            response!.PepeareFailureResponseBase(error.message === null ? 'That tag already exists.': error.message);
                         }
-                        this.command.Response!.PepeareFailureResponseBase(error.message === null ? 'Something went wrong with adding a tag.': error.message);
+                        response!.PepeareFailureResponseBase(error.message === null ? 'Something went wrong with adding a tag.': error.message);
                     }
                 }
                 else
-                this.command.Response!.PepeareFailureResponseBase(`Nierozpoznana nazwa polecenia: ${commandName}`);
+                response!.PepeareFailureResponseBase(`Nierozpoznana nazwa polecenia: ${commandName}`);
             
                 // Odeślij odpowiedź
-                await this.command.Interaction.reply(dcLogger.logReplyAndReturn(this.command.Interaction, this.command.Response!.Reply));
+                await interaction.reply(dcLogger.logReplyAndReturn(interaction, response!.Reply));
         } catch (error) {
             dcLogger.logError(error as Error);
             throw error;

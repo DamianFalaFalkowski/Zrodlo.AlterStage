@@ -7,8 +7,9 @@ export class FindCommandHandlersUtil {
     public static LoadCommmandsToClient(client: Client, rootFolderPath: string) {
 
         dcLogger.logInfo(`Szukam definicji poleceń $rootFolderPath=${rootFolderPath}`);
-        const singleHandlerFolders = fs.readdirSync(rootFolderPath)
+        const singleHandlerFolders = fs.readdirSync(rootFolderPath).filter(x => !x.includes('_command-handling-base'))
             .map(x => path.join(rootFolderPath, x));
+       
         dcLogger.logInfo(`Found ${singleHandlerFolders.length} folders to check.`);
 
         client.commands = new Collection();

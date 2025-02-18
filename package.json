@@ -3,26 +3,17 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "0": "jest",
-    "1": "tsc",
-    "2": "node .dist/run-commands-registration-script.js",
-    "3": "node .dist/run-discord-app.js",
-    "d_opt-adm-cmd-reload_gen-transfer-msg": "tsx watch src/index.ts -adm-cmd-reload=gen-transfer-msg",
-    "opt-adm-cmd-reload_gen-transfer-msg": "node .dist/index.js -adm-cmd-reload=gen-transfer-msg",
-    "opt-host": "node .dist/index.js -app-host",
     "d_opt-host": "tsx watch src/index.ts -app-host",
+    "d_opt-adm-cmd-reload_gen-transfer-msg": "tsx watch src/index.ts -adm-cmd-reload=gen-transfer-msg",
+    "d_opt-adm-cmd-reload_tag-create": "tsx watch src/index.ts -adm-cmd-reload=tag-create",
+
+    "opt-host": "node .dist/index.js -app-host",
+    "opt-adm-cmd-reload_gen-transfer-msg": "node .dist/index.js -adm-cmd-reload=gen-transfer-msg",
+
     "test": "jest",
     "t": "jest",
     "build": " tsc",
-    "b": "tsc",
-    "register": "node .dist/run-commands-registration-script.js",
-    "r": "node .dist/run-commands-registration-script.js",
-    "dev_register": "tsx watch src/run-commands-registration-script.ts",
-    "d_2": "tsx watch src/run-commands-registration-script.ts",
-    "start": "node .dist/run-discord-app.js",
-    "s": "node .dist/run-discord-app.js",
-    "dev_start": "tsx watch src/run-discord-app.ts",
-    "d_3": "tsx watch src/run-discord-app.ts"
+    "b": "tsc"
   },
   "keywords": [],
   "author": "",

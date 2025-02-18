@@ -11,11 +11,11 @@ module.exports = {
         // pobierz moduł z definicją polecenia (/) aplikacji
         const definition = require(`../../../../app/messaging/handlers/${options[0]}/${options[0]}.definition`);
         dcLoggerUtil.logInfo(
-            `Rozpoczynam procesowanie operacji '${definition.data.name}'.`);
+            `Rozpoczynam procesowanie operacji '${definition.name}'.`);
 
         // utwórz kolekcję a w niej pojedyńcze polecenie do aktualizacji
         let commands = new Collection<string, APIApplicationCommand>();
-        commands.set(definition.data.commandName, definition.data as APIApplicationCommand);
+        commands.set(definition.__commandDefinition.commandName, definition.__commandDefinition as APIApplicationCommand);
 
         try {
             if (!AlterStageAppStartup.rest)
@@ -26,7 +26,7 @@ module.exports = {
                 { body: commands.toJSON() }
             );
             dcLoggerUtil.logInfo(
-                `Operacja PUT polecenia (/) ${definition.data.name} została wykonana.`);//\nRezultat operacji:\n${JSON.stringify(data, null, 2)}`);
+                `Operacja PUT polecenia (/) ${definition.__commandDefinition.name} została wykonana.`);//\nRezultat operacji:\n${JSON.stringify(data, null, 2)}`);
         } catch (error) {
             dcLoggerUtil.logError(error as Error);
             dcLoggerUtil.logStringError("Treść błędu:\n" + JSON.stringify(error, null, 2));

@@ -21,3 +21,7 @@ tsx watch src/index.ts -adm-cmd-reload=gen-transfer-msg
 
 
 node .dist/index.js -adm-cmd-reload=gen-transfer-msg -adm-cmd-reload=tag-create -app-host
+
+
+
+node .dist/index.js -adm-msg-fetch-channels=text--voice--general

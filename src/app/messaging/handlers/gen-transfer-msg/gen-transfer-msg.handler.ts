@@ -2,6 +2,10 @@ import dcLogger from '../../../utils/dc-logger.util';
 import { GenerateTransferMessageCommand } from './gen-transfer-msg.command';
 import { GenerateTransferMessageResponse } from './gen-transfer-msg.response';
 
+// TODO: upewnic sie ze wszystko jest ok
+// TODO: dodac komentarze
+// TODO: dodac logowanie
+
 /**  */
 module.exports = {
     _baseHandler: require('./../c_command-handling-base/base.handler'),
@@ -12,19 +16,19 @@ module.exports = {
             await this._baseHandler.handle(interaction);
 
             // Sprawdzenie czy przekazana rola istnieje w systemie ...
-            if (command.AllGuildRoles!.find(role => role.name === command.RoleToBuyName) === undefined) {
+            if (command.AllGuildRoles!.find(role => role.name === command.RoleToBuy.name) === undefined) {
                 response.PepeareFailureResponseBase('Rola którą próbujesz zakupić nie istnieje w systemie.');
                 return;
             }
 
             // ... i czy jest rolą ozanczoną jako do kupienia
-            if (command.RoleToBuyName!.charAt(0) !== '+') {
+            if (command.RoleToBuy.name!.charAt(0) !== '+') {
                 response.PepeareFailureResponseBase('Rola którą próbujesz zakupić nie jest przeznaczona do kupienia.');
                 return;
             }
 
             // rozpoczęcie generowania wiadomości
-            let itemName = command.RoleToBuyName!;
+            let itemName = command.RoleToBuy!;
             let globalName = interaction.user.globalName!;
             let userId = interaction.user.id;
             let generatedTransferMessage = userId.toString() + ' ' + globalName.toString() + ' ' + itemName.toString();

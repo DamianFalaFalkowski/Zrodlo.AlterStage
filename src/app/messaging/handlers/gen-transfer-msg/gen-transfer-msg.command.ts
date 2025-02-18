@@ -1,23 +1,21 @@
-import { ChatInputCommandInteraction, MessageFlags } from 'discord.js';
+import { APIRole, ChatInputCommandInteraction, MessageFlags, Role } from 'discord.js';
 import dcLogger from '../../../utils/dc-logger.util';
 import { GenerateTransferMessageResponse } from './gen-transfer-msg.response';
 import { BaseCommand } from '../_command-handling-base/base.command';
 
+// TODO: upewnic sie ze wszystko jest ok
+// TODO: dodac komentarze
+// TODO: dodac logowanie
 export class GenerateTransferMessageCommand extends BaseCommand<GenerateTransferMessageResponse> {
-    public readonly RoleToBuyName: string | undefined;
+    public readonly RoleToBuy: Role | APIRole;
 
-public CreateResponseObject(): GenerateTransferMessageResponse {
-        return new GenerateTransferMessageResponse(this);
-    }
-
-
-    constructor(interaction: ChatInputCommandInteraction) {
+    constructor(interaction: ChatInputCommandInteraction, isEphemeral: boolean) {
         try {
-            let tempRoleToBuy = interaction.options.getRole('role-to-buy', true) ;
-            console.log('Option found tempRoleToBuy: ' + tempRoleToBuy.name);
-            super(
-                interaction)
-            this.RoleToBuyName = tempRoleToBuy.name;
+            let RoleToBuy = interaction.options.getRole('role-to-buy', true);
+            super(interaction, new GenerateTransferMessageResponse(isEphemeral, RoleToBuy))
+            this.RoleToBuy = RoleToBuy;
+            console.log('Option found tempRoleToBuy: ' + RoleToBuy);
+
             this.CheckAuthorisationAndValidity(); 
         } catch (error) {
             dcLogger.logError(error as Error);
@@ -28,7 +26,7 @@ public CreateResponseObject(): GenerateTransferMessageResponse {
     // sprawdzenie czy GenerateTransferMessageCommand moze byc wykonany
     public override CheckAuthorisationAndValidity(): boolean {
         try {
-            if (this.RoleToBuyName === undefined || this.RoleToBuyName === null || this.RoleToBuyName.length === 0) {
+            if (this.RoleToBuy === undefined || this.Response.RoleToBuy === null) {
                 //  TODO: ogar b
                 //this.IsSucess = false;
                 //this.Response!.PepeareFailureResponseBase('Invalid command. RoleToBuyName parameter is missing.');

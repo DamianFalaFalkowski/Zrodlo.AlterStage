@@ -11,7 +11,7 @@ export const baseHandlerExecute =
       try {
          dcLoggerUtil.logInfo(`Interaction '${interaction.commandName}' execution started!`);
          dcLoggerUtil.logCommand(interaction);
-         const reply = require('./gen-transfer-msg.handler').handle(
+         const reply = require(`./${interaction.commandName}.handler`).handle(
             interaction,
             commandModule,
             responseModule);
