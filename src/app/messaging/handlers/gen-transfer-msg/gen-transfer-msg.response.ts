@@ -1,16 +1,14 @@
-import { ActionRowBuilder, ButtonBuilder, ButtonStyle, InteractionReplyOptions } from 'discord.js';
-import { BaseCommandResponse } from '../../_base/commands/base.response';
 import dcLogger from '../../../utils/dc-logger.util';
+import { BaseCommandResponse } from '../_command-handling-base/base.response';
 import { GenerateTransferMessageCommand } from './gen-transfer-msg.command';
-
-
 export class GenerateTransferMessageResponse extends BaseCommandResponse {
+    
     constructor(command :GenerateTransferMessageCommand) {
             super(command);
         }
 
     // sprawdzenie czy komponent został poprawnie zbudowany oraz czy jest kompletny
-    protected override ensureReady(): boolean {
+    protected override EnsureReadyAndValid(): boolean {
         try {
             return true;
         } catch (error) {

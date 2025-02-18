@@ -1,9 +1,6 @@
 import { ApplicationCommandType, ApplicationIntegrationType, ChatInputCommandInteraction, InteractionContextType, SlashCommandBuilder, Integration } from 'discord.js';
 import { TagCreateHandler } from './tag-create.handler';
 import { TagCreateCommand } from './tag-create.command';
-import { BaseCommandHandler } from '../../_base/commands/base.handler';
-import { BaseCommandResponse } from "../../_base/commands/base.response";
-import { BaseCommand } from "../../_base/commands/base.command";
 import { TagCreateResponse } from "./tag-create.response";
 import dcLoggerUtil, { DcLogger } from '../../../utils/dc-logger.util';
 import { prototype } from 'events';

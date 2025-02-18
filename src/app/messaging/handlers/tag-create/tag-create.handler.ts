@@ -1,6 +1,6 @@
 import { TagsRepository } from '../../../../model/tags.model';
 import dcLogger from '../../../utils/dc-logger.util';
-import { BaseCommandHandler } from '../../_base/commands/base.handler';
+import { BaseCommandHandler } from '../../_base/base.handler';
 import { TagCreateCommand } from './tag-create.command';
 export class TagCreateHandler extends BaseCommandHandler<TagCreateCommand>{
     

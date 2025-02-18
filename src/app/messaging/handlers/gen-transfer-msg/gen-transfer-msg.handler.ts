@@ -1,31 +1,32 @@
 import dcLogger from '../../../utils/dc-logger.util';
-import { BaseCommand } from '../../_base/commands/base.command';
-import { BaseCommandHandler } from '../../_base/commands/base.handler';
-import { BaseCommandResponse } from '../../_base/commands/base.response';
 import { GenerateTransferMessageCommand } from './gen-transfer-msg.command';
-export class GenerateTransferMessageHandler extends BaseCommandHandler<GenerateTransferMessageCommand>{
-    constructor(command: GenerateTransferMessageCommand) {
-        super(command);
-    }
+import { GenerateTransferMessageResponse } from './gen-transfer-msg.response';
 
-     override async handle() {
+/**  */
+module.exports = {
+    _baseHandler: require('./../c_command-handling-base/base.handler'),
+
+    async handle(interaction: any, command: GenerateTransferMessageCommand, response: GenerateTransferMessageResponse) {
         try {
+            // wywołanie metody bazowej
+            await this._baseHandler.handle(interaction);
+
             // Sprawdzenie czy przekazana rola istnieje w systemie ...
-            if (this.command.AllGuildRoles!.find(role => role.name === this.command.RoleToBuyName) === undefined) {
-                this.command.Response!.PepeareFailureResponseBase('Rola którą próbujesz zakupić nie istnieje w systemie.');
+            if (command.AllGuildRoles!.find(role => role.name === command.RoleToBuyName) === undefined) {
+                response.PepeareFailureResponseBase('Rola którą próbujesz zakupić nie istnieje w systemie.');
                 return;
             }
 
             // ... i czy jest rolą ozanczoną jako do kupienia
-            if (this.command.RoleToBuyName!.charAt(0) !== '+') {
-                this.command.Response!.PepeareFailureResponseBase('Rola którą próbujesz zakupić nie jest przeznaczona do kupienia.');
+            if (command.RoleToBuyName!.charAt(0) !== '+') {
+                response.PepeareFailureResponseBase('Rola którą próbujesz zakupić nie jest przeznaczona do kupienia.');
                 return;
             }
 
             // rozpoczęcie generowania wiadomości
-            let itemName = this.command.RoleToBuyName!;
-            let globalName = this.command.Interaction.user.globalName!; 
-            let userId = this.command.Interaction.user.id;
+            let itemName = command.RoleToBuyName!;
+            let globalName = interaction.user.globalName!;
+            let userId = interaction.user.id;
             let generatedTransferMessage = userId.toString() + ' ' + globalName.toString() + ' ' + itemName.toString();
 
             // Sprawdzenie czy generatedTransferMessage zawiera tylko dozwolone znaki
@@ -40,7 +41,7 @@ export class GenerateTransferMessageHandler extends BaseCommandHandler<GenerateT
                 // Jeśli tak to skróć generatedTransferMessage do 140 znaków
                 generatedTransferMessage = generatedTransferMessage.substring(0, 140);
             }
-            this.command.Response!.PrepeareSuccessResponseBase(generatedTransferMessage);
+            response.PrepeareSuccessResponseBase(generatedTransferMessage);
         } catch (error) {
             dcLogger.logError(error as Error);
             throw error;

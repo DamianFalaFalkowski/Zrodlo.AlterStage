@@ -11,3 +11,9 @@
 
 # 4.Run unit tests
     / npm run start
+
+
+    ....
+
+DOKUMENTAJA POLECEN (/): 
+    https://discord.com/developers/docs/interactions/application-commands#contexts

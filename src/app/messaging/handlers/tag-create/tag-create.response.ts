@@ -1,4 +1,4 @@
-import { BaseCommandResponse } from '../../_base/commands/base.response';
+import { BaseCommandResponse } from '../../_base/base.response';
 import { TagCreateCommand } from './tag-create.command';
 import { InteractionReplyOptions, MessageFlags } from 'discord.js';
 

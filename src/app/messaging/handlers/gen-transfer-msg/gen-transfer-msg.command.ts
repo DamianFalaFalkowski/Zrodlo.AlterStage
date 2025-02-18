@@ -1,7 +1,7 @@
 import { ChatInputCommandInteraction, MessageFlags } from 'discord.js';
-import { BaseCommand } from '../../_base/commands/base.command';
 import dcLogger from '../../../utils/dc-logger.util';
 import { GenerateTransferMessageResponse } from './gen-transfer-msg.response';
+import { BaseCommand } from '../_command-handling-base/base.command';
 
 export class GenerateTransferMessageCommand extends BaseCommand<GenerateTransferMessageResponse> {
     public readonly RoleToBuyName: string | undefined;
@@ -29,8 +29,9 @@ public CreateResponseObject(): GenerateTransferMessageResponse {
     public override CheckAuthorisationAndValidity(): boolean {
         try {
             if (this.RoleToBuyName === undefined || this.RoleToBuyName === null || this.RoleToBuyName.length === 0) {
-                this.IsSucess = false;
-                this.Response!.PepeareFailureResponseBase('Invalid command. RoleToBuyName parameter is missing.');
+                //  TODO: ogar b
+                //this.IsSucess = false;
+                //this.Response!.PepeareFailureResponseBase('Invalid command. RoleToBuyName parameter is missing.');
                 return false;
             }
             return true;
