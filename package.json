@@ -3,17 +3,21 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "d_opt-host": "tsx watch src/index.ts -app-host",
-    "d_opt-adm-cmd-reload_gen-transfer-msg": "tsx watch src/index.ts -adm-cmd-reload=gen-transfer-msg",
-    "d_opt-adm-cmd-reload_tag-create": "tsx watch src/index.ts -adm-cmd-reload=tag-create",
-
-    "opt-host": "node .dist/index.js -app-host",
-    "opt-adm-cmd-reload_gen-transfer-msg": "node .dist/index.js -adm-cmd-reload=gen-transfer-msg",
+    "build": " tsc", 
+    "b": "tsc",
 
     "test": "jest",
     "t": "jest",
-    "build": " tsc",
-    "b": "tsc"
+
+    "d_opt-adm-cmd-reload_all_host": "tsx watch src/index.ts -adm-cmd-reload=gen-transfer-msg -adm-cmd-reload=tag-create -app-host",
+    "d_opt-adm-cmd-reload_gen-transfer-msg": "tsx watch src/index.ts -adm-cmd-reload=gen-transfer-msg",
+    "d_opt-adm-cmd-reload_tag-create": "tsx watch src/index.ts -adm-cmd-reload=tag-create",
+    "d_opt-host": "tsx watch src/index.ts -app-host",
+
+    "opt-host": "node .dist/index.js -app-host",
+    "opt-adm-cmd-reload_gen-transfer-msg": "node .dist/index.js -adm-cmd-reload=gen-transfer-msg",
+    "opt-adm-cmd-reload_tag-create": "node .dist/index.js -adm-cmd-reload=tag-create"
+
   },
   "keywords": [],
   "author": "",

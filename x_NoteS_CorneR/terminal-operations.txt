@@ -1,5 +1,7 @@
-node .dist/index.js 
 
+
+
+node .dist/index.js 
 
 npm run b
 
@@ -13,15 +15,17 @@ node .dist/index.js -adm-msg-fetch-channels=text--voice--general
 tsx watch src/index.ts -app-host
 tsx watch src/index.ts -adm-cmd-reload=tag-create
 tsx watch src/index.ts -adm-cmd-reload=gen-transfer-msg
-
-
-
-
+tsx watch src/index.ts -adm-cmd-reload=gen-transfer-msg-adm-cmd-reload=tag-create
+npm run src/index.ts -adm-cmd-reload=gen-transfer-msg-adm-cmd-reload=tag-create -app-host
 
 
 
 node .dist/index.js -adm-cmd-reload=gen-transfer-msg -adm-cmd-reload=tag-create -app-host
-
-
-
 node .dist/index.js -adm-msg-fetch-channels=text--voice--general
+
+
+
+
+
+lock functions in angular.js
+https://www.npmjs.com/package/async-lock

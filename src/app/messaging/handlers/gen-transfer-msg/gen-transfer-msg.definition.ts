@@ -8,7 +8,7 @@ import { baseHandlerExecute } from "../_command-handling-base/base.handler";
 const commandName: string = 'gen-transfer-msg';
 const commandDescription: string = 'Generates a transfer message for specific role (role has to begin with \'+\' sign)';
 
-export class GenerateTransferMessageDefinition {
+class GenerateTransferMessageDefinition {
     // TODO: mona te dodać rodzaj produktu (nice to have)
 
     public static __commandDefinition = {
@@ -37,15 +37,4 @@ export class GenerateTransferMessageDefinition {
         }
     };
 }
-
-/** Modół fantomowy (udający/kopiuącyj) rzeczywisty obiekt - biorący udział w operacji. obiekt przeznaczony tylko do odczytu aby umoliwić . */
-// Aktualnie zakomentowany, bo nie wiadomo czy wgl będzie potrzebny...
-// module.exports = {
-//     name: Definition_GenerateTransferMessageCommand.__commandDefinition.name,
-//     description: Definition_GenerateTransferMessageCommand.__commandDefinition.description,
-//     type: Definition_GenerateTransferMessageCommand.__commandDefinition.type,
-//     isEphemeral: Definition_GenerateTransferMessageCommand.__commandDefinition.isEphemeral,
-//     allowedRoles: Definition_GenerateTransferMessageCommand.__commandDefinition.allowedRoles,
-//     data: Definition_GenerateTransferMessageCommand.__commandDefinition.data,
-//     execute(interaction: ChatInputCommandInteraction) { Definition_GenerateTransferMessageCommand.__commandDefinition.execute(interaction); }
-// };
+export const definition = GenerateTransferMessageDefinition.__commandDefinition;

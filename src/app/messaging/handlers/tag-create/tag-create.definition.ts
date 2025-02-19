@@ -2,10 +2,10 @@ import { ApplicationCommandType, ApplicationIntegrationType, InteractionContextT
 import { baseHandlerExecute } from '../_command-handling-base/base.handler';
 
 /**  */
-const commandName: string = 'tag-create';
+export const commandName: string = 'tag-create';
 const commandDescription: string = 'Adds a new tag to the database';
 
-export class GenerateTransferMessageDefinition {
+class GenerateTransferMessageDefinition {
     public static __commandDefinition = {
         name: commandName,
         description: commandDescription,
@@ -40,3 +40,4 @@ export class GenerateTransferMessageDefinition {
         }
     };
 }
+export const definition = GenerateTransferMessageDefinition.__commandDefinition;

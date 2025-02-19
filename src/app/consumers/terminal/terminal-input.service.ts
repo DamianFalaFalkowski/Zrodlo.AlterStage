@@ -5,12 +5,18 @@ import OperationsModule from './../../../modules/ops/process-ops.module'
 
 class TerminalInputService{
     public async ReadInputAndStartOperation(splittedUserInput: string[]): Promise<void> {
-        if (splittedUserInput[0] == 'stop')
+        if (splittedUserInput[0] == '-stop')
             dcLogger.logInfo("exiting the opt mode...")
+
+        // ignore inpust without '-' dash at the begining
+        splittedUserInput = splittedUserInput.filter(x => x[0] == '-');
         let foreachIterationsLeft = splittedUserInput.length;
+
         // Wyświetl informację o odczytanych parametrach
+        dcLogger.logInfo('Arguments (without ignored):', foreachIterationsLeft, splittedUserInput); 
+
         if (splittedUserInput.length > 0) {
-            dcLogger.logInfo('Arguments:', splittedUserInput); 
+            
             splittedUserInput.forEach(await (async (arg) => {
                 let argPair = arg.split('=', 2); // TODO: przeniesc to do env           
                 if (argPair.length < 2 )    // no parameters

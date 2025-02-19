@@ -3,11 +3,17 @@ import fs from 'node:fs';
 import { Client, Collection } from 'discord.js';
 import dcLogger from './dc-logger.util';
 
+// TODO: uladnic kod
+// TODO: dodac komentarze
 export class FindCommandHandlersUtil {
     public static LoadCommmandsToClient(client: Client, rootFolderPath: string) {
-
-        dcLogger.logInfo(`Szukam definicji poleceń $rootFolderPath=${rootFolderPath}`);
-        const singleHandlerFolders = fs.readdirSync(rootFolderPath).filter(x => !x.includes('_command-handling-base'))
+        dcLogger.logInfo(
+            `Szukam definicji poleceń $rootFolderPath=${rootFolderPath}`);        
+        const singleHandlerFolders = fs
+            .readdirSync(rootFolderPath)
+            .filter(x => 
+                 x[0] !== '_' && x[0] !== '.' 
+            )
             .map(x => path.join(rootFolderPath, x));
        
         dcLogger.logInfo(`Found ${singleHandlerFolders.length} folders to check.`);
@@ -19,11 +25,11 @@ export class FindCommandHandlersUtil {
                 x.endsWith('.definition.js')
             );
                 let filePath = singleHandlerFolder + "/" + fileName;
-                dcLogger.logInfo(`Looking for file ${filePath}`);
+                dcLogger.logInfo(`Looking for file ${fileName}`);
                 const command = require(filePath);
-                if ('data' in command && 'execute' in command) {
-                    client.commands.set(command.data.name, command);
-                    dcLogger.logInfo(command.data.name + " set");
+                if ('data' in command.definition && 'execute' in command.definition) {
+                    client.commands.set(command.definition.data, command.definition.execute);
+                    dcLogger.logInfo(command.definition.data.name + " set");
                 } else {
                     console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
                 }

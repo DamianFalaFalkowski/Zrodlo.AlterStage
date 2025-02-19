@@ -11,7 +11,7 @@
     "outDir": "./.dist",
     "experimentalDecorators": true
   },
-  "include": ["./src/**/**/**/*"],
+  "include": ["./src/**/**/**/*", "src/app/messaging/handlers/.disabled-reload-command"],
   "exclude": ["node_modules"],
   "compileOnSave": true,
   "buildOnSave": true
