@@ -1,22 +1,23 @@
-import __discordClientHostModuleBuilder from "../modules/discord-client/startup-builders/module.discord-client-host.builder";
-import dcLoggerUtil from "./utils/dc-logger.util";
+
+import dotenv from 'dotenv';
+import dcLoggerUtil from "./app/utils/dc-logger.util";
+import __hostInstance from './module.host.builder';
+
+// importuję parametry aplikacji
+dotenv.config();
 
 // definiuję funkcję do wykanania po zakonczonym logowaniu do klienta 
 // (to tutaj powinna znaleść się sprawcza logika trybu)
-function callbackFunc() {
+function callbackFunc(): void {
    dcLoggerUtil.logInfo("callback is here");
-   try {
-
+   try { 
+         
+      //TagsRepository.sync();
    } catch (error) {
       console.error("Error in main function response:", error);
    }
    // recurrence for app hosting continuation after error
-   callbackFunc();
 };
 
-
 // inicjuję utworzenie modułu klienta discord api i zalogowania się do niego
-__discordClientHostModuleBuilder
-   .SetUpClient()
-   .SetUpRest()
-   .ClientLogin(callbackFunc);
+__hostInstance.CreateInstance(callbackFunc);

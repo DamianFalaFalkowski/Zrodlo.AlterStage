@@ -40,6 +40,7 @@ abstract class HostInstance
             return;
         this.SetUpClient(afterLoginCallback)
         this.SetUpRest();
+        this.ClientLogin(); // TODO: sprawdzic jak zachowa sie metoad ClientLoginAsync() ????
     }
 
     protected static SetUpClient(afterLoginCallback: () => void) 
@@ -84,23 +85,26 @@ class HostBuilder
     readonly rest: REST = HostInstance.rest;
     readonly client: Client<boolean> = HostInstance.client;
 
-    public CreateInstance(afterLoginCallback: () => void) : void 
-    { HostBuilder.CreateInstance(afterLoginCallback); }
-    public static CreateInstance(afterLoginCallback: () => void) : void 
-    { new HostBuilder(afterLoginCallback); }
-    constructor(afterLoginCallback: () => void) 
-    { super(); HostInstance.CreateInstance(afterLoginCallback, this); }  
-
-    public async ClientLoginAsync()
-        : Promise<void> 
-    {
-        await HostInstance.ClientLoginAsync();
+    public CreateInstance(afterLoginCallback: () => void) : void { 
+        HostBuilder.CreateInstance(afterLoginCallback); 
     }
-
-    ClientLogin(): void {
-        dcLoggerUtil.logInfo("Loguję się do clienta discord...");
-        HostInstance.ClientLogin();
+    public static CreateInstance(afterLoginCallback: () => void) : void { 
+        new HostBuilder(afterLoginCallback); 
     }
+    constructor(afterLoginCallback: () => void) { 
+        super(); HostInstance.CreateInstance(afterLoginCallback, this); 
+}  
+
+    // public async ClientLoginAsync()
+    //     : Promise<void> 
+    // {
+    //     await HostInstance.ClientLoginAsync();
+    // }
+
+    // public ClientLogin(): void {
+    //     dcLoggerUtil.logInfo("Loguję się do clienta discord...");
+    //     HostInstance.ClientLogin();
+    // }
     
     public sequelizeContext: Sequelize | null = null;
     LoadCommands()
@@ -147,20 +151,20 @@ export interface IHostBuilder
     CreateInstance(
         afterLoginCallback: () => void)
             : void;
-    ClientLoginAsync()
-        : Promise<void>;
-    ClientLogin()
-        : void;
+  // ZAKOMENTOWANE BO NIE WYDAJE MI SIE ZE TE METODY NIE BEDA PORZEBNER PUBLICZNIE
+  //  ClientLoginAsync()
+  //      : Promise<void>;
+  //  ClientLogin()
+  //      : void;
 }
 
-const __hostInstance // EXAMPLE: merging modules to one
-    : IHostBuilder 
+const __hostInstance : IHostBuilder // EXAMPLE: merging modules to one
 = {
     instance: HostInstance.instance,
     client: HostInstance.instance.client,
     rest: HostInstance.instance.rest,
     CreateInstance: HostInstance.instance.CreateInstance,
-    ClientLoginAsync: HostInstance.instance.ClientLoginAsync,
-    ClientLogin: HostInstance.instance.ClientLogin,
+  //  ClientLoginAsync: HostInstance.instance.ClientLoginAsync,
+  //  ClientLogin: HostInstance.instance.ClientLogin,
 }
-export default __hostInstance as HostInstance; // EXAMPLE: export merged module by 'export default'
+export default __hostInstance; // EXAMPLE: export merged module by 'export default'
