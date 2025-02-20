@@ -2,6 +2,8 @@ import { CommandInteraction, InteractionReplyOptions } from 'discord.js';
 import fs from 'fs';
 import path from 'path';
 import { format } from 'node:util';
+import { eventNames } from 'node:process';
+import thisLine from './this-line.util';
 
 export class DcLogger {
     private logFilePath: string;
@@ -25,6 +27,14 @@ export class DcLogger {
 
         fs.appendFileSync(this.logFilePath, `[${timestamp}] ${formattedMessage}\n`);
         console.log(formattedMessage);
+    }
+
+    public logDebug(e: Error, message: string, ...optionalParams: any[]) {
+        const msg = `[DBG]: ${message} => ${thisLine(e)}`
+        if (optionalParams.length > 0)
+            this.log(msg, ...optionalParams);
+        else
+            this.log(msg);
     }
 
     public logInfo(message: string, ...optionalParams: any[]) {

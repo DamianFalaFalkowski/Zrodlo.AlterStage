@@ -1,6 +1,8 @@
 import { Events, MessageFlags } from 'discord.js';
 import dcLogger from '../../utils/dc-logger.util';
-import __hostInstance from '../../../module.host.builder';
+import { IHostBuilder } from '../../../module.host.builder';
+
+const __hostInstance: IHostBuilder = require('../../../module.host.builder').default;
 
 module.exports = {
 	name: Events.InteractionCreate,
