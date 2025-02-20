@@ -24,15 +24,24 @@ abstract class HostInstance
         GatewayIntentBits.DirectMessageTyping
     ];
     protected static rest
-        : REST;
+        : REST
+            = new REST();
     protected static client
-        : Client<boolean>;
+        : Client<boolean>
+            = new Client({ intents: this._intends }); // TODO: tutaj chyba trzeba bedzie stworzyc jakiegos mocka
 
     public static instance 
         : HostBuilder;  
 
+    public static CreateInstance(afterLoginCallback: () => void) : void { 
+        new HostBuilder(afterLoginCallback); 
+    }
 
-    protected static CreateInstance(afterLoginCallback: () => void, instance: HostBuilder)
+    public CreateInstance(afterLoginCallback: () => void) : void {
+        HostInstance.CreateInstance(afterLoginCallback);
+    }
+
+    protected static CreateInstanceStatic(afterLoginCallback: () => void, instance: HostBuilder)
         : void
     {
         this.instance = instance;
@@ -85,14 +94,15 @@ class HostBuilder
     readonly rest: REST = HostInstance.rest;
     readonly client: Client<boolean> = HostInstance.client;
 
-    public CreateInstance(afterLoginCallback: () => void) : void { 
-        HostBuilder.CreateInstance(afterLoginCallback); 
-    }
-    public static CreateInstance(afterLoginCallback: () => void) : void { 
-        new HostBuilder(afterLoginCallback); 
-    }
+    // public CreateInstance(afterLoginCallback: () => void) : void { 
+    //     new HostBuilder(afterLoginCallback); 
+    // }
+    
+    // public CreateInstance(afterLoginCallback: () => void, instance: HostBuilder) : void { // to chyba do wyjebania
+    //     HostBuilder.CreateInstanceStatic(afterLoginCallback, instance); 
+    // }    
     constructor(afterLoginCallback: () => void) { 
-        super(); HostInstance.CreateInstance(afterLoginCallback, this); 
+        super(); HostInstance.CreateInstanceStatic(afterLoginCallback, this); 
 }  
 
     // public async ClientLoginAsync()
@@ -158,12 +168,12 @@ export interface IHostBuilder
   //      : void;
 }
 
-const __hostInstance : IHostBuilder // EXAMPLE: merging modules to one
+const __hostInstance : IHostBuilder  // EXAMPLE: merging modules to one
 = {
     instance: HostInstance.instance,
-    client: HostInstance.instance.client,
-    rest: HostInstance.instance.rest,
-    CreateInstance: HostInstance.instance.CreateInstance,
+    client: HostInstance.instance?.client,
+    rest: HostInstance.instance?.rest,
+    CreateInstance: HostInstance.CreateInstance,
   //  ClientLoginAsync: HostInstance.instance.ClientLoginAsync,
   //  ClientLogin: HostInstance.instance.ClientLogin,
 }
