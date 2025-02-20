@@ -1,6 +1,5 @@
 import dcLoggerUtil from "../../../../app/utils/dc-logger.util";
 import { GuildInfo } from "../../../discord-client/model/guild.interface.model";
-import AlterStageAppStartup from '../../../../startup';
 import { Routes } from 'discord.js';
 
 module.exports = {
@@ -17,17 +16,18 @@ module.exports = {
         dcLoggerUtil.logInfo(`Rozpoczynam pobieranie informacji o kanałach (${textChannelsFilter ?? 'Text Channels'} ${voiceChannelsFilter ?? 'Voice Channels'} ${generalChannelsFilter ?? 'General Channels'})`);
 
         try {
-            let data = await AlterStageAppStartup.rest?.get(
-                Routes.guildChannels(process.env.GUILD_ID as string)
-            );
-            // FULL INFO:
-                //dcLoggerUtil.logInfo(`Pobrano informacje o  kanałach:\n` + JSON.stringify(data));
+             throw new Error("this function is broken, fix it before continuation");
+    //         let data = await IAlterStageAppStartup.rest?.get(
+    //             Routes.guildChannels(process.env.GUILD_ID as string)
+    //         );
+    //         // FULL INFO:
+    //             //dcLoggerUtil.logInfo(`Pobrano informacje o  kanałach:\n` + JSON.stringify(data));
                 
-            // SELECTED INFO:
-            let guild_channels: GuildInfo[] = JSON.parse(JSON.stringify(data));
-            dcLoggerUtil.logInfo(`Pobrano informacje o ${guild_channels.length} kanałach.\n\n${guild_channels.map(
-                x=> JSON.stringify(
-    { id: x.id, name: x.name, aviable_tags: x.available_tags?.map(x => x.name).join(', ') }, null, 2))}`);
+    //         // SELECTED INFO:
+    //         let guild_channels: GuildInfo[] = JSON.parse(JSON.stringify(data));
+    //         dcLoggerUtil.logInfo(`Pobrano informacje o ${guild_channels.length} kanałach.\n\n${guild_channels.map(
+    //             x=> JSON.stringify(
+    // { id: x.id, name: x.name, aviable_tags: x.available_tags?.map(x => x.name).join(', ') }, null, 2))}`);
                 
         } catch (error) {
             dcLoggerUtil.logError(error as Error);

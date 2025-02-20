@@ -1,11 +1,12 @@
-import { Client } from "discord.js";
-import { AlterStageModuleBuilder, IAlterStageModuleBuilder } from "../../../startup.builder";
+import { Client, REST } from "discord.js";
+import { IAlterStageModuleBuilder } from "../../../app/module.alter-stage.builder";
 
-export interface IDiscordClientBuilder extends IAlterStageModuleBuilder
+export interface IDiscordClientHostModuleBuilder
 {
-    SetUpClient(): AlterStageModuleBuilder;
-
-    ClientLogin(): Promise<AlterStageModuleBuilder>;
-
+    rest: REST | null;
     client: Client | null;
+
+    SetUpClient(): IDiscordClientHostModuleBuilder;
+    ClientLogin(afterLoginCallback: () => {}): Promise<IDiscordClientHostModuleBuilder>;
+    SetUpRest(): IDiscordClientHostModuleBuilder
 }

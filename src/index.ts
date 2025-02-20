@@ -3,6 +3,11 @@ import TerminalInputService from './app/consumers/terminal/terminal-input.servic
 
 async function main() {
     try {
+
+
+
+
+
         // Odczytywanie argumentów wiersza poleceń
         // ADN: Pomijamy pierwsze dwa elementy, ponieważ są to ścieżki do node i skryptu
         let userParamInput = process.argv.slice(2);

@@ -1,10 +1,10 @@
 import { Sequelize } from "sequelize";
-import { AlterStageModuleBuilder } from "../../../startup.builder";
+import { IAlterStageModuleBuilder } from '../../module.alter-stage.builder';
 
-export interface IBuilderDiscordEvents extends AlterStageModuleBuilder {
+export interface IBuilderDiscordEvents {
     sequelizeContext: Sequelize | null;
 
-    LoadCommands(): AlterStageModuleBuilder;
+    LoadCommands(): IAlterStageModuleBuilder;
 
-    LoadEventHandlers(): AlterStageModuleBuilder;
+    LoadEventHandlers(): IAlterStageModuleBuilder;
 }

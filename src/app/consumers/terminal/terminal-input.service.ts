@@ -1,6 +1,5 @@
 import { __sleep } from '../../utils/sleep.util';
 import dcLogger from '../../utils/dc-logger.util.js';
-import AlterStageAppStartup from '../../../startup';
 import OperationsModule from './../../../modules/ops/process-ops.module'
 
 class TerminalInputService{
@@ -59,7 +58,8 @@ class TerminalInputService{
     }
 
     private async hostApp() {
-        await AlterStageAppStartup.ClientLogin();
+        throw new Error("this function is broken, fix it before continuation") 
+        // await IAlterStageAppStartup.ClientLogin();
     }
 }
 export default new TerminalInputService();

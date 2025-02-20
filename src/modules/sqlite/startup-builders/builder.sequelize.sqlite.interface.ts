@@ -1,8 +1,8 @@
 
 import { Sequelize } from "sequelize";
-import { AlterStageModuleBuilder } from "../../../startup.builder";
+import { IAlterStageModuleBuilder } from "../../../app/module.alter-stage.builder";
 
-export interface IBuilderSequelizeSqLite extends AlterStageModuleBuilder {
+export interface IBuilderSequelizeSqLite {
     sequelizeContext: Sequelize | null;
 
     SetDbConnection(
@@ -13,7 +13,7 @@ export interface IBuilderSequelizeSqLite extends AlterStageModuleBuilder {
         dialect: string,
         logging: boolean,
         storage: string
-    ): AlterStageModuleBuilder;
+    ): IAlterStageModuleBuilder;
 
-    InitRepositories(): AlterStageModuleBuilder;
+    InitRepositories(): IAlterStageModuleBuilder;
 }

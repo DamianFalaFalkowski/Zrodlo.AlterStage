@@ -1,46 +1,45 @@
-import dotenv from 'dotenv';
-import dcLogger from './app/utils/dc-logger.util';
-import { AlterStageModuleBuilder } from './startup.builder';
+// import dotenv from 'dotenv';
+// import dcLogger from './app/utils/dc-logger.util';
+// import { AlterStageModuleBuilder } from './startup.builder';
 
-class AlterStageAppStartup {
-    private static readonly appVersion = '1.0.0.0-alpha.1'; // TODO: przeniesc do .env
 
-    public static __setUpApplication(): AlterStageModuleBuilder {
-        if (this.appSetUp) return new AlterStageModuleBuilder();
-        this.appSetUp = true;
+// class AlterStageAppStartup {
+//     private static readonly appVersion = '1.0.0.0-alpha.1'; // TODO: przeniesc do .env
 
-        try {
-            dcLogger.logInfo(
-                `~ ~ ~ Setting up AlterStage - discord server integration application (version: ${this.appVersion}) ~ ~ ~`);
-            dotenv.config();
-            this._alterStageAppGlobals =
-                new AlterStageModuleBuilder()                    
-                    .setUpAppVersion()
-                    .SetUpRest()
-                    .SetUpClient()
-                    .SetDbConnection('database', 'user',
-                        'password', 'localhost', 'sqlite',
-                        false, 'database.sqlite')
-                        .InitRepositories()
-                    .LoadCommands()
-                    .LoadEventHandlers();;
-            return this._alterStageAppGlobals;
-        }
-        catch (e: Error | any) {
-            dcLogger.logStringError(
-                "Aplikacja napotkała problewm podczas rozruchu...");
-            dcLogger.logError(e as Error);
-            this.appSetUp = false;
-            return new AlterStageModuleBuilder();
-        }
-    }
-    private static appSetUp: boolean = false;
+//     public static __setUpApplication(): AlterStageModuleBuilder {
+//         if (this.appSetUp) return new AlterStageModuleBuilder();
+//         this.appSetUp = true;
 
-    private static _alterStageAppGlobals: AlterStageModuleBuilder;
+//         try {
+//             dcLogger.logInfo(
+//                 `~ ~ ~ Setting up AlterStage - discord server integration application (version: ${this.appVersion}) ~ ~ ~`);
+//             dotenv.config();
+//             this._alterStageAppGlobals =
+//                 new AlterStageModuleBuilder()                    
+//                     .setUpAppVersion()
+//                     .SetDbConnection('database', 'user',
+//                         'password', 'localhost', 'sqlite',
+//                         false, 'database.sqlite')
+//                         .InitRepositories()
+//                     .LoadCommands()
+//                     .LoadEventHandlers();;
+//             return this._alterStageAppGlobals;
+//         }
+//         catch (e: Error | any) {
+//             dcLogger.logStringError(
+//                 "Aplikacja napotkała problewm podczas rozruchu...");
+//             dcLogger.logError(e as Error);
+//             this.appSetUp = false;
+//             return new AlterStageModuleBuilder();
+//         }
+//     }
+//     private static appSetUp: boolean = false;
 
-    public static get alterStageAppGlobals(): AlterStageModuleBuilder {
-        return this._alterStageAppGlobals ?? this.__setUpApplication();
-    }
-}
+//     private static _alterStageAppGlobals: AlterStageModuleBuilder;
 
-export default AlterStageAppStartup.__setUpApplication();
+//     public static get alterStageAppGlobals(): AlterStageModuleBuilder {
+//         return this._alterStageAppGlobals ?? this.__setUpApplication();
+//     }
+// }
+
+// export default AlterStageAppStartup.__setUpApplication();
