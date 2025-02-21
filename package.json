@@ -3,25 +3,21 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "0": "jest",
-    "1": "tsc",
-    "2": "node .dist/run-commands-registration-script.js",
-    "3": "node .dist/run-discord-app.js",
-    "d_opt-register_gen-transfer-msg": "tsx watch src/index.ts -registercommand=gen-transfer-msg",
-    "opt-register_gen-transfer-msg": "node .dist/index.js -registercommand=gen-transfer-msg",
-    "opt-host": "node .dist/index.js -hostapp",
+    "build": " tsc", 
+    "b": "tsc",
+
     "test": "jest",
     "t": "jest",
-    "build": " tsc",
-    "b": "tsc",
-    "register": "node .dist/run-commands-registration-script.js",
-    "r": "node .dist/run-commands-registration-script.js",
-    "dev_register": "tsx watch src/run-commands-registration-script.ts",
-    "d_2": "tsx watch src/run-commands-registration-script.ts",
-    "start": "node .dist/run-discord-app.js",
-    "s": "node .dist/run-discord-app.js",
-    "dev_start": "tsx watch src/run-discord-app.ts",
-    "d_3": "tsx watch src/run-discord-app.ts"
+
+    "d_opt-adm-cmd-reload_all_host": "tsx watch src/index.ts -adm-cmd-reload=gen-transfer-msg -adm-cmd-reload=tag-create -app-host",
+    "d_opt-adm-cmd-reload_gen-transfer-msg": "tsx watch src/index.ts -adm-cmd-reload=gen-transfer-msg",
+    "d_opt-adm-cmd-reload_tag-create": "tsx watch src/index.ts -adm-cmd-reload=tag-create",
+    "d_opt-host": "tsx watch src/startup/startup.host-only.ts -app-host",
+
+    "opt-host": "node .dist/startup/startup-mode.host-only.js -app-host",
+    "opt-adm-cmd-reload_gen-transfer-msg": "node .dist/index.js -adm-cmd-reload=gen-transfer-msg",
+    "opt-adm-cmd-reload_tag-create": "node .dist/index.js -adm-cmd-reload=tag-create"
+
   },
   "keywords": [],
   "author": "",

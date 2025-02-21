@@ -1,3 +1,7 @@
+/logs
+*.log
+logs/discord.log
+logs/discord.log
 node_modules/
 .node_modules/
 built/*
@@ -64,10 +68,10 @@ package-lock.json
 .eslintcache
 *v8.log
 /lib/
-
 .env
 /.dist
 /logs
 logs/discord.log
 database.sqlite
-/logs
+
+.vscode/tasks.json
