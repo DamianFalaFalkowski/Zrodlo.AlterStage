@@ -3,13 +3,11 @@ import __hostInstance from '../.app/app.modules/host-module/app-module.host.buil
 import dcLoggerUtil from '../utils/dc-logger.util';
 import { IHostBuilder } from '../.app/app.modules/host-module/app-module.host.builder';
 
-
-
 // importuję parametry aplikacji z pliku .env
 dotenv.config();
+
 // odczytuję konfigurację modułów
 // TODO:
-
 
 
 // definiuję funkcję do wykanania po zakonczonym logowaniu do klienta 
@@ -24,7 +22,7 @@ function onClientLoginCallback(): IHostBuilder {
          ;
       
    } catch (error: Error | any) {
-      
+       
    } finally{
       return __hostInstance.instance;
    }
