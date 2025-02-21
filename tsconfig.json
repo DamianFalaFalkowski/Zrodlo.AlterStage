@@ -11,7 +11,7 @@
     "outDir": "./.dist",
     "experimentalDecorators": true
   },
-  "include": ["./src/**/**/**/*", "src/app/messaging/handlers/.disabled-reload-command"],
+  "include": ["./src/**/**/**/**/**/**/*", "src/app/messaging/handlers/.disabled-reload-command", "src/.discord/.utilities/dc-logger.util.ts", "src/.discord/client-type-map.ts"],
   "exclude": ["node_modules"],
   "compileOnSave": true,
   "buildOnSave": true

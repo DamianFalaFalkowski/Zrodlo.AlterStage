@@ -6,3 +6,7 @@ workbench.editor.tabSizingFixedMaxWidth
 workbench.editorAssociations
 https://code.visualstudio.com/docs/editor/glob-patterns
 
+21.02.2025
+editor.cursorStyle
+
+explorer.openEditors.minVisible
