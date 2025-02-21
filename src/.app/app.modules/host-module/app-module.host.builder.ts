@@ -195,24 +195,26 @@ export interface IHostBuilder// extends IEventsBuilder<IHostBuilder>
 // EXAMPLE->    doładowanie modułu poprzez require():  
 // EXAMPLE->        const __hostInstance: IHostBuilder = require('./module.host.builder').default;
 class __hostInstance implements IHostBuilder { // IHostBuilder  // EXAMPLE: merging modules to one
-            
+
             // IHostBuilder members:
             private constructor() {
                 this._instance = new HostInstance();
                 return this._instance as unknown as __hostInstance;
             }
-            static CreateInstance(afterLoginCallback: () => HostBuilder): void {            
+            static CreateInstance(afterLoginCallback: () => HostBuilder): void {
                 HostInstance.CreateInstanceStatic(afterLoginCallback, new HostBuilder() as IHostBuilder); 
             }
-            CreateInstance(afterLoginCallback: () => HostBuilder): void {            
+            CreateInstance(afterLoginCallback: () => HostBuilder): void {
                 __hostInstance.CreateInstance(afterLoginCallback);
             }
-            
             private _instance: HostInstance;
             private set instance(i :HostBuilder){
                 this._instance = i;
             }
             public get instance(): HostBuilder { 
+                return HostInstance.instance; 
+            }
+            public static get instance(): HostBuilder { 
                 return HostInstance.instance; 
             }
             get client(): Client<boolean> { 
