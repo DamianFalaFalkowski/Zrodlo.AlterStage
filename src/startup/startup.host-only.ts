@@ -18,15 +18,15 @@ function onClientLoginCallback(): IHostBuilder {
    dcLoggerUtil.logInfo("Logowanie OK ! ! !");
    try { 
       // TagsRepository.sync();
-      __hostInstance
+      __hostInstance.instance;
          //.LoadEventHandlers()
          //.LoadCommands()
          ;
       
-   } catch (error) {
-      console.error("Error in main function response:", error);
-   } finally{
+   } catch (error: Error | any) {
       
+   } finally{
+      return __hostInstance.instance;
    }
    // recurrence for app hosting continuation after error
 };
