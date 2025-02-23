@@ -1,4 +1,4 @@
-import { TagsRepository } from '../../../../.app/app.data/app.data-model/tags.model';
+import { TagsRepository } from '../../../../app/app.data/app.data-model/tags.model';
 import dcLogger from '../../../../utils/dc-logger.util';
 import { GenerateTransferMessageCommand } from '../gen-transfer-msg/gen-transfer-msg.command';
 import { GenerateTransferMessageResponse } from '../gen-transfer-msg/gen-transfer-msg.response';

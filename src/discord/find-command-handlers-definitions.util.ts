@@ -1,7 +1,7 @@
 import path from 'node:path';
 import fs from 'node:fs';
 import { Client, Collection } from 'discord.js';
-import dcLogger from '../.utilities/dc-logger.util';
+import dcLogger from './../utils/dc-logger.util';
 
 // TODO: uladnic kod
 // TODO: dodac komentarze

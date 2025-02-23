@@ -1,6 +1,6 @@
 import { Events, MessageFlags } from 'discord.js';
 import dcLogger from '../../../utils/dc-logger.util';
-import { IHostBuilder } from '../../../.app/app.modules/host-module/app-module.host.builder';
+import { IHostBuilder } from '../../../app/app.modules/host-module/app-module.host.builder';
 
 const __hostInstance: IHostBuilder = require('../../../module.host.builder').default;
 

@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
-import __hostInstance from '../.app/app.modules/host-module/app-module.host.builder';
+import __hostInstance from '../app/app.modules/host-module/app-module.host.builder';
 import dcLoggerUtil from '../utils/dc-logger.util';
-import { IHostBuilder } from '../.app/app.modules/host-module/app-module.host.builder';
+import { IHostBuilder } from '../app/app.modules/host-module/app-module.host.builder';
 
 // importuję parametry aplikacji z pliku .env
 dotenv.config();

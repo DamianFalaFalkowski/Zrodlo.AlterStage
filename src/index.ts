@@ -1,4 +1,3 @@
-import __optModule from './.app/app.modules/ops.module/app-module.ops';
 import TerminalInputService from './terminal-input.service(TODO_redesign)';
 
 async function main() {
