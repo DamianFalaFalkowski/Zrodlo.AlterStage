@@ -1,52 +1,16 @@
-import { Client, Collection, GatewayIntentBits, REST } from "discord.js";
-import { timeStamp } from "console";
+import { Client, GatewayIntentBits, REST } from "discord.js";
 import dcLoggerUtil from "../../../utils/dc-logger.util";
+import { ApplicationError } from "../../app.errors/application.error";
 
-
-// TODO: pove to another file or even create a component from it
-            abstract class HostErrorHandlerBase{
-                protected static _collectedErrors: Collection<Error, any> = new Collection<Error, any>();
-                public static get collectedErrors() : Collection<Error, any>{return this._collectedErrors;}
-                public static CollectDataAngGenerateErrorReportBase(errorOccurence: Error): any {
-                    // TODO: logika obslugi bledu
-                    return { a:JSON.stringify(errorOccurence), b:timeStamp.toString() };
-                };
-            }
-            class HostErrorHandler extends HostErrorHandlerBase
-            {
-                public static CollectDataAngGenerateErrorReport(errorOccurence: Error):any 
-                { 
-                    const baseData = HostErrorHandlerBase.CollectDataAngGenerateErrorReportBase(errorOccurence);
-                    // TODO: logika obslygi bledu
-                    const finalData = JSON.stringify(baseData);
-                    return finalData;
-                };
-            }
-            // EXAMPLE=> extension methods           
-            declare global {
-                interface Error 
-                {
-                    throw2(e2message? :string) :Error;
-                    collectAndContinue(): void;
-                }
-            }
-            Error.prototype.throw2 = function(e2message?: string): Error {
-                this.message += "' Instance creation failed. Process cancelled.'"
-                HostErrorHandler.CollectDataAngGenerateErrorReport(this);
-                return this;
-            }
-            Error.prototype.collectAndContinue = function() {
-                HostErrorHandler.CollectDataAngGenerateErrorReport(this);
-                dcLoggerUtil.logError(this);
-            }
-            // EXAMPLE=> extension methods  
-// TODO: pove to another file or even create a component from it
-
-
-
-// TODO: dodać komentarze. Ta klasa nie powinna juz byc edytowana (20-02-2025)
+/**
+ * Reprezentacja klasy instancji modułu hostującego usługę. Zawiera metody zarządzające instancją, parametry konfiguracyjne i przertzymuje obiekty potrzebne do funkcjonowania instancji ale sam ich nie tworzy. Jest podstawą do załączania kolejnych modułów.
+ */
 class HostInstance
 {
+    // TODO: wystawić jako zmienna konfiguracyjna
+    /**
+     * Zakres uprawnień aplikacji
+     * */
     protected static readonly _intends = [
         GatewayIntentBits.Guilds,
         GatewayIntentBits.GuildMessages,
@@ -59,44 +23,58 @@ class HostInstance
         GatewayIntentBits.DirectMessageReactions,
         GatewayIntentBits.DirectMessageTyping
     ];
+
+    public get rest(): REST { return HostInstance.rest };
+    public get client(): Client<boolean> { return HostInstance.client; }
+
+    /** Statyczny wewnętrzny dostęp do klasy rest */
     protected static rest
         : REST
             = new REST();
+    /** Statyczny wewnętrzny dostęp do klienta discord */
     protected static client
         : Client<boolean>
             = new Client({ intents: 0 });
-    public get instance(): HostBuilder
-    {
+
+    /** Dostęp do instancji buildera z poziomu encji */
+    // protected get instance(): HostBuilder
+    // {
+    //     if(HostInstance._instance === null) 
+    //         throw new BusinessError('instance accesed before creation.').Handle();
+    //     return HostInstance._instance;
+    // }
+
+    /** Zmienna trzymająca informacje o tym czy instancja została utworzona */
+    protected static _instanceCreated: boolean = false;
+
+    /** Instancja buildera */
+    private static _instance: HostInstance | null = null;
+
+    /** Dostęp statyczny do instancji */
+    public static get instance(): HostInstance {
         if(HostInstance._instance === null) 
-            throw new Error('instance accesed before creation.').throw2();
-        return HostInstance._instance;
-    }
-    private static _instanceCreated: boolean = false;
-    private static _instance: HostBuilder | null = null;
-    public static get instance(): HostBuilder {
-        if(HostInstance._instance === null) 
-            throw new Error('instance accesed before creation.').throw2();
+            throw new ApplicationError('instance accesed before creation.').Handle();
         return HostInstance._instance;
     }
     
-    private static resetInstance() { 
+    /** Metoca resetująca całą instancję hosta */
+    protected static resetInstance() { 
         this._instanceCreated = false;
         this._instance = null;
     }
 
-    public static CreateInstanceStatic(afterLoginCallback: () => IHostBuilder, instance: IHostBuilder)
-        : IHostBuilder
+    public static CreateInstanceStatic(afterLoginCallback: () => void, instance: HostInstance)
     {
-        if(this._instanceCreated == true)
+        if(HostInstance._instanceCreated == true)
             new Error('Instancja została ju utworzona, przerywam tworzenie nowej...');
         else{
             try {
-                HostInstance._instance = instance as HostBuilder;
+                HostInstance._instance = instance as HostInstance;
                 this.SetUpClient(afterLoginCallback)
                 this.ClientLogin(); // w klasie jest zakomentowana opcja asyncowania tej metody
                 this.SetUpRest();
                 this._instanceCreated = true;
-            } catch (e: Error | any) {                 
+            } catch (e: Error | any) {
                 HostInstance.resetInstance();
                 throw new e.throw2('Instance creation failed. Process caancelled.');
             }
@@ -130,17 +108,17 @@ class HostInstance
 
 class HostBuilder 
     extends 
-        HostInstance 
-    implements 
+        HostInstance
+    implements
         IHostBuilder
-       // , IEventsBuilder<HostBuilder> 
 {
-    public get rest(): REST { return HostInstance.rest };
-    public get client(): Client<boolean> { return HostInstance.client; }
-
-    public CreateInstance(afterLoginCallback: () => HostBuilder): void {
-        HostInstance.CreateInstanceStatic(afterLoginCallback, new HostBuilder());
+    CreateInstance(afterLoginCallback: () => IHostBuilder): void {
+        HostBuilder.CreateInstanceStatic(afterLoginCallback, this as HostInstance); 
     }
+}
+    
+
+    
     // public readonly sequelizeContext?: Sequelize = undefined;
     
     // public LoadCommands()
@@ -177,15 +155,16 @@ class HostBuilder
     //     }
     //     return this;
     // }
-}
+
+/** Interfejs buildera, wystawia metody uywane do tworzenia modułów */
 export interface IHostBuilder// extends IEventsBuilder<IHostBuilder>
 {
-    readonly instance 
-        : HostBuilder;        
-    readonly client
-        : Client<boolean>;
-    readonly rest
-        : REST;
+    //readonly instance 
+    //    : HostBuilder;        
+    //readonly client
+    //    : Client<boolean>;
+    //readonly rest
+    //    : REST;
     CreateInstance(
         afterLoginCallback: () => HostBuilder)
             : void;
@@ -197,31 +176,29 @@ class __hostInstance implements IHostBuilder { // IHostBuilder  // EXAMPLE: merg
 
             // IHostBuilder members:
             private constructor() {
-                this._instance = new HostInstance();
-                return this._instance as unknown as __hostInstance;
+                return new HostBuilder() as unknown as __hostInstance;
             }
-            static CreateInstance(afterLoginCallback: () => HostBuilder): void {
-                HostInstance.CreateInstanceStatic(afterLoginCallback, new HostBuilder() as IHostBuilder); 
+            static CreateInstance(afterLoginCallback: () => void): void {
+                HostBuilder.CreateInstanceStatic(afterLoginCallback, new HostBuilder() as HostInstance); 
             }
-            CreateInstance(afterLoginCallback: () => HostBuilder): void {
+            CreateInstance(afterLoginCallback: () => void): void {
                 __hostInstance.CreateInstance(afterLoginCallback);
             }
-            private _instance: HostInstance;
-            private set instance(i :HostBuilder){
-                this._instance = i;
-            }
-            public get instance(): HostBuilder { 
-                return HostInstance.instance; 
-            }
-            public static get instance(): HostBuilder { 
-                return HostInstance.instance; 
-            }
-            get client(): Client<boolean> { 
-                return HostInstance.instance?.client; 
-            }
-            get rest(): REST { 
-                return HostInstance.instance?.rest;
-            }
+            // private set instance(i :HostBuilder){
+            //     this._instance = i;
+            // }
+            // public get instance(): HostBuilder { 
+            //     return HostInstance.instance; 
+            // }
+            // public static get instance(): HostBuilder { 
+            //     return HostInstance.instance; 
+            // }
+            // get client(): Client<boolean> { 
+            //     return HostInstance.instance?.client; 
+            // }
+            // get rest(): REST { 
+            //     return HostInstance.instance?.rest;
+            // }
 
 
             // // IEventHandlingBuilder // TODO: interfejs a najlepiej cały moduł do utworzenia

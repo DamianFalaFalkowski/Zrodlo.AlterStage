@@ -13,34 +13,35 @@ module.exports = {
 		// check interaction
 		if (!interaction.isChatInputCommand()) return;
 
-		if(!__hostInstance.client)
-			throw Error("Client is missing!");
+// TODO: uncomment
+		// if(!__hostInstance.client)
+		// 	throw Error("Client is missing!");
 
-		// get and check commands
-		const command = __hostInstance.client.commands.get(interaction.commandName) as any;
-		if (!command) {
-			dcLogger.logStringError(`No command matching ${interaction.commandName} was found.`);
-			return;
-		}
+		// // get and check commands
+		// const command = __hostInstance.client.commands.get(interaction.commandName) as any;
+		// if (!command) {
+		// 	dcLogger.logStringError(`No command matching ${interaction.commandName} was found.`);
+		// 	return;
+		// }
 
 		//wyklonuje ligikę zapytanmia i wysyła odpowiedz
-		try {
-			await command.execute(interaction);
-		} 
-		//w razie niepowodzenia informuje respondenta o statusie.
-		catch (error: any) {
-			if (error instanceof Error) {
-				dcLogger.logStringError(`An error of type ${error.name} occured.\n ${error.message}`);
-			} else {
-				dcLogger.logStringError('An unknown error occurred.');
-			}
+		// try {
+		// 	await command.execute(interaction);
+		// } 
+		// //w razie niepowodzenia informuje respondenta o statusie.
+		// catch (error: any) {
+		// 	if (error instanceof Error) {
+		// 		dcLogger.logStringError(`An error of type ${error.name} occured.\n ${error.message}`);
+		// 	} else {
+		// 		dcLogger.logStringError('An unknown error occurred.');
+		// 	}
 			
-			if (interaction.replied || interaction.deferred) {
-				await interaction.followUp({ content: 'There was an error while executing this command!', flags: MessageFlags.Ephemeral });
-			} else {
-				await interaction.reply({ content: 'There was an error while executing this command!', flags: MessageFlags.Ephemeral });
-			}
-		}
+		// 	if (interaction.replied || interaction.deferred) {
+		// 		await interaction.followUp({ content: 'There was an error while executing this command!', flags: MessageFlags.Ephemeral });
+		// 	} else {
+		// 		await interaction.reply({ content: 'There was an error while executing this command!', flags: MessageFlags.Ephemeral });
+		// 	}
+		// }
 	},
 };
 
