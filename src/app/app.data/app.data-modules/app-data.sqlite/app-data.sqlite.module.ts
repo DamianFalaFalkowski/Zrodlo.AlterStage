@@ -1,19 +1,22 @@
 import { AppModule } from "../../../app.modules/app.module";
-import { SqliteBuilder } from "./app-data.sqlite.builder";
+import { SaveTagIntegration } from "./integrations/save-tag.sqlite.integration";
 
 interface ISqliteDependency
 {
     initialize(): AppModule;
 }
-class SqliteModule extends SqliteBuilder implements ISqliteDependency
+class SqliteModule extends SaveTagIntegration
 {
     private constructor() {
         super();
     }
-    public initialize(): AppModule {
+    saveTag(tagName: string): void {
+        throw new Error("Method not implemented.");
+    }
+    public initialize(): SqliteModule {
         return SqliteModule.initialize();
     }
-    public static initialize(): SqliteModule | AppModule {
+    public static initialize(): SqliteModule {
         return new SqliteModule()
     }
 }
