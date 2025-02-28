@@ -6,7 +6,7 @@ export interface ISqlite
 {
    isContextSetUp(): boolean;
 }
-interface ISqliteInstance extends ISqlite
+export interface ISqliteInstance extends ISqlite
 {
    context: Sequelize | undefined;
 }

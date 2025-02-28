@@ -9,8 +9,10 @@ import { Model } from 'sequelize';
  * );
  */
 export class TagsRepository extends Model {
+    declare id: number
     declare name: string;
     declare description: string;
     declare userId: string;
     declare createdUserId: string;
 }
+

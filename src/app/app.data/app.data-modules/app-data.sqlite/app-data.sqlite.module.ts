@@ -1,3 +1,4 @@
+import { TagsRepository } from "../../app.data-model/tags.model";
 import { SqliteBuilder } from "./app-data.sqlite.builder";
 import { ISqlite } from "./app-data.sqlite.instance";
 import { ISaveTagIntegration } from "./integrations/save-tag.sqlite.integration";
@@ -12,8 +13,13 @@ export class SqliteModule
     private constructor() {
         super();
     }
-    saveTag(tagName: string): void {
-        throw new Error("Method not implemented.");
+    async saveTag(tagName: string): Promise<void> {
+        await TagsRepository.create({
+                        name: tagName,
+                        description: 'version tag',
+                        userId: 0,
+                        createdUserId: 0
+                    });
     }
     public initialize(): SqliteModule {
         return SqliteModule.initialize();
