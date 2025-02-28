@@ -1,5 +1,5 @@
 import { ChatInputCommandInteraction, GuildMemberRoleManager, InteractionReplyOptions, MessageFlags, SlashCommandBuilder } from "discord.js";
-import { TagsRepository } from "../../../app/app.data/app.data-model/tags.model";
+import { TagsEntity } from "../../../app/app.data/app.data-model/tags.model";
 const dcLogger = require('./src/utils/dc-logger.util.ts');
 
 
@@ -52,7 +52,7 @@ export const execute = async (interaction: ChatInputCommandInteraction) => {
         const tagDescription = interaction.options.getString('description');
 
         try {
-            if ((await TagsRepository.findAll({
+            if ((await TagsEntity.findAll({
                 where: {
                     name: tagName,
                     userId: userId
@@ -64,7 +64,7 @@ export const execute = async (interaction: ChatInputCommandInteraction) => {
             }
 
             // equivalent to: INSERT INTO tags (name, description, username) values (?, ?, ?);
-            let tag: TagsRepository = await TagsRepository.create({
+            let tag: TagsEntity = await TagsEntity.create({
                 name: tagName,
                 description: tagDescription,
                 userId: userId,

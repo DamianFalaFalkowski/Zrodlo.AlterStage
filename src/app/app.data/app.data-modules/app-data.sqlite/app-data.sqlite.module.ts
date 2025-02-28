@@ -1,4 +1,4 @@
-import { TagsRepository } from "../../app.data-model/tags.model";
+import { TagsEntity } from "../../app.data-model/tags.model";
 import { SqliteBuilder } from "./app-data.sqlite.builder";
 import { ISqlite } from "./app-data.sqlite.instance";
 import { ISaveTagIntegration } from "./integrations/save-tag.sqlite.integration";
@@ -14,7 +14,7 @@ export class SqliteModule
         super();
     }
     async saveTag(tagName: string): Promise<void> {
-        await TagsRepository.create({
+        await TagsEntity.create({
                         name: tagName,
                         description: 'version tag',
                         userId: 0,

@@ -1,4 +1,4 @@
-import { TagsRepository } from '../../../../app/app.data/app.data-model/tags.model';
+import { TagsEntity } from '../../../../app/app.data/app.data-model/tags.model';
 import dcLogger from '../../../../utils/dc-logger.util';
 import { GenerateTransferMessageCommand } from '../gen-transfer-msg/gen-transfer-msg.command';
 import { GenerateTransferMessageResponse } from '../gen-transfer-msg/gen-transfer-msg.response';
@@ -19,7 +19,7 @@ module.exports = {
                     const tagDescription = interaction.options.getString('description');
             
                     try {
-                        if ((await TagsRepository.findAll({
+                        if ((await TagsEntity.findAll({
                             where: {
                                 name: tagName,
                                 userId: userId
@@ -31,7 +31,7 @@ module.exports = {
                         }
             
                         // equivalent to: INSERT INTO tags (name, description, username) values (?, ?, ?);
-                        let tag: TagsRepository = await TagsRepository.create({
+                        let tag: TagsEntity = await TagsEntity.create({
                             name: tagName,
                             description: tagDescription,
                             userId: userId,

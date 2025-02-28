@@ -1,5 +1,7 @@
-import { Model } from 'sequelize';
+import { DataTypes, Model } from 'sequelize';
 
+
+export const TagsModelName = 'Tags'
 /*
  * equivalent to: CREATE TABLE tags(
  * name VARCHAR(255) UNIQUE,
@@ -8,7 +10,7 @@ import { Model } from 'sequelize';
  * usage_count  INT NOT NULL DEFAULT 0
  * );
  */
-export class TagsRepository extends Model {
+export class TagsEntity extends Model {
     declare id: number
     declare name: string;
     declare description: string;
@@ -16,3 +18,23 @@ export class TagsRepository extends Model {
     declare createdUserId: string;
 }
 
+export const TagsAttributes = {
+    id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+    },
+    name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    description: DataTypes.STRING,
+    userId: { 
+        type: DataTypes.NUMBER, 
+        allowNull: false
+    },
+    createdUserId: { 
+        type: DataTypes.NUMBER, 
+        allowNull: false
+    },
+};

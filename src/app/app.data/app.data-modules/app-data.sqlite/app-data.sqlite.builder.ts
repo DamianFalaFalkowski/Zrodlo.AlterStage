@@ -1,8 +1,8 @@
 
-import { DataTypes, Dialect, Sequelize } from "sequelize";
+import { Dialect, Sequelize } from "sequelize";
 import { ISqliteInstance, SqliteInstance } from './app-data.sqlite.instance';
 import { SqliteModule } from "./app-data.sqlite.module";
-import {TagsRepository} from './../../app.data-model/tags.model'
+import {TagsAttributes, TagsModelName, TagsEntity} from './../../app.data-model/tags.model'
 
 
 export interface ISqliteBuilder extends ISqliteInstance{
@@ -20,8 +20,7 @@ export interface ISqliteBuilder extends ISqliteInstance{
 }
 export abstract class SqliteBuilder 
    extends SqliteInstance
-   implements ISqliteInstance,
-   ISqliteBuilder 
+   implements ISqliteBuilder 
 {
    public SetDbConnection(databaseName: string, userName: string, password: string, host: string, dialect: Dialect, logging: boolean, storage: string): SqliteModule {
       this._context = new Sequelize(
@@ -33,30 +32,11 @@ export abstract class SqliteBuilder
 
    public InitRepositories(): SqliteModule
    {
-      TagsRepository.init(
-         {
-            id: {
-               type: DataTypes.INTEGER,
-               autoIncrement: true,
-               primaryKey: true,
-            },
-            name: {
-               type: DataTypes.STRING,
-               allowNull: false,
-            },
-            description: DataTypes.STRING,
-            userId: { 
-               type: DataTypes.NUMBER, 
-               allowNull: false
-            },
-            createdUserId: { 
-               type: DataTypes.NUMBER, 
-               allowNull: false
-            },
-         },
+      TagsEntity.init(
+         TagsAttributes,
          {
                sequelize: this._context!,
-               modelName: 'Tags', // We need to choose the model name
+               modelName: TagsModelName,
          }
       );
       return this as unknown as SqliteModule;
