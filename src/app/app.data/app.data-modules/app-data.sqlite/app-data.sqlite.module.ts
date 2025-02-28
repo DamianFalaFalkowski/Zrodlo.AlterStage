@@ -1,11 +1,13 @@
-import { AppModule } from "../../../app.modules/app.module";
-import { SaveTagIntegration } from "./integrations/save-tag.sqlite.integration";
+import { SqliteBuilder } from "./app-data.sqlite.builder";
+import { ISqlite } from "./app-data.sqlite.instance";
+import { ISaveTagIntegration } from "./integrations/save-tag.sqlite.integration";
 
-interface ISqliteDependency
-{
-    initialize(): AppModule;
-}
-class SqliteModule extends SaveTagIntegration
+export class SqliteModule 
+    extends 
+        SqliteBuilder 
+    implements 
+        ISaveTagIntegration, 
+        ISqlite
 {
     private constructor() {
         super();
@@ -20,4 +22,7 @@ class SqliteModule extends SaveTagIntegration
         return new SqliteModule()
     }
 }
-export default SqliteModule;
+
+const sqliteModule: SqliteModule = SqliteModule.initialize();
+
+export default sqliteModule;

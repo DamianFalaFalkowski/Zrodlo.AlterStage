@@ -1,11 +1,8 @@
 import dotenv from 'dotenv';
 import __hostInstance from '../app/app.modules/host-module/app-module.host.builder';
 import dcLoggerUtil from '../utils/dc-logger.util';
-import SqliteModule from '../app/app.data/app.data-modules/app-data.sqlite/app-data.sqlite.module';
-import { AppModule } from '../app/app.modules/app.module';
-import VersionModule from '../app/app.modules/app.version/app.version.module';
-import { SaveTagIntegration } from '../app/app.data/app.data-modules/app-data.sqlite/integrations/save-tag.sqlite.integration';
 import versionModule from '../app/app.modules/app.version/app.version.module';
+import sqliteModule from '../app/app.data/app.data-modules/app-data.sqlite/app-data.sqlite.module';
 
 // importuję parametry aplikacji z pliku .env
 dotenv.config();
@@ -34,8 +31,6 @@ function onClientLoginCallback() {
 // inicjuję utworzenie modułu klienta discord api i zalogowania się do niego
 //__hostInstance.CreateInstance(onClientLoginCallback);
 
-const data = SqliteModule
-   .initialize().As<SqliteModule>()
-   .SetDbConnection('','','','','sqlite',false,'').As<SqliteModule>();
+const data = sqliteModule.SetDbConnection('','','','','sqlite',false,'');
 
-versionModule(data).initialize().setUpAppVersion()
+versionModule(data).setUpAppVersion(1,0,0);
