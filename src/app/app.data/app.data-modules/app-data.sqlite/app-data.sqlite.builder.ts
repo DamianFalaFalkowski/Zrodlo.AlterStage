@@ -3,6 +3,7 @@ import { Dialect, Sequelize } from "sequelize";
 import { ISqliteInstance, SqliteInstance } from './app-data.sqlite.instance';
 import { SqliteModule } from "./app-data.sqlite.module";
 import {TagsAttributes, TagsModelName, TagsEntity} from './../../app.data-model/tags.model'
+import dcLoggerUtil from "../../../../utils/dc-logger.util";
 
 
 export interface ISqliteBuilder extends ISqliteInstance{
@@ -35,10 +36,15 @@ export abstract class SqliteBuilder
       TagsEntity.init(
          TagsAttributes,
          {
-               sequelize: this._context!,
-               modelName: TagsModelName,
+            sequelize: this._context!,
+            modelName: TagsModelName,
          }
       );
+      
+      this._context!.afterSync(() => { 
+         this._isDatabaseSynced = true;
+         dcLoggerUtil.logInfo('Database synchronized')
+      });
       return this as unknown as SqliteModule;
    }
 }

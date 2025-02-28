@@ -10,6 +10,8 @@ export abstract class VersionBuilder extends VersionInstance
     implements 
         IVersionBuilder, ISaveTagIntegrationIn
 {
+    abstract isDatabaseSynced(): boolean ;
+    abstract isTableInitialized(tableName: string): boolean ;
     abstract isContextSetUp(): boolean;
     abstract saveTag(tagName: string): void;
 

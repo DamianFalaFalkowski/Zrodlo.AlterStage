@@ -19,6 +19,12 @@ class VersionModule<T extends ISaveTagIntegration>
       super();
       this._dependency = dependency;
    }
+   isTableInitialized(tableName: string): boolean {
+      return this._dependency!.isTableInitialized(tableName);
+   }
+   isDatabaseSynced(): boolean {
+      return this._dependency!.isDatabaseSynced();
+   }
    public static initialize<T extends ISaveTagIntegration>(dependency: T): VersionModule<T> {
       return new VersionModule(dependency)
    }
