@@ -40,7 +40,7 @@ export abstract class SqliteBuilder
             modelName: TagsModelName,
          }
       );
-      
+
       this._context!.afterSync(() => { 
          this._isDatabaseSynced = true;
          dcLoggerUtil.logInfo('Database synchronized')

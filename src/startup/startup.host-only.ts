@@ -1,9 +1,9 @@
 import dotenv from 'dotenv';
-import __hostInstance from '../app/app.modules/host-module/app-module.host.builder';
 import dcLoggerUtil from '../utils/dc-logger.util';
 import versionModule from '../app/app.modules/app.version/app.version.module';
 import sqliteModule from '../app/app.data/app.data-modules/app-data.sqlite/app-data.sqlite.module';
 import { Dialect } from 'sequelize';
+import hostModule from '../app/app.modules/host-module/app-module.host.module';
 
 // importuję parametry aplikacji z pliku .env
 dotenv.config();
@@ -43,4 +43,10 @@ const data = sqliteModule
       process.env.DATABASE_STORAGE as string)
    .InitRepositories();
 
-versionModule(data).setUpAppVersion(1,0,1);
+versionModule(data)
+   .setUpAppVersion(1,0,1);
+
+hostModule
+   .SetUpClient(onClientLoginCallback)
+   .SetUpRest()
+   .ClientLogin();
