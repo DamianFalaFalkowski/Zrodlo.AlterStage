@@ -1,7 +1,8 @@
-import { Client, REST } from "discord.js";
+import { Client, Events, MessageFlags, REST, Routes } from "discord.js";
 import dcLoggerUtil from "../../../utils/dc-logger.util";
 import { HostInstance, IHostInstance } from "./app-module.host.instance";
 import { HostModule } from './app-module.host.module';
+import { CommandHandlersUtil } from "../../../discord/find-command-handlers-definitions.util";
 
 export interface IHostBuilder
     extends
@@ -10,47 +11,47 @@ export interface IHostBuilder
     SetUpClient(afterLoginCallback: () => void): HostModule;
     SetUpRest(): HostModule;
     ClientLogin(): HostModule;
+    HandleEventInteractionCreate(): HostModule;
+    PublishCommands(): Promise<HostModule>;
 }
-
-// public LoadCommands()
-    //     : HostBuilder 
-    // {
-    //     dcLoggerUtil.logDebug(new Error(), `${this.__className}`);
-    //     dcLoggerUtil.logInfo("Rejestruję polecenia...");
-    //     if (!HostInstance.client)
-    //         throw Error("Client is missing");
-    //     FindCommandHandlersUtil.LoadCommmandsToClient(HostInstance.client, path.join(__dirname, 'app/messaging/handlers'));
-    //     return this;
-    // }
-
-    // public LoadEventHandlers()
-    //     : HostBuilder 
-    // {
-    //     dcLoggerUtil.logDebug(new Error(), `${this.__className}`);
-    //     dcLoggerUtil.logInfo("Rejestruję event handlery...");
-    //     if (!HostInstance.client)
-    //         throw Error("Client is missing");
-    //     // Read event handlers from the events directory
-    //     const eventsPath = path.join(__dirname, 'app/messaging/events');
-    //     const eventFiles = fs.readdirSync(eventsPath).filter((file: any) => file.endsWith('.js') || file.endsWith('.ts'));
-
-    //     for (const file of eventFiles) {
-    //         const filePath = path.join(eventsPath, file);
-    //         const event = require(filePath);
-    //         if (event.once) {
-    //             HostInstance.client.once(event.name, (...args) => event.execute(...args));
-    //         } else {
-    //             HostInstance.client.on(event.name, (...args) => event.execute(...args));
-    //         }
-    //         dcLoggerUtil.logInfo(`Exevution of event ${event.name} has been added`);
-    //     }
-    //     return this;
-    // }
 
 export abstract class HostBuilder
     extends HostInstance
     implements IHostBuilder
 {
+    public HandleEventInteractionCreate(): HostModule 
+    {
+        this.client!.on(Events.InteractionCreate, async interaction => {
+            if (!interaction.isChatInputCommand()) return;
+
+            const command = interaction.client.commands.get(interaction.commandName);
+
+            if (!command) {
+                console.error(`No command matching ${interaction.commandName} was found.`);
+                return;
+            }
+
+            try {
+                await command.execute(interaction);
+            } catch (error) {
+                console.error(error);
+                if (interaction.replied || interaction.deferred) {
+                    await interaction.followUp({ content: 'There was an error while executing this command!', flags: MessageFlags.Ephemeral });
+                } else {
+                    await interaction.reply({ content: 'There was an error while executing this command!', flags: MessageFlags.Ephemeral });
+                }
+            }
+        });
+        this._isInteractionCreateHandled = true;
+        return this as unknown as HostModule;
+    }
+
+    async PublishCommands(): Promise<HostModule> 
+    {
+        await CommandHandlersUtil.PublishCommands(this.rest!, this.commands, process.env.CLIENT_ID as string, process.env.GUILD_ID as string);
+        return this as unknown as HostModule;
+    }
+
     SetUpClient(afterLoginCallback: () => void): HostModule {
         dcLoggerUtil.logInfo("Tworzę klienta discord...");
         this.client = new Client({ intents: this.intends });
@@ -59,12 +60,14 @@ export abstract class HostBuilder
         this._isClientSetUp = true;
         return this as unknown as HostModule;
     }
+
     SetUpRest(): HostModule {
         dcLoggerUtil.logInfo("Tworzę REST...");
         this.rest = new REST()
             .setToken(process.env.TOKEN as string);
         return this as unknown as HostModule;
     }
+
     ClientLogin(): HostModule {
         dcLoggerUtil.logInfo("Loguję się do clienta discord...");
         if (!this.client)

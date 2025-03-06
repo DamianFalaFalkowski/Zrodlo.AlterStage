@@ -59,15 +59,16 @@ export abstract class BaseCommandResponse {
         components: any[] | null = null, 
         flags: BitFieldResolvable<"SuppressEmbeds" | "Ephemeral" | "SuppressNotifications", MessageFlags.SuppressEmbeds | MessageFlags.Ephemeral | MessageFlags.SuppressNotifications> | null = null): InteractionReplyOptions
     {
-        if (this.ensureReadyAndValidBase()) 
-            throw new Error('Sprawdzanie poprawności odpowiedzi zakonczone niepowodzneiem.');
         try{
             this._reply = { 
                 content: content,
                 components: components!,
                 flags: flags!
             }
-            this._reply.flags = this._isEphemeral ? MessageFlags.Ephemeral : this._reply.flags;       
+            if (this._isEphemeral)
+                this._reply.flags = MessageFlags.Ephemeral;
+            if (!this.ensureReadyAndValidBase()) 
+                throw new Error('Sprawdzanie poprawności odpowiedzi zakonczone niepowodzneiem.');
             this._isReady = true;
             return this.PrepeareSuccessResponse(this._reply);
         }catch(error){
@@ -78,8 +79,11 @@ export abstract class BaseCommandResponse {
     /** Przygotowuje i zwraca odpowiedź informującą o błędzie na poziomie bazowym */
     public PepeareFailureResponseBase(errorMessage: string): InteractionReplyOptions {
         try {
-            this._reply!.content = errorMessage;
-            this._reply!.flags = MessageFlags.Ephemeral;
+            this._reply = { 
+                content: errorMessage,
+                components: undefined,
+                flags: MessageFlags.Ephemeral
+            }
             this._isFailure = true;
             this._isReady = true;
             return this.PepeareFailureResponse(this._reply!);
@@ -92,9 +96,9 @@ export abstract class BaseCommandResponse {
     /** sprawdzenie czy komponent został poprawnie zbudowany oraz czy jest kompletny na poziomie bazowym */ 
     // TODO: przerobic tak, zeby zwracalo informacie o problemach
     private ensureReadyAndValidBase(): boolean {
-        if(this._reply!.content === undefined ||
-            (this._isEphemeral && this._reply!.flags !== MessageFlags.Ephemeral))
-            return false;
+        // if(this._reply!.content === undefined ||
+        //     (this._isEphemeral && this._reply!.flags !== MessageFlags.Ephemeral))
+        //     return false;
         return this.EnsureReadyAndValid();
     }
 }

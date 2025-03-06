@@ -1,6 +1,8 @@
+import { Role } from 'discord.js';
 import dcLogger from '../../../../utils/dc-logger.util';
-import { GenerateTransferMessageCommand } from './gen-transfer-msg.command';
+import { baseHandlerExecute } from '../../../messaging.module/handlers/_command-handling-base/base.handler';
 import { GenerateTransferMessageResponse } from './gen-transfer-msg.response';
+import { GenerateTransferMessageCommand } from './gen-transfer-msg.command';
 
 // TODO: upewnic sie ze wszystko jest ok
 // TODO: dodac komentarze
@@ -8,22 +10,17 @@ import { GenerateTransferMessageResponse } from './gen-transfer-msg.response';
 
 /**  */
 module.exports = {
-    _baseHandler: require('./../c_command-handling-base/base.handler'),
-
-    async handle(interaction: any, command: GenerateTransferMessageCommand, response: GenerateTransferMessageResponse) {
+     handle(interaction: any, command: GenerateTransferMessageCommand) {
         try {
-            // wywołanie metody bazowej
-            await this._baseHandler.handle(interaction);
-
             // Sprawdzenie czy przekazana rola istnieje w systemie ...
-            if (command.AllGuildRoles!.find(role => role.name === command.RoleToBuy.name) === undefined) {
-                response.PepeareFailureResponseBase('Rola którą próbujesz zakupić nie istnieje w systemie.');
+            if (command.AllGuildRoles!.find((role: Role) => role.name === command.RoleToBuy.name) === undefined) {
+                command.Response.PepeareFailureResponseBase('Rola którą próbujesz zakupić nie istnieje w systemie.');
                 return;
             }
 
             // ... i czy jest rolą ozanczoną jako do kupienia
             if (command.RoleToBuy.name!.charAt(0) !== '+') {
-                response.PepeareFailureResponseBase('Rola którą próbujesz zakupić nie jest przeznaczona do kupienia.');
+                command.Response.PepeareFailureResponseBase('Rola którą próbujesz zakupić nie jest przeznaczona do kupienia.');
                 return;
             }
 
@@ -45,7 +42,7 @@ module.exports = {
                 // Jeśli tak to skróć generatedTransferMessage do 140 znaków
                 generatedTransferMessage = generatedTransferMessage.substring(0, 140);
             }
-            response.PrepeareSuccessResponseBase(generatedTransferMessage);
+            command.Response.PrepeareSuccessResponseBase(generatedTransferMessage);
         } catch (error) {
             dcLogger.logError(error as Error);
             throw error;

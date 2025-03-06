@@ -1,4 +1,4 @@
-import { ISaveTagIntegrationIn } from "../../app.data/app.data-modules/app-data.sqlite/integrations/save-tag.sqlite.integration";
+import { ISaveTagIntegration } from "../../app.data/app.data-modules/app-data.sqlite/integrations/save-tag.sqlite.integration";
 import { AppModule } from "../app.module";
 import { VersionInstance } from "./app.version.instance";
 
@@ -8,7 +8,7 @@ interface IVersionBuilder
 }
 export abstract class VersionBuilder extends VersionInstance 
     implements 
-        IVersionBuilder, ISaveTagIntegrationIn
+        IVersionBuilder, ISaveTagIntegration
 {
     abstract isDatabaseSynced(): boolean ;
     abstract isTableInitialized(tableName: string): boolean ;

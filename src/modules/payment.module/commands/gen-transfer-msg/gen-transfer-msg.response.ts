@@ -1,6 +1,6 @@
 import { APIRole, InteractionReplyOptions, Role } from 'discord.js';
 import dcLogger from '../../../../utils/dc-logger.util';
-import { BaseCommandResponse } from '../_command-handling-base/base.response';
+import { BaseCommandResponse } from '../../../messaging.module/handlers/_command-handling-base/base.response';
 
 // TODO: upewnic sie ze wszystko jest ok
 // TODO: dodac komentarze

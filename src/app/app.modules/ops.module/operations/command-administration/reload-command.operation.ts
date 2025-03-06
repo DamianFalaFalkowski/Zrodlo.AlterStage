@@ -1,6 +1,6 @@
 import { APIApplicationCommand, Collection, Routes } from "discord.js";
 import dcLoggerUtil from "../../../../../utils/dc-logger.util";
-import { definition } from "../../../../../modules/messaging.module/handlers/gen-transfer-msg/gen-transfer-msg.definition";
+import { definition } from "../../../../../modules/payment.module/commands/gen-transfer-msg/gen-transfer-msg.definition";
 
 module.exports = {
     messageName: 'reload-command',

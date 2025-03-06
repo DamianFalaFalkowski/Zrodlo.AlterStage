@@ -1,7 +1,7 @@
 import { TagsEntity } from '../../../../app/app.data/app.data-model/tags.model';
 import dcLogger from '../../../../utils/dc-logger.util';
-import { GenerateTransferMessageCommand } from '../gen-transfer-msg/gen-transfer-msg.command';
-import { GenerateTransferMessageResponse } from '../gen-transfer-msg/gen-transfer-msg.response';
+import { GenerateTransferMessageCommand } from '../../../payment.module/commands/gen-transfer-msg/gen-transfer-msg.command';
+import { GenerateTransferMessageResponse } from '../../../payment.module/commands/gen-transfer-msg/gen-transfer-msg.response';
 
 // TODO: upewnic sie ze wszystko jest ok
 // TODO: dodac komentarze

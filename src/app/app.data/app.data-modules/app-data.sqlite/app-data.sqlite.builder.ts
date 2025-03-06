@@ -45,6 +45,7 @@ export abstract class SqliteBuilder
          this._isDatabaseSynced = true;
          dcLoggerUtil.logInfo('Database synchronized')
       });
+      TagsEntity.sync();
       return this as unknown as SqliteModule;
    }
 }
