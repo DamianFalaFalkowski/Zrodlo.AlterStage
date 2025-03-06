@@ -1,6 +1,7 @@
 import { APIInteractionGuildMember, ChatInputCommandInteraction, GuildMember, GuildMemberRoleManager, Role } from "discord.js";
 import dcLogger from '../../../../utils/dc-logger.util';import { BaseCommandResponse } from "./base.response";
 import { BaseCommandDefinition } from "./base.definition.interface";
+import { definition } from '../../../payment.module/commands/gen-transfer-msg/gen-transfer-msg.definition';
 
 // TODO: dodać komentarze
 // TODO: dodać logowanie
@@ -20,7 +21,7 @@ export abstract class BaseCommand<R extends BaseCommandResponse> {
     public readonly AllGuildRoles: Role[];
 
 // Zmienne chronione
-    protected readonly Response: R;
+    public readonly Response: R;
     protected readonly isEphemeral: boolean;
     protected readonly Interaction: ChatInputCommandInteraction;
     protected readonly InteractingMember: APIInteractionGuildMember | GuildMember;
@@ -30,9 +31,9 @@ export abstract class BaseCommand<R extends BaseCommandResponse> {
     private readonly Definition: BaseCommandDefinition;
 
     // Konstruktor będący mapperem interakcji na komendę
-    constructor(interaction: ChatInputCommandInteraction, response: R) {
+    constructor(interaction: ChatInputCommandInteraction, response: R, definition: any) {
         try {
-            this.Definition = module.require(`./../../handlers/${interaction.commandName}/${interaction.commandName}.definition`);
+            this.Definition = definition.definition;
             this.isEphemeral = this.Definition.isEphemeral;
             this.AllowedRoles = this.Definition.allowedRoles;
             if (!interaction) throw new Error('Invalid Command. Missing interaction.');

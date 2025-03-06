@@ -1,16 +1,25 @@
-# I.Project Commands:
 
-# 1.Run unit tests
-    / npm run test
 
-# 2.Run unit tests
-    / npm run dev
 
-# 3.Run unit tests
-    / npm run build
+# I.About
 
-# 4.Run unit tests
-    / npm run start
+1.Struktura folderów
+
+Opis plików które folder zawiera oraz jego roli:
+    src -> 
+        główny folder projektu, ma zawierać tylko plik index.ts który ma być najbardziej ogólnym minimalnym sposobem uruchomienia aplikacji
+    src/app/app.data -> 
+        moduly baz danych
+    src/app/app/modules -> 
+        lokalizacja wszystkich mogułów czysto aplikacujnych/coreowych
+    src/discord -> 
+        rozszerzenia/modyfikacje i inne dot. bibliotego discord.js i generalnie komunikacji z discord
+    src/modules -> 
+        moduły uzytkowe
+    src/startup -> 
+        wszystkie konfiguracje uruchomieniowe
+    src/utils -> 
+        uzytecznosci
 
 
     ....

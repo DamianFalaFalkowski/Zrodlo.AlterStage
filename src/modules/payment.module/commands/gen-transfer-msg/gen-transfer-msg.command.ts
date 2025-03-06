@@ -1,6 +1,6 @@
 import { APIRole, ChatInputCommandInteraction, Role } from 'discord.js';
 import dcLogger from '../../../../utils/dc-logger.util';import { GenerateTransferMessageResponse } from './gen-transfer-msg.response';
-import { BaseCommand } from '../_command-handling-base/base.command';
+import { BaseCommand } from '../../../messaging.module/handlers/_command-handling-base/base.command';
 
 // TODO: upewnic sie ze wszystko jest ok
 // TODO: dodac komentarze
@@ -8,10 +8,10 @@ import { BaseCommand } from '../_command-handling-base/base.command';
 export class GenerateTransferMessageCommand extends BaseCommand<GenerateTransferMessageResponse> {
     public readonly RoleToBuy: Role | APIRole;
 
-    constructor(interaction: ChatInputCommandInteraction, isEphemeral: boolean) {
+    constructor(interaction: ChatInputCommandInteraction, isEphemeral: boolean,definition: any) {
         try {
             let RoleToBuy = interaction.options.getRole('role-to-buy', true);
-            super(interaction, new GenerateTransferMessageResponse(isEphemeral, RoleToBuy))
+            super(interaction, new GenerateTransferMessageResponse(isEphemeral, RoleToBuy), definition);
             this.RoleToBuy = RoleToBuy;
             console.log('Option found tempRoleToBuy: ' + RoleToBuy);
 
@@ -38,3 +38,9 @@ export class GenerateTransferMessageCommand extends BaseCommand<GenerateTransfer
         }
     }
 }
+module.exports = {
+    createCommand(interaction: ChatInputCommandInteraction, isEphemeral: boolean) : GenerateTransferMessageCommand
+    {
+        return new GenerateTransferMessageCommand(interaction, isEphemeral, require('./gen-transfer-msg.definition'));
+    }
+} 

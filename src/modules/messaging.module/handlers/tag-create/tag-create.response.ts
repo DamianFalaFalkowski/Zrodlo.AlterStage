@@ -26,6 +26,6 @@ export class TagCreateResponse extends BaseCommandResponse {
 
     // sprawdzenie czy komponent został poprawnie zbudowany oraz czy jest kompletny
     protected EnsureReadyAndValid(): boolean {
-        throw new Error("Method not implemented.");
+        return true;
     }
 }

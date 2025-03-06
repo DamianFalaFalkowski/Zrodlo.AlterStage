@@ -6,17 +6,19 @@ import dcLoggerUtil from "../../../../utils/dc-logger.util";
 
 export const baseHandlerExecute =
    async (interaction: ChatInputCommandInteraction,
-      commandModule: NodeJS.Require,
-      responseModule: NodeJS.Require) => {
+      commandModule: any,
+      responseModule: any,
+      handlerModule: any) => {
       try {
          dcLoggerUtil.logInfo(`Interaction '${interaction.commandName}' execution started!`);
          dcLoggerUtil.logCommand(interaction);
-         const reply = require(`./${interaction.commandName}.handler`).handle(
+         const command = commandModule.createCommand(interaction, interaction.ephemeral);
+         handlerModule.handle(
             interaction,
-            commandModule,
-            responseModule);
-         dcLoggerUtil.logInfo(`Reply content: ${JSON.stringify({ content: reply.content, components: reply.components, flags: reply.flags })}`)
-         await interaction.reply({ content: reply.content, components: reply.components, flags: reply.flags });
+            command
+         );
+         dcLoggerUtil.logInfo(`Reply content: ${JSON.stringify({ content: command.Response.Reply.content, components: command.Response.Reply.components, flags: command.Response.Reply.flags })}`)
+         await interaction.reply({ content: command.Response.Reply.content, components: command.Response.Reply.components, flags: command.Response.Reply.flags });
       } catch (error) {
          dcLoggerUtil.logError(error as Error);
          throw error;
