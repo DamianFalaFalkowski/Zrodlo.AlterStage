@@ -21,8 +21,11 @@ Opis plików które folder zawiera oraz jego roli:
     src/utils -> 
         uzytecznosci
 
-
     ....
+
+2.Nazewnictwo
+
+    Zmienne poprzedzone podwójnym podkreśleniem '__' to zmienne globalne moliwe do uycia w całym projekcie
 
 DOKUMENTAJA POLECEN (/): 
     https://discord.com/developers/docs/interactions/application-commands#contexts

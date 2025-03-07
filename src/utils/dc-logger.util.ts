@@ -1,14 +1,19 @@
+import dotenv from 'dotenv';
 import { CommandInteraction, InteractionReplyOptions } from 'discord.js';
 import fs from 'fs';
 import { format } from 'node:util';
 import path from 'path';
 import thisLine from './this-line.util';
-export class DcLogger {
+
+class DcLogger {
     private logFilePath: string;
+    private readonly _logDebug: boolean;
 
     constructor() {
-        this.logFilePath = path.join(__dirname, '../../logs/discord.log'); //TODO:WCHOJ:TODO tą siezkę trzeba KONIECZNIE zabrac do .env-a
+        dotenv.config();
+        this.logFilePath = path.join(__dirname, process.env.LOG_OUTPUT_FILE_PATH as string);
         this.ensureLogFileExists();
+        this._logDebug = process.env.LOG_DEBUG === 'true'
     }
 
     private ensureLogFileExists() {
@@ -28,6 +33,7 @@ export class DcLogger {
     }
 
     public logDebug(e: Error, message: string, ...optionalParams: any[]) {
+        if (!this._logDebug) return;
         const msg = `[DBG]: ${message} => ${thisLine(e)}`
         if (optionalParams.length > 0)
             this.log(msg, ...optionalParams);
@@ -73,4 +79,4 @@ export class DcLogger {
     }
 }
 
-export default new DcLogger();
+export const __logger = new DcLogger();

@@ -1,6 +1,6 @@
 import { ChatInputCommandInteraction } from 'discord.js';
 import { TagCreateResponse } from './tag-create.response';
-import { BaseCommand } from '../_command-handling-base/base.command';
+import { BaseCommand } from '../../../../discord/_command-handling-base/base.command';
 
 
 // TODO: upewnic sie ze wszystko jest ok

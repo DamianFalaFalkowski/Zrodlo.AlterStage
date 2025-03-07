@@ -1,6 +1,6 @@
 import { APIRole, InteractionReplyOptions, Role } from 'discord.js';
-import dcLogger from '../../../../utils/dc-logger.util';
-import { BaseCommandResponse } from '../../../messaging.module/handlers/_command-handling-base/base.response';
+import {__logger} from '../../../../utils/dc-logger.util';
+import { BaseCommandResponse } from '../../../../discord/_command-handling-base/base.response';
 
 // TODO: upewnic sie ze wszystko jest ok
 // TODO: dodac komentarze
@@ -19,7 +19,7 @@ export class GenerateTransferMessageResponse extends BaseCommandResponse {
         try { // TODO: sprawdezanie czy rola zostala dostarczona
             return true;
         } catch (error) {
-            dcLogger.logError(error as Error);
+            __logger.logError(error as Error);
             throw error;
         }
     }
@@ -29,7 +29,7 @@ export class GenerateTransferMessageResponse extends BaseCommandResponse {
             // stuff can be done here
             return reply;
         } catch (error) {
-            dcLogger.logError(error as Error);
+            __logger.logError(error as Error);
             throw error;
         }
     }

@@ -1,5 +1,5 @@
 import { ApplicationCommandType, ApplicationIntegrationType, InteractionContextType, SlashCommandBuilder } from "discord.js";
-import { baseHandlerExecute } from "../../../messaging.module/handlers/_command-handling-base/base.handler";
+import { baseHandlerExecute } from "../../../../discord/_command-handling-base/base.handler";
 
 // DOKUMENTAJA POLECEN (/): https://discord.com/developers/docs/interactions/application-commands#contexts
 
@@ -31,9 +31,9 @@ class GenerateTransferMessageDefinition {
         async execute(interaction: any) {
             await baseHandlerExecute(
                 interaction,
-                require(`./${commandName}.command`),
-                require(`./${commandName}.response`),
-                require(`./${commandName}.handler`)
+                require(`./${commandName}.command`)
+                    .createCommand(interaction, interaction.ephemeral),
+                require(`./${commandName}.handler`).handle
             )
         }
     };

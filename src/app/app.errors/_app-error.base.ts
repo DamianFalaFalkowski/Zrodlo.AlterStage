@@ -1,4 +1,4 @@
-import dcLoggerUtil from "../../utils/dc-logger.util";
+import {__logger} from "../../utils/dc-logger.util";
 
 export abstract class _appError extends Error
 {
@@ -19,7 +19,7 @@ export abstract class _appError extends Error
     get isBusinessError() : (boolean) { return this._isBusinessError ? true : false; }
     Handle(): Error
     {
-        dcLoggerUtil.logStringError(`${this.isBusinessError ? 'Błąd biznesowy': 'Błąd'}: ${this.message}`);
+        __logger.logStringError(`${this.isBusinessError ? 'Błąd biznesowy': 'Błąd'}: ${this.message}`);
         // TODO: przekazywanie błędów do hosta w celu obsługi a wczesniej funkcjonalność umoliwiająca taki handling
         return this;
     }

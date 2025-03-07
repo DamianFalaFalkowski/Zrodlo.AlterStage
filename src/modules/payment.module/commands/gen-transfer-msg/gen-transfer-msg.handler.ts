@@ -1,8 +1,6 @@
 import { Role } from 'discord.js';
-import dcLogger from '../../../../utils/dc-logger.util';
-import { baseHandlerExecute } from '../../../messaging.module/handlers/_command-handling-base/base.handler';
-import { GenerateTransferMessageResponse } from './gen-transfer-msg.response';
 import { GenerateTransferMessageCommand } from './gen-transfer-msg.command';
+import { __logger } from '../../../../utils/dc-logger.util';
 
 // TODO: upewnic sie ze wszystko jest ok
 // TODO: dodac komentarze
@@ -44,7 +42,7 @@ module.exports = {
             }
             command.Response.PrepeareSuccessResponseBase(generatedTransferMessage);
         } catch (error) {
-            dcLogger.logError(error as Error);
+            __logger.logError(error as Error);
             throw error;
         }
     }

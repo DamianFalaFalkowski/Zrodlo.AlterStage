@@ -1,6 +1,6 @@
 import { APIRole, ChatInputCommandInteraction, Role } from 'discord.js';
-import dcLogger from '../../../../utils/dc-logger.util';import { GenerateTransferMessageResponse } from './gen-transfer-msg.response';
-import { BaseCommand } from '../../../messaging.module/handlers/_command-handling-base/base.command';
+import {__logger} from '../../../../utils/dc-logger.util';import { GenerateTransferMessageResponse } from './gen-transfer-msg.response';
+import { BaseCommand } from '../../../../discord/_command-handling-base/base.command';
 
 // TODO: upewnic sie ze wszystko jest ok
 // TODO: dodac komentarze
@@ -17,7 +17,7 @@ export class GenerateTransferMessageCommand extends BaseCommand<GenerateTransfer
 
             this.CheckAuthorisationAndValidity(); 
         } catch (error) {
-            dcLogger.logError(error as Error);
+            __logger.logError(error as Error);
             throw error;
         }
     }
@@ -33,7 +33,7 @@ export class GenerateTransferMessageCommand extends BaseCommand<GenerateTransfer
             }
             return true;
         } catch (error) {
-            dcLogger.logError(error as Error);
+            __logger.logError(error as Error);
             throw error;
         }
     }

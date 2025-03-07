@@ -1,8 +1,8 @@
 import { Client, Events, MessageFlags, REST, Routes } from "discord.js";
-import dcLoggerUtil from "../../../utils/dc-logger.util";
 import { HostInstance, IHostInstance } from "./app-module.host.instance";
 import { HostModule } from './app-module.host.module';
 import { CommandHandlersUtil } from "../../../discord/find-command-handlers-definitions.util";
+import { __logger } from "../../../utils/dc-logger.util";
 
 export interface IHostBuilder
     extends
@@ -53,23 +53,23 @@ export abstract class HostBuilder
     }
 
     SetUpClient(afterLoginCallback: () => void): HostModule {
-        dcLoggerUtil.logInfo("Tworzę klienta discord...");
+        __logger.logInfo("Tworzę klienta discord...");
         this.client = new Client({ intents: this.intends });
         this.client.once('ready', afterLoginCallback);
-        dcLoggerUtil.logInfo(`Exevution of event 'ready' has been added`);
+        __logger.logInfo(`Exevution of event 'ready' has been added`);
         this._isClientSetUp = true;
         return this as unknown as HostModule;
     }
 
     SetUpRest(): HostModule {
-        dcLoggerUtil.logInfo("Tworzę REST...");
+        __logger.logInfo("Tworzę REST...");
         this.rest = new REST()
             .setToken(process.env.TOKEN as string);
         return this as unknown as HostModule;
     }
 
     ClientLogin(): HostModule {
-        dcLoggerUtil.logInfo("Loguję się do clienta discord...");
+        __logger.logInfo("Loguję się do clienta discord...");
         if (!this.client)
             throw Error("Client is missing");
         this.client.login(process.env.TOKEN);
