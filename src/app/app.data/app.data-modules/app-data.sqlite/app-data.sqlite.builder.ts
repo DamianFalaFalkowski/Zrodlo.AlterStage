@@ -2,7 +2,7 @@
 import { Dialect, Sequelize } from "sequelize";
 import { ISqliteInstance, SqliteInstance } from './app-data.sqlite.instance';
 import { SqliteModule } from "./app-data.sqlite.module";
-import {TagsAttributes, TagsModelName, TagsEntity} from './../../app.data-model/tags.model'
+import {TagsAttributes, TagsModelName, TagsEntity} from '../../app.data-model/sch.app/tags.model'
 import { __logger } from "../../../../utils/dc-logger.util";
 
 

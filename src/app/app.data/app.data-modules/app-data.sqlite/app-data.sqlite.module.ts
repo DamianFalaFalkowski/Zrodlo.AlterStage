@@ -1,4 +1,4 @@
-import { TagsEntity } from "../../app.data-model/tags.model";
+import { TagsEntity } from "../../app.data-model/sch.app/tags.model";
 import { SqliteBuilder } from "./app-data.sqlite.builder";
 import { ISqlite } from "./app-data.sqlite.instance";
 import { ISaveTagIntegration } from "./integrations/save-tag.sqlite.integration";
