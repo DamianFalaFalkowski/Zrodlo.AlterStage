@@ -30,7 +30,7 @@ export class DeliveryInfoEntity extends BaseEntity
     declare needsDemontage: boolean;
     declare needsOperator: boolean;
 
-    declare operatorPrice?: number;
+    declare operatorPricePerHour?: number;
     declare montagePrice?: number;
     declare demontagePrice?: number;
 }

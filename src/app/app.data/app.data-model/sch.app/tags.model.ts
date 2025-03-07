@@ -1,4 +1,5 @@
 import { DataTypes, Model } from 'sequelize';
+import { BaseEntity } from '../_base/_base-entity.model';
 
 
 export const TagsModelName = 'Tags'
@@ -10,13 +11,11 @@ export const TagsModelName = 'Tags'
  * usage_count  INT NOT NULL DEFAULT 0
  * );
  */
-export class TagsEntity extends Model 
+export class TagsEntity extends BaseEntity 
 {
-    declare id: number;
     declare name: string;
     declare description: string;
     declare userId: string;
-    declare createdUserId: string;
 }
 
 export const TagsAttributes = 

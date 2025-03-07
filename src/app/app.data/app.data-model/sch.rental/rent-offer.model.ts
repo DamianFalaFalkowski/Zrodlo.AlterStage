@@ -4,6 +4,7 @@ import { OfferRentItemEntity } from './offer-rent-item.model';
 import { OfferDiscountEntity } from './offer-discount.model';
 import { OfferInfoEntity } from './offer-info.model';
 import { RecievePointEntity } from './recieve-point.model';
+import { OrderDeliveryEntity } from './order-delivery.model';
 
 export const RentOfferModelName = 'RentOffer'
 

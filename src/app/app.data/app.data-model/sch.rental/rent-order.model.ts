@@ -3,6 +3,7 @@ import { AddressEntity } from "./address.model";
 import { CustomerDiscountHistoryEntity } from "./customer-discount-history.model";
 import { CustomerEntity } from "./customer.model";
 import { OrderStatus } from "./enums/order-status.enum";
+import { OrderDeliveryEntity } from "./order-delivery.model";
 import { RentItemDamageEntity } from "./rent-item-damage.model";
 import { RentItemEntity } from './rent-item.model';
 import { RentOfferEntity } from "./rent-offer.model";
@@ -35,14 +36,13 @@ export class RentOrderEntity extends BaseEntity
     declare isDepositeLeftToBeReturned: boolean;
     // TODO: zweryfikowac, bo prawdopodobnie brakuje czesci pól
 
-    declare deliveryAddressId: number;
-    declare deliveryAddress: AddressEntity;
     declare custometId: number;
     declare customer: CustomerEntity;
+    declare offerDeliveryId: number;
+    declare offerDelivery: OrderDeliveryEntity;
 
     declare itemDamages: RentItemDamageEntity[];
     declare offers: RentOfferEntity[];
-    declare rentItems: RentItemEntity[];
     declare appliedDoscounts: CustomerDiscountHistoryEntity[];
 }
 
