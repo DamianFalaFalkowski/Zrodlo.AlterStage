@@ -25,6 +25,31 @@ export const TagsAttributes =
         autoIncrement: true,
         primaryKey: true,
     },
+    createdAt: {
+        type: DataTypes.DATE,
+        secondaryKey: true,
+        allowNull: false,
+        defaultValue: new Date()
+    },
+    updatedAt: {
+        type: DataTypes.DATE,
+        allowNull: true
+    },
+    createdDiscordUserId: { 
+        type: DataTypes.NUMBER, 
+        allowNull: false,
+        defaultValue: 0
+    },
+    updatedDiscordUserId: { 
+        type: DataTypes.NUMBER, 
+        allowNull: true
+    },
+    isDeleted: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false
+    },
+
     name: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -33,9 +58,5 @@ export const TagsAttributes =
     userId: { 
         type: DataTypes.NUMBER, 
         allowNull: false
-    },
-    createdUserId: { 
-        type: DataTypes.NUMBER, 
-        allowNull: false
-    },
+    }
 };
