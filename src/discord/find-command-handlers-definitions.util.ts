@@ -1,7 +1,7 @@
 import path from 'node:path';
 import fs from 'node:fs';
 import { Client, Collection, REST, Routes } from 'discord.js';
-import dcLogger from './../utils/dc-logger.util';
+import {__logger} from './../utils/dc-logger.util';
 
 // TODO: uladnic kod
 // TODO: dodac komentarze
@@ -11,7 +11,7 @@ export class CommandHandlersUtil {
         let foundCommands = new Collection();
         let jsonCommands: any[] = [];
         rootFolderPaths.forEach(rootFolderPath => {
-            dcLogger.logInfo(
+            __logger.logInfo(
             `Szukam definicji poleceń $rootFolderPath=${rootFolderPath}`);
         const singleHandlerFolders = fs
             .readdirSync(rootFolderPath)
@@ -19,19 +19,19 @@ export class CommandHandlersUtil {
                  x[0] !== '_' && x[0] !== '.' 
             )
             .map(x => path.join(rootFolderPath, x));
-        dcLogger.logInfo(`Found ${singleHandlerFolders.length} folders to check.`);
+        __logger.logInfo(`Found ${singleHandlerFolders.length} folders to check.`);
         for (const singleHandlerFolder of singleHandlerFolders) {
             let fileName = fs.readdirSync(singleHandlerFolder).find(x =>
                 x.endsWith('.definition.ts') ||
                 x.endsWith('.definition.js')
             );
                 let filePath = singleHandlerFolder + "/" + fileName;
-                dcLogger.logInfo(`Looking for file ${fileName}`);
+                __logger.logInfo(`Looking for file ${fileName}`);
                 const command = require(filePath);
                 if ('data' in command.definition && 'execute' in command.definition) {
                     foundCommands.set(command.definition.data.name, command.definition);
                     jsonCommands.push(command.definition.data.toJSON());
-                    dcLogger.logInfo(command.definition.data.name + " found");
+                    __logger.logInfo(command.definition.data.name + " found");
                 } else {
                     console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
                 }
@@ -46,7 +46,7 @@ export class CommandHandlersUtil {
         client.commands = new Collection();
         commands.forEach((value, key) => {
             client.commands.set(key, value);
-            dcLogger.logInfo(key.name + " set");
+            __logger.logInfo(key.name + " set");
         });
     };
 

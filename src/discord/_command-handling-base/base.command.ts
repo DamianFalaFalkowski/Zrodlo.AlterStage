@@ -1,7 +1,6 @@
 import { APIInteractionGuildMember, ChatInputCommandInteraction, GuildMember, GuildMemberRoleManager, Role } from "discord.js";
-import dcLogger from '../../../../utils/dc-logger.util';import { BaseCommandResponse } from "./base.response";
+import { __logger } from '../../utils/dc-logger.util';import { BaseCommandResponse } from "./base.response";
 import { BaseCommandDefinition } from "./base.definition.interface";
-import { definition } from '../../../payment.module/commands/gen-transfer-msg/gen-transfer-msg.definition';
 
 // TODO: dodać komentarze
 // TODO: dodać logowanie
@@ -30,7 +29,7 @@ export abstract class BaseCommand<R extends BaseCommandResponse> {
 // Zmienne prywatne
     private readonly Definition: BaseCommandDefinition;
 
-    // Konstruktor będący mapperem interakcji na komendę
+/* Konstruktor będący mapperem interakcji na komendę */
     constructor(interaction: ChatInputCommandInteraction, response: R, definition: any) {
         try {
             this.Definition = definition.definition;
@@ -47,9 +46,9 @@ export abstract class BaseCommand<R extends BaseCommandResponse> {
             this.AllGuildRoles = this.Interaction?.guild!.roles.cache.map((role: Role) => role);
             this.Response = response;
 
-            this.CheckAuthorisationAndValidity();
+            this.CheckAuthorisationAndValidityBase();
         } catch (error) {
-            dcLogger.logError(error as Error);
+            __logger.logError(error as Error);
             throw error;
         }
     }
@@ -74,7 +73,7 @@ export abstract class BaseCommand<R extends BaseCommandResponse> {
             }
             return this.CheckAuthorisationAndValidity();
         } catch (error) {
-            dcLogger.logError(error as Error);
+            __logger.logError(error as Error);
             throw error;
         }
     }

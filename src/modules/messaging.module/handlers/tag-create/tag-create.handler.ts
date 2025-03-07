@@ -1,5 +1,5 @@
-import { TagsEntity } from '../../../../app/app.data/app.data-model/tags.model';
-import dcLogger from '../../../../utils/dc-logger.util';
+import { TagsEntity } from '../../../../app/app.data/app.data-model/sch.app/tags.model';
+import {__logger} from '../../../../utils/dc-logger.util';
 import { GenerateTransferMessageCommand } from '../../../payment.module/commands/gen-transfer-msg/gen-transfer-msg.command';
 import { GenerateTransferMessageResponse } from '../../../payment.module/commands/gen-transfer-msg/gen-transfer-msg.response';
 
@@ -50,9 +50,9 @@ module.exports = {
                 response!.PepeareFailureResponseBase(`Nierozpoznana nazwa polecenia: ${commandName}`);
             
                 // Odeślij odpowiedź
-                await interaction.reply(dcLogger.logReplyAndReturn(interaction, response!.Reply));
+                await interaction.reply(__logger.logReplyAndReturn(interaction, response!.Reply));
         } catch (error) {
-            dcLogger.logError(error as Error);
+            __logger.logError(error as Error);
             throw error;
         }
     }

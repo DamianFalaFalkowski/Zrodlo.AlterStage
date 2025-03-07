@@ -1,5 +1,5 @@
 import { InteractionReplyOptions, MessageFlags } from "discord.js";
-import { BaseCommandResponse } from "../_command-handling-base/base.response";
+import { BaseCommandResponse } from "../../../../discord/_command-handling-base/base.response";
 
 // TODO: upewnic sie ze wszystko jest ok
 // TODO: dodac komentarze

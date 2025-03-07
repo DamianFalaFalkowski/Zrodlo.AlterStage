@@ -1,0 +1,32 @@
+import { ChatInputCommandInteraction } from "discord.js";
+import { __logger } from "../../utils/dc-logger.util";
+import { ApplicationError } from "../../app/app.errors/application.error";
+
+// TODO: dodać komentarze
+// TODO: poprawić logowanie
+
+export const baseHandlerExecute =
+   async (interaction: ChatInputCommandInteraction,
+          command: any,
+          handlerMethod: any) => 
+      {
+      try {
+         __logger.logInfo(
+            `Interaction '${interaction.commandName}' execution started!`);
+         __logger.logCommand(interaction);
+
+         handlerMethod(
+            interaction,
+            command
+         );
+
+         __logger.logInfo(
+            `Reply content: ${JSON.stringify({ content: command.Response.Reply.content, components: command.Response.Reply.components, flags: command.Response.Reply.flags })}`)
+
+         await interaction.reply({ content: command.Response.Reply.content, components: command.Response.Reply.components, flags: command.Response.Reply.flags });
+
+      } catch (error) {
+         __logger.logError(error as Error);
+         throw new ApplicationError('Error while executing command.');
+      }
+   }

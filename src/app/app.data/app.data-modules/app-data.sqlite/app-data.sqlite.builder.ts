@@ -2,8 +2,8 @@
 import { Dialect, Sequelize } from "sequelize";
 import { ISqliteInstance, SqliteInstance } from './app-data.sqlite.instance';
 import { SqliteModule } from "./app-data.sqlite.module";
-import {TagsAttributes, TagsModelName, TagsEntity} from './../../app.data-model/tags.model'
-import dcLoggerUtil from "../../../../utils/dc-logger.util";
+import {TagsAttributes, TagsModelName, TagsEntity} from '../../app.data-model/sch.app/tags.model'
+import { __logger } from "../../../../utils/dc-logger.util";
 
 
 export interface ISqliteBuilder extends ISqliteInstance{
@@ -43,7 +43,7 @@ export abstract class SqliteBuilder
 
       this._context!.afterSync(() => { 
          this._isDatabaseSynced = true;
-         dcLoggerUtil.logInfo('Database synchronized')
+         __logger.logInfo('Database synchronized')
       });
       TagsEntity.sync();
       return this as unknown as SqliteModule;

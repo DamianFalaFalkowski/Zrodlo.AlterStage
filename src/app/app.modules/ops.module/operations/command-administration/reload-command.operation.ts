@@ -1,5 +1,5 @@
-import { APIApplicationCommand, Collection, Routes } from "discord.js";
-import dcLoggerUtil from "../../../../../utils/dc-logger.util";
+import { APIApplicationCommand, Collection } from "discord.js";
+import {__logger} from "../../../../../utils/dc-logger.util";
 import { definition } from "../../../../../modules/payment.module/commands/gen-transfer-msg/gen-transfer-msg.definition";
 
 module.exports = {
@@ -8,7 +8,7 @@ module.exports = {
     _failsCount: 0,
 
     async Execute(...options: string[]) {
-        dcLoggerUtil.logInfo(
+        __logger.logInfo(
             `Rozpoczynam procesowanie polecenia (command):'${options[0]}'.`);
 
         // utwórz kolekcję a w niej pojedyńcze polecenie do aktualizacji
@@ -24,11 +24,11 @@ module.exports = {
             //     Routes.applicationGuildCommands(process.env.CLIENT_ID! as string, process.env.GUILD_ID! as string),
             //     { body: commands.toJSON() }
             // );
-            // dcLoggerUtil.logInfo(
+            // __logger.logInfo(
             //     `Operacja PUT polecenia (/) ${options[0]} została wykonana.\nRezultat operacji:\n${JSON.stringify(data, null, 2)}`);
         } catch (error) {
-            dcLoggerUtil.logError(error as Error);
-            dcLoggerUtil.logStringError("Treść błędu:\n" + JSON.stringify(error, null, 2));
+            __logger.logError(error as Error);
+            __logger.logStringError("Treść błędu:\n" + JSON.stringify(error, null, 2));
             throw error;
         }
 

@@ -1,9 +1,7 @@
-import { Client } from "discord.js";
 import { HostBuilder } from "./app-module.host.builder";
 import { IHost } from "./app-module.host.instance";
 import { IGetClientIntegration } from "./integrations/get-client.host.integration";
 import { CommandHandlersUtil } from "../../../discord/find-command-handlers-definitions.util";
-import { execute } from '../../../modules/messaging.module/dc-commands/tag-create';
 
 export class HostModule
     extends 

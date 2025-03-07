@@ -1,5 +1,5 @@
 import { ApplicationCommandType, ApplicationIntegrationType, InteractionContextType, SlashCommandBuilder } from 'discord.js';
-import { baseHandlerExecute } from '../_command-handling-base/base.handler';
+import { baseHandlerExecute } from '../../../../discord/_command-handling-base/base.handler';
 
 /**  */
 // export const commandName: string = 'tag-create';

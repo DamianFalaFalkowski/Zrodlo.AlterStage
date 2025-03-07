@@ -1,13 +1,13 @@
+// importuję parametry aplikacji z pliku .env
 import dotenv from 'dotenv';
-import dcLoggerUtil from '../utils/dc-logger.util';
+dotenv.config();
+import {__logger} from '../utils/dc-logger.util';
 import versionModule from '../app/app.modules/app.version/app.version.module';
 import sqliteModule from '../app/app.data/app.data-modules/app-data.sqlite/app-data.sqlite.module';
 import { Dialect } from 'sequelize';
 import hostModule from '../app/app.modules/host-module/app-module.host.module';
 import paymentModule from '../modules/payment.module/module.payment.module';
 
-// importuję parametry aplikacji z pliku .env
-dotenv.config();
 
 const data = sqliteModule
    .SetDbConnection(
@@ -25,7 +25,7 @@ versionModule(data)
 
 hostModule
    .SetUpClient(() => {
-      dcLoggerUtil.logInfo("Logowanie OK ! ! !");
+      __logger.logInfo("Logowanie OK ! ! !");
       try 
       { 
          // definiuje co ma isę zadziewć po zalogowaniu do klienta
