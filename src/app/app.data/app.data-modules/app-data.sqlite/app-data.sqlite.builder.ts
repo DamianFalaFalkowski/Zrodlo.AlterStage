@@ -66,8 +66,11 @@ export abstract class SqliteBuilder
       return this.As<SqliteModule>();
    }
 
-   InitRentalSchema(afterRentalSchemaSync: () => void): SqliteModule {
+   InitRentalSchema(afterRentalSchemaSync: () => void): SqliteModule 
+   {
       const schemaName = 'Rental'
+
+
       OfferRentItemEntity.init(OfferRentItemAttributes,
          {
             sequelize: this._context!,
@@ -80,7 +83,6 @@ export abstract class SqliteBuilder
             modelName: schemaName + '_' + RentItemModelName,
          }
       );
-
       RentItemToOfferRentItemEntity.init(
          {
             rentItemId: {
@@ -103,16 +105,21 @@ export abstract class SqliteBuilder
             modelName: schemaName + '_' + RentItemToOfferRentItemModelName,
          }
       );
+
+
       OfferRentItemEntity.belongsToMany(RentItemEntity,
          { through: RentItemToOfferRentItemEntity })
       RentItemEntity.belongsToMany(OfferRentItemEntity,
          { through: RentItemToOfferRentItemEntity })
 
-      OfferRentItemEntity.afterSync(() => {
-         __logger.logInfo('Rental_OfferRentItem table synchronized');
-      });
+
       RentItemEntity.afterSync(() => {
          __logger.logInfo('Rental_RentItem table synchronized');
+         RentItemToOfferRentItemEntity.sync({ force: !true });
+      });
+      OfferRentItemEntity.afterSync(() => {
+         __logger.logInfo('Rental_OfferRentItem table synchronized');
+         RentItemEntity.sync({ force: !true });
       });
       RentItemToOfferRentItemEntity.afterSync(() => {
         __logger.logInfo(schemaName + '_' +RentItemToOfferRentItemModelName+' table synchronized');
@@ -121,9 +128,8 @@ export abstract class SqliteBuilder
         afterRentalSchemaSync();
       });
 
-      OfferRentItemEntity.sync({ force: true });
-      RentItemEntity.sync({ force: true });
-      RentItemToOfferRentItemEntity.sync({ force: true });
+
+      OfferRentItemEntity.sync({ force: !true });
       return this.As<SqliteModule>();
    }
 }
