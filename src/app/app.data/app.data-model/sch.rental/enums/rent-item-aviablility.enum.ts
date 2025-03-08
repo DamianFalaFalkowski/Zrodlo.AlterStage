@@ -1,3 +1,4 @@
+/** Wartość wyliczeniowa określająca czas dostępności przedmiotu */
 export enum RentItemAviablility {
     UNAVALIABLE = 'UNAVALIABLE',
     IMMEDIATELY = 'IMMEDIATELY',

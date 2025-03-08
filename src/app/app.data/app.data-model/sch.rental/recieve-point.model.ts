@@ -34,6 +34,9 @@ export const RecievePointAttributes = {
         autoIncrement: true,
         primaryKey: true,
     },
+
+    // ...
+
     // from base
     createdAt: {
         type: DataTypes.DATE,
@@ -59,7 +62,6 @@ export const RecievePointAttributes = {
         allowNull: false,
         defaultValue: false
     }
-    // from base
-}
+};
 
 // TODO: dodanie modeli odpowiedzialnych za transport pomiedzy punktami odbioru oraz rozliczenie za obsługę transportu

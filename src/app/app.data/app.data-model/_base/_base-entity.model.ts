@@ -1,8 +1,8 @@
-import { Model } from "sequelize";
+import { Identifier, IntegerDataType, Model } from "sequelize";
 
 export abstract class BaseEntity extends Model 
 {
-    declare id: number;
+    declare id: Identifier;
     declare createdAt: Date;
     declare updatedAt?: Date;
     declare createdDiscordUserId: number;
@@ -19,6 +19,10 @@ export abstract class BaseEntity extends Model
             autoIncrement: true,
             primaryKey: true,
         },
+        
+        // TODO: add entity columns
+    
+        // from base
         createdAt: {
             type: DataTypes.DATE,
             secondaryKey: true,
@@ -29,19 +33,19 @@ export abstract class BaseEntity extends Model
             type: DataTypes.DATE,
             allowNull: true
         },
-        createdDiscordUserId: { 
-            type: DataTypes.NUMBER, 
+        createdDiscordUserId: {
+            type: DataTypes.NUMBER,
             allowNull: false,
             defaultValue: 0
         },
-        updatedDiscordUserId: { 
-            type: DataTypes.NUMBER, 
-            allowNull: false
+        updatedDiscordUserId: {
+            type: DataTypes.NUMBER,
+            allowNull: true
         },
         isDeleted: {
             type: DataTypes.BOOLEAN,
             allowNull: false,
             defaultValue: false
-        },
+        }
 
 */

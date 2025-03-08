@@ -17,6 +17,12 @@ export class OfferRentItemEntity extends BaseEntity {
 
 export const OfferRentItemAttributes =
 {
+    id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+    },
+    
     isMainRentItem: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
@@ -40,11 +46,6 @@ export const OfferRentItemAttributes =
     },
 
     // from base
-    id: {
-        type: DataTypes.INTEGER,
-        autoIncrement: true,
-        primaryKey: true,
-    },
     createdAt: {
         type: DataTypes.DATE,
         secondaryKey: true,

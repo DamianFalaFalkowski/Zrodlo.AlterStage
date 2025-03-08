@@ -1,43 +1,87 @@
 import { RentItemAviablility } from "./enums/rent-item-aviablility.enum";
 import { BaseEntity } from "../_base/_base-entity.model";
-import { OfferRentItemEntity } from "./offer-rent-item.model";
+import { OfferRentItemEntity } from './offer-rent-item.model';
 import { RecievePointEntity } from "./recieve-point.model";
 import { RentItemDamageEntity } from './rent-item-damage.model';
 import { RentOrderEntity } from "./rent-order.model";
-import { DataTypes } from "sequelize";
+import { DataTypes, Identifier } from "sequelize";
 import { ApplicationError } from "../../../app.errors/application.error";
-import { RentItemToOfferRentItemEntity } from "./hash-tables/rent-item-to-offer-rent-item.model";
+import { RentItem_OfferRentItem_Hash } from "./hash-tables/rent-item-to-offer-rent-item.hash-model";
+import { RentItem_RentOrder_Hash } from "./hash-tables/rent-item-to-rent-order.hash-model";
 
 export const RentItemModelName = 'RentItems'
-
+/** Reprezentacja pojedyńczego fizycznego wystąpienia przedmiotu wynajmu. */
 export class RentItemEntity extends BaseEntity
 {
+    /** Unikalny alfa-numeryczny kod przedmiotu wynajmu. Kody umieszczane są na naklejce w celu ułatwienia identyfikacji. 
+     * TODO: utworzyć serwis do generowania kodów
+    */
     declare code: string;
+    /** Unikalny numeryczny kod przedmiotu wynajmu. Jest jednocześnie cyfrowym zapisem kodu kreskowego umieszczonego na naklejce w celu ułatwienia identyfikacji.
+     * TODO: utworzyć serwis do generowania barcodów
+    */
     declare barcodeNumber: string;
-    declare isAvialible: boolean;
+    /** Flaga określająca czy ten przedmiot jest aktualnie wystawiony do wynajmu przez właściciela. Wartością tej flagi moze sterować tylko własciciel przedmiotu. 
+     * TODO: zaimplementować polecenie do ustawiania dostępnosci przez wlasciciela.
+    */
+    declare isDeclaredAvialible: boolean;
+    /** Flaga określająca czy przedmiot jest aktualnie uszkodzony. Ta flaga jest ustawiana po aktualizacji uszkodzeń dot. przedmiotu na ich podstawie (jeśli istnieje przynajmniej jedno uszkodzenie to podnieś flagę)
+     * TODO: zaimplementować polecenie do usuwania/dodawania uszkodzeń przez właściciela
+     */
     declare isDamaged: boolean;
+    /** Flaga określająca czy przedmiot jest aktualnie wynajmowany. 
+     * TODO: napisać funkcjonalność obsługującą tą flagę
+    */
     declare isRented: boolean;
 
+    /** Całkowity zysk wygenerowany przez ten przedmiot. Ta wartość jest doliczana tylko dla przedmiotów głównych oferty. W przypadku wielu głównych przedmiotów zarobiona wartość jest dzielona po równo. Wartość numeryczna określana w polskich złotych.*/
     declare totalAmountEarned: number;
-    declare totalAmountSpent: number;
+    /** Koszt poniesiony podczas zakupu. Ta wartość jest określana przez właściciela i nie jest wymagana i właściciel moze ją ustawić w dowolnym momencie.
+     * TODO: dodać funkcjonalność do aktualizacji tej wartosci.
+    */
+    declare onBuyAmountSpent?: number;
+    /** Całkowity koszt poniesiony z tytułu napraw tego przedmiotu. */
     declare totalAmountSpentOnRepairs: number;
 
+    /** Szacowany czas dostępności przedmiotu w jego domowym punkcie odbioru. To czas który jest potrzebny punktowi odbioru do przygotowania i udostępnienia przedmiotu. */
     declare rentItemAviabilityInHomeRecievePoint: RentItemAviablility;
 
-    declare homeRecievePointId: number;
-    public async gethomeRecievePoint(): Promise<RecievePointEntity> {
-        const rp = await RecievePointEntity.findByPk(this.homeRecievePointId);
+    /** Identyfikator domowego punktu odbioru przedmiotu wynajmu*/
+    declare RentalRecievePointId: Identifier;
+    /** Odpytuje bazę i zwraca obiekt domowego punktu odbioru. */
+    public async getRecievePoint(): Promise<RecievePointEntity> {
+        const rp = await RecievePointEntity.findByPk(this.RentalRecievePointId);
         if (rp !== undefined && rp !== null) return rp;
-        throw new ApplicationError(`Required foreginKey 'homeRecievePointId' with value '${this.homeRecievePointId} has no corresponding 'homeRecievePoint' entity.'`);
+        throw new ApplicationError(`Required foreginKey 'RentalRecievePointId' with value '${this.RentalRecievePointId} has no corresponding 'RecievePoint' entity.'`);
     }
 
-    public get offerRentItems() { 
-        return RentItemToOfferRentItemEntity.findAll({
-            where: { 'rentItemId': this.id }
-        })
+    /** Odpytuje bazę i zwraca wszystkie przedmioty wynajmu określone w ofertach dla których ten przedmiot jest fizycznym wystąpieniem. */
+    public async getOfferRentItems(): Promise<OfferRentItemEntity[]>
+    { 
+        const offerRentItemIds = (await RentItem_OfferRentItem_Hash.findAll({
+            where: { rentItemId: this.id }
+        })).filter(x => x.RentalOfferRentItemId);
+        return await OfferRentItemEntity.findAll({
+            where: { id: { in: offerRentItemIds} }
+        });
     }
-    //declare damages: RentItemDamageEntity[];
-    //declare rentOrders: RentOrderEntity[];
+    /** Odpytuje bazę i zwraca wszystkie uszkodzenia zarejestrowane dla tego przedmiotu. */
+    public async getDamages(): Promise<RentItemDamageEntity[]>
+    {
+        return await RentItemDamageEntity.findAll({
+             where: { 'rentItemId': this.id }
+        });
+    }
+    /** Odpytuje bazę i zwraca wszystkie zlecenia w których brał lub bierze udział ten przedmiot. */
+    public async getRentOrders(): Promise<RentOrderEntity[]>
+    {
+        const rentItemIds = (await RentItem_RentOrder_Hash.findAll({
+            where: { RentalRentItemId:  this.id }
+        })).filter(x => x.RentalRentItemId);
+        return await RentOrderEntity.findAll({
+            where: { id: { in: rentItemIds} }
+        });
+    }
 }
 
 export const RentItemAttributes = 
@@ -77,7 +121,7 @@ export const RentItemAttributes =
         allowNull: false,
         defaultValue: 0
     },
-    totalAmountSpent: {
+    onBuyAmountSpent: {
         type: DataTypes.NUMBER,
         allowNull: false,
         defaultValue: 0
@@ -92,7 +136,7 @@ export const RentItemAttributes =
         allowNull: false
     },
     homeRecievePointId: {
-       type: DataTypes.NUMBER,
+       type: DataTypes.INTEGER,
        allowNull: false, 
     },
     // from base
