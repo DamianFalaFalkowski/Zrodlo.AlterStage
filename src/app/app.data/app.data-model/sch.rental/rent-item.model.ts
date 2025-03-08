@@ -4,8 +4,11 @@ import { OfferRentItemEntity } from "./offer-rent-item.model";
 import { RecievePointEntity } from "./recieve-point.model";
 import { RentItemDamageEntity } from './rent-item-damage.model';
 import { RentOrderEntity } from "./rent-order.model";
+import { DataTypes } from "sequelize";
+import { ApplicationError } from "../../../app.errors/application.error";
+import { RentItemToOfferRentItemEntity } from "./hash-tables/rent-item-to-offer-rent-item.model";
 
-export const RentItemModelName = 'RentItem'
+export const RentItemModelName = 'RentItems'
 
 export class RentItemEntity extends BaseEntity
 {
@@ -22,16 +25,50 @@ export class RentItemEntity extends BaseEntity
 
     declare rentItemAviabilityInHomeRecievePoint: RentItemAviablility;
 
-    declare offerRentItemId: number;
-    declare offerRentItem: OfferRentItemEntity;
     declare homeRecievePointId: number;
-    declare homeRecievePoint: RecievePointEntity;
+    //declare homeRecievePoint: RecievePointEntity;
 
-    declare damages: RentItemDamageEntity[];
-    declare rentOrders: RentOrderEntity[];
+    public get offerRentItems() { 
+        return RentItemToOfferRentItemEntity.findAll({
+            where: { 'rentItemId': this.id }
+        })
+    }
+    //declare damages: RentItemDamageEntity[];
+    //declare rentOrders: RentOrderEntity[];
 }
 
 export const RentItemAttributes = 
 {
 
+
+    // from base
+    id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+    },
+    createdAt: {
+        type: DataTypes.DATE,
+        secondaryKey: true,
+        allowNull: false,
+        defaultValue: new Date()
+    },
+    updatedAt: {
+        type: DataTypes.DATE,
+        allowNull: true
+    },
+    createdDiscordUserId: {
+        type: DataTypes.NUMBER,
+        allowNull: false,
+        defaultValue: 0
+    },
+    updatedDiscordUserId: {
+        type: DataTypes.NUMBER,
+        allowNull: true
+    },
+    isDeleted: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false
+    }
 }

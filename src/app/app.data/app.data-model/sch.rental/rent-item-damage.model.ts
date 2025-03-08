@@ -3,7 +3,7 @@ import { OfferDiscountEntity } from "./offer-discount.model";
 import { RentItemEntity } from "./rent-item.model";
 import { RentOrderEntity } from "./rent-order.model";
 
-export const RentItemDamageModelName = 'RentItemDamage'
+export const RentItemDamageModelName = 'RentItemDamages'
 
 export class RentItemDamageEntity extends BaseEntity 
 {

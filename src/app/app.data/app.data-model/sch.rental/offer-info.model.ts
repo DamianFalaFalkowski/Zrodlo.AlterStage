@@ -1,7 +1,7 @@
 import { BaseEntity } from "../_base/_base-entity.model";
 import { RentOfferEntity } from "./rent-offer.model";
 
-export const OfferInfoModelName = 'OfferInfo'
+export const OfferInfoModelName = 'OfferInfos'
 
 export class OfferInfoEntity extends BaseEntity 
 {

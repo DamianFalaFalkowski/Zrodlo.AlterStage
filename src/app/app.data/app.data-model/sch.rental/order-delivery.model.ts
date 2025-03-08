@@ -4,7 +4,7 @@ import { OrderDeliveryActionActionEntity } from "./order-delivery-action.model";
 import { RentItemEntity } from "./rent-item.model";
 import { RentOrderEntity } from "./rent-order.model";
 
-export const OrderDeliveryModelName = 'OrderDelivery'
+export const OrderDeliveryModelName = 'OrderDeliveries'
 
 export class OrderDeliveryEntity extends BaseEntity 
 {

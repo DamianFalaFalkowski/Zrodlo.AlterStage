@@ -5,10 +5,9 @@ import { CustomerEntity } from "./customer.model";
 import { OrderStatus } from "./enums/order-status.enum";
 import { OrderDeliveryEntity } from "./order-delivery.model";
 import { RentItemDamageEntity } from "./rent-item-damage.model";
-import { RentItemEntity } from './rent-item.model';
 import { RentOfferEntity } from "./rent-offer.model";
 
-export const RentOrderModelName = 'RentOrder'
+export const RentOrderModelName = 'RentOrders'
 
 export class RentOrderEntity extends BaseEntity 
 {

@@ -3,7 +3,7 @@ import { RentOfferEntity } from "./rent-offer.model";
 import { BaseEntity } from "../_base/_base-entity.model";
 import { RentItemAviablility } from "./enums/rent-item-aviablility.enum";
 
-export const DeliveryInfoModelName = 'DeliveryInfo'
+export const DeliveryInfoModelName = 'DeliveryInfos'
 
 export class DeliveryInfoEntity extends BaseEntity 
 {

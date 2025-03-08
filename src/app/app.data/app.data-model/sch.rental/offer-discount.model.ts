@@ -1,7 +1,7 @@
 import { DiscountType } from "./enums/discount-type.enum";
 import { BaseEntity } from "../_base/_base-entity.model";
 
-export const OfferDiscountModelName = 'OfferDiscount'
+export const OfferDiscountModelName = 'OfferDiscounts'
 
 export class OfferDiscountEntity extends BaseEntity 
 {

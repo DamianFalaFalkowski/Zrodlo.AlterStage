@@ -3,7 +3,7 @@ import { AddressEntity } from "./address.model";
 import { RentItemDamageEntity } from "./rent-item-damage.model";
 import { BaseEntity } from "../_base/_base-entity.model";
 
-export const CustomerModelName = 'Customer'
+export const CustomerModelName = 'Customers'
 
 export class CustomerEntity extends BaseEntity 
 {

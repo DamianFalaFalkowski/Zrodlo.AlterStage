@@ -8,7 +8,6 @@ import { Dialect } from 'sequelize';
 import hostModule from '../app/app.modules/host-module/app-module.host.module';
 import paymentModule from '../modules/payment.module/module.payment.module';
 
-
 const data = sqliteModule
    .SetDbConnection(
       process.env.DATABASE_NAME as string,
@@ -18,33 +17,39 @@ const data = sqliteModule
       process.env.DATABASE_DIALECT as Dialect,
       false,
       process.env.DATABASE_STORAGE as string)
-   .InitRepositories();
+   .InitAppSchema(() => 
+   { 
+      versionModule(data)
+         .setUpAppVersion(1,0,1);
+      hostModule
+         .SetUpClient(() => 
+         {
+            __logger.logInfo("Logowanie OK ! ! !");
+            try 
+            {
+               data.InitRentalSchema(() =>
+               {
 
-versionModule(data)
-   .setUpAppVersion(1,0,1);
+               });
+               paymentModule(hostModule)
+                  .RegisterPaymentCommands();
+               (async () => {
+                  await hostModule
+                     .HandleEventInteractionCreate()
+                     .PublishCommands();
+               })();
+            } catch (error: Error | any) 
+            // TODO: handle
+            {
+            } finally
+            {
+               // TODO: handle
+            }
+            })
+         .SetUpRest()
+         .ClientLogin();
+   });
 
-hostModule
-   .SetUpClient(() => {
-      __logger.logInfo("Logowanie OK ! ! !");
-      try 
-      { 
-         // definiuje co ma isę zadziewć po zalogowaniu do klienta
-         paymentModule(hostModule)
-            .RegisterPaymentCommands();
-         (async () => {
-            await hostModule
-               .HandleEventInteractionCreate()
-               .PublishCommands();
-         })();
-      } catch (error: Error | any) 
-      // TODO: handle
-      {
-      } finally
-      {
-         // TODO: handle
-      }
-      })
-   .SetUpRest()
-   .ClientLogin();
+
 
 

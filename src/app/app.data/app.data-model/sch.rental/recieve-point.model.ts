@@ -4,7 +4,7 @@ import { DeliveryInfoEntity } from "./delivery-info.model";
 import { RentItemEntity } from "./rent-item.model";
 import { RentOrderEntity } from "./rent-order.model";
 
-export const RecievePointModelName = 'RecievePoint'
+export const RecievePointModelName = 'RecievePoints'
 
 export class RecievePointEntity extends BaseEntity 
 {

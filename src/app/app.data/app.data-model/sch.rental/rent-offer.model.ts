@@ -6,7 +6,7 @@ import { OfferInfoEntity } from './offer-info.model';
 import { RecievePointEntity } from './recieve-point.model';
 import { OrderDeliveryEntity } from './order-delivery.model';
 
-export const RentOfferModelName = 'RentOffer'
+export const RentOfferModelName = 'RentOffers'
 
 // TODO: rozkminić czy rabaty powinny byc naliczane zawsze od kwoty bazowej czy kazdy rabat powinien byc naliczany od kwoty po poprzednim rabacie?
 export class RentOfferEntity extends BaseEntity {
