@@ -7,6 +7,7 @@ import { __logger } from "../../../../utils/dc-logger.util";
 import { OfferRentItemAttributes, OfferRentItemEntity, OfferRentItemModelName } from "../../app.data-model/sch.rental/offer-rent-item.model";
 import { RentItemAttributes, RentItemEntity, RentItemModelName } from "../../app.data-model/sch.rental/rent-item.model";
 import { RentItemToOfferRentItemEntity, RentItemToOfferRentItemModelName } from "../../app.data-model/sch.rental/hash-tables/rent-item-to-offer-rent-item.model";
+import { RecievePointAttributes, RecievePointEntity, RecievePointModelName } from "../../app.data-model/sch.rental/recieve-point.model";
 
 
 export interface ISqliteBuilder extends ISqliteInstance {
@@ -70,7 +71,12 @@ export abstract class SqliteBuilder
    {
       const schemaName = 'Rental'
 
-
+      RecievePointEntity.init(RecievePointAttributes,
+         {
+            sequelize: this._context!,
+            modelName: schemaName + '_' + RecievePointModelName,
+         }
+      );
       OfferRentItemEntity.init(OfferRentItemAttributes,
          {
             sequelize: this._context!,
@@ -83,6 +89,7 @@ export abstract class SqliteBuilder
             modelName: schemaName + '_' + RentItemModelName,
          }
       );
+
       RentItemToOfferRentItemEntity.init(
          {
             rentItemId: {
@@ -112,6 +119,10 @@ export abstract class SqliteBuilder
       RentItemEntity.belongsToMany(OfferRentItemEntity,
          { through: RentItemToOfferRentItemEntity })
 
+      RentItemEntity.hasMany(RecievePointEntity, 
+         { foreignKey: 'homeRecievePointId', });
+      RecievePointEntity.belongsTo(RentItemEntity);
+
 
       RentItemEntity.afterSync(() => {
          __logger.logInfo('Rental_RentItem table synchronized');
@@ -121,6 +132,12 @@ export abstract class SqliteBuilder
          __logger.logInfo('Rental_OfferRentItem table synchronized');
          RentItemEntity.sync({ force: !true });
       });
+      RecievePointEntity.afterSync(() => {
+         __logger.logInfo(
+            schemaName + '_' + RecievePointModelName + ' table synchronized');
+         OfferRentItemEntity.sync({ force: !true });
+      })
+
       RentItemToOfferRentItemEntity.afterSync(() => {
         __logger.logInfo(schemaName + '_' +RentItemToOfferRentItemModelName+' table synchronized');
         this._isRentalSchemaSynced = true;
@@ -129,7 +146,7 @@ export abstract class SqliteBuilder
       });
 
 
-      OfferRentItemEntity.sync({ force: !true });
+      RecievePointEntity.sync({ force: !true });
       return this.As<SqliteModule>();
    }
 }

@@ -12,21 +12,24 @@ export const RentItemModelName = 'RentItems'
 
 export class RentItemEntity extends BaseEntity
 {
-    declare id: number;
     declare code: string;
     declare barcodeNumber: string;
     declare isAvialible: boolean;
     declare isDamaged: boolean;
     declare isRented: boolean;
 
-    declare amountEarned: number;
-    declare amountSpent: number;
-    declare amountSpentOnRepairs: number;
+    declare totalAmountEarned: number;
+    declare totalAmountSpent: number;
+    declare totalAmountSpentOnRepairs: number;
 
     declare rentItemAviabilityInHomeRecievePoint: RentItemAviablility;
 
     declare homeRecievePointId: number;
-    //declare homeRecievePoint: RecievePointEntity;
+    public async gethomeRecievePoint(): Promise<RecievePointEntity> {
+        const rp = await RecievePointEntity.findByPk(this.homeRecievePointId);
+        if (rp !== undefined && rp !== null) return rp;
+        throw new ApplicationError(`Required foreginKey 'homeRecievePointId' with value '${this.homeRecievePointId} has no corresponding 'homeRecievePoint' entity.'`);
+    }
 
     public get offerRentItems() { 
         return RentItemToOfferRentItemEntity.findAll({
@@ -39,14 +42,60 @@ export class RentItemEntity extends BaseEntity
 
 export const RentItemAttributes = 
 {
-
-
-    // from base
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
     },
+    code: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true
+    },
+    barcodeNumber: {
+        type: DataTypes.NUMBER,
+        allowNull: false,
+        unique: true
+    },
+    isAvaliable: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: true
+    },
+    isDamaged: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false
+    },
+    isRented: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false
+    },
+    totalAmountEarned: {
+        type: DataTypes.NUMBER,
+        allowNull: false,
+        defaultValue: 0
+    },
+    totalAmountSpent: {
+        type: DataTypes.NUMBER,
+        allowNull: false,
+        defaultValue: 0
+    },
+    totalAmountSpentOnRepairs: {
+        type: DataTypes.NUMBER,
+        allowNull: false,
+        defaultValue: 0
+    },
+    rentItemAviabilityInHomeRecievePoint: {
+        type: DataTypes.ENUM(...Object.values(RentItemAviablility)),
+        allowNull: false
+    },
+    homeRecievePointId: {
+       type: DataTypes.NUMBER,
+       allowNull: false, 
+    },
+    // from base
     createdAt: {
         type: DataTypes.DATE,
         secondaryKey: true,
@@ -71,4 +120,5 @@ export const RentItemAttributes =
         allowNull: false,
         defaultValue: false
     }
+    // from base
 }
