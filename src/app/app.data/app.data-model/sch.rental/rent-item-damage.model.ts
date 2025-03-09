@@ -4,6 +4,7 @@ import { OfferDiscountEntity } from "./offer-discount.model";
 import { RentItemEntity } from "./rent-item.model";
 import { RentOrderEntity } from "./rent-order.model";
 import { ApplicationError } from "../../../app.errors/application.error";
+import { propertyOf } from "../../../../utils/type-properties.util";
 
 export const RentItemDamageModelName = 'RentItemDamages'
 
@@ -22,15 +23,17 @@ export class RentItemDamageEntity extends BaseEntity
 
     // declare entitlesToDiscountId?: number;
     // declare entitlesToDiscount?: OfferDiscountEntity;
-    declare rentItemId: number;
+    declare RentalRentItemId: number;
     public async getRentItem(): Promise<RentItemEntity>
     {
-        const rp = await RentItemEntity.findByPk(this.rentItemId);
-            if (rp !== undefined && rp !== null) return rp;
-            throw new ApplicationError(`Required foreginKey 'homeRecievePointId' with value '${this.rentItemId} has no corresponding 'homeRecievePoint' entity.'`);
+        return await this.getOwnedEntity<RentItemEntity>(RentItemEntity, this.RentalRentItemId, propertyOf<RentItemDamageEntity>('RentalRentItemId'));
     }
-    // declare rentOrder: RentOrderEntity;
-    // declare rentOrderId: number;
+
+    declare RentalRentOrderId: number;
+    public async getRentOrder(): Promise<RentOrderEntity>
+    {
+        return await this.getOwnedEntity<RentOrderEntity>(RentOrderEntity, this.RentalRentItemId, propertyOf<RentItemDamageEntity>('RentalRentOrderId'));
+    }
 }
 
 export const RentItemDamageAttributes = {
@@ -40,7 +43,11 @@ export const RentItemDamageAttributes = {
         primaryKey: true,
     },
     
-    rentItemId: {
+    RentalRentItemId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    },
+    RentalRentOrderId: {
         type: DataTypes.INTEGER,
         allowNull: false,
     },

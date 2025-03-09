@@ -18,9 +18,10 @@ export class DeliveryInfoEntity extends BaseEntity
     // declare baseRentItemsAviability: RentItemAviablility;
 
     // declare rentOfferId: Identifier;
-    // declare recievePointId: Identifier;
     // declare rentOffer: RentOfferEntity;
-    // declare recievePoint: RecievePointEntity;
+    public async getRecievePoint(): Promise<RecievePointEntity> {
+        return (await RecievePointEntity.findOne({where: { RentalDeliveryInfoId: this.id } }))!;
+    };
 
     // declare allowsMontage: boolean;
     // declare allowsDemontage: boolean;

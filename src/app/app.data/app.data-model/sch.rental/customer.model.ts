@@ -5,7 +5,6 @@ import { BaseEntity } from "../_base/_base-entity.model";
 import { DataTypes, Identifier } from "sequelize";
 
 export const CustomerModelName = 'Customers'
-
 export class CustomerEntity extends BaseEntity 
 {
     // declare discordProfileId: string; // eg.352579442176163841

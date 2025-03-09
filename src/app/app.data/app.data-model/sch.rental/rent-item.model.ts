@@ -5,9 +5,9 @@ import { RecievePointEntity } from "./recieve-point.model";
 import { RentItemDamageEntity } from './rent-item-damage.model';
 import { RentOrderEntity } from "./rent-order.model";
 import { DataTypes, Identifier } from "sequelize";
-import { ApplicationError } from "../../../app.errors/application.error";
 import { RentItem_OfferRentItem_Hash } from "./hash-tables/rent-item-to-offer-rent-item.hash-model";
 import { RentItem_RentOrder_Hash } from "./hash-tables/rent-item-to-rent-order.hash-model";
+import { propertyOf } from "../../../../utils/type-properties.util";
 
 export const RentItemModelName = 'RentItems'
 /** Reprezentacja pojedyńczego fizycznego wystąpienia przedmiotu wynajmu. */
@@ -50,9 +50,10 @@ export class RentItemEntity extends BaseEntity
     declare RentalRecievePointId: Identifier;
     /** Odpytuje bazę i zwraca obiekt domowego punktu odbioru. */
     public async getRecievePoint(): Promise<RecievePointEntity> {
-        const rp = await RecievePointEntity.findByPk(this.RentalRecievePointId);
-        if (rp !== undefined && rp !== null) return rp;
-        throw new ApplicationError(`Required foreginKey 'RentalRecievePointId' with value '${this.RentalRecievePointId} has no corresponding 'RecievePoint' entity.'`);
+        return this.getOwnedEntity<RecievePointEntity>(
+            RecievePointEntity, 
+            this.RentalRecievePointId, 
+            propertyOf<RentOrderEntity>('RentalRecievePointId'));
     }
 
     /** Odpytuje bazę i zwraca wszystkie przedmioty wynajmu określone w ofertach dla których ten przedmiot jest fizycznym wystąpieniem. */
@@ -86,11 +87,20 @@ export class RentItemEntity extends BaseEntity
 
 export const RentItemAttributes = 
 {
+    // pk
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
     },
+
+    // fks
+    RentalRecievePointId: {
+       type: DataTypes.INTEGER,
+       allowNull: false, 
+    },
+
+    // columns
     code: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -135,10 +145,7 @@ export const RentItemAttributes =
         type: DataTypes.ENUM(...Object.values(RentItemAviablility)),
         allowNull: false
     },
-    homeRecievePointId: {
-       type: DataTypes.INTEGER,
-       allowNull: false, 
-    },
+
     // from base
     createdAt: {
         type: DataTypes.DATE,
@@ -164,5 +171,4 @@ export const RentItemAttributes =
         allowNull: false,
         defaultValue: false
     }
-    // from base
 }

@@ -3,6 +3,7 @@ import { BaseEntity } from "../_base/_base-entity.model";
 import { CustomerEntity } from "./customer.model";
 import { OfferDiscountEntity } from "./offer-discount.model";
 import { RentOrderEntity } from "./rent-order.model";
+import { propertyOf } from "../../../../utils/type-properties.util";
 
 export const CustomerDiscountHistoryModelName = 'CustomerDiscountHistory';
 export class CustomerDiscountHistoryEntity extends BaseEntity 
@@ -11,8 +12,10 @@ export class CustomerDiscountHistoryEntity extends BaseEntity
     // declare giftEstimatedValue: number;
     // declare beforeDiscountAmount: number;
 
-    // declare appliedOnOrderId: Identifier;
-    // declare appliedOnOrder: RentOrderEntity;
+    declare RentalRentOrderId: Identifier;
+    public async geRentOrder(): Promise<RentOrderEntity> {
+        return this.getOwnedEntity(RentOrderEntity, this.RentalRentOrderId, propertyOf<CustomerDiscountHistoryEntity>('RentalRentOrderId'));
+    };
     // declare customerId: Identifier;
     // declare customer: CustomerEntity;
     // declare offerDiscountId: Identifier;
@@ -22,13 +25,20 @@ export class CustomerDiscountHistoryEntity extends BaseEntity
 
 export const CustomerDiscountHistoryAttributes = 
 {
+    // pk
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
     },
 
-    // ...
+    // fks
+    RentalRentOrderId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    },
+
+    // columns
 
     // from base
     createdAt: {

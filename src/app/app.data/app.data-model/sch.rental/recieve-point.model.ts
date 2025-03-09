@@ -1,9 +1,11 @@
-import { DataTypes } from "sequelize";
+import { DataTypes, Identifier } from "sequelize";
 import { BaseEntity } from "../_base/_base-entity.model";
 import { AddressEntity } from "./address.model";
 import { DeliveryInfoEntity } from "./delivery-info.model";
 import { RentItemEntity } from "./rent-item.model";
 import { RentOrderEntity } from "./rent-order.model";
+import { EntityNotFoundByPkError } from "../../../app.errors/entity-not-found.error";
+import { propertyOf } from "../../../../utils/type-properties.util";
 
 export const RecievePointModelName = 'RecievePoints'
 
@@ -19,8 +21,14 @@ export class RecievePointEntity extends BaseEntity
     // declare lastOwnerDiscordName: string;
     // declare isActive: boolean;
 
-    // declare deliveryInfoId: number;
-    // declare deliveryInfo: DeliveryInfoEntity;
+    declare RentalDeliveryInfoId: Identifier;
+    public async getDeliveryInfo(): Promise<DeliveryInfoEntity>
+    {
+        return await this.getOwnedEntity(DeliveryInfoEntity, 
+            this.RentalDeliveryInfoId, 
+            propertyOf<RecievePointEntity>('RentalDeliveryInfoId'));
+    };
+
     // declare addressId: number;
     // declare address: AddressEntity;
 
@@ -35,7 +43,10 @@ export const RecievePointAttributes = {
         primaryKey: true,
     },
 
-    // ...
+    RentalDeliveryInfoId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    },
 
     // from base
     createdAt: {

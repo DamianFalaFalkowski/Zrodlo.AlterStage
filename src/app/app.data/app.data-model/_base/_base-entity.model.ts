@@ -1,4 +1,6 @@
-import { Identifier, IntegerDataType, Model } from "sequelize";
+import { Identifier, IntegerDataType, Model, ModelStatic } from "sequelize";
+import { OrderDeliveryEntity } from "../sch.rental/order-delivery.model";
+import { EntityNotFoundByPkError } from "../../../app.errors/entity-not-found.error";
 
 export abstract class BaseEntity extends Model 
 {
@@ -8,6 +10,21 @@ export abstract class BaseEntity extends Model
     declare createdDiscordUserId: number;
     declare updatedDiscordUserId?: number;
     declare isDeleted: boolean;
+
+    public async getOwnedEntity<T extends BaseEntity>(
+        repository: ModelStatic<T>,
+        fk: Identifier, 
+        fkName: string) 
+    : Promise<T>
+    {
+        const entity = await repository.findByPk(fk);
+        if (entity === null) 
+            throw new EntityNotFoundByPkError(
+                fkName, 
+                fk.toString(), 
+                typeof(repository).name);
+        return entity;
+    };
 }
 
 // NOTE: model creation:  https://sequelize.org/docs/v6/core-concepts/model-basics/
