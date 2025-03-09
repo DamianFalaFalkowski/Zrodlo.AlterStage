@@ -20,6 +20,7 @@ import { OfferInfoAttributes, OfferInfoEntity, OfferInfoModelName } from "../../
 import { OrderDeliveryActionAttributes, OrderDeliveryActionEntity, OrderDeliveryActionModelName } from "../../app.data-model/sch.rental/order-delivery-action.model";
 import { OrderDeliveryAttributes, OrderDeliveryEntity, OrderDeliveryModelName } from "../../app.data-model/sch.rental/order-delivery.model";
 import { RentOfferAttributes, RentOfferEntity, RentOfferModelName } from "../../app.data-model/sch.rental/rent-offer.model";
+import { RentOffer_OfferDiscount_Hash } from "../../app.data-model/sch.rental/hash-tables/rent-offer-to-offer-discount.hash-model";
 
 export interface ISqliteBuilder 
    extends ISqliteInstance 
@@ -146,7 +147,6 @@ export abstract class SqliteBuilder
          RentOrderAttributes,
          { sequelize: this._context!, modelName: schemaName + '_' + RentOrderModelName }
       )
-      __logger.logInfo(schemaName + ' initialized');
 
 //--> 2. INIT HASH TABLES
       RentItem_OfferRentItem_Hash.init(
@@ -193,6 +193,29 @@ export abstract class SqliteBuilder
             modelName: schemaName + '_' + RentItemToRentOrderModelName,
          }
       );
+      RentOffer_OfferDiscount_Hash.init(
+         {
+            RentalRentOfferId: {
+               type: DataTypes.INTEGER,
+               references: {
+                  model: RentOfferEntity,
+                  key: 'id',
+               },
+            },
+            RentalOfferDiscountId: {
+               type: DataTypes.INTEGER,
+               references: {
+                  model: OfferDiscountEntity,
+                  key: 'id',
+               },
+            }
+         },
+         {
+            sequelize: this._context!,
+            modelName: schemaName + '_' + RentItemToRentOrderModelName,
+         }
+      );
+      __logger.logInfo(schemaName + ' initialized');
 
 //--> 3. CONFIGURE DB RELATIONS
       // EXAMPLE: one-to-one relation
@@ -255,6 +278,11 @@ export abstract class SqliteBuilder
          { through: RentItem_RentOrder_Hash });
       RentItemEntity.belongsToMany(RentOrderEntity,
          { through: RentItem_RentOrder_Hash });
+
+      RentOfferEntity.belongsToMany(OfferDiscountEntity,
+         { through: RentOffer_OfferDiscount_Hash });
+      OfferDiscountEntity.belongsToMany(RentOfferEntity,
+         { through: RentOffer_OfferDiscount_Hash });
 
       __logger.logInfo(schemaName + ' relations set');
 

@@ -9,6 +9,6 @@ export class EntityNotFoundByPkError<T extends BaseEntity> extends _appError
         repository: new () => T,
         primaryKeyValueAsString: string)
     {
-        super(`Used value '${primaryKeyValueAsString} has no corresponding '${typeof(repository).name}' entity with equal primary key.'`, false);
+        super(`Requested value '${primaryKeyValueAsString} has no corresponding '${typeof(repository).name}' entity with equal primary key.'`, false);
     }
 }

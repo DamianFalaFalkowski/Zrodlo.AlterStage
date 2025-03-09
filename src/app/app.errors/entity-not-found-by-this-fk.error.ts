@@ -11,6 +11,6 @@ export class EntityNotFoundByFkError<T extends BaseEntity> extends _appError
         foreignKeyName: string, 
         foreignKeyValueAsString: string)
     {
-        super(`ForeignKey '${foreignKeyName}' with value '${foreignKeyValueAsString}' has no '${typeof(repository).name}' entity with equal primary key`, false);
+        super(`Requested foreignKey '${foreignKeyName}' with value '${foreignKeyValueAsString}' has no '${typeof(repository).name}' entity with equal primary key`, false);
     }
 }

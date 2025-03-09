@@ -49,18 +49,16 @@ export class CustomerEntity extends BaseEntity
         const entities = await RentOrderEntity.findAll(
             { where : { RentalCustomerId : this.id }});
         if (entities === null) 
-            throw new EntityNotFoundByPkError(RentOrderEntity, this.id.toString());
+            throw new EntityNotFoundByFkError(RentOrderEntity, 
+                'RentalCustomerId', this.id.toString());
         return entities;
     };
 
     /** Pobiera uszkodzenia powstałe w zleceniach uytkownika */
-    public async getDamages(): Promise<RentItemDamageEntity[]>
+    public async getDamagesIfExist(): Promise<RentItemDamageEntity[] | null>
     {
         const entities = await RentItemDamageEntity.findAll(
             { where : { RentalRentItemDamageId : this.id }});
-        if (entities === null) 
-            throw new EntityNotFoundByFkError(RentItemDamageEntity, 
-                'RentalRentItemDamageId', this.id.toString());
         return entities;
     };
 }

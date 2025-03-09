@@ -13,6 +13,8 @@ export const TagsModelName = 'Tags'
  */
 export class TagsEntity extends BaseEntity 
 {
+    public entityName: string= 'Tags';
+
     declare name: string;
     declare description: string;
     declare userId: string;
