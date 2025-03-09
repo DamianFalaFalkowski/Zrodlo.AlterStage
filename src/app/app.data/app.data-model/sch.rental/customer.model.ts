@@ -3,6 +3,7 @@ import { AddressEntity } from "./address.model";
 import { RentItemDamageEntity } from "./rent-item-damage.model";
 import { BaseEntity } from "../_base/_base-entity.model";
 import { DataTypes, Identifier } from "sequelize";
+import { propertyOf } from "../../../../utils/type-properties.util";
 
 export const CustomerModelName = 'Customers'
 export class CustomerEntity extends BaseEntity 
@@ -14,20 +15,35 @@ export class CustomerEntity extends BaseEntity
     // declare email: string;
     // declare phone: string;
 
-    // declare addressId?: Identifier;
-    // declare address?: AddressEntity;
+    declare RentAddressId?: Identifier;
+    public async getAddressIfExists(): Promise<AddressEntity | undefined>
+    {
+        if(this.RentAddressId === undefined)
+            return undefined;
+        return await this.getOwnedEntity(AddressEntity, 
+            this.RentAddressId, 
+            propertyOf<CustomerEntity>('RentAddressId'));
+    };
+
     // declare orders: RentOrderEntity[];
     // declare causedDamages: RentItemDamageEntity[];
 }
 
 export const CustomerAttributes = {
+    // pk
     id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true,
         },
     
-    // ...
+    // fks
+    RentalRecievePointId: {
+       type: DataTypes.INTEGER,
+       allowNull: false, 
+    },
+
+    // columns
 
     // from base
     createdAt: {

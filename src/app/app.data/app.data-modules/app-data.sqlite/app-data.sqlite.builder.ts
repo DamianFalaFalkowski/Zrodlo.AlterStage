@@ -200,6 +200,15 @@ export abstract class SqliteBuilder
       DeliveryInfoEntity.hasOne(RecievePointEntity);
       RecievePointEntity.belongsTo(DeliveryInfoEntity);
 
+      AddressEntity.hasOne(CustomerEntity);
+      CustomerEntity.belongsTo(AddressEntity);
+
+      RentOrderEntity.hasOne(OrderDeliveryEntity);
+      OrderDeliveryEntity.belongsTo(RentOrderEntity);
+
+      OrderDeliveryEntity.hasMany(RentOrderEntity);
+      RentOrderEntity.belongsTo(OrderDeliveryEntity);
+
       // EXAMPLE: one-to-many relation
       // declare foreignKey of (home)RecievePoint in RentItem, recieve point has many RentItems
       RecievePointEntity.hasMany(RentItemEntity);
@@ -214,14 +223,27 @@ export abstract class SqliteBuilder
       CustomerEntity.hasMany(RentOrderEntity);
       RentOrderEntity.belongsTo(CustomerEntity);
 
-      OrderDeliveryEntity.hasMany(RentOrderEntity);
-      RentOrderEntity.belongsTo(OrderDeliveryEntity);
-
       RentOrderEntity.hasMany(RentItemDamageEntity);
       RentItemDamageEntity.belongsTo(RentOrderEntity);
 
       RentOrderEntity.hasMany(CustomerDiscountHistoryEntity);
       CustomerDiscountHistoryEntity.belongsTo(RentOrderEntity);
+
+      CustomerEntity.hasMany(CustomerDiscountHistoryEntity);
+      CustomerDiscountHistoryEntity.belongsTo(CustomerEntity);
+
+      OfferDiscountEntity.hasMany(CustomerDiscountHistoryEntity);
+      CustomerDiscountHistoryEntity.belongsTo(OfferDiscountEntity);
+
+      RentOfferEntity.hasMany(OfferInfoEntity);
+      OfferInfoEntity.belongsTo(RentOfferEntity);
+
+      RecievePointEntity.hasMany(OrderDeliveryActionEntity);
+      OrderDeliveryActionEntity.belongsTo(RecievePointEntity);
+
+   // TODO: zweryfikowac czy ta relacja jest wgl potrzebna
+      RentOfferEntity.hasMany(DeliveryInfoEntity);
+      DeliveryInfoEntity.belongsTo(RentOfferEntity);
 
       // EXAMPLE: many-to-many relation
       OfferRentItemEntity.belongsToMany(RentItemEntity,

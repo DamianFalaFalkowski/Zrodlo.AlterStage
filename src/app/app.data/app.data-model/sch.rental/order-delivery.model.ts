@@ -4,6 +4,7 @@ import { AddressEntity } from "./address.model";
 import { OrderDeliveryActionEntity } from "./order-delivery-action.model";
 import { RentItemEntity } from "./rent-item.model";
 import { RentOrderEntity } from "./rent-order.model";
+import { propertyOf } from "../../../../utils/type-properties.util";
 
 export const OrderDeliveryModelName = 'OrderDeliveries'
 
@@ -36,8 +37,13 @@ export class OrderDeliveryEntity extends BaseEntity
     // declare deliveryDestinationAddressId: number;
     // declare deliveryDestinationAddress: AddressEntity;
 
-    // declare rentOrderId: number;
-    // declare rentOrder: RentOrderEntity;
+    declare RentalRentOrderId: number;
+    public async getRentOrder(): Promise<RentOrderEntity> {
+        return this.getOwnedEntity<RentOrderEntity>(
+            RentOrderEntity,
+            this.RentalRentOrderId,
+            propertyOf<OrderDeliveryEntity>('RentalRentOrderId'));
+    };
 
     // declare sourceRecievePointAddresses: AddressEntity[];
     // declare rentItems: RentItemEntity[];
@@ -45,13 +51,20 @@ export class OrderDeliveryEntity extends BaseEntity
 }
 
 export const OrderDeliveryAttributes = {
+    // pk
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
     },
 
-    // ...
+    // fks
+    RentalRentOrderId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    },
+
+    // columns
 
     // from base
     createdAt: {

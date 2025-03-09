@@ -29,13 +29,18 @@ export class OfferDiscountEntity extends BaseEntity
 }
 
 export const OfferDiscountAttributes = {
+    // pk
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
     },
 
-    // ...
+    // fks
+
+
+    // columns
+
 
     // from base
     createdAt: {

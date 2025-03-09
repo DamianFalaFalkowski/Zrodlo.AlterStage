@@ -17,12 +17,14 @@ export class OfferRentItemEntity extends BaseEntity {
 
 export const OfferRentItemAttributes =
 {
+    // pk
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
     },
     
+    // columns
     isMainRentItem: {
         type: DataTypes.BOOLEAN,
         allowNull: false,

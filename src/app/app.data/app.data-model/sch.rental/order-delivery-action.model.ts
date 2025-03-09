@@ -4,11 +4,11 @@ import { AddressEntity } from "./address.model";
 import { OrderDeliveryEntity } from "./order-delivery.model";
 import { RecievePointEntity } from "./recieve-point.model";
 import { RentItemEntity } from "./rent-item.model";
+import { propertyOf } from "../../../../utils/type-properties.util";
 
 export const OrderDeliveryActionModelName = 'OrderDeliveryActions'
 
-export class OrderDeliveryActionEntity extends BaseEntity 
-{
+export class OrderDeliveryActionEntity extends BaseEntity {
     // declare totalAmountToEarn: number;
     // declare comenstationRentPricePercentage: number;
     // declare compensationAmountFromRentPrice: number;
@@ -22,10 +22,22 @@ export class OrderDeliveryActionEntity extends BaseEntity
     // declare isCompleted: boolean;
     // declare actionType: OrderDeliveryActionActionEntity;
 
-    // declare recievePointId: number;
-    // declare recievePoint: RecievePointEntity;
-    // declare orderDeliveryId: number;
-    // declare orderDelivery: OrderDeliveryEntity;
+    declare RentalRecievePointId: number;
+    public async getRecievePoint(): Promise<RecievePointEntity> {
+        return this.getOwnedEntity<RecievePointEntity>(
+            RecievePointEntity,
+            this.RentalRecievePointId,
+            propertyOf<OrderDeliveryActionEntity>('RentalRecievePointId'));
+    };
+
+    declare RentalOrderDeliveryId: number;
+    public async getOrderDelivery(): Promise<OrderDeliveryEntity> {
+        return this.getOwnedEntity<OrderDeliveryEntity>(
+            OrderDeliveryEntity,
+            this.RentalOrderDeliveryId,
+            propertyOf<OrderDeliveryActionEntity>('RentalOrderDeliveryId'));
+    };
+
     // declare actionSourceAddressId: number;
     // declare actionSourceAddress: AddressEntity;
     // declare actionDestinationAddressId: number;
@@ -35,13 +47,25 @@ export class OrderDeliveryActionEntity extends BaseEntity
 }
 
 export const OrderDeliveryActionAttributes = {
+    // pk
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
     },
 
-    // ...
+    // fks
+    RentalRecievePointId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    },
+    RentalOrderDeliveryId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    },
+
+    // model
+
 
     // from base
     createdAt: {

@@ -16,11 +16,16 @@ export class CustomerDiscountHistoryEntity extends BaseEntity
     public async geRentOrder(): Promise<RentOrderEntity> {
         return this.getOwnedEntity(RentOrderEntity, this.RentalRentOrderId, propertyOf<CustomerDiscountHistoryEntity>('RentalRentOrderId'));
     };
-    // declare customerId: Identifier;
-    // declare customer: CustomerEntity;
-    // declare offerDiscountId: Identifier;
-    // declare offerDiscount: OfferDiscountEntity;
 
+    declare RentalCustomerId: Identifier;
+    public async geCustomer(): Promise<CustomerEntity> {
+        return this.getOwnedEntity(CustomerEntity, this.RentalCustomerId, propertyOf<CustomerDiscountHistoryEntity>('RentalCustomerId'));
+    };
+
+    declare RentalOfferDiscountId: Identifier;
+    public async geOfferDiscount(): Promise<OfferDiscountEntity> {
+        return this.getOwnedEntity(OfferDiscountEntity, this.RentalOfferDiscountId, propertyOf<CustomerDiscountHistoryEntity>('RentalOfferDiscountId'));
+    };
 }
 
 export const CustomerDiscountHistoryAttributes = 
@@ -34,6 +39,14 @@ export const CustomerDiscountHistoryAttributes =
 
     // fks
     RentalRentOrderId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    },
+    RentalRentCustomerId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    },
+    RentalOfferDiscountId: {
         type: DataTypes.INTEGER,
         allowNull: false,
     },

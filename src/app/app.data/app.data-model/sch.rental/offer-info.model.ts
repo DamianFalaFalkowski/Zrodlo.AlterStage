@@ -1,25 +1,45 @@
 import { DataTypes, Identifier } from "sequelize";
 import { BaseEntity } from "../_base/_base-entity.model";
 import { RentOfferEntity } from "./rent-offer.model";
+import { propertyOf } from "../../../../utils/type-properties.util";
 
 export const OfferInfoModelName = 'OfferInfos'
-
+/** Reprezentuje dodatkowe informacje dot. oferty najmu */
 export class OfferInfoEntity extends BaseEntity 
 {
-    // declare infoMessage: string;
+    /** Treść informacji dot. oferty */
+    declare infoMessage: string;
 
-    // declare rentOfferId: Identifier;
-    // declare rentOffer: RentOfferEntity;
+    /** Id oferty najmu której dotyczy informacja */
+    declare RentalRentOfferId: Identifier;
+    /** Wykonuje qiery i zwraca obiekt oferty najmu */
+    public async getOrderDelivery(): Promise<RentOfferEntity> {
+        return this.getOwnedEntity<RentOfferEntity>(
+            RentOfferEntity, 
+            this.RentalRentOfferId, 
+            propertyOf<OfferInfoEntity>('RentalRentOfferId'));
+    };
 };
 
 export const OfferInfoAttributes = {
+    // pk
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
     },
 
-    // ...
+    // fks
+    RentalRentOfferId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    },
+
+    // columns
+    infoMessage: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
 
     // from base
     createdAt: {

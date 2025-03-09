@@ -3,6 +3,7 @@ import { RentOfferEntity } from "./rent-offer.model";
 import { BaseEntity } from "../_base/_base-entity.model";
 import { RentItemAviablility } from "./enums/rent-item-aviablility.enum";
 import { DataTypes, Identifier } from "sequelize";
+import { propertyOf } from "../../../../utils/type-properties.util";
 
 export const DeliveryInfoModelName = 'DeliveryInfos'
 
@@ -17,8 +18,15 @@ export class DeliveryInfoEntity extends BaseEntity
     // declare deliveryPricePerKm?: number;
     // declare baseRentItemsAviability: RentItemAviablility;
 
-    // declare rentOfferId: Identifier;
-    // declare rentOffer: RentOfferEntity;
+    declare RentalRentOfferId: Identifier;
+    public async getRentOffer(): Promise<RentOfferEntity>
+    {
+        return await this.getOwnedEntity(RentOfferEntity, 
+            this.RentalRentOfferId, 
+            propertyOf<DeliveryInfoEntity>('RentalRentOfferId'));
+    };
+    
+
     public async getRecievePoint(): Promise<RecievePointEntity> {
         return (await RecievePointEntity.findOne({where: { RentalDeliveryInfoId: this.id } }))!;
     };
@@ -37,13 +45,20 @@ export class DeliveryInfoEntity extends BaseEntity
 }
 
 export const DeliveryInfoAttributes = {
+    // pk
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
     },
 
-    // ...
+    // fks
+    RentalRentOfferId: {
+       type: DataTypes.INTEGER,
+       allowNull: false, 
+    },
+
+    // columns
 
     // from base
     createdAt: {

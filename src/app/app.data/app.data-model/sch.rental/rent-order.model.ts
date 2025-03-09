@@ -53,12 +53,8 @@ export class RentOrderEntity extends BaseEntity
             propertyOf<RentOrderEntity>('RentalCustomerId'));
     };
 
-    declare RentalOrderDeliveryId: Identifier;
     public async getOrderDelivery(): Promise<OrderDeliveryEntity> {
-        return this.getOwnedEntity<CustomerEntity>(
-            OrderDeliveryEntity, 
-            this.RentalOrderDeliveryId, 
-            propertyOf<RentOrderEntity>('RentalOrderDeliveryId'));
+        return (await OrderDeliveryEntity.findOne({where: { RentalDeliveryInfoId: this.id } }))!;
     };
 
     // declare itemDamages: RentItemDamageEntity[];
@@ -67,12 +63,14 @@ export class RentOrderEntity extends BaseEntity
 }
 
 export const RentOrderAttributes = {
+    // pk
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
     },
 
+    // fks
     RentalRecievePointId: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -85,6 +83,8 @@ export const RentOrderAttributes = {
         type: DataTypes.INTEGER,
         allowNull: false,
     },
+
+    // columns
 
     // from base
     createdAt: {
