@@ -6,6 +6,8 @@ export const OfferDiscountModelName = 'OfferDiscounts'
 
 export class OfferDiscountEntity extends BaseEntity 
 {
+    public entityName: string = OfferDiscountModelName;
+
     // declare discountName: string;
     // declare discountType: DiscountType
 

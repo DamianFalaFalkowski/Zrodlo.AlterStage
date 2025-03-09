@@ -12,6 +12,8 @@ export const RentOfferModelName = 'RentOffers'
 // TODO: rozkminić czy rabaty powinny byc naliczane zawsze od kwoty bazowej czy kazdy rabat powinien byc naliczany od kwoty po poprzednim rabacie?
 export class RentOfferEntity extends BaseEntity 
 {
+    public entityName: string = RentOfferModelName;
+
     // declare name: string;
     // declare description: string;
     // declare price: number;

@@ -10,6 +10,8 @@ export const OrderDeliveryModelName = 'OrderDeliveries'
 
 export class OrderDeliveryEntity extends BaseEntity 
 {
+    public entityName: string = OrderDeliveryModelName;
+
     // declare totalDeliveryPrice: number;
     // declare withDelivery: boolean;
     // declare estimatedDeliveryDistance?: number;

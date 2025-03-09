@@ -9,6 +9,8 @@ export const DeliveryInfoModelName = 'DeliveryInfos'
 
 export class DeliveryInfoEntity extends BaseEntity 
 {
+    public entityName: string = DeliveryInfoModelName;
+
     // declare isAvaliable: boolean;
     // declare isNeeded: boolean;
     // declare standardDeliveryAreaDescription?: string;

@@ -10,6 +10,8 @@ export const RentItemDamageModelName = 'RentItemDamages'
 
 export class RentItemDamageEntity extends BaseEntity 
 {
+    public entityName: string = RentItemDamageModelName;
+
     // declare payerDiscordClientId: string;
     // declare lastPayerDiscordClientName: string;
 

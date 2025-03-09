@@ -4,18 +4,36 @@ import { RentItemDamageEntity } from "./rent-item-damage.model";
 import { BaseEntity } from "../_base/_base-entity.model";
 import { DataTypes, Identifier } from "sequelize";
 import { propertyOf } from "../../../../utils/type-properties.util";
+import { EntityNotFoundByPkError } from "../../../app.errors/entity-not-found-by-this-pk.error";
+import { EntityNotFoundByFkError } from "../../../app.errors/entity-not-found-by-this-fk.error";
 
 export const CustomerModelName = 'Customers'
+/** Reprezentuje klienta wypoyczalni */
 export class CustomerEntity extends BaseEntity 
 {
-    // declare discordProfileId: string; // eg.352579442176163841
-    // declare lastDiscordGuildProfileName: string;
-    // declare name: string;
-    // declare lastName: string;
-    // declare email: string;
-    // declare phone: string;
+    public entityName: string = CustomerModelName;
 
+    /** Id profilu discord. eg.352579442176163841 */
+    declare discordProfileId: string;
+
+    /** Ostatnio odczytana nazwa serwerowa profilu discord */
+    declare lastDiscordGuildProfileName: string;
+
+    /** Imię klienta. Uzupełniane przed złoeniem pierwszego zamówienia. */
+    declare name?: string;
+
+    /** Nazwisko klienta. Uzupełniane przed złoeniem pierwszego zamówienia. */
+    declare lastName?: string;
+
+    /** Adres email do kontaktu. Uzupełniane przed złoeniem pierwszego zamówienia. */
+    declare email?: string;
+
+    /** Telefon do kontaktu. Uzupełniane przed złoeniem pierwszego zamówienia. */
+    declare phone?: string;
+
+    /** Id adresu określonego przez uytkownika jako proponowany adres dostawy */
     declare RentAddressId?: Identifier;
+    /** Pobiera adres określony przez uytkownika jako proponowany adres dostawy */
     public async getAddressIfExists(): Promise<AddressEntity | undefined>
     {
         if(this.RentAddressId === undefined)
@@ -25,8 +43,26 @@ export class CustomerEntity extends BaseEntity
             propertyOf<CustomerEntity>('RentAddressId'));
     };
 
-    // declare orders: RentOrderEntity[];
-    // declare causedDamages: RentItemDamageEntity[];
+    /** Pobiera zlecenia utworzone przez klienta */
+    public async getOrders(): Promise<RentOrderEntity[]>
+    {
+        const entities = await RentOrderEntity.findAll(
+            { where : { RentalCustomerId : this.id }});
+        if (entities === null) 
+            throw new EntityNotFoundByPkError(RentOrderEntity, this.id.toString());
+        return entities;
+    };
+
+    /** Pobiera uszkodzenia powstałe w zleceniach uytkownika */
+    public async getDamages(): Promise<RentItemDamageEntity[]>
+    {
+        const entities = await RentItemDamageEntity.findAll(
+            { where : { RentalRentItemDamageId : this.id }});
+        if (entities === null) 
+            throw new EntityNotFoundByFkError(RentItemDamageEntity, 
+                'RentalRentItemDamageId', this.id.toString());
+        return entities;
+    };
 }
 
 export const CustomerAttributes = {
@@ -44,6 +80,30 @@ export const CustomerAttributes = {
     },
 
     // columns
+    discordProfileId: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    lastDiscordGuildProfileName: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    name: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
+    lastName: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
+    email: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
+    phone: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
 
     // from base
     createdAt: {

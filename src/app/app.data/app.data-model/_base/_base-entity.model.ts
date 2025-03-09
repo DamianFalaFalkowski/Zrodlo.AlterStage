@@ -1,9 +1,10 @@
-import { Identifier, IntegerDataType, Model, ModelStatic } from "sequelize";
-import { OrderDeliveryEntity } from "../sch.rental/order-delivery.model";
-import { EntityNotFoundByPkError } from "../../../app.errors/entity-not-found.error";
+import { Identifier, Model, ModelStatic } from "sequelize";
+import { EntityNotFoundByFkError } from "../../../app.errors/entity-not-found-by-this-fk.error";
 
 export abstract class BaseEntity extends Model 
 {
+    public abstract entityName: string
+
     declare id: Identifier;
     declare createdAt: Date;
     declare updatedAt?: Date;
@@ -19,10 +20,10 @@ export abstract class BaseEntity extends Model
     {
         const entity = await repository.findByPk(fk);
         if (entity === null) 
-            throw new EntityNotFoundByPkError(
+            throw new EntityNotFoundByFkError<T>(
+                repository,
                 fkName, 
-                fk.toString(), 
-                typeof(repository).name);
+                fk.toString());
         return entity;
     };
 }

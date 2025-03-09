@@ -6,10 +6,9 @@ export class EntityNotFoundByPkError<T extends BaseEntity> extends _appError
     readonly name: string = EntityNotFoundByPkError.name;
 
     constructor(
-        foreignKeyName: string, 
-        foreignKeyValueAsString: string,
-        queriedEntityName: string)
+        repository: new () => T,
+        primaryKeyValueAsString: string)
     {
-        super(`Requested foreignKey '${foreignKeyName}' with value '${foreignKeyValueAsString} has no corresponding '${queriedEntityName}' entity.'`, false);
+        super(`Used value '${primaryKeyValueAsString} has no corresponding '${typeof(repository).name}' entity with equal primary key.'`, false);
     }
 }

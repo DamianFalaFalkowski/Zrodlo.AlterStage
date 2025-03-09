@@ -4,13 +4,15 @@ import { AddressEntity } from "./address.model";
 import { DeliveryInfoEntity } from "./delivery-info.model";
 import { RentItemEntity } from "./rent-item.model";
 import { RentOrderEntity } from "./rent-order.model";
-import { EntityNotFoundByPkError } from "../../../app.errors/entity-not-found.error";
+import { EntityNotFoundByPkError } from "../../../app.errors/entity-not-found-by-this-pk.error";
 import { propertyOf } from "../../../../utils/type-properties.util";
 
 export const RecievePointModelName = 'RecievePoints'
 
 export class RecievePointEntity extends BaseEntity 
 {
+    public entityName: string = RecievePointModelName;
+
     // declare name: string;
     // declare phoneNumber: string;
     // declare email: string;

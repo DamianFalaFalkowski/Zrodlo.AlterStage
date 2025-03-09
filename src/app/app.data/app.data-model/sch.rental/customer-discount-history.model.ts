@@ -6,23 +6,37 @@ import { RentOrderEntity } from "./rent-order.model";
 import { propertyOf } from "../../../../utils/type-properties.util";
 
 export const CustomerDiscountHistoryModelName = 'CustomerDiscountHistory';
+/** Reprezentuje znikę udzieloną dla zamówienia. Powstaje w momencie zaakceptowania zamówienia przez obie strony. */
 export class CustomerDiscountHistoryEntity extends BaseEntity 
 {
-    // declare savedAmount: number;
-    // declare giftEstimatedValue: number;
-    // declare beforeDiscountAmount: number;
+    public entityName: string = CustomerDiscountHistoryModelName;
 
+    /** Kwota zaoszczędzona dzięki znizce. Wartość 'null' kiedy znizka nie rabatowała ceny. */
+    declare savedAmount?: number;
+
+    /** Szacowana wartość prezentów promocyjnych. Wartość 'null' kiedy znika nie posiadała prezentów */
+    declare giftEstimatedValue?: number;
+
+    /** Wartość zamówienia bez znziek */
+    declare beforeDiscountAmount: number;
+
+    /** Id zamówienia dla którego znizka zostala udzielona */
     declare RentalRentOrderId: Identifier;
+    /** Pobiera encję zamówienia dla którego znizka zostala udzielona */
     public async geRentOrder(): Promise<RentOrderEntity> {
         return this.getOwnedEntity(RentOrderEntity, this.RentalRentOrderId, propertyOf<CustomerDiscountHistoryEntity>('RentalRentOrderId'));
     };
 
+    /** Id klienta który skorzystał ze znizki */
     declare RentalCustomerId: Identifier;
+    /** Pobiera encję klienta który skorzystał ze znizki */
     public async geCustomer(): Promise<CustomerEntity> {
         return this.getOwnedEntity(CustomerEntity, this.RentalCustomerId, propertyOf<CustomerDiscountHistoryEntity>('RentalCustomerId'));
     };
 
+    /** Id definicji zniki na podstawie której powstał ten obiekt */
     declare RentalOfferDiscountId: Identifier;
+    /** Pobiera encję definicji znizki na podstawie której powstał ten obiekt */
     public async geOfferDiscount(): Promise<OfferDiscountEntity> {
         return this.getOwnedEntity(OfferDiscountEntity, this.RentalOfferDiscountId, propertyOf<CustomerDiscountHistoryEntity>('RentalOfferDiscountId'));
     };
@@ -52,6 +66,19 @@ export const CustomerDiscountHistoryAttributes =
     },
 
     // columns
+    savedAmount: {
+        type: DataTypes.INTEGER,
+        allowNull: true
+    },
+    giftEstimatedValue: {
+        type: DataTypes.INTEGER,
+        allowNull: true
+    },
+    beforeDiscountAmount: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        defaultValue: 0
+    },
 
     // from base
     createdAt: {

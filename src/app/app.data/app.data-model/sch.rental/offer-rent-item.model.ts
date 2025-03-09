@@ -1,10 +1,12 @@
 import { DataTypes } from "sequelize";
 import { BaseEntity } from "../_base/_base-entity.model";
 import { RentItemSize } from "./enums/rent-item-size.enum";
+import { RentItemEntity } from "./rent-item.model";
 
-export const OfferRentItemModelName = 'OfferRentItems'
-
+export const OfferRentItemModelName = 'OfferDiscounts'
 export class OfferRentItemEntity extends BaseEntity {
+    public entityName = OfferRentItemModelName;
+
     declare isMainRentItem: boolean;
     declare itemName: string;
     declare brandName?: string
@@ -12,7 +14,14 @@ export class OfferRentItemEntity extends BaseEntity {
     declare description?: string;
     declare rentItemSize: RentItemSize;
 
-    //declare phisicalRentItems: RentItemEntity[];
+    public async getRentItems(): Promise<RentItemEntity[]>
+    {
+        const entities = await RentItemEntity.findAll(
+            { where : { RentalOfferRentItemId : this.id }});
+        if (entities === null) 
+            throw new Error();
+        return entities;
+    }
 }
 
 export const OfferRentItemAttributes =

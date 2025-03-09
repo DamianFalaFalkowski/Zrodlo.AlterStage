@@ -7,6 +7,8 @@ export const OfferInfoModelName = 'OfferInfos'
 /** Reprezentuje dodatkowe informacje dot. oferty najmu */
 export class OfferInfoEntity extends BaseEntity 
 {
+    public entityName: string = OfferInfoModelName;
+
     /** Treść informacji dot. oferty */
     declare infoMessage: string;
 

@@ -8,13 +8,15 @@ import { OrderDeliveryEntity } from "./order-delivery.model";
 import { RentItemDamageEntity } from "./rent-item-damage.model";
 import { RentOfferEntity } from "./rent-offer.model";
 import { RecievePointEntity } from "./recieve-point.model";
-import { EntityNotFoundByPkError } from "../../../app.errors/entity-not-found.error";
+import { EntityNotFoundByPkError } from "../../../app.errors/entity-not-found-by-this-pk.error";
 import { propertyOf } from "../../../../utils/type-properties.util";
 
 export const RentOrderModelName = 'RentOrders'
 
 export class RentOrderEntity extends BaseEntity 
 {
+    public entityName: string = RentOrderModelName;
+
     // declare status: OrderStatus;
     // declare payedAmount: number;
     // declare onHoldDepositeAmount: number;

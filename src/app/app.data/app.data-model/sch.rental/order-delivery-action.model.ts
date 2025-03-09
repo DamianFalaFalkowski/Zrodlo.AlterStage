@@ -8,7 +8,10 @@ import { propertyOf } from "../../../../utils/type-properties.util";
 
 export const OrderDeliveryActionModelName = 'OrderDeliveryActions'
 
-export class OrderDeliveryActionEntity extends BaseEntity {
+export class OrderDeliveryActionEntity extends BaseEntity 
+{
+    public entityName: string = OrderDeliveryActionModelName;
+
     // declare totalAmountToEarn: number;
     // declare comenstationRentPricePercentage: number;
     // declare compensationAmountFromRentPrice: number;

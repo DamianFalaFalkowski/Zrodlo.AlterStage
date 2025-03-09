@@ -13,6 +13,8 @@ export const RentItemModelName = 'RentItems'
 /** Reprezentacja pojedyńczego fizycznego wystąpienia przedmiotu wynajmu. */
 export class RentItemEntity extends BaseEntity
 {
+    public entityName: string = RentItemModelName;
+
     /** Unikalny alfa-numeryczny kod przedmiotu wynajmu. Kody umieszczane są na naklejce w celu ułatwienia identyfikacji. 
      * TODO: utworzyć serwis do generowania kodów
     */
