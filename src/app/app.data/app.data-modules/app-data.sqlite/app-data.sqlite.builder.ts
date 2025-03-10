@@ -2,25 +2,25 @@
 import { DataTypes, Dialect, Sequelize } from "sequelize";
 import { ISqliteInstance, SqliteInstance } from './app-data.sqlite.instance';
 import { SqliteModule } from "./app-data.sqlite.module";
-import { TagsAttributes, TagsModelName, TagsEntity } from '../../app.data-model/sch.app/tags.model'
+import { TagsAttributes, TagsModelName, TagsEntity } from '../../app.data-model/sch.app/tags.entity'
 import { __logger } from "../../../../utils/dc-logger.util";
-import { OfferRentItemAttributes, OfferRentItemEntity, OfferRentItemModelName } from "../../app.data-model/sch.rental/offer-rent-item.model";
-import { RentItemAttributes, RentItemEntity, RentItemModelName } from "../../app.data-model/sch.rental/rent-item.model";
-import { RentItem_OfferRentItem_Hash, RentItemToOfferRentItemModelName } from "../../app.data-model/sch.rental/hash-tables/rent-item-to-offer-rent-item.hash-model";
-import { RecievePointAttributes, RecievePointEntity, RecievePointModelName } from "../../app.data-model/sch.rental/recieve-point.model";
-import { RentItemDamageAttributes, RentItemDamageEntity, RentItemDamageModelName } from "../../app.data-model/sch.rental/rent-item-damage.model";
-import { RentOrderAttributes, RentOrderEntity, RentOrderModelName } from '../../app.data-model/sch.rental/rent-order.model';
-import { RentItem_RentOrder_Hash, RentItemToRentOrderModelName } from "../../app.data-model/sch.rental/hash-tables/rent-item-to-rent-order.hash-model";
-import { AddressAttributes, AddressEntity, AddressModelName } from "../../app.data-model/sch.rental/address.model";
-import { CustomerDiscountHistoryAttributes, CustomerDiscountHistoryEntity, CustomerDiscountHistoryModelName } from "../../app.data-model/sch.rental/customer-discount-history.model";
-import { CustomerAttributes, CustomerEntity, CustomerModelName } from "../../app.data-model/sch.rental/customer.model";
-import { DeliveryInfoAttributes, DeliveryInfoEntity, DeliveryInfoModelName } from "../../app.data-model/sch.rental/delivery-info.model";
-import { OfferDiscountAttributes, OfferDiscountEntity, OfferDiscountModelName } from "../../app.data-model/sch.rental/offer-discount.model";
-import { OfferInfoAttributes, OfferInfoEntity, OfferInfoModelName } from "../../app.data-model/sch.rental/offer-info.model";
-import { OrderDeliveryActionAttributes, OrderDeliveryActionEntity, OrderDeliveryActionModelName } from "../../app.data-model/sch.rental/order-delivery-action.model";
-import { OrderDeliveryAttributes, OrderDeliveryEntity, OrderDeliveryModelName } from "../../app.data-model/sch.rental/order-delivery.model";
-import { RentOfferAttributes, RentOfferEntity, RentOfferModelName } from "../../app.data-model/sch.rental/rent-offer.model";
-import { RentOffer_OfferDiscount_Hash } from "../../app.data-model/sch.rental/hash-tables/rent-offer-to-offer-discount.hash-model";
+import { OfferRentItemAttributes, OfferRentItemEntity, OfferRentItemModelName } from "../../app.data-model/sch.rental/offer-rent-item.entity";
+import { RentItemAttributes, RentItemEntity, RentItemModelName } from "../../app.data-model/sch.rental/rent-item.entity";
+import { RentItem_OfferRentItem_Hash, RentItemToOfferRentItemModelName } from "../../app.data-model/sch.rental/hash-tables/rent-item-to-offer-rent-item.hash-entity";
+import { RecievePointAttributes, RecievePointEntity, RecievePointModelName } from "../../app.data-model/sch.rental/recieve-point.entity";
+import { RentItemDamageAttributes, RentItemDamageEntity, RentItemDamageModelName } from "../../app.data-model/sch.rental/rent-item-damage.entity";
+import { RentOrderAttributes, RentOrderEntity, RentOrderModelName } from '../../app.data-model/sch.rental/rent-order.entity';
+import { RentItem_RentOrder_Hash, RentItemToRentOrderModelName } from "../../app.data-model/sch.rental/hash-tables/rent-item-to-rent-order.hash-entity";
+import { AddressAttributes, AddressEntity, AddressModelName } from "../../app.data-model/sch.rental/address.entity";
+import { CustomerDiscountHistoryAttributes, CustomerDiscountHistoryEntity, CustomerDiscountHistoryModelName } from "../../app.data-model/sch.rental/customer-discount-history.entity";
+import { CustomerAttributes, CustomerEntity, CustomerModelName } from "../../app.data-model/sch.rental/customer.entity";
+import { DeliveryInfoAttributes, DeliveryInfoEntity, DeliveryInfoModelName } from "../../app.data-model/sch.rental/delivery-info.entity";
+import { OfferDiscountAttributes, OfferDiscountEntity, OfferDiscountModelName } from '../../app.data-model/sch.rental/offer-discount.entity';
+import { OfferInfoAttributes, OfferInfoEntity, OfferInfoModelName } from "../../app.data-model/sch.rental/offer-info.entity";
+import { OrderDeliveryActionAttributes, OrderDeliveryActionEntity, OrderDeliveryActionModelName } from "../../app.data-model/sch.rental/order-delivery-action.entity";
+import { OrderDeliveryAttributes, OrderDeliveryEntity, OrderDeliveryModelName } from "../../app.data-model/sch.rental/order-delivery.entity";
+import { RentOfferAttributes, RentOfferEntity, RentOfferModelName } from "../../app.data-model/sch.rental/rent-offer.entity";
+import { RentOffer_OfferDiscount_Hash, RentOfferToOfferDiscountModelName } from "../../app.data-model/sch.rental/hash-tables/rent-offer-to-offer-discount.hash-entity";
 
 export interface ISqliteBuilder 
    extends ISqliteInstance 
@@ -44,7 +44,7 @@ export abstract class SqliteBuilder
    implements ISqliteBuilder 
 {
 
-// 0. SET UP CONNECTION
+   // 0. SET UP CONNECTION
    public SetDbConnection(
       databaseName: string,
       userName: string,
@@ -52,7 +52,7 @@ export abstract class SqliteBuilder
       host: string,
       dialect: Dialect,
       logging: boolean,
-      storage: string): SqliteModule 
+      storage: string): SqliteModule
    {
       this._context = new Sequelize(
          databaseName,
@@ -68,7 +68,7 @@ export abstract class SqliteBuilder
       return this as unknown as SqliteModule;
    }
 
-// I. APP SCHEMA
+   // I. APP SCHEMA
    public InitAppSchema(afterAppSchemaSync: () => void): SqliteModule {
       const schemaName = 'App'
       TagsEntity.init(
@@ -87,12 +87,12 @@ export abstract class SqliteBuilder
       return this.As<SqliteModule>();
    }
 
-// II. RENTAL SCHEMA
+   // II. RENTAL SCHEMA
    public InitRentalSchema(afterRentalSchemaSync: () => void): SqliteModule 
    {
       const schemaName = 'Rental'
 
-//--> 1. INIT DATA MODELS
+   //--> 1. INIT DATA MODELS
       AddressEntity.init(
          AddressAttributes,
          { sequelize: this._context!, modelName: schemaName + '_' + AddressModelName }
@@ -148,7 +148,7 @@ export abstract class SqliteBuilder
          { sequelize: this._context!, modelName: schemaName + '_' + RentOrderModelName }
       )
 
-//--> 2. INIT HASH TABLES
+   //--> 2. INIT HASH TABLES
       RentItem_OfferRentItem_Hash.init(
          {
             RentalRentItemId: {
@@ -217,7 +217,7 @@ export abstract class SqliteBuilder
       );
       __logger.logInfo(schemaName + ' initialized');
 
-//--> 3. CONFIGURE DB RELATIONS
+   //--> 3. CONFIGURE DB RELATIONS
       // EXAMPLE: one-to-one relation
       // declare foreignKey of DeliveryInfo in RecievePoint
       DeliveryInfoEntity.hasOne(RecievePointEntity);
@@ -226,11 +226,9 @@ export abstract class SqliteBuilder
       AddressEntity.hasOne(CustomerEntity);
       CustomerEntity.belongsTo(AddressEntity);
 
-      RentOrderEntity.hasOne(OrderDeliveryEntity);
-      OrderDeliveryEntity.belongsTo(RentOrderEntity);
-
-      OrderDeliveryEntity.hasMany(RentOrderEntity);
+      OrderDeliveryEntity.hasOne(RentOrderEntity);
       RentOrderEntity.belongsTo(OrderDeliveryEntity);
+
 
       // EXAMPLE: one-to-many relation
       // declare foreignKey of (home)RecievePoint in RentItem, recieve point has many RentItems
@@ -240,12 +238,16 @@ export abstract class SqliteBuilder
       RentItemEntity.hasMany(RentItemDamageEntity);
       RentItemDamageEntity.belongsTo(RentItemEntity)
       
+/** 
+ * * OK **/
       RecievePointEntity.hasMany(RentOrderEntity);
       RentOrderEntity.belongsTo(RecievePointEntity);
       
       CustomerEntity.hasMany(RentOrderEntity);
       RentOrderEntity.belongsTo(CustomerEntity);
 
+/** 
+ * * 1.RentOrder has MANY.RentItemDamages, RentItemDamages owns RentOrder.FK **/
       RentOrderEntity.hasMany(RentItemDamageEntity);
       RentItemDamageEntity.belongsTo(RentOrderEntity);
 
@@ -268,6 +270,7 @@ export abstract class SqliteBuilder
       RentOfferEntity.hasMany(DeliveryInfoEntity);
       DeliveryInfoEntity.belongsTo(RentOfferEntity);
 
+
       // EXAMPLE: many-to-many relation
       OfferRentItemEntity.belongsToMany(RentItemEntity,
          { through: RentItem_OfferRentItem_Hash });
@@ -286,18 +289,21 @@ export abstract class SqliteBuilder
 
       __logger.logInfo(schemaName + ' relations set');
 
-//--> 4. SYNC MODEL WITH DB
+   //--> 4. SYNC MODEL WITH DB
+      RentOffer_OfferDiscount_Hash.afterSync(() => {
+         __logger.logInfo(schemaName + '_' +RentOfferToOfferDiscountModelName+' table synchronized');
+         this._isRentalSchemaSynced = true;     
+         __logger.logInfo(schemaName + ' schema synchronized'); 
+         afterRentalSchemaSync();
+      });
       RentItem_OfferRentItem_Hash.afterSync(() => {
-        __logger.logInfo(schemaName + '_' +RentItemToOfferRentItemModelName+' table synchronized');
-        this._isRentalSchemaSynced = true;
-        __logger.logInfo(schemaName + ' schema synchronized');
-        afterRentalSchemaSync();
+         __logger.logInfo(schemaName + '_' +RentItemToOfferRentItemModelName+' table synchronized');
+         RentOffer_OfferDiscount_Hash.sync({ force: this._forceSync });
       });
       RentItem_RentOrder_Hash.afterSync(() => {
          __logger.logInfo(schemaName + '_' +RentItemToRentOrderModelName+' table synchronized');
          RentItem_OfferRentItem_Hash.sync({ force: this._forceSync });
       });
-
       RentOfferEntity.afterSync(() => {
          __logger.logInfo(schemaName + '_' +OrderDeliveryActionModelName+' table synchronized');
          RentItem_RentOrder_Hash.sync({ force: this._forceSync });
@@ -314,14 +320,10 @@ export abstract class SqliteBuilder
          __logger.logInfo(schemaName + '_' +RentItemDamageModelName+' table synchronized');
          DeliveryInfoEntity.sync({ force: this._forceSync });
       });
-      RentItemEntity.afterSync(() => {
-         __logger.logInfo(schemaName + '_' +RentItemModelName+' table synchronized');
-         RentItemDamageEntity.sync({ force: this._forceSync });
-      });
       OfferRentItemEntity.afterSync(() => {
          __logger.logInfo(
             schemaName + '_' + OfferRentItemModelName + ' table synchronized');
-         RentItemEntity.sync({ force: this._forceSync });
+         RentItemDamageEntity.sync({ force: this._forceSync });
       });
       CustomerDiscountHistoryEntity.afterSync(() => {
          __logger.logInfo(schemaName + '_' +CustomerDiscountHistoryModelName+' table synchronized');
@@ -346,7 +348,7 @@ export abstract class SqliteBuilder
       });
       OfferDiscountEntity.afterSync(() => {
          __logger.logInfo(
-            schemaName + '_' + RentOfferModelName + ' table synchronized');
+            schemaName + '_' + OfferDiscountModelName + ' table synchronized');
          OfferInfoEntity.sync({ force: this._forceSync });
       });
       RentOfferEntity.afterSync(() => {
@@ -359,14 +361,18 @@ export abstract class SqliteBuilder
             schemaName + '_' + RecievePointModelName + ' table synchronized');
          RentOfferEntity.sync({ force: this._forceSync });
       });
+      RentItemEntity.afterSync(() => {
+         __logger.logInfo(schemaName + '_' +RentItemModelName+' table synchronized');
+         RecievePointEntity.sync({ force: this._forceSync });
+      });
       AddressEntity.afterSync(() => {
          __logger.logInfo(
             schemaName + '_' + AddressModelName + ' table synchronized');
-         RecievePointEntity.sync({ force: this._forceSync });
+         RentItemEntity.sync({ force: this._forceSync });
       });
       AddressEntity.sync({ force: this._forceSync });
 
-//--> 5. RETURN MODULE WITH RENTAL SCHEMA
+   //--> 5. RETURN MODULE WITH RENTAL SCHEMA
       return this.As<SqliteModule>();
    }
 }

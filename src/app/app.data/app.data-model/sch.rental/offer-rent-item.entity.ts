@@ -1,11 +1,11 @@
 import { DataTypes } from "sequelize";
-import { BaseEntity } from "../_base/_base-entity.model";
+import { BaseEntity } from "../_base/_base-entity.entity";
 import { RentItemSize } from "./enums/rent-item-size.enum";
-import { RentItemEntity } from "./rent-item.model";
+import { RentItemEntity } from "./rent-item.entity";
 
 export const OfferRentItemModelName = 'OfferDiscounts'
 export class OfferRentItemEntity extends BaseEntity {
-    public entityName = OfferRentItemModelName;
+    public readonly entityName = OfferRentItemModelName;
 
     // TODO: dodać opisy
     declare isMainRentItem: boolean;

@@ -1,19 +1,19 @@
 import { RentItemAviablility } from "./enums/rent-item-aviablility.enum";
-import { BaseEntity } from "../_base/_base-entity.model";
-import { OfferRentItemEntity } from './offer-rent-item.model';
-import { RecievePointEntity } from "./recieve-point.model";
-import { RentItemDamageEntity } from './rent-item-damage.model';
-import { RentOrderEntity } from "./rent-order.model";
+import { BaseEntity } from "../_base/_base-entity.entity";
+import { OfferRentItemEntity } from './offer-rent-item.entity';
+import { RecievePointEntity } from "./recieve-point.entity";
+import { RentItemDamageEntity } from './rent-item-damage.entity';
+import { RentOrderEntity } from "./rent-order.entity";
 import { DataTypes, Identifier } from "sequelize";
-import { RentItem_OfferRentItem_Hash } from "./hash-tables/rent-item-to-offer-rent-item.hash-model";
-import { RentItem_RentOrder_Hash } from "./hash-tables/rent-item-to-rent-order.hash-model";
+import { RentItem_OfferRentItem_Hash } from "./hash-tables/rent-item-to-offer-rent-item.hash-entity";
+import { RentItem_RentOrder_Hash } from "./hash-tables/rent-item-to-rent-order.hash-entity";
 import { propertyOf } from "../../../../utils/type-properties.util";
 
 export const RentItemModelName = 'RentItems'
 /** Reprezentacja pojedyńczego fizycznego wystąpienia przedmiotu wynajmu. */
 export class RentItemEntity extends BaseEntity
 {
-    public entityName: string = RentItemModelName;
+    public readonly entityName: string = RentItemModelName;
 
     /** Unikalny alfa-numeryczny kod przedmiotu wynajmu. Kody umieszczane są na naklejce w celu ułatwienia identyfikacji. 
      * TODO: utworzyć serwis do generowania kodów

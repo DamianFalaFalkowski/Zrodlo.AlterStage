@@ -1,6 +1,6 @@
 import { Model } from "sequelize";
 
-export const RentItemToRentOrderModelName = 'RentItemsToRentOrders'
+export const RentOfferToOfferDiscountModelName = 'RentOffersToOfferDiscountss'
 
 export class RentOffer_OfferDiscount_Hash extends Model
 {

@@ -1,14 +1,15 @@
 import { DiscountType } from "./enums/discount-type.enum";
-import { BaseEntity } from "../_base/_base-entity.model";
+import { BaseEntity } from "../_base/_base-entity.entity";
 import { DataTypes } from "sequelize";
-import { CustomerDiscountHistoryEntity } from "./customer-discount-history.model";
+import { CustomerDiscountHistoryEntity } from "./customer-discount-history.entity";
 
 export const OfferDiscountModelName = 'OfferDiscounts'
 
-/** Reprezentacja i definicja znizki ofertowej */
+/** Reprezentacja i definicja znizki ofertowej 
+ * TODO: PILNE! zastanowic się nad zmianą nazewnictwa, chodzi o uzycie bardziej pasującego slowa niz 'discount' */
 export class OfferDiscountEntity extends BaseEntity 
 {
-    public entityName: string = OfferDiscountModelName;
+    public readonly entityName: string = OfferDiscountModelName;
 
 // TODO: opisy pól
     declare discountName: string;
@@ -22,8 +23,9 @@ export class OfferDiscountEntity extends BaseEntity
     declare activeUntil?: Date;
     declare isEnabled: boolean;
 
-    /** Nazwy wymagań do spełnienia aby zastosować zniżkę. Nazwy nie mogą zawierać spacji. Nazwy powinny być oddzielone spacją. Kaze wymaganie musi mieć swojego odpowiednika w kodzie. 
-    TODO: prawdopodobnie najlepiej będzie wyniesc to do osobnej tabelki a jeśli nie, to trzeba będzie dodać sprawdzenie poprawnosci wartosci tego pola przy starcie aplikacji. */
+    /** 
+     * ? Nazwy wymagań do spełnienia aby zastosować zniżkę. Nazwy nie mogą zawierać spacji. Nazwy powinny być oddzielone spacją. Kaze wymaganie musi mieć swojego odpowiednika w kodzie. 
+     * TODO: prawdopodobnie najlepiej będzie wyniesc to do osobnej tabelki a jeśli nie, to trzeba będzie dodać sprawdzenie poprawnosci wartosci tego pola przy starcie aplikacji. */
     declare discountRequirements: string;
 
     declare discountCode: string;

@@ -3,7 +3,7 @@ import { EntityNotFoundByFkError } from "../../../app.errors/entity-not-found-by
 
 export abstract class BaseEntity extends Model 
 {
-    public abstract entityName: string
+    public readonly abstract entityName: string
 
     declare id: Identifier;
     declare createdAt: Date;

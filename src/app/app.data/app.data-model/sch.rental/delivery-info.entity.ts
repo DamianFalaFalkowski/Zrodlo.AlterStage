@@ -1,6 +1,6 @@
-import { RecievePointEntity } from "./recieve-point.model";
-import { RentOfferEntity } from "./rent-offer.model";
-import { BaseEntity } from "../_base/_base-entity.model";
+import { RecievePointEntity } from "./recieve-point.entity";
+import { RentOfferEntity } from "./rent-offer.entity";
+import { BaseEntity } from "../_base/_base-entity.entity";
 import { RentItemAviablility } from "./enums/rent-item-aviablility.enum";
 import { DataTypes, Identifier } from "sequelize";
 import { propertyOf } from "../../../../utils/type-properties.util";
@@ -11,7 +11,7 @@ export const DeliveryInfoModelName = 'DeliveryInfos'
 /** Określa informacje dot. dostawy dla powiązanej oferty i punktu odbioru. W róznych punktach odbioru mogą panować inne zasady dostaw. */
 export class DeliveryInfoEntity extends BaseEntity 
 {
-    public entityName: string = DeliveryInfoModelName;
+    public readonly entityName: string = DeliveryInfoModelName;
 
     /** Opis określający standardowy obszar dostawy. Standardowy obszar dostawy to obszar w którym obowiązuje jedna stała stawka dostawy określona przez punkt odbioru. */
     declare standardDeliveryAreaDescription?: string;

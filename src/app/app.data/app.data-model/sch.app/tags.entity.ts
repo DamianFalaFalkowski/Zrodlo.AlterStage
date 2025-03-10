@@ -1,5 +1,5 @@
 import { DataTypes, Model } from 'sequelize';
-import { BaseEntity } from '../_base/_base-entity.model';
+import { BaseEntity } from '../_base/_base-entity.entity';
 
 
 export const TagsModelName = 'Tags'

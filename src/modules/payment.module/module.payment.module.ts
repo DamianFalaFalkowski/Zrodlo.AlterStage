@@ -1,7 +1,7 @@
 import { Client } from "discord.js";
 import { PaymentBuilder } from "./module.payment.builder";
 import { IPayment } from "./module.payment.instance";
-import { IGetClientIntegration as IGetClientIntegration } from "../../app/app.modules/host-module/integrations/get-client.host.integration";
+import { IGetClientIntegration as IGetClientIntegration } from "../../app/app.modules/host.module/integrations/get-client.host.integration";
 import { AppModule } from "../../app/app.modules/app.module";
 
 interface IPaymentDependency<T extends IGetClientIntegration>

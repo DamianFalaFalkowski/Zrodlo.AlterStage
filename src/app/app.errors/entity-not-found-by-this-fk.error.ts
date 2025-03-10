@@ -1,4 +1,4 @@
-import { BaseEntity } from "../app.data/app.data-model/_base/_base-entity.model";
+import { BaseEntity } from "../app.data/app.data-model/_base/_base-entity.entity";
 import { _appError } from "./_app-error.base";
 
 /** ForeignKey '${foreignKeyName}' with value '${foreignKeyValueAsString}' has no '${typeof(repository).name}' entity with equal primary key */

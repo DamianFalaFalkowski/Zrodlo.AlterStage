@@ -1,16 +1,16 @@
 import { DataTypes } from "sequelize";
-import { BaseEntity } from "../_base/_base-entity.model";
-import { AddressEntity } from "./address.model";
-import { OrderDeliveryEntity } from "./order-delivery.model";
-import { RecievePointEntity } from "./recieve-point.model";
-import { RentItemEntity } from "./rent-item.model";
+import { BaseEntity } from "../_base/_base-entity.entity";
+import { AddressEntity } from "./address.entity";
+import { OrderDeliveryEntity } from "./order-delivery.entity";
+import { RecievePointEntity } from "./recieve-point.entity";
+import { RentItemEntity } from "./rent-item.entity";
 import { propertyOf } from "../../../../utils/type-properties.util";
 
 export const OrderDeliveryActionModelName = 'OrderDeliveryActions'
 
 export class OrderDeliveryActionEntity extends BaseEntity 
 {
-    public entityName: string = OrderDeliveryActionModelName;
+    public readonly entityName: string = OrderDeliveryActionModelName;
 
     // declare totalAmountToEarn: number;
     // declare comenstationRentPricePercentage: number;

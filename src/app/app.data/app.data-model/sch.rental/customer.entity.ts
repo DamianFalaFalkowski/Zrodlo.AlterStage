@@ -1,17 +1,16 @@
-import { RentOrderEntity } from "./rent-order.model";
-import { AddressEntity } from "./address.model";
-import { RentItemDamageEntity } from "./rent-item-damage.model";
-import { BaseEntity } from "../_base/_base-entity.model";
+import { RentOrderEntity } from "./rent-order.entity";
+import { AddressEntity } from "./address.entity";
+import { RentItemDamageEntity } from "./rent-item-damage.entity";
+import { BaseEntity } from "../_base/_base-entity.entity";
 import { DataTypes, Identifier } from "sequelize";
 import { propertyOf } from "../../../../utils/type-properties.util";
-import { EntityNotFoundByPkError } from "../../../app.errors/entity-not-found-by-this-pk.error";
 import { EntityNotFoundByFkError } from "../../../app.errors/entity-not-found-by-this-fk.error";
 
 export const CustomerModelName = 'Customers'
 /** Reprezentuje klienta wypoyczalni */
 export class CustomerEntity extends BaseEntity 
 {
-    public entityName: string = CustomerModelName;
+    public readonly entityName: string = CustomerModelName;
 
     /** Id profilu discord. eg.352579442176163841 */
     declare discordProfileId: string;
@@ -30,6 +29,9 @@ export class CustomerEntity extends BaseEntity
 
     /** Telefon do kontaktu. Uzupełniane przed złoeniem pierwszego zamówienia. */
     declare phone?: string;
+
+    /** Konto bankowe do wykonania zwrotu kaucji */
+    declare bankAccountIban?: string;
 
     /** Id adresu określonego przez uytkownika jako proponowany adres dostawy */
     declare RentAddressId?: Identifier;
@@ -99,6 +101,10 @@ export const CustomerAttributes = {
         allowNull: true
     },
     phone: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
+    bankAccountIban: {
         type: DataTypes.STRING,
         allowNull: true
     },

@@ -1,10 +1,10 @@
 import { RentItemAviablility } from './enums/rent-item-aviablility.enum';
-import { BaseEntity } from "../_base/_base-entity.model";
-import { OfferRentItemEntity } from './offer-rent-item.model';
-import { OfferDiscountEntity } from './offer-discount.model';
-import { OfferInfoEntity } from './offer-info.model';
-import { RecievePointEntity } from './recieve-point.model';
-import { OrderDeliveryEntity } from './order-delivery.model';
+import { BaseEntity } from "../_base/_base-entity.entity";
+import { OfferRentItemEntity } from './offer-rent-item.entity';
+import { OfferDiscountEntity } from './offer-discount.entity';
+import { OfferInfoEntity } from './offer-info.entity';
+import { RecievePointEntity } from './recieve-point.entity';
+import { OrderDeliveryEntity } from './order-delivery.entity';
 import { DataTypes } from 'sequelize';
 
 export const RentOfferModelName = 'RentOffers'
@@ -12,14 +12,16 @@ export const RentOfferModelName = 'RentOffers'
 // TODO: rozkminić czy rabaty powinny byc naliczane zawsze od kwoty bazowej czy kazdy rabat powinien byc naliczany od kwoty po poprzednim rabacie?
 export class RentOfferEntity extends BaseEntity 
 {
-    public entityName: string = RentOfferModelName;
+    // TODO: prsawdopodobnie brakuje czesci pol - sprawdzic to
+    // TODO: dodać opisy
+    public readonly entityName: string = RentOfferModelName;
 
-    // declare name: string;
-    // declare description: string;
-    // declare price: number;
-    // declare depositPrice: number;
-    // declare contactPhoneNumber: string;
+    declare name: string;
+    declare description: string;
+    declare totalPrice: number;
+    declare totalDepositPrice: number;
 
+// TODO: zaimplementowac gettery
     // declare includes: OfferRentItemEntity[];
     // declare avaliableRecievePoints: RecievePointEntity[];
     // declare offerDiscounts: OfferDiscountEntity[];
@@ -27,13 +29,33 @@ export class RentOfferEntity extends BaseEntity
 }
 
 export const RentOfferAttributes = {
+    // pk
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
     },
 
-    // ...
+    // fks
+    // (dodaj tutaj klucze obce, jeśli są potrzebne)
+
+    // columns
+    name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    description: {
+        type: DataTypes.TEXT,
+        allowNull: true,
+    },
+    totalPrice: {
+        type: DataTypes.DECIMAL,
+        allowNull: false,
+    },
+    totalDepositPrice: {
+        type: DataTypes.DECIMAL,
+        allowNull: false,
+    },
 
     // from base
     createdAt: {

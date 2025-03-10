@@ -1,15 +1,15 @@
 import { DataTypes, Identifier } from "sequelize";
-import { BaseEntity } from "../_base/_base-entity.model";
-import { CustomerEntity } from "./customer.model";
-import { OfferDiscountEntity } from "./offer-discount.model";
-import { RentOrderEntity } from "./rent-order.model";
+import { BaseEntity } from "../_base/_base-entity.entity";
+import { CustomerEntity } from "./customer.entity";
+import { OfferDiscountEntity } from "./offer-discount.entity";
+import { RentOrderEntity } from "./rent-order.entity";
 import { propertyOf } from "../../../../utils/type-properties.util";
 
 export const CustomerDiscountHistoryModelName = 'CustomerDiscountHistory';
 /** Reprezentuje znikę udzieloną dla zamówienia. Powstaje w momencie zaakceptowania zamówienia przez obie strony. */
 export class CustomerDiscountHistoryEntity extends BaseEntity 
 {
-    public entityName: string = CustomerDiscountHistoryModelName;
+    public readonly entityName: string = CustomerDiscountHistoryModelName;
 
     /** Kwota zaoszczędzona dzięki znizce. Wartość 'null' kiedy znizka nie rabatowała ceny. */
     declare savedAmount?: number;

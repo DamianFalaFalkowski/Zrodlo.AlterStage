@@ -1,4 +1,4 @@
-import { BaseAdddressEntity } from "../_base/_base-address.model";
+import { BaseAdddressEntity } from "../_base/_base-address.entity";
 
 export const AddressModelName = 'Addresses'
 
@@ -10,5 +10,6 @@ export class AddressEntity extends BaseAdddressEntity {
     declare googleMapsPin: string;
 }
 
+// TODO: add attributes
 export const AddressAttributes = {
 }

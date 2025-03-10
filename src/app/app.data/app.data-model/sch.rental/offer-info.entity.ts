@@ -1,13 +1,13 @@
 import { DataTypes, Identifier } from "sequelize";
-import { BaseEntity } from "../_base/_base-entity.model";
-import { RentOfferEntity } from "./rent-offer.model";
+import { BaseEntity } from "../_base/_base-entity.entity";
+import { RentOfferEntity } from "./rent-offer.entity";
 import { propertyOf } from "../../../../utils/type-properties.util";
 
 export const OfferInfoModelName = 'OfferInfos'
 /** Reprezentuje dodatkowe informacje dot. oferty najmu */
 export class OfferInfoEntity extends BaseEntity 
 {
-    public entityName: string = OfferInfoModelName;
+    public readonly entityName: string = OfferInfoModelName;
 
     /** Treść informacji dot. oferty */
     declare infoMessage: string;
