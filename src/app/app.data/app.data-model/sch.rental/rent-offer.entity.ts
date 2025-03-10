@@ -5,7 +5,10 @@ import { OfferDiscountEntity } from './offer-discount.entity';
 import { OfferInfoEntity } from './offer-info.entity';
 import { RecievePointEntity } from './recieve-point.entity';
 import { OrderDeliveryEntity } from './order-delivery.entity';
-import { DataTypes } from 'sequelize';
+import { DataTypes, ModelStatic } from 'sequelize';
+import { RentOffer_RentOrder_Hash } from './hash-tables/rent-offer-to-rent-order.hash-entity';
+import { BaseHashEntity } from '../_base/_base.hash-entity';
+import { RentOrderEntity } from './rent-order.entity';
 
 export const RentOfferModelName = 'RentOffers'
 
@@ -30,7 +33,10 @@ export class RentOfferEntity
 
 /**
 * ! OK - to powinna realizowac encja bazowa tabeli haszującej */
-    // declare offers: RentOrderEntity[];
+    public async getRentOrders<RentOrderEntity>(repository: ModelStatic<RentOffer_RentOrder_Hash>): Promise<RentOrderEntity[]>
+    {
+         throw new Error() //await RentOffer_RentOrder_Hash.getRelated<
+    }
 }
 
 export const RentOfferAttributes = {

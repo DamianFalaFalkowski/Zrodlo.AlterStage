@@ -4,10 +4,14 @@ import { RentOfferEntity, RentOfferModelName } from '../rent-offer.entity';
 import { OfferDiscountEntity } from "../offer-discount.entity";
 import { rentalSchemaName } from "../../../app.data-modules/app-data.sqlite/app-data.sqlite.builder";
 
-export const RentOfferToOfferDiscountModelName = 'RentOffersToOfferDiscountss'
+export const RentOfferToOfferDiscountModelName = 'RentOffersToOfferDiscounts';
 
 export class RentOffer_OfferDiscount_Hash extends BaseHashEntity<RentOfferEntity, OfferDiscountEntity>
 {
+    isGowno<T extends RentOfferEntity | T extends OfferDiscountEntity ? RentOfferEntity : OfferDiscountEntity>(ins: T): T extends RentOfferEntity ? true : never
+    {
+        throw new Error("Method not implemented.");
+    }
     protected schemaName: string = rentalSchemaName;
     protected modelName: string = RentOfferToOfferDiscountModelName;
     protected tableA: ModelStatic<RentOfferEntity> = RentOfferEntity;

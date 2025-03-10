@@ -21,6 +21,7 @@ import { OrderDeliveryActionAttributes, OrderDeliveryActionEntity, OrderDelivery
 import { OrderDeliveryAttributes, OrderDeliveryEntity, OrderDeliveryModelName } from "../../app.data-model/sch.rental/order-delivery.entity";
 import { RentOfferAttributes, RentOfferEntity, RentOfferModelName } from "../../app.data-model/sch.rental/rent-offer.entity";
 import { RentOffer_OfferDiscount_Hash, RentOfferToOfferDiscountModelName } from "../../app.data-model/sch.rental/hash-tables/rent-offer-to-offer-discount.hash-entity";
+import { RentOffer_RentOrder_Hash, RentOfferToRentOrderModelName } from "../../app.data-model/sch.rental/hash-tables/rent-offer-to-rent-order.hash-entity";
 
 export const rentalSchemaName = 'Rental'
 
@@ -217,6 +218,28 @@ export abstract class SqliteBuilder
             modelName: rentalSchemaName + '_' + RentItemToRentOrderModelName,
          }
       );
+      RentOffer_RentOrder_Hash.init(
+         {
+            RentalRentOfferId: {
+               type: DataTypes.INTEGER,
+               references: {
+                  model: RentOfferEntity,
+                  key: 'id',
+               },
+            },
+            RentalRentOrderId: {
+               type: DataTypes.INTEGER,
+               references: {
+                  model: RentOrderEntity,
+                  key: 'id',
+               },
+            }
+         },
+         {
+            sequelize: this._context!,
+            modelName: rentalSchemaName + '_' + RentOfferToRentOrderModelName,
+         }
+      );
       __logger.logInfo(rentalSchemaName + ' initialized');
 
    //--> 3. CONFIGURE DB RELATIONS
@@ -289,14 +312,24 @@ export abstract class SqliteBuilder
       OfferDiscountEntity.belongsToMany(RentOfferEntity,
          { through: RentOffer_OfferDiscount_Hash });
 
+// ? OK
+      RentOfferEntity.belongsToMany(RentOrderEntity,
+         { through: RentOffer_RentOrder_Hash });
+      RentOrderEntity.belongsToMany(RentOfferEntity,
+         { through: RentOffer_RentOrder_Hash });
+
       __logger.logInfo(rentalSchemaName + ' relations set');
 
    //--> 4. SYNC MODEL WITH DB
-      RentOffer_OfferDiscount_Hash.afterSync(() => {
-         __logger.logInfo(rentalSchemaName + '_' +RentOfferToOfferDiscountModelName+' table synchronized');
+      RentOffer_RentOrder_Hash.afterSync(() => {
+         __logger.logInfo(rentalSchemaName + '_' +RentOfferToRentOrderModelName+' table synchronized');
          this._isRentalSchemaSynced = true;     
          __logger.logInfo(rentalSchemaName + ' schema synchronized'); 
          afterRentalSchemaSync();
+      });
+      RentOffer_OfferDiscount_Hash.afterSync(() => {
+         __logger.logInfo(rentalSchemaName + '_' +RentOfferToOfferDiscountModelName+' table synchronized');
+         RentOffer_RentOrder_Hash.sync({ force: this._forceSync });
       });
       RentItem_OfferRentItem_Hash.afterSync(() => {
          __logger.logInfo(rentalSchemaName + '_' +RentItemToOfferRentItemModelName+' table synchronized');
