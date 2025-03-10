@@ -1,6 +1,6 @@
 import { RecievePointEntity } from "./recieve-point.entity";
 import { RentOfferEntity } from "./rent-offer.entity";
-import { BaseEntity } from "../_base/_base-entity.entity";
+import { BaseEntity } from "../_base/_base.entity";
 import { RentItemAviablility } from "./enums/rent-item-aviablility.enum";
 import { DataTypes, Identifier } from "sequelize";
 import { propertyOf } from "../../../../utils/type-properties.util";

@@ -1,5 +1,5 @@
 import { DataTypes, Identifier } from "sequelize";
-import { BaseEntity } from "../_base/_base-entity.entity";
+import { BaseEntity } from "../_base/_base.entity";
 import { AddressEntity } from "./address.entity";
 import { DeliveryInfoEntity } from "./delivery-info.entity";
 import { RentItemEntity } from "./rent-item.entity";
@@ -40,9 +40,16 @@ export class RecievePointEntity extends BaseEntity
             propertyOf<RecievePointEntity>('RentalAddressId'));
     }
 
-// TODO: napisać gettery
+/**
+* ! OK */
     // declare rentItems: RentItemEntity[];
-    // declare orders: RentOrderEntity[];
+/**
+* * OK */
+    public async getRentOrders(): Promise<RentOrderEntity[]>
+    {
+        return await RentOrderEntity.findAll(
+            { where: { RentalOrderRentItemId: this.id } });
+    }
 }
 
 export const RecievePointAttributes = {

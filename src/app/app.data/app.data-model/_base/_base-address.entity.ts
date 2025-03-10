@@ -1,4 +1,4 @@
-import { BaseEntity } from "./_base-entity.entity";
+import { BaseEntity } from "./_base.entity";
 
 export abstract class BaseAdddressEntity extends BaseEntity
 {

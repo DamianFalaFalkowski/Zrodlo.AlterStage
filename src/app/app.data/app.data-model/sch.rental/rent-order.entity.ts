@@ -1,5 +1,5 @@
 import { DataTypes, FindOptions, Identifier, INTEGER, ModelStatic } from "sequelize";
-import { BaseEntity } from "../_base/_base-entity.entity";
+import { BaseEntity } from "../_base/_base.entity";
 import { AddressEntity } from "./address.entity";
 import { CustomerDiscountHistoryEntity } from "./customer-discount-history.entity";
 import { CustomerEntity } from "./customer.entity";
@@ -87,7 +87,9 @@ export class RentOrderEntity extends BaseEntity
     /** Flagsa określająca czy depozyt został w całości zwrócony klientowi */
     declare isDepositeReturned: boolean;
 
-    // TODO: metody wyciągające kolekcje i brakujące opisy
+// TODO: metody wyciągające kolekcje i brakujące opisy
+
+// * OK
     declare RentalRecievePointId: Identifier;
     public async getRecievePoint(): Promise<RecievePointEntity>
     {
@@ -96,16 +98,14 @@ export class RentOrderEntity extends BaseEntity
             this.RentalRecievePointId, 
             propertyOf<RentOrderEntity>('RentalRecievePointId'));
     };
-
+// * OK
     declare RentalCustomerId: Identifier;
     public async getCustomer(): Promise<CustomerEntity> {
         return this.getOwnedEntity(CustomerEntity, 
             this.RentalCustomerId, 
             propertyOf<RentOrderEntity>('RentalCustomerId'));
     };
-
-/**
-* * OK */
+// * OK
     declare RentalOrderDeliveryId: number;
     public async getOrderDelivery(): Promise<OrderDeliveryEntity> 
     {
@@ -115,15 +115,16 @@ export class RentOrderEntity extends BaseEntity
             propertyOf<RentOrderEntity>('RentalOrderDeliveryId'));
     };
 
-/**
-* * OK */
+// * OK
     public async getItemDamages(): Promise<RentItemDamageEntity[] | null>
     {
         return await RentItemDamageEntity.findAll(
             { where: { RentalOfferRentItemId: this.id } });
     }
 
+// ! OK - to powinna realizowac encja bazowa tabeli haszującej
     // declare offers: RentOfferEntity[];
+// ! OK
     // declare appliedDiscounts: CustomerDiscountHistoryEntity[];
 }
 

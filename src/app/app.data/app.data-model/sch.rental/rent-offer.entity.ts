@@ -1,5 +1,5 @@
 import { RentItemAviablility } from './enums/rent-item-aviablility.enum';
-import { BaseEntity } from "../_base/_base-entity.entity";
+import { BaseEntity } from "../_base/_base.entity";
 import { OfferRentItemEntity } from './offer-rent-item.entity';
 import { OfferDiscountEntity } from './offer-discount.entity';
 import { OfferInfoEntity } from './offer-info.entity';
@@ -10,7 +10,8 @@ import { DataTypes } from 'sequelize';
 export const RentOfferModelName = 'RentOffers'
 
 // TODO: rozkminić czy rabaty powinny byc naliczane zawsze od kwoty bazowej czy kazdy rabat powinien byc naliczany od kwoty po poprzednim rabacie?
-export class RentOfferEntity extends BaseEntity 
+export class RentOfferEntity 
+    extends BaseEntity 
 {
     // TODO: prsawdopodobnie brakuje czesci pol - sprawdzic to
     // TODO: dodać opisy
@@ -26,6 +27,10 @@ export class RentOfferEntity extends BaseEntity
     // declare avaliableRecievePoints: RecievePointEntity[];
     // declare offerDiscounts: OfferDiscountEntity[];
     // declare offerInfo: OfferInfoEntity[];
+
+/**
+* ! OK - to powinna realizowac encja bazowa tabeli haszującej */
+    // declare offers: RentOrderEntity[];
 }
 
 export const RentOfferAttributes = {

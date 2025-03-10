@@ -1,5 +1,5 @@
 import { DataTypes } from "sequelize";
-import { BaseEntity } from "../_base/_base-entity.entity";
+import { BaseEntity } from "../_base/_base.entity";
 import { AddressEntity } from "./address.entity";
 import { OrderDeliveryActionEntity } from "./order-delivery-action.entity";
 import { RentItemEntity } from "./rent-item.entity";
@@ -38,6 +38,8 @@ export class OrderDeliveryEntity
     declare rentReturnPeriodFrom: Date;
     declare rentReturnPeriodUntil: Date;
 
+/**
+* ? OK */
     declare RentalAddressId: number;
     public async getDeliveryDestinationAddress(): Promise<AddressEntity>
     {
@@ -47,7 +49,7 @@ export class OrderDeliveryEntity
     };
 
 /**
-* * OK: graf, model, getter, relacja */
+* * OK */
     public async getRentOrder(): Promise<RentOrderEntity> 
     {
         return (await RentOrderEntity.findOne(
@@ -55,8 +57,17 @@ export class OrderDeliveryEntity
     };
 
     // TODO: napisać gettery
+
+/**
+* ! OK */
     // declare sourceRecievePointAddresses: AddressEntity[];
+
+/**
+* ! OK */
     // declare rentItems: RentItemEntity[];
+
+/**
+* ! OK */
     // declare orderDeliveryActions: OrderDeliveryActionEntity[];
 }
 

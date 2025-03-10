@@ -1,5 +1,5 @@
 import { RentItemAviablility } from "./enums/rent-item-aviablility.enum";
-import { BaseEntity } from "../_base/_base-entity.entity";
+import { BaseEntity } from "../_base/_base.entity";
 import { OfferRentItemEntity } from './offer-rent-item.entity';
 import { RecievePointEntity } from "./recieve-point.entity";
 import { RentItemDamageEntity } from './rent-item-damage.entity';

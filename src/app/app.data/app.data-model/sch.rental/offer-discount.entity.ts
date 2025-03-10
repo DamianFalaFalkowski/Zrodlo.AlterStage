@@ -1,5 +1,5 @@
 import { DiscountType } from "./enums/discount-type.enum";
-import { BaseEntity } from "../_base/_base-entity.entity";
+import { BaseEntity } from "../_base/_base.entity";
 import { DataTypes } from "sequelize";
 import { CustomerDiscountHistoryEntity } from "./customer-discount-history.entity";
 

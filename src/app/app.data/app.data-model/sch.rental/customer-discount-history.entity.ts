@@ -1,5 +1,5 @@
 import { DataTypes, Identifier } from "sequelize";
-import { BaseEntity } from "../_base/_base-entity.entity";
+import { BaseEntity } from "../_base/_base.entity";
 import { CustomerEntity } from "./customer.entity";
 import { OfferDiscountEntity } from "./offer-discount.entity";
 import { RentOrderEntity } from "./rent-order.entity";

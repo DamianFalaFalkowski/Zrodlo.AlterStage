@@ -1,5 +1,5 @@
 import { DataTypes } from "sequelize";
-import { BaseEntity } from "../_base/_base-entity.entity";
+import { BaseEntity } from "../_base/_base.entity";
 import { AddressEntity } from "./address.entity";
 import { OrderDeliveryEntity } from "./order-delivery.entity";
 import { RecievePointEntity } from "./recieve-point.entity";

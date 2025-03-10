@@ -1,7 +1,7 @@
 import { RentOrderEntity } from "./rent-order.entity";
 import { AddressEntity } from "./address.entity";
 import { RentItemDamageEntity } from "./rent-item-damage.entity";
-import { BaseEntity } from "../_base/_base-entity.entity";
+import { BaseEntity } from "../_base/_base.entity";
 import { DataTypes, Identifier } from "sequelize";
 import { propertyOf } from "../../../../utils/type-properties.util";
 import { EntityNotFoundByFkError } from "../../../app.errors/entity-not-found-by-this-fk.error";
@@ -33,7 +33,8 @@ export class CustomerEntity extends BaseEntity
     /** Konto bankowe do wykonania zwrotu kaucji */
     declare bankAccountIban?: string;
 
-    /** Id adresu określonego przez uytkownika jako proponowany adres dostawy */
+/** Id adresu określonego przez uytkownika jako proponowany adres dostawy 
+* ? OK */
     declare RentAddressId?: Identifier;
     /** Pobiera adres określony przez uytkownika jako proponowany adres dostawy */
     public async getAddressIfExists(): Promise<AddressEntity | undefined>
@@ -45,7 +46,8 @@ export class CustomerEntity extends BaseEntity
             propertyOf<CustomerEntity>('RentAddressId'));
     };
 
-    /** Pobiera zlecenia utworzone przez klienta */
+/** Pobiera zlecenia utworzone przez klienta 
+* * OK */
     public async getOrders(): Promise<RentOrderEntity[]>
     {
         const entities = await RentOrderEntity.findAll(
@@ -56,7 +58,8 @@ export class CustomerEntity extends BaseEntity
         return entities;
     };
 
-    /** Pobiera uszkodzenia powstałe w zleceniach uytkownika */
+/** Pobiera uszkodzenia powstałe w zleceniach uytkownika
+* ? OK */
     public async getDamagesIfExist(): Promise<RentItemDamageEntity[] | null>
     {
         const entities = await RentItemDamageEntity.findAll(

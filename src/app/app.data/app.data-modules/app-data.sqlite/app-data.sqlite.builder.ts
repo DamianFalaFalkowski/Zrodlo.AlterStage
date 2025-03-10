@@ -22,6 +22,8 @@ import { OrderDeliveryAttributes, OrderDeliveryEntity, OrderDeliveryModelName } 
 import { RentOfferAttributes, RentOfferEntity, RentOfferModelName } from "../../app.data-model/sch.rental/rent-offer.entity";
 import { RentOffer_OfferDiscount_Hash, RentOfferToOfferDiscountModelName } from "../../app.data-model/sch.rental/hash-tables/rent-offer-to-offer-discount.hash-entity";
 
+export const rentalSchemaName = 'Rental'
+
 export interface ISqliteBuilder 
    extends ISqliteInstance 
 {
@@ -90,62 +92,62 @@ export abstract class SqliteBuilder
    // II. RENTAL SCHEMA
    public InitRentalSchema(afterRentalSchemaSync: () => void): SqliteModule 
    {
-      const schemaName = 'Rental'
+      
 
    //--> 1. INIT DATA MODELS
       AddressEntity.init(
          AddressAttributes,
-         { sequelize: this._context!, modelName: schemaName + '_' + AddressModelName }
+         { sequelize: this._context!, modelName: rentalSchemaName + '_' + AddressModelName }
       );
       CustomerDiscountHistoryEntity.init(
          CustomerDiscountHistoryAttributes,
-         { sequelize: this._context!, modelName: schemaName + '_' + CustomerDiscountHistoryModelName }
+         { sequelize: this._context!, modelName: rentalSchemaName + '_' + CustomerDiscountHistoryModelName }
       );
       CustomerEntity.init(
          CustomerAttributes,
-         { sequelize: this._context!, modelName: schemaName + '_' + CustomerModelName }
+         { sequelize: this._context!, modelName: rentalSchemaName + '_' + CustomerModelName }
       );
       DeliveryInfoEntity.init(
          DeliveryInfoAttributes,
-         { sequelize: this._context!, modelName: schemaName + '_' + DeliveryInfoModelName }
+         { sequelize: this._context!, modelName: rentalSchemaName + '_' + DeliveryInfoModelName }
       );
       OfferDiscountEntity.init(
          OfferDiscountAttributes,
-         { sequelize: this._context!, modelName: schemaName + '_' + OfferDiscountModelName }
+         { sequelize: this._context!, modelName: rentalSchemaName + '_' + OfferDiscountModelName }
       );
       OfferInfoEntity.init(
          OfferInfoAttributes,
-         { sequelize: this._context!, modelName: schemaName + '_' + OfferInfoModelName }
+         { sequelize: this._context!, modelName: rentalSchemaName + '_' + OfferInfoModelName }
       );
       OfferRentItemEntity.init(
          OfferRentItemAttributes,
-         { sequelize: this._context!, modelName: schemaName + '_' + OfferRentItemModelName }
+         { sequelize: this._context!, modelName: rentalSchemaName + '_' + OfferRentItemModelName }
       );
       OrderDeliveryActionEntity.init(
          OrderDeliveryActionAttributes,
-         { sequelize: this._context!, modelName: schemaName + '_' + OrderDeliveryActionModelName }
+         { sequelize: this._context!, modelName: rentalSchemaName + '_' + OrderDeliveryActionModelName }
       );
       OrderDeliveryEntity.init(
          OrderDeliveryAttributes,
-         { sequelize: this._context!, modelName: schemaName + '_' + OrderDeliveryModelName }
+         { sequelize: this._context!, modelName: rentalSchemaName + '_' + OrderDeliveryModelName }
       );
       RecievePointEntity.init(
          RecievePointAttributes,
-         { sequelize: this._context!, modelName: schemaName + '_' + RecievePointModelName }
+         { sequelize: this._context!, modelName: rentalSchemaName + '_' + RecievePointModelName }
       );
       RentItemDamageEntity.init(RentItemDamageAttributes,
-         { sequelize: this._context!, modelName: schemaName + '_' + RentItemDamageModelName }
+         { sequelize: this._context!, modelName: rentalSchemaName + '_' + RentItemDamageModelName }
       );
       RentItemEntity.init(RentItemAttributes,
-         { sequelize: this._context!, modelName: schemaName + '_' + RentItemModelName }
+         { sequelize: this._context!, modelName: rentalSchemaName + '_' + RentItemModelName }
       );
       RentOfferEntity.init(
          RentOfferAttributes,
-         { sequelize: this._context!, modelName: schemaName + '_' + RentOfferModelName }
+         { sequelize: this._context!, modelName: rentalSchemaName + '_' + RentOfferModelName }
       )
       RentOrderEntity.init(
          RentOrderAttributes,
-         { sequelize: this._context!, modelName: schemaName + '_' + RentOrderModelName }
+         { sequelize: this._context!, modelName: rentalSchemaName + '_' + RentOrderModelName }
       )
 
    //--> 2. INIT HASH TABLES
@@ -168,7 +170,7 @@ export abstract class SqliteBuilder
          },
          {
             sequelize: this._context!,
-            modelName: schemaName + '_' + RentItemToOfferRentItemModelName,
+            modelName: rentalSchemaName + '_' + RentItemToOfferRentItemModelName,
          }
       );
       RentItem_RentOrder_Hash.init(
@@ -190,7 +192,7 @@ export abstract class SqliteBuilder
          },
          {
             sequelize: this._context!,
-            modelName: schemaName + '_' + RentItemToRentOrderModelName,
+            modelName: rentalSchemaName + '_' + RentItemToRentOrderModelName,
          }
       );
       RentOffer_OfferDiscount_Hash.init(
@@ -212,10 +214,10 @@ export abstract class SqliteBuilder
          },
          {
             sequelize: this._context!,
-            modelName: schemaName + '_' + RentItemToRentOrderModelName,
+            modelName: rentalSchemaName + '_' + RentItemToRentOrderModelName,
          }
       );
-      __logger.logInfo(schemaName + ' initialized');
+      __logger.logInfo(rentalSchemaName + ' initialized');
 
    //--> 3. CONFIGURE DB RELATIONS
       // EXAMPLE: one-to-one relation
@@ -225,7 +227,7 @@ export abstract class SqliteBuilder
 
       AddressEntity.hasOne(CustomerEntity);
       CustomerEntity.belongsTo(AddressEntity);
-
+// * 1.OrderDelivery has 1.RentOrder, RentOrder owns OrderDelivery.FK
       OrderDeliveryEntity.hasOne(RentOrderEntity);
       RentOrderEntity.belongsTo(OrderDeliveryEntity);
 
@@ -238,16 +240,15 @@ export abstract class SqliteBuilder
       RentItemEntity.hasMany(RentItemDamageEntity);
       RentItemDamageEntity.belongsTo(RentItemEntity)
       
-/** 
- * * OK **/
+// * 1.RecievePoint has [].RentOrders, RentOrder owns RecievePoint.FK
       RecievePointEntity.hasMany(RentOrderEntity);
       RentOrderEntity.belongsTo(RecievePointEntity);
       
+// * 1.Customer has [].RentOrders, RentOrder owns Customer.FK
       CustomerEntity.hasMany(RentOrderEntity);
       RentOrderEntity.belongsTo(CustomerEntity);
 
-/** 
- * * 1.RentOrder has MANY.RentItemDamages, RentItemDamages owns RentOrder.FK **/
+// * 1.RentOrder has [].RentItemDamages, RentItemDamages owns RentOrder.FK
       RentOrderEntity.hasMany(RentItemDamageEntity);
       RentItemDamageEntity.belongsTo(RentOrderEntity);
 
@@ -277,6 +278,7 @@ export abstract class SqliteBuilder
       RentItemEntity.belongsToMany(OfferRentItemEntity,
          { through: RentItem_OfferRentItem_Hash });
 
+// ! brak gettera w RentOrder
       RentOrderEntity.belongsToMany(RentItemEntity,
          { through: RentItem_RentOrder_Hash });
       RentItemEntity.belongsToMany(RentOrderEntity,
@@ -287,87 +289,87 @@ export abstract class SqliteBuilder
       OfferDiscountEntity.belongsToMany(RentOfferEntity,
          { through: RentOffer_OfferDiscount_Hash });
 
-      __logger.logInfo(schemaName + ' relations set');
+      __logger.logInfo(rentalSchemaName + ' relations set');
 
    //--> 4. SYNC MODEL WITH DB
       RentOffer_OfferDiscount_Hash.afterSync(() => {
-         __logger.logInfo(schemaName + '_' +RentOfferToOfferDiscountModelName+' table synchronized');
+         __logger.logInfo(rentalSchemaName + '_' +RentOfferToOfferDiscountModelName+' table synchronized');
          this._isRentalSchemaSynced = true;     
-         __logger.logInfo(schemaName + ' schema synchronized'); 
+         __logger.logInfo(rentalSchemaName + ' schema synchronized'); 
          afterRentalSchemaSync();
       });
       RentItem_OfferRentItem_Hash.afterSync(() => {
-         __logger.logInfo(schemaName + '_' +RentItemToOfferRentItemModelName+' table synchronized');
+         __logger.logInfo(rentalSchemaName + '_' +RentItemToOfferRentItemModelName+' table synchronized');
          RentOffer_OfferDiscount_Hash.sync({ force: this._forceSync });
       });
       RentItem_RentOrder_Hash.afterSync(() => {
-         __logger.logInfo(schemaName + '_' +RentItemToRentOrderModelName+' table synchronized');
+         __logger.logInfo(rentalSchemaName + '_' +RentItemToRentOrderModelName+' table synchronized');
          RentItem_OfferRentItem_Hash.sync({ force: this._forceSync });
       });
       RentOfferEntity.afterSync(() => {
-         __logger.logInfo(schemaName + '_' +OrderDeliveryActionModelName+' table synchronized');
+         __logger.logInfo(rentalSchemaName + '_' +OrderDeliveryActionModelName+' table synchronized');
          RentItem_RentOrder_Hash.sync({ force: this._forceSync });
       })
       OrderDeliveryActionEntity.afterSync(() => {
-         __logger.logInfo(schemaName + '_' +OrderDeliveryActionModelName+' table synchronized');
+         __logger.logInfo(rentalSchemaName + '_' +OrderDeliveryActionModelName+' table synchronized');
          RentItem_RentOrder_Hash.sync({ force: this._forceSync });
       });
       DeliveryInfoEntity.afterSync(() => {
-         __logger.logInfo(schemaName + '_' +DeliveryInfoModelName+' table synchronized');
+         __logger.logInfo(rentalSchemaName + '_' +DeliveryInfoModelName+' table synchronized');
          OrderDeliveryActionEntity.sync({ force: this._forceSync });
       });
       RentItemDamageEntity.afterSync(() => {
-         __logger.logInfo(schemaName + '_' +RentItemDamageModelName+' table synchronized');
+         __logger.logInfo(rentalSchemaName + '_' +RentItemDamageModelName+' table synchronized');
          DeliveryInfoEntity.sync({ force: this._forceSync });
       });
       OfferRentItemEntity.afterSync(() => {
          __logger.logInfo(
-            schemaName + '_' + OfferRentItemModelName + ' table synchronized');
+            rentalSchemaName + '_' + OfferRentItemModelName + ' table synchronized');
          RentItemDamageEntity.sync({ force: this._forceSync });
       });
       CustomerDiscountHistoryEntity.afterSync(() => {
-         __logger.logInfo(schemaName + '_' +CustomerDiscountHistoryModelName+' table synchronized');
+         __logger.logInfo(rentalSchemaName + '_' +CustomerDiscountHistoryModelName+' table synchronized');
          OfferRentItemEntity.sync({ force: this._forceSync });
       });
       RentOrderEntity.afterSync(() => {
-         __logger.logInfo(schemaName + '_' +RentOrderModelName+' table synchronized');
+         __logger.logInfo(rentalSchemaName + '_' +RentOrderModelName+' table synchronized');
          CustomerDiscountHistoryEntity.sync({ force: this._forceSync });
       });
       OrderDeliveryEntity.afterSync(() => {
-         __logger.logInfo(schemaName + '_' +OrderDeliveryModelName+' table synchronized');
+         __logger.logInfo(rentalSchemaName + '_' +OrderDeliveryModelName+' table synchronized');
          RentOrderEntity.sync({ force: this._forceSync });
       });
       CustomerEntity.afterSync(() => {
-         __logger.logInfo(schemaName + '_' +CustomerModelName+' table synchronized');
+         __logger.logInfo(rentalSchemaName + '_' +CustomerModelName+' table synchronized');
          OrderDeliveryEntity.sync({ force: this._forceSync });
       });
       OfferInfoEntity.afterSync(() => {
          __logger.logInfo(
-            schemaName + '_' + OfferInfoModelName + ' table synchronized');
+            rentalSchemaName + '_' + OfferInfoModelName + ' table synchronized');
          CustomerEntity.sync({ force: this._forceSync });
       });
       OfferDiscountEntity.afterSync(() => {
          __logger.logInfo(
-            schemaName + '_' + OfferDiscountModelName + ' table synchronized');
+            rentalSchemaName + '_' + OfferDiscountModelName + ' table synchronized');
          OfferInfoEntity.sync({ force: this._forceSync });
       });
       RentOfferEntity.afterSync(() => {
          __logger.logInfo(
-            schemaName + '_' + RentOfferModelName + ' table synchronized');
+            rentalSchemaName + '_' + RentOfferModelName + ' table synchronized');
          OfferDiscountEntity.sync({ force: this._forceSync });
       });
       RecievePointEntity.afterSync(() => {
          __logger.logInfo(
-            schemaName + '_' + RecievePointModelName + ' table synchronized');
+            rentalSchemaName + '_' + RecievePointModelName + ' table synchronized');
          RentOfferEntity.sync({ force: this._forceSync });
       });
       RentItemEntity.afterSync(() => {
-         __logger.logInfo(schemaName + '_' +RentItemModelName+' table synchronized');
+         __logger.logInfo(rentalSchemaName + '_' +RentItemModelName+' table synchronized');
          RecievePointEntity.sync({ force: this._forceSync });
       });
       AddressEntity.afterSync(() => {
          __logger.logInfo(
-            schemaName + '_' + AddressModelName + ' table synchronized');
+            rentalSchemaName + '_' + AddressModelName + ' table synchronized');
          RentItemEntity.sync({ force: this._forceSync });
       });
       AddressEntity.sync({ force: this._forceSync });

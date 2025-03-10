@@ -1,5 +1,5 @@
 import { DataTypes } from "sequelize";
-import { BaseEntity } from "../_base/_base-entity.entity";
+import { BaseEntity } from "../_base/_base.entity";
 import { RentItemSize } from "./enums/rent-item-size.enum";
 import { RentItemEntity } from "./rent-item.entity";
 
