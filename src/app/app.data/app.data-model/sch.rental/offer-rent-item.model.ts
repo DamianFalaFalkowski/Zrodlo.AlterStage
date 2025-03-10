@@ -7,9 +7,10 @@ export const OfferRentItemModelName = 'OfferDiscounts'
 export class OfferRentItemEntity extends BaseEntity {
     public entityName = OfferRentItemModelName;
 
+    // TODO: dodać opisy
     declare isMainRentItem: boolean;
     declare itemName: string;
-    declare brandName?: string
+    declare brandName?: string;
     declare modelName?: string;
     declare description?: string;
     declare rentItemSize: RentItemSize;

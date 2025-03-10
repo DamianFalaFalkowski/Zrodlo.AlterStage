@@ -1,7 +1,7 @@
 /* Określa status zamówienia */
 export enum OrderStatus
 {
-    /* Zamówienie zostało utworzone. Utworzenie zamówienia następuje gdy uytkownik doda przynajmniej jedną rzecz do 'koszyka' */
+    /** Zamówienie zostało utworzone. Utworzenie zamówienia następuje gdy uytkownik doda przynajmniej jedną rzecz do 'koszyka' */
     CREATED = 0,
 
     /* Zamówienie zostało złożone. Zamówienie zostaje złożone gdy użytkownik zatwierdzi koszyk. */

@@ -14,7 +14,7 @@ export class OfferInfoEntity extends BaseEntity
 
     /** Id oferty najmu której dotyczy informacja */
     declare RentalRentOfferId: Identifier;
-    /** Wykonuje qiery i zwraca obiekt oferty najmu */
+    /** Wykonuje query i zwraca obiekt oferty najmu */
     public async getOrderDelivery(): Promise<RentOfferEntity> {
         return this.getOwnedEntity<RentOfferEntity>(
             RentOfferEntity, 
