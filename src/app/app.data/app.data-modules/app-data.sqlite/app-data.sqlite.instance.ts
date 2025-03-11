@@ -9,6 +9,10 @@ export interface ISqlite
    isAppSchemaSynced(): boolean;
    isRentalSchemaSynced(): boolean;
 }
+
+//TODO: GLOBAL - Ustrukturyzować działanie i odpowiedzialnosci instancji, buildera, modułu i integracji
+
+
 export interface ISqliteInstance extends ISqlite
 {
    context: Sequelize | undefined;

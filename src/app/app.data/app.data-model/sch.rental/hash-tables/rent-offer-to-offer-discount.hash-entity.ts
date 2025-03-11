@@ -8,10 +8,7 @@ export const RentOfferToOfferDiscountModelName = 'RentOffersToOfferDiscounts';
 
 export class RentOffer_OfferDiscount_Hash extends BaseHashEntity<RentOfferEntity, OfferDiscountEntity>
 {
-    isGowno<T extends RentOfferEntity | T extends OfferDiscountEntity ? RentOfferEntity : OfferDiscountEntity>(ins: T): T extends RentOfferEntity ? true : never
-    {
-        throw new Error("Method not implemented.");
-    }
+    public entityName: string = RentOfferToOfferDiscountModelName;
     protected schemaName: string = rentalSchemaName;
     protected modelName: string = RentOfferToOfferDiscountModelName;
     protected tableA: ModelStatic<RentOfferEntity> = RentOfferEntity;

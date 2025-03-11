@@ -10,86 +10,117 @@ import { RentOfferEntity } from "./rent-offer.entity";
 import { RecievePointEntity } from "./recieve-point.entity";
 import { EntityNotFoundByPkError } from "../../../app.errors/entity-not-found-by-this-pk.error";
 import { propertyOf } from "../../../../utils/type-properties.util";
+import { RentOffer_RentOrder_Hash } from "./hash-tables/rent-offer-to-rent-order.hash-entity";
 
 export const RentOrderModelName = 'RentOrders'
 
-/** Reprezentacja zlecenia najmu */
+/** 
+ * * Reprezentacja zlecenia najmu */
 export class RentOrderEntity extends BaseEntity 
 {
+/** ....
+** .... */ 
     public readonly entityName: string = RentOrderModelName;
 
-    /** Status zlecenia najmu */
+/** Status zlecenia najmu/** ....
+** .... */ 
     declare status: OrderStatus;
 
-    /** Aktualna zapłacona kwota za zlecenie najmu, bez kaucji */
+/** Aktualna zapłacona kwota za zlecenie najmu, bez kaucji/** ....
+** .... */ 
     declare currentPayedAmount: number;
 
-    /** Całkowita kwota nalezna za zlecenie, bez kaucji i po uwzględnieniu rabatów. Wartość 'null' moze występować tylko dla statusu CREATED */
+/** Całkowita kwota nalezna za zlecenie, bez kaucji i po uwzględnieniu rabatów. Wartość 'null' moze występować tylko dla statusu CREATED /** ....
+** .... */ 
     declare totalCost?: number;
 
-    /** Całkowita zrabatowana kwota */
+/** Całkowita zrabatowana kwota /** ....
+** .... */ 
     declare discountAmount: number;
 
-    /** Procent VAT */
+/** Procent VAT /** ....
+** .... */ 
     declare taxPercent?: number;
 
-    /** Wartość podatku VAT w złotówkach */
+/** Wartość podatku VAT w złotówkach /** ....
+** .... */ 
     declare taxAmount?: number;
 
-    /** Całkowita kwota depozytu za przedmioty najmu w zleceniu */
+/** Całkowita kwota depozytu za przedmioty najmu w zleceniu /** ....
+** .... */ 
     declare depositeAmount?: number;
 
-    /** Aktualna wartość przetrzymywanej kaucji. Kaucja w pierwszej kolejnosci opłaca naprawy, następnie najem a pozostała kwota powinna być zwrócona na konto klienta. */
+/** Aktualna wartość przetrzymywanej kaucji. Kaucja w pierwszej kolejnosci opłaca naprawy, następnie najem a pozostała kwota powinna być zwrócona na konto klienta. /** ....
+** .... */ 
     declare currentOnHoldDepositeAmount: number;
 
-    /** Aktualna wartość zwróconego depozytu (bez uwzględnienia rekompensat za uszkodzenia i kosztu najmu) */
+/** Aktualna wartość zwróconego depozytu (bez uwzględnienia rekompensat za uszkodzenia i kosztu najmu) /** ....
+** .... */ 
     declare depositeReturnedAmount: number;
 
-    /** Całkowity koszt naprawy uszkodzeń */
+/** Całkowity koszt naprawy uszkodzeń /** ....
+** .... */ 
     declare damagesFixingCost?: number;
 
-    /** Wartość znizki udzielonej dla kaucji */
+/** Wartość znizki udzielonej dla kaucji 
+** .... */ 
     declare dipositeDiscountAmount?: number;
 
-    /** Data i godzina zaplanowanego początku najmu */
+/** Data i godzina zaplanowanego początku najmu 
+** .... */ 
     declare rentPeriodFrom?: Date;
 
-    /** Data i godzina zaplanowanego końca najmu */
+/** Data i godzina zaplanowanego końca najmu 
+** .... */ 
     declare rentPeriodUntil?: Date;
 
-    /** Flaga określająca czy zlecenie zawiera usługę dostawy */
+/** Flaga określająca czy zlecenie zawiera usługę dostawy 
+** .... */ 
     declare hasDelivery?: boolean;
 
-    /** Data i godzina po której najwczesniej mozna dostarczyć zamówienie do miejsca docelowego */
+/** Data i godzina po której najwczesniej mozna dostarczyć zamówienie do miejsca docelowego  
+** .... */ 
     declare deliveryAfter?: Date;
 
-    /** Flaga określająca czy zlecenie zawiera usługę obsługi sprzętu */
+/** Flaga określająca czy zlecenie zawiera usługę obsługi sprzętu  
+** .... */ 
     declare hasOperator?: boolean;
 
-    /** Ilość zamówionego czasu obsługi sprzętu wyrazona w godzinach */
+/** Ilość zamówionego czasu obsługi sprzętu wyrazona w godzinach  
+** .... */ 
     declare operatorRequestedHours?: number;
 
-    /** Ilość dokupionego czasu obsługi sprzętu wyrazona w godzinach */
+/** Ilość dokupionego czasu obsługi sprzętu wyrazona w godzinach  
+** .... */ 
     declare operatorExtraHours?: number;
 
-    /** Flaga określająca czy zlecenie zawiera usługę montarzu sprzętu */
+/** Flaga określająca czy zlecenie zawiera usługę montarzu sprzętu  
+** .... */ 
     declare hasMontage?: boolean;
 
-    /** Flaga określająca czy zlecenie zawiera usługę demontarzu sprzętu */
+/** Flaga określająca czy zlecenie zawiera usługę demontarzu sprzętu  
+** .... */ 
     declare hasDemontage?: boolean;
 
-    /** Flaga określająca czy przedmioty najmu zostały zwrócone/odebrane od klienta */
+/** Flaga określająca czy przedmioty najmu zostały zwrócone/odebrane od klienta */
     declare areItemsReturned: boolean;
 
-    /** Flaga określająca czy płatność za najem, naprawę uszkodzen i usługi została zrealizowana */
+/** Flaga określająca czy płatność za najem, naprawę uszkodzen i usługi została zrealizowana  
+** .... */ 
     declare isPaymentDone: boolean;
 
-    /** Flagsa określająca czy depozyt został w całości zwrócony klientowi */
+/** Flagsa określająca czy depozyt został w całości zwrócony klientowi 
+** ....  
+** .... */ 
     declare isDepositeReturned: boolean;
 
 // TODO: metody wyciągające kolekcje i brakujące opisy
 
-// * OK
+/** Flaga określająca czy płatność za najem, naprawę uszkodzen i usługi została zrealizowana  
+** .... 
+*? Relacja [..]-1
+*? FK   */ 
+
     declare RentalRecievePointId: Identifier;
     public async getRecievePoint(): Promise<RecievePointEntity>
     {
@@ -98,14 +129,21 @@ export class RentOrderEntity extends BaseEntity
             this.RentalRecievePointId, 
             propertyOf<RentOrderEntity>('RentalRecievePointId'));
     };
-// * OK
+
+/** .... 
+** .... 
+*? Relacja [..]-1
+*? FK   */ 
     declare RentalCustomerId: Identifier;
     public async getCustomer(): Promise<CustomerEntity> {
         return this.getOwnedEntity(CustomerEntity, 
             this.RentalCustomerId, 
             propertyOf<RentOrderEntity>('RentalCustomerId'));
     };
-// * OK
+
+/** .... 
+** .... 
+*? Relacja [..]-1*/ 
     declare RentalOrderDeliveryId: number;
     public async getOrderDelivery(): Promise<OrderDeliveryEntity> 
     {
@@ -115,18 +153,32 @@ export class RentOrderEntity extends BaseEntity
             propertyOf<RentOrderEntity>('RentalOrderDeliveryId'));
     };
 
-// * OK
+/**
+** OK 
+*? Relacja 1-[..] */ 
     public async getItemDamages(): Promise<RentItemDamageEntity[] | null>
     {
         return await RentItemDamageEntity.findAll(
             { where: { RentalOfferRentItemId: this.id } });
     }
 
-// ! OK - to powinna realizowac encja bazowa tabeli haszującej
-    // declare offers: RentOfferEntity[];
-// ! OK
+/**
+** Oferty wchodzące w skład zlecenia najmu. 
+* ? Relacja [..]-[..]
+* ? ZWERYFIKOWAĆ DZIAŁANIE */
+    public async getRentOffers<RentOfferEntity>(repository: RentOffer_RentOrder_Hash)
+        : Promise<RentOfferEntity[]>
+    {
+        return (await repository.getRelated(RentOfferEntity, this.id)) as unknown as RentOfferEntity[];
+    }
+
+/** .... 
+** ....
+* ! TODO: Do zaimplementowania */ 
     // declare appliedDiscounts: CustomerDiscountHistoryEntity[];
 }
+
+
 
 export const RentOrderAttributes = {
     // pk

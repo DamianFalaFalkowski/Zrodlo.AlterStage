@@ -9,6 +9,7 @@ export const RentItemToOfferRentItemModelName = 'RentItemsToOfferRentItems'
 export class RentItem_OfferRentItem_Hash 
     extends BaseHashEntity<RentItemEntity, OfferRentItemEntity>
 {
+    public entityName: string = 'Rental_RentItemsToOfferRentItems';
     protected schemaName: string = rentalSchemaName;
     protected modelName: string = RentItemToOfferRentItemModelName;
     protected tableA: ModelStatic<RentItemEntity> = RentItemEntity;

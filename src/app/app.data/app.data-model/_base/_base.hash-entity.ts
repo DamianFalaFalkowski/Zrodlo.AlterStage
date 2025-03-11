@@ -5,33 +5,13 @@ declare function isTypeOfA<A extends BaseEntity, B extends BaseEntity, T extends
 
 /** Abstrakcyjna klasa bazowa dla tabel haszujących */
 export abstract class BaseHashEntity<A extends BaseEntity, B extends BaseEntity>
-    extends Model 
+    extends BaseEntity 
 {
-    // protected abstract schemaName: string;
-    // protected abstract modelName: string;
-
-    // protected abstract tableA: ModelStatic<A>;
-    // protected abstract tableB: ModelStatic<B>;
-
-    // protected abstract get tableA_PK_Name(): string;
-    // protected abstract get tableB_PK_Name(): string;
-    
-    
-    
-    protected abstract schemaName: string;
-    protected abstract modelName: string;
-
-    protected abstract tableA: ModelStatic<A>;
-    protected abstract tableB: ModelStatic<B>;
-
-    protected abstract get tableA_PK_Name(): string;
-    protected abstract get tableB_PK_Name(): string;
-
-    public static  async getRelated<T extends A | T extends B ? A : B>(
+    public async getRelated<T extends A | B>(
         instance : new () => T,
         foreginKey: Identifier
     ) 
-        : Promise<(A[]|B[])>
+        : Promise<(T[])>
     {
         const isA = isTypeOfA(new instance()) === true;
         const hashTableName = this.schemaName + '_' + this.modelName;
@@ -45,8 +25,18 @@ export abstract class BaseHashEntity<A extends BaseEntity, B extends BaseEntity>
         
         const searchOptions = { where: { 'id': { 'in': foundIds}}};
         if (isA)
-            return await this.tableA.findAll<A>(searchOptions) as A[];
+            return await this.tableA.findAll<A>(searchOptions) as T[];
         else
-            return await this.tableB.findAll<B>(searchOptions) as B[];
+            return await this.tableB.findAll<B>(searchOptions) as T[];
     }
+    
+    protected abstract schemaName: string;
+    protected abstract modelName: string;
+
+    protected abstract tableA: ModelStatic<A>;
+    protected abstract tableB: ModelStatic<B>;
+
+    protected abstract get tableA_PK_Name(): string;
+    protected abstract get tableB_PK_Name(): string;
+
 }

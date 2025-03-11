@@ -23,11 +23,18 @@ import { RentOfferAttributes, RentOfferEntity, RentOfferModelName } from "../../
 import { RentOffer_OfferDiscount_Hash, RentOfferToOfferDiscountModelName } from "../../app.data-model/sch.rental/hash-tables/rent-offer-to-offer-discount.hash-entity";
 import { RentOffer_RentOrder_Hash, RentOfferToRentOrderModelName } from "../../app.data-model/sch.rental/hash-tables/rent-offer-to-rent-order.hash-entity";
 
+/** ....
+** .... */ 
 export const rentalSchemaName = 'Rental'
 
+
+/** ....
+** .... */ 
 export interface ISqliteBuilder 
    extends ISqliteInstance 
 {
+/** ....
+** .... */ 
    SetDbConnection(
       databaseName: string,
       userName: string,
@@ -38,16 +45,27 @@ export interface ISqliteBuilder
       storage: string
    ): SqliteModule;
 
+/** ....
+** .... */ 
    InitAppSchema(afterAppSchemaSync: () => void): SqliteModule;
+   
+/** ....
+** .... */ 
    InitRentalSchema(afterRentalSchemaSync: () => void): SqliteModule;
 }
 
+
+/** ....
+** .... */ 
 export abstract class SqliteBuilder
    extends SqliteInstance
    implements ISqliteBuilder 
 {
 
-   // 0. SET UP CONNECTION
+
+
+/** 
+** 0. SET UP CONNECTION */ 
    public SetDbConnection(
       databaseName: string,
       userName: string,
@@ -71,7 +89,9 @@ export abstract class SqliteBuilder
       return this as unknown as SqliteModule;
    }
 
-   // I. APP SCHEMA
+
+/** 
+** I. APP SCHEMA */ 
    public InitAppSchema(afterAppSchemaSync: () => void): SqliteModule {
       const schemaName = 'App'
       TagsEntity.init(
@@ -90,11 +110,11 @@ export abstract class SqliteBuilder
       return this.As<SqliteModule>();
    }
 
-   // II. RENTAL SCHEMA
+
+/** Uruchamia operacje inicializacji bazy danych.
+** II. RENTAL SCHEMA */ 
    public InitRentalSchema(afterRentalSchemaSync: () => void): SqliteModule 
    {
-      
-
    //--> 1. INIT DATA MODELS
       AddressEntity.init(
          AddressAttributes,
@@ -150,6 +170,7 @@ export abstract class SqliteBuilder
          RentOrderAttributes,
          { sequelize: this._context!, modelName: rentalSchemaName + '_' + RentOrderModelName }
       )
+
 
    //--> 2. INIT HASH TABLES
       RentItem_OfferRentItem_Hash.init(
@@ -242,6 +263,7 @@ export abstract class SqliteBuilder
       );
       __logger.logInfo(rentalSchemaName + ' initialized');
 
+
    //--> 3. CONFIGURE DB RELATIONS
       // EXAMPLE: one-to-one relation
       // declare foreignKey of DeliveryInfo in RecievePoint
@@ -312,7 +334,7 @@ export abstract class SqliteBuilder
       OfferDiscountEntity.belongsToMany(RentOfferEntity,
          { through: RentOffer_OfferDiscount_Hash });
 
-// ? OK
+// * [..] RentOffer has [..] RentOrders and vice versa
       RentOfferEntity.belongsToMany(RentOrderEntity,
          { through: RentOffer_RentOrder_Hash });
       RentOrderEntity.belongsToMany(RentOfferEntity,

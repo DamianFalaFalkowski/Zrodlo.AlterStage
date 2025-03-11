@@ -8,6 +8,7 @@ export const RentItemToRentOrderModelName = 'RentItemsToRentOrders'
 
 export class RentItem_RentOrder_Hash extends BaseHashEntity<RentItemEntity, RentOrderEntity>
 {
+    public entityName: string = RentItemToRentOrderModelName;
     protected schemaName: string = rentalSchemaName;
     protected modelName: string = RentItemToRentOrderModelName;
     protected tableA: ModelStatic<RentItemEntity> = RentItemEntity;
