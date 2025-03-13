@@ -30,21 +30,21 @@ export class RentOffer_RentOrder_Hash extends BaseHashEntity<RentOfferEntity, Re
 
 
     declare RentalRentOfferId: Identifier;
-/**
-* ! ZWERYFIKOWAĆ DZIAŁANIE */
-    public async getRentOffers<RentOfferEntity>(repository: RentOffer_RentOrder_Hash)
-        : Promise<RentOfferEntity[]>
-    {
-        return (await repository.getRelated(RentOfferEntity, this.RentalRentOrderId)) as unknown as RentOfferEntity[];
-    }
+// /**
+//  ! ZWERYFIKOWAĆ DZIAŁANIE */
+//     public async getRentOffers<RentOfferEntity>(repository: RentOffer_RentOrder_Hash)
+//         : Promise<RentOfferEntity[]>
+//     {
+//         return (await repository.getRelated(RentOfferEntity, this.RentalRentOrderId)) as unknown as RentOfferEntity[];
+//     }
 
 
     declare RentalRentOrderId: Identifier;
-/**
-* ! ZWERYFIKOWAĆ DZIAŁANIE */
-    public async getRentOrders<RentOrderEntity>(repository: RentOffer_RentOrder_Hash)
-        : Promise<RentOrderEntity[]>
-    {
-        return (await repository.getRelated(RentOrderEntity, this.RentalRentOfferId)) as unknown as RentOrderEntity[];
-    }
+// /**
+//  ! ZWERYFIKOWAĆ DZIAŁANIE */
+//     public async getRentOrders<RentOrderEntity>(repository: RentOffer_RentOrder_Hash)
+//         : Promise<RentOrderEntity[]>
+//     {
+//         return (await repository.getRelated(RentOrderEntity, this.RentalRentOfferId)) as unknown as RentOrderEntity[];
+//     }
 }

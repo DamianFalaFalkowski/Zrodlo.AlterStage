@@ -6,7 +6,9 @@ import { RentOrderEntity } from "./rent-order.entity";
 import { propertyOf } from "../../../../utils/type-properties.util";
 
 export const CustomerDiscountHistoryModelName = 'CustomerDiscountHistory';
-/** Reprezentuje znikę udzieloną dla zamówienia. Powstaje w momencie zaakceptowania zamówienia przez obie strony. */
+/** Historyczna znika uzytkownika
+** Reprezentuje znikę udzieloną dla zamówienia. Powstaje w momencie zaakceptowania zamówienia przez obie strony.
+* TODO: zformatować opisy */
 export class CustomerDiscountHistoryEntity extends BaseEntity 
 {
     public readonly entityName: string = CustomerDiscountHistoryModelName;
@@ -56,7 +58,7 @@ export const CustomerDiscountHistoryAttributes =
         type: DataTypes.INTEGER,
         allowNull: false,
     },
-    RentalRentCustomerId: {
+    RentalCustomerId: {
         type: DataTypes.INTEGER,
         allowNull: false,
     },

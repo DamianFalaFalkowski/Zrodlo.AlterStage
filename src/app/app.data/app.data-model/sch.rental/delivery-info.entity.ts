@@ -3,7 +3,6 @@ import { RentOfferEntity } from "./rent-offer.entity";
 import { BaseEntity } from "../_base/_base.entity";
 import { RentItemAviablility } from "./enums/rent-item-aviablility.enum";
 import { DataTypes, Identifier } from "sequelize";
-import { propertyOf } from "../../../../utils/type-properties.util";
 import { EntityNotFoundByFkError } from "../../../app.errors/entity-not-found-by-this-fk.error";
 
 export const DeliveryInfoModelName = 'DeliveryInfos'
@@ -13,7 +12,9 @@ export class DeliveryInfoEntity extends BaseEntity
 {
     public readonly entityName: string = DeliveryInfoModelName;
 
-    /** Opis określający standardowy obszar dostawy. Standardowy obszar dostawy to obszar w którym obowiązuje jedna stała stawka dostawy określona przez punkt odbioru. */
+/** Opis standardowego obszaru dostawy
+ ** Opis określający standardowy obszar dostawy. Standardowy obszar dostawy to obszar w którym obowiązuje jedna stała stawka dostawy określona przez punkt odbioru. 
+*  TODO: w takim formacie utrzymać pozstałe zapisy pól */
     declare standardDeliveryAreaDescription?: string;
 
     /** Flaga okreslająca czy punkt odbioru umozliwia dostawę poza obszarem standardowym */
@@ -49,14 +50,6 @@ export class DeliveryInfoEntity extends BaseEntity
     declare needsMontage: boolean;
     declare needsDemontage: boolean;
     declare needsOperator: boolean;
-
-    declare RentalRentOfferId: Identifier;
-    public async getRentOffer(): Promise<RentOfferEntity>
-    {
-        return await this.getOwnedEntity(RentOfferEntity, 
-            this.RentalRentOfferId, 
-            propertyOf<DeliveryInfoEntity>('RentalRentOfferId'));
-    };
 
     public async getRecievePoint(): Promise<RecievePointEntity> 
     {

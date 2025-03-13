@@ -20,8 +20,10 @@ import { OfferInfoAttributes, OfferInfoEntity, OfferInfoModelName } from "../../
 import { OrderDeliveryActionAttributes, OrderDeliveryActionEntity, OrderDeliveryActionModelName } from "../../app.data-model/sch.rental/order-delivery-action.entity";
 import { OrderDeliveryAttributes, OrderDeliveryEntity, OrderDeliveryModelName } from "../../app.data-model/sch.rental/order-delivery.entity";
 import { RentOfferAttributes, RentOfferEntity, RentOfferModelName } from "../../app.data-model/sch.rental/rent-offer.entity";
-import { RentOffer_OfferDiscount_Hash, RentOfferToOfferDiscountModelName } from "../../app.data-model/sch.rental/hash-tables/rent-offer-to-offer-discount.hash-entity";
+import { RentOffer_OfferDiscount_Hash, RentOfferToOfferDiscountModelName } from '../../app.data-model/sch.rental/hash-tables/rent-offer-to-offer-discount.hash-entity';
 import { RentOffer_RentOrder_Hash, RentOfferToRentOrderModelName } from "../../app.data-model/sch.rental/hash-tables/rent-offer-to-rent-order.hash-entity";
+import { RentOffer_OfferRentItem_Hash, RentOfferToOfferRentItemEntityName } from "../../app.data-model/sch.rental/hash-tables/rent-offer-to-offer-rent-item.hash-entity";
+import { RentOffer_RecievePoint_Hash, RentOfferToRecievePointName } from "../../app.data-model/sch.rental/hash-tables/rent-order-to-recieve-point.hash-entity";
 
 /** ....
 ** .... */ 
@@ -236,7 +238,7 @@ export abstract class SqliteBuilder
          },
          {
             sequelize: this._context!,
-            modelName: rentalSchemaName + '_' + RentItemToRentOrderModelName,
+            modelName: rentalSchemaName + '_' + RentOfferToOfferDiscountModelName,
          }
       );
       RentOffer_RentOrder_Hash.init(
@@ -261,27 +263,74 @@ export abstract class SqliteBuilder
             modelName: rentalSchemaName + '_' + RentOfferToRentOrderModelName,
          }
       );
+      RentOffer_OfferRentItem_Hash.init(
+         {
+            RentalRentOfferId: {
+               type: DataTypes.INTEGER,
+               references: {
+                  model: RentOfferEntity,
+                  key: 'id',
+               },
+            },
+            RentalOfferRentItemId: {
+               type: DataTypes.INTEGER,
+               references: {
+                  model: RentOrderEntity,
+                  key: 'id',
+               },
+            }
+         },
+         {
+            sequelize: this._context!,
+            modelName: rentalSchemaName + '_' + RentOfferToOfferRentItemEntityName,
+         }
+      );
+      RentOffer_RecievePoint_Hash.init(
+         {
+            RentalRentOfferId: {
+               type: DataTypes.INTEGER,
+               references: {
+                  model: RentOfferEntity,
+                  key: 'id',
+               },
+            },
+            RentalRecievePointId: {
+               type: DataTypes.INTEGER,
+               references: {
+                  model: RentOrderEntity,
+                  key: 'id',
+               },
+            }
+         },
+         {
+            sequelize: this._context!,
+            modelName: rentalSchemaName + '_' + RentOfferToRecievePointName,
+         }
+      );
       __logger.logInfo(rentalSchemaName + ' initialized');
 
 
    //--> 3. CONFIGURE DB RELATIONS
-      // EXAMPLE: one-to-one relation
-      // declare foreignKey of DeliveryInfo in RecievePoint
-      DeliveryInfoEntity.hasOne(RecievePointEntity);
-      RecievePointEntity.belongsTo(DeliveryInfoEntity);
 
+// * 1.Address has 1.RecievePoint, RecievePoint owns Address.FK
+      AddressEntity.hasOne(RecievePointEntity);
+      RecievePointEntity.belongsTo(AddressEntity);
+
+// * 1.AddressEntity has 1.CustomerEntity, CustomerEntity owns AddressEntity.FK
       AddressEntity.hasOne(CustomerEntity);
       CustomerEntity.belongsTo(AddressEntity);
+
 // * 1.OrderDelivery has 1.RentOrder, RentOrder owns OrderDelivery.FK
+// ! ta relacja nie jest aktualnie zaimplementowana, nalezy upewnić się czy jest potrzebna
       OrderDeliveryEntity.hasOne(RentOrderEntity);
       RentOrderEntity.belongsTo(OrderDeliveryEntity);
 
 
-      // EXAMPLE: one-to-many relation
-      // declare foreignKey of (home)RecievePoint in RentItem, recieve point has many RentItems
+// * 1.RecievePoint has [].RentItem, RecievePoint owns RentItem.FK
       RecievePointEntity.hasMany(RentItemEntity);
       RentItemEntity.belongsTo(RecievePointEntity);
-      
+
+// * 1.RentItemEntity has [].RentItemDamages, RentItemDamage owns RentOrder.FK
       RentItemEntity.hasMany(RentItemDamageEntity);
       RentItemDamageEntity.belongsTo(RentItemEntity)
       
@@ -293,42 +342,44 @@ export abstract class SqliteBuilder
       CustomerEntity.hasMany(RentOrderEntity);
       RentOrderEntity.belongsTo(CustomerEntity);
 
-// * 1.RentOrder has [].RentItemDamages, RentItemDamages owns RentOrder.FK
+// * 1.RentOrder has [].RentItemDamages, RentItemDamage owns RentOrder.FK
       RentOrderEntity.hasMany(RentItemDamageEntity);
       RentItemDamageEntity.belongsTo(RentOrderEntity);
 
+// * 1.RentOrder has [].CustomerDiscountHistory, CustomerDiscountHistory owns RentOrder.FK
       RentOrderEntity.hasMany(CustomerDiscountHistoryEntity);
       CustomerDiscountHistoryEntity.belongsTo(RentOrderEntity);
 
+// * 1.Customer has [].CustomerDiscountHistory, CustomerDiscountHistory owns RentOrder.FK
       CustomerEntity.hasMany(CustomerDiscountHistoryEntity);
       CustomerDiscountHistoryEntity.belongsTo(CustomerEntity);
 
+// * 1.OfferDiscount has [].CustomerDiscountHistory, CustomerDiscountHistory owns RentOrder.FK
       OfferDiscountEntity.hasMany(CustomerDiscountHistoryEntity);
       CustomerDiscountHistoryEntity.belongsTo(OfferDiscountEntity);
 
+// * 1.RentOffer has [].OfferInfo, OfferInfo owns RentOffer.FK
       RentOfferEntity.hasMany(OfferInfoEntity);
       OfferInfoEntity.belongsTo(RentOfferEntity);
 
+// ! TODO: na razie kompletność i poprawność nie będzie realizowana. najpierw chcę obsłuyć operacje na strukturze z pominięciem funkcjonalności dostawy 
       RecievePointEntity.hasMany(OrderDeliveryActionEntity);
       OrderDeliveryActionEntity.belongsTo(RecievePointEntity);
 
-   // TODO: zweryfikowac czy ta relacja jest wgl potrzebna
-      RentOfferEntity.hasMany(DeliveryInfoEntity);
-      DeliveryInfoEntity.belongsTo(RentOfferEntity);
 
-
-      // EXAMPLE: many-to-many relation
+// * [..] OfferRentItem has [..] RentItems and vice versa
       OfferRentItemEntity.belongsToMany(RentItemEntity,
          { through: RentItem_OfferRentItem_Hash });
       RentItemEntity.belongsToMany(OfferRentItemEntity,
          { through: RentItem_OfferRentItem_Hash });
 
-// ! brak gettera w RentOrder
+// * [..] RentOrder has [..] RentItems and vice versa
       RentOrderEntity.belongsToMany(RentItemEntity,
          { through: RentItem_RentOrder_Hash });
       RentItemEntity.belongsToMany(RentOrderEntity,
          { through: RentItem_RentOrder_Hash });
 
+// * [..] RentOffer has [..] OfferDiscount and vice versa
       RentOfferEntity.belongsToMany(OfferDiscountEntity,
          { through: RentOffer_OfferDiscount_Hash });
       OfferDiscountEntity.belongsToMany(RentOfferEntity,
@@ -340,14 +391,34 @@ export abstract class SqliteBuilder
       RentOrderEntity.belongsToMany(RentOfferEntity,
          { through: RentOffer_RentOrder_Hash });
 
+// * [..] RentOffer has [..] OfferRentItems and vice versa
+      RentOfferEntity.belongsToMany(OfferRentItemEntity,
+         { through: RentOffer_OfferRentItem_Hash });
+      OfferRentItemEntity.belongsToMany(RentOfferEntity,
+         { through: RentOffer_OfferRentItem_Hash });
+
+// * [..] RentOffer has [..] RecievePoints and vice versa
+      RentOfferEntity.belongsToMany(RecievePointEntity,
+         { through: RentOffer_RecievePoint_Hash });
+      RecievePointEntity.belongsToMany(RentOfferEntity,
+         { through: RentOffer_RecievePoint_Hash });
+
       __logger.logInfo(rentalSchemaName + ' relations set');
 
    //--> 4. SYNC MODEL WITH DB
-      RentOffer_RentOrder_Hash.afterSync(() => {
-         __logger.logInfo(rentalSchemaName + '_' +RentOfferToRentOrderModelName+' table synchronized');
+      RentOffer_OfferRentItem_Hash.afterSync(() => {
+         __logger.logInfo(rentalSchemaName + '_' +RentOfferToOfferRentItemEntityName+' table synchronized');
          this._isRentalSchemaSynced = true;     
          __logger.logInfo(rentalSchemaName + ' schema synchronized'); 
          afterRentalSchemaSync();
+      });
+      RentOffer_RecievePoint_Hash.afterSync(() => {
+         __logger.logInfo(rentalSchemaName + '_' +RentOfferToRentOrderModelName+' table synchronized');
+         RentOffer_OfferRentItem_Hash.sync({ force: this._forceSync });
+      });
+      RentOffer_RentOrder_Hash.afterSync(() => {
+         __logger.logInfo(rentalSchemaName + '_' +RentOfferToRentOrderModelName+' table synchronized');
+         RentOffer_RecievePoint_Hash.sync({ force: this._forceSync });
       });
       RentOffer_OfferDiscount_Hash.afterSync(() => {
          __logger.logInfo(rentalSchemaName + '_' +RentOfferToOfferDiscountModelName+' table synchronized');

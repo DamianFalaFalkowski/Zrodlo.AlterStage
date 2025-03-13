@@ -5,6 +5,7 @@ import { OrderDeliveryEntity } from "./order-delivery.entity";
 import { RecievePointEntity } from "./recieve-point.entity";
 import { RentItemEntity } from "./rent-item.entity";
 import { propertyOf } from "../../../../utils/type-properties.util";
+import { RentOfferEntity } from "./rent-offer.entity";
 
 export const OrderDeliveryActionModelName = 'OrderDeliveryActions'
 
@@ -40,6 +41,15 @@ export class OrderDeliveryActionEntity extends BaseEntity
             this.RentalOrderDeliveryId,
             propertyOf<OrderDeliveryActionEntity>('RentalOrderDeliveryId'));
     };
+
+    declare RentalRentOfferId: number;
+    public async getRentOffer(): Promise<RentOfferEntity> {
+        return this.getOwnedEntity(
+            RentOfferEntity,
+            this.RentalRentOfferId,
+            propertyOf<OrderDeliveryActionEntity>('RentalRentOfferId'));
+    };
+
 
     // declare actionSourceAddressId: number;
     // declare actionSourceAddress: AddressEntity;

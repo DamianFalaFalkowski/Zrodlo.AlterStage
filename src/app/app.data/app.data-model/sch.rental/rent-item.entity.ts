@@ -9,6 +9,7 @@ import { RentItem_OfferRentItem_Hash } from "./hash-tables/rent-item-to-offer-re
 import { RentItem_RentOrder_Hash } from "./hash-tables/rent-item-to-rent-order.hash-entity";
 import { propertyOf } from "../../../../utils/type-properties.util";
 
+// TODO: sformatować opisy
 export const RentItemModelName = 'RentItems'
 /** Reprezentacja pojedyńczego fizycznego wystąpienia przedmiotu wynajmu. */
 export class RentItemEntity extends BaseEntity

@@ -6,6 +6,7 @@ import { RentItemEntity } from "./rent-item.entity";
 import { RentOrderEntity } from "./rent-order.entity";
 import { propertyOf } from "../../../../utils/type-properties.util";
 
+// TODO: na razie kompletność i poprawność nie będzie realizowana. najpierw chcę obsłuyć operacje na strukturze z pominięciem funkcjonalności dostawy 
 export const OrderDeliveryModelName = 'OrderDeliveries';
 
 // TODO: dodać opisy

@@ -9,6 +9,9 @@ import { DataTypes, Model, ModelStatic } from 'sequelize';
 import { RentOffer_RentOrder_Hash } from './hash-tables/rent-offer-to-rent-order.hash-entity';
 import { BaseHashEntity } from '../_base/_base.hash-entity';
 import { RentOrderEntity } from './rent-order.entity';
+import { RentOffer_OfferRentItem_Hash } from './hash-tables/rent-offer-to-offer-rent-item.hash-entity';
+import { RentOffer_RecievePoint_Hash } from './hash-tables/rent-order-to-recieve-point.hash-entity';
+import { RentOffer_OfferDiscount_Hash } from './hash-tables/rent-offer-to-offer-discount.hash-entity';
 
 export const RentOfferModelName = 'RentOffers'
 
@@ -26,10 +29,43 @@ export class RentOfferEntity
     declare totalDepositPrice: number;
 
 // TODO: zaimplementowac gettery
-    // declare includes: OfferRentItemEntity[];
-    // declare avaliableRecievePoints: RecievePointEntity[];
-    // declare offerDiscounts: OfferDiscountEntity[];
-    // declare offerInfo: OfferInfoEntity[];
+
+/**
+** Oferty wchodzące w skład zlecenia najmu. 
+* ? Relacja [..]-[..]
+* ? ZWERYFIKOWAĆ DZIAŁANIE */
+    public async getOfferRentItems(repository: RentOffer_OfferRentItem_Hash): Promise<OfferRentItemEntity[]>
+    {
+        return (await repository.getRelated(OfferRentItemEntity, this.id)) as unknown as OfferRentItemEntity[];
+    }
+
+/**
+** Punkty odbioru świadczące tą ofertę najmu. 
+* ? Relacja [..]-[..]
+* ? ZWERYFIKOWAĆ DZIAŁANIE */
+    public async getRecievePoints(repository: RentOffer_RecievePoint_Hash) : Promise<RecievePointEntity[]>
+    {
+        return (await repository.getRelated(RecievePointEntity, this.id)) as unknown as RecievePointEntity[];
+    }
+
+/**
+** Punkty odbioru świadczące tą ofertę najmu. 
+* ? Relacja [..]-[..]
+* ? ZWERYFIKOWAĆ DZIAŁANIE */
+    public async getOfferDiscounts(repository: RentOffer_OfferDiscount_Hash) : Promise<OfferDiscountEntity[]>
+    {
+        return (await repository.getRelated(OfferDiscountEntity, this.id)) as unknown as OfferDiscountEntity[];
+    }
+
+/** Pobierz infortmacje o ofercie.
+** Pobiera wszystkie dostępne informacje dot. oferty
+** Zwraca: Promise<OfferInfoEntity[] | null>
+** Relacja 1-[..] */ 
+    public async getOfferInfos(): Promise<OfferInfoEntity[] | null>
+    {
+        return await OfferInfoEntity.findAll(
+            { where: { RentalOfferRentItemId: this.id } });
+    }
 
 /**
 * ? ZWERYFIKOWAĆ DZIAŁANIE */

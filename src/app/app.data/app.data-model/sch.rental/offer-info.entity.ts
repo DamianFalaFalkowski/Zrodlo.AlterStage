@@ -4,18 +4,23 @@ import { RentOfferEntity } from "./rent-offer.entity";
 import { propertyOf } from "../../../../utils/type-properties.util";
 
 export const OfferInfoModelName = 'OfferInfos'
-/** Reprezentuje dodatkowe informacje dot. oferty najmu */
+/**  Informacja o ofercie
+* * Reprezentuje dodatkowe informacje dot. oferty najmu  */
 export class OfferInfoEntity extends BaseEntity 
 {
     public readonly entityName: string = OfferInfoModelName;
 
-    /** Treść informacji dot. oferty */
+/**
+* * Treść informacji dot. oferty */
     declare infoMessage: string;
 
-    /** Id oferty najmu której dotyczy informacja */
+/** Id oferty najmu której dotyczy informacja
+** Relacja [..]-1 */
     declare RentalRentOfferId: Identifier;
-    /** Wykonuje query i zwraca obiekt oferty najmu */
-    public async getOrderDelivery(): Promise<RentOfferEntity> {
+    
+/** Wykonuje query i zwraca obiekt oferty najmu 
+* * Pobierz ofertę najmu */
+    public async getRentOffer(): Promise<RentOfferEntity> {
         return this.getOwnedEntity<RentOfferEntity>(
             RentOfferEntity, 
             this.RentalRentOfferId, 

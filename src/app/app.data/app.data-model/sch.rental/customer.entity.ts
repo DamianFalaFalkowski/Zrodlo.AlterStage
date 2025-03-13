@@ -6,6 +6,7 @@ import { DataTypes, Identifier } from "sequelize";
 import { propertyOf } from "../../../../utils/type-properties.util";
 import { EntityNotFoundByFkError } from "../../../app.errors/entity-not-found-by-this-fk.error";
 
+// TODO: sformatowac opisy
 export const CustomerModelName = 'Customers'
 /** Reprezentuje klienta wypoyczalni */
 export class CustomerEntity extends BaseEntity 
@@ -35,15 +36,15 @@ export class CustomerEntity extends BaseEntity
 
 /** Id adresu określonego przez uytkownika jako proponowany adres dostawy 
 * ? OK */
-    declare RentAddressId?: Identifier;
+    declare RentalAddressId?: Identifier;
     /** Pobiera adres określony przez uytkownika jako proponowany adres dostawy */
     public async getAddressIfExists(): Promise<AddressEntity | undefined>
     {
-        if(this.RentAddressId === undefined)
+        if(this.RentalAddressId === undefined)
             return undefined;
         return await this.getOwnedEntity(AddressEntity, 
-            this.RentAddressId, 
-            propertyOf<CustomerEntity>('RentAddressId'));
+            this.RentalAddressId, 
+            propertyOf<CustomerEntity>('RentalAddressId'));
     };
 
 /** Pobiera zlecenia utworzone przez klienta 
@@ -77,9 +78,9 @@ export const CustomerAttributes = {
         },
     
     // fks
-    RentalRecievePointId: {
+    RentalAddressId: {
        type: DataTypes.INTEGER,
-       allowNull: false, 
+       allowNull: true, 
     },
 
     // columns

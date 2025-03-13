@@ -8,6 +8,12 @@ import { Dialect } from 'sequelize';
 import hostModule from '../app/app.modules/host.module/app-module.host.module';
 import paymentModule from '../modules/payment.module/module.payment.module';
 
+__logger.logInfo('Starting discord chat-bot ...');
+__logger.logInfo('\tApp configuration:');
+__logger.logInfo('\t\t\tDb: SqLite[Tag, Rental]')
+__logger.logInfo('\t\t\tApp: Version, Host, Payment');
+__logger.logInfo('');
+
 const data = sqliteModule
    .SetDbConnection(
       process.env.DATABASE_NAME as string,

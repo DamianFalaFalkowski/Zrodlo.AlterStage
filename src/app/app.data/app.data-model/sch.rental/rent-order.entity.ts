@@ -8,9 +8,10 @@ import { OrderDeliveryEntity } from "./order-delivery.entity";
 import { RentItemDamageEntity } from "./rent-item-damage.entity";
 import { RentOfferEntity } from "./rent-offer.entity";
 import { RecievePointEntity } from "./recieve-point.entity";
-import { EntityNotFoundByPkError } from "../../../app.errors/entity-not-found-by-this-pk.error";
 import { propertyOf } from "../../../../utils/type-properties.util";
 import { RentOffer_RentOrder_Hash } from "./hash-tables/rent-offer-to-rent-order.hash-entity";
+import { RentItem_RentOrder_Hash } from "./hash-tables/rent-item-to-rent-order.hash-entity";
+import { RentItemEntity } from "./rent-item.entity";
 
 export const RentOrderModelName = 'RentOrders'
 
@@ -172,10 +173,24 @@ export class RentOrderEntity extends BaseEntity
         return (await repository.getRelated(RentOfferEntity, this.id)) as unknown as RentOfferEntity[];
     }
 
-/** .... 
-** ....
-* ! TODO: Do zaimplementowania */ 
-    // declare appliedDiscounts: CustomerDiscountHistoryEntity[];
+/**
+** Elementy oferty wchodzące w skład zlecenia. 
+* ? Relacja [..]-[..]
+* ? ZWERYFIKOWAĆ DZIAŁANIE */
+    public async getRentItems<RentItemEntity>(repository: RentItem_RentOrder_Hash)
+        : Promise<RentItemEntity[]>
+    {
+        return (await repository.getRelated(RentItemEntity, this.id)) as unknown as RentItemEntity[];
+    }
+
+/**
+** OK 
+*? Relacja 1-[..] */ 
+    public async getAppliedDiscounts(): Promise<CustomerDiscountHistoryEntity[] | null>
+    {
+        return await CustomerDiscountHistoryEntity.findAll(
+            { where: { RentalCustomerDiscountHistoryd: this.id } });
+    }
 }
 
 

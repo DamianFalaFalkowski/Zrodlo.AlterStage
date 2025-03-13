@@ -6,6 +6,7 @@ import { propertyOf } from "../../../../utils/type-properties.util";
 
 export const RentItemDamageModelName = 'RentItemDamages'
 
+// TODO: dodać i zformatować opisy
 export class RentItemDamageEntity extends BaseEntity 
 {
     public readonly entityName: string = RentItemDamageModelName;

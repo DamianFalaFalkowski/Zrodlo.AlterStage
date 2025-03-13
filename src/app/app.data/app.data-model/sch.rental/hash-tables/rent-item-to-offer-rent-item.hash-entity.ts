@@ -22,6 +22,30 @@ export class RentItem_OfferRentItem_Hash
     {
         return `${this.schemaName}${OfferRentItemModelName}Id`;
     }
+
+
     declare RentalRentItemId: Identifier;
+    /** Odpytuje bazę i zwraca wszystkie przedmioty wynajmu określone w ofertach dla których ten przedmiot jest fizycznym wystąpieniem. */
+//     public async getRentItems(): Promise<RentItemEntity[]>
+//     {
+//         const entities = await RentItemEntity.findAll(
+//             { where : { RentalOfferRentItemId : this.id }});
+//         if (entities === null) 
+//             throw new Error();
+//         return entities;
+//     }
+
+
     declare RentalOfferRentItemId: Identifier;
+// /** Odpytuje bazę i zwraca wszystkie przedmioty wynajmu określone w ofertach dla których ten przedmiot jest fizycznym wystąpieniem. */
+//     public async getOfferRentItems(): Promise<OfferRentItemEntity[]>
+//     { 
+//         const offerRentItemIds = (await RentItem_OfferRentItem_Hash.findAll({
+//             where: { rentItemId: this.id }
+//         })).filter(x => x.RentalOfferRentItemId);
+//         return await OfferRentItemEntity.findAll({
+//             where: { id: { in: offerRentItemIds} }
+//         });
+//     }
+
 }

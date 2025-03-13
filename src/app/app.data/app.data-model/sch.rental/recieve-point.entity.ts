@@ -6,10 +6,12 @@ import { RentItemEntity } from "./rent-item.entity";
 import { RentOrderEntity } from "./rent-order.entity";
 import { EntityNotFoundByPkError } from "../../../app.errors/entity-not-found-by-this-pk.error";
 import { propertyOf } from "../../../../utils/type-properties.util";
+import { RentOffer_RecievePoint_Hash } from "./hash-tables/rent-order-to-recieve-point.hash-entity";
+import { RentOfferEntity } from "./rent-offer.entity";
 
 export const RecievePointModelName = 'RecievePoints'
 
-// TODO: dodać opisy
+// TODO: dodać i zformatować opisy
 export class RecievePointEntity extends BaseEntity 
 {
     public readonly entityName: string = RecievePointModelName;
@@ -24,6 +26,7 @@ export class RecievePointEntity extends BaseEntity
     declare lastOwnerDiscordName: string;
     declare isActive: boolean;
 
+// ! TODO: na razie kompletność i poprawność nie będzie realizowana. najpierw chcę obsłuyć operacje na strukturze z pominięciem funkcjonalności dostawy 
     declare RentalDeliveryInfoId: Identifier;
     public async getDeliveryInfo(): Promise<DeliveryInfoEntity>
     {
@@ -32,6 +35,7 @@ export class RecievePointEntity extends BaseEntity
             propertyOf<RecievePointEntity>('RentalDeliveryInfoId'));
     };
 
+// ? ok
     declare RentalAddressId: number;
     public async getAddress(): Promise<AddressEntity>
     {
@@ -41,8 +45,14 @@ export class RecievePointEntity extends BaseEntity
     }
 
 /**
-* ! OK */
-    // declare rentItems: RentItemEntity[];
+** Punkty odbioru świadczące tą ofertę najmu. 
+* ? Relacja [..]-[..]
+* ? ZWERYFIKOWAĆ DZIAŁANIE */
+    public async getRentItem(repository: RentOffer_RecievePoint_Hash) : Promise<RentOfferEntity[]>
+    {
+        return (await repository.getRelated(RentOfferEntity, this.id)) as unknown as RentOfferEntity[];
+    }
+
 /**
 * * OK */
     public async getRentOrders(): Promise<RentOrderEntity[]>
