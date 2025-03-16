@@ -1,7 +1,8 @@
 import { AppModule } from '../app.module';
 import { VersionBuilder } from "./app.version.builder";
-import { ISaveTagIntegration } from "../../app.data/app.data-modules/app-data.sqlite/integrations/save-tag.sqlite.integration";
+
 import { ISqlite } from "../../app.data/app.data-modules/app-data.sqlite/app-data.sqlite.instance";
+import { ISaveTagIntegration } from '../../app.data/app.data-modules/app-data.sqlite/integrations/save-tag.sqlite.integration';
 
 interface IVersionDependency<T extends ISaveTagIntegration> 
 {

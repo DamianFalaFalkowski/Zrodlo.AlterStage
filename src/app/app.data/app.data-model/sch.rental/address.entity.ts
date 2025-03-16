@@ -21,6 +21,26 @@ export const AddressAttributes = {
     },
         
     // columns
+    city: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    street: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    house: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    flat: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
+    postalCode: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
     googleMapsPin: {
         type: DataTypes.STRING,
         allowNull: true,

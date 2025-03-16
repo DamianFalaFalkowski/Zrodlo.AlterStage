@@ -2,9 +2,7 @@ import { DataTypes, Identifier } from "sequelize";
 import { BaseEntity } from "../_base/_base.entity";
 import { AddressEntity } from "./address.entity";
 import { DeliveryInfoEntity } from "./delivery-info.entity";
-import { RentItemEntity } from "./rent-item.entity";
 import { RentOrderEntity } from "./rent-order.entity";
-import { EntityNotFoundByPkError } from "../../../app.errors/entity-not-found-by-this-pk.error";
 import { propertyOf } from "../../../../utils/type-properties.util";
 import { RentOffer_RecievePoint_Hash } from "./hash-tables/rent-order-to-recieve-point.hash-entity";
 import { RentOfferEntity } from "./rent-offer.entity";
@@ -22,7 +20,7 @@ export class RecievePointEntity extends BaseEntity
     declare description: string;
     declare ownerName: string;
     declare ownerLastName: string;
-    declare ownerDiscordId: string;
+    declare ownerDiscordId: number;
     declare lastOwnerDiscordName: string;
     declare isActive: boolean;
 
@@ -36,7 +34,7 @@ export class RecievePointEntity extends BaseEntity
     };
 
 // ? ok
-    declare RentalAddressId: number;
+    declare RentalAddressId: Identifier;
     public async getAddress(): Promise<AddressEntity>
     {
         return await this.getOwnedEntity(AddressEntity, 
@@ -71,7 +69,11 @@ export const RecievePointAttributes = {
     },
 
     // fks
-    RentalDeliveryInfoId: {
+    // RentalDeliveryInfoId: {
+    //     type: DataTypes.INTEGER,
+    //     allowNull: false,
+    // },
+    RentalAddressId: {
         type: DataTypes.INTEGER,
         allowNull: false,
     },
@@ -102,7 +104,7 @@ export const RecievePointAttributes = {
         allowNull: false,
     },
     ownerDiscordId: {
-        type: DataTypes.STRING,
+        type: DataTypes.NUMBER,
         allowNull: false,
     },
     lastOwnerDiscordName: {

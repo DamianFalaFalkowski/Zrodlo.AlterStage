@@ -7,7 +7,6 @@ export abstract class BaseAdddressEntity extends BaseEntity
     declare house: string;
     declare flat: string;
     declare postalCode: string;
-    declare googleMapsPin: string;
     declare createdAt: Date;
     declare updatedAt: Date;
 }

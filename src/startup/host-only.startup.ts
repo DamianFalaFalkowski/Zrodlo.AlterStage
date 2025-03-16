@@ -35,7 +35,10 @@ const data = sqliteModule
             {
                data.InitRentalSchema(() =>
                {
-
+                  data.PrepeareTestData_Rental(() =>
+                  {
+                     __logger.logInfo("Dane testowe utworzone ! ! !");
+                  });
                });
                paymentModule(hostModule)
                   .RegisterPaymentCommands();

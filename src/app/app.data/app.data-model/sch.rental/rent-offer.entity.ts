@@ -99,10 +99,12 @@ export const RentOfferAttributes = {
     totalPrice: {
         type: DataTypes.DECIMAL,
         allowNull: false,
+        defaultValue: 0
     },
     totalDepositPrice: {
         type: DataTypes.DECIMAL,
         allowNull: false,
+        defaultValue: 0
     },
 
     // from base

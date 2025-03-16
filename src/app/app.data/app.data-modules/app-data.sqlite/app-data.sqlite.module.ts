@@ -7,12 +7,13 @@ export class SqliteModule
     extends 
         SqliteBuilder 
     implements 
-        ISaveTagIntegration, 
+        ISaveTagIntegration,
         ISqlite
 {
     private constructor() {
         super();
     }
+    
     async saveTag(tagName: string): Promise<void> {
         await TagsEntity.create({
                         name: tagName,

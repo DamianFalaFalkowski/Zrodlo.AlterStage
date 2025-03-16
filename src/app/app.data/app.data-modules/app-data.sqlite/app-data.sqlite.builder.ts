@@ -24,6 +24,12 @@ import { RentOffer_OfferDiscount_Hash, RentOfferToOfferDiscountModelName } from 
 import { RentOffer_RentOrder_Hash, RentOfferToRentOrderModelName } from "../../app.data-model/sch.rental/hash-tables/rent-offer-to-rent-order.hash-entity";
 import { RentOffer_OfferRentItem_Hash, RentOfferToOfferRentItemEntityName } from "../../app.data-model/sch.rental/hash-tables/rent-offer-to-offer-rent-item.hash-entity";
 import { RentOffer_RecievePoint_Hash, RentOfferToRecievePointName } from "../../app.data-model/sch.rental/hash-tables/rent-order-to-recieve-point.hash-entity";
+import { RentOfferRepository } from "../../app.data-model/sch.rental/repositories/rent-offer.repository";
+import { AddressRepository } from "../../app.data-model/sch.rental/repositories/address.repository";
+import { DeliveryInfoRepository } from "../../app.data-model/sch.rental/repositories/delivery-info.repository";
+import { RentItemAviablility } from "../../app.data-model/sch.rental/enums/rent-item-aviablility.enum";
+import { RecievePointRepository } from "../../app.data-model/sch.rental/repositories/recieve-point.repository";
+import { RentItemRepository } from "../../app.data-model/sch.rental/repositories/rent-item.repository";
 
 /** ....
 ** .... */ 
@@ -54,6 +60,8 @@ export interface ISqliteBuilder
 /** ....
 ** .... */ 
    InitRentalSchema(afterRentalSchemaSync: () => void): SqliteModule;
+
+   PrepeareTestData_Rental(afterTestDataCreation: () => void): Promise<SqliteModule>;
 }
 
 
@@ -63,6 +71,21 @@ export abstract class SqliteBuilder
    extends SqliteInstance
    implements ISqliteBuilder 
 {
+   async PrepeareTestData_Rental(afterTestDataCreation: () => void): Promise<SqliteModule>
+   {
+      let addressOne = await AddressRepository.create(0, 'city2', 'street', 'house', 'postalCode');
+      //let baseRecievePointDeliveryInfo = await DeliveryInfoRepository.create(0, 'na terenie Warszawy', true,RentItemAviablility.IMMEDIATELY, true, true,true, false, false, false, false, false, 300, 30, 2, undefined, 20, 20);
+      let recievePointOne = await RecievePointRepository.create(0, addressOne.id, 0, 'fala studio RP', '513762535', 'panda.zrodlo@gmail.com', 'pierwszy testowy punkt odbioru', 'Damian', 'Falkowski', 1024238253060145193, 'falalala_wav', true);
+
+      let offerOne = await RentOfferRepository.create(0, 'offer one', 'the very first offer');
+
+      let tentItemOne = await RentItemEntity.findOne({ 'where': { 'code': 'WAW01-A0001'}});
+      if(tentItemOne == null)
+         tentItemOne = await RentItemRepository.create(0, recievePointOne.id, 'WAW01-A0001', 1010010001, RentItemAviablility.IMMEDIATELY);
+
+      afterTestDataCreation();
+      return this as unknown as SqliteModule;
+   }
 
 
 
@@ -432,10 +455,6 @@ export abstract class SqliteBuilder
          __logger.logInfo(rentalSchemaName + '_' +RentItemToRentOrderModelName+' table synchronized');
          RentItem_OfferRentItem_Hash.sync({ force: this._forceSync });
       });
-      RentOfferEntity.afterSync(() => {
-         __logger.logInfo(rentalSchemaName + '_' +OrderDeliveryActionModelName+' table synchronized');
-         RentItem_RentOrder_Hash.sync({ force: this._forceSync });
-      })
       OrderDeliveryActionEntity.afterSync(() => {
          __logger.logInfo(rentalSchemaName + '_' +OrderDeliveryActionModelName+' table synchronized');
          RentItem_RentOrder_Hash.sync({ force: this._forceSync });

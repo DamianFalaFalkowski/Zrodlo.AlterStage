@@ -70,12 +70,6 @@ export const DeliveryInfoAttributes = {
         primaryKey: true,
     },
 
-    // fks
-    RentalRentOfferId: {
-       type: DataTypes.INTEGER,
-       allowNull: false, 
-    },
-
     // columns
     standardDeliveryAreaDescription: {
         type: DataTypes.STRING,
