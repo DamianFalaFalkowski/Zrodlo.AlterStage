@@ -5,7 +5,7 @@ import { OfferDiscountEntity } from './offer-discount.entity';
 import { OfferInfoEntity } from './offer-info.entity';
 import { RecievePointEntity } from './recieve-point.entity';
 import { OrderDeliveryEntity } from './order-delivery.entity';
-import { DataTypes, Model, ModelStatic } from 'sequelize';
+import { BelongsToMany, DataTypes, HasMany, Model, ModelStatic } from 'sequelize';
 import { RentOffer_RentOrder_Hash } from './hash-tables/rent-offer-to-rent-order.hash-entity';
 import { BaseHashEntity } from '../_base/_base.hash-entity';
 import { RentOrderEntity } from './rent-order.entity';
@@ -27,6 +27,9 @@ export class RentOfferEntity
     declare description: string;
     declare totalPrice: number;
     declare totalDepositPrice: number;
+/** czy aktywna
+** Określa czy oferta jest aktualnie w ofercie */
+    declare isActive: boolean;
 
 // TODO: zaimplementowac gettery
 

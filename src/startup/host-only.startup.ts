@@ -6,7 +6,7 @@ import versionModule from '../app/app.modules/app-version.module/app.version.mod
 import sqliteModule from '../app/app.data/app.data-modules/app-data.sqlite/app-data.sqlite.module';
 import { Dialect } from 'sequelize';
 import hostModule from '../app/app.modules/host.module/app-module.host.module';
-import paymentModule from '../modules/payment.module/module.payment.module';
+import paymentModule from '../modules/payment.module/payment.module';
 
 __logger.logInfo('Starting discord chat-bot ...');
 __logger.logInfo('\tApp configuration:');

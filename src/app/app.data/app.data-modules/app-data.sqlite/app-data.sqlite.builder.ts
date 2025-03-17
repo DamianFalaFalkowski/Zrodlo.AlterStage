@@ -6,7 +6,7 @@ import { TagsAttributes, TagsModelName, TagsEntity } from '../../app.data-model/
 import { __logger } from "../../../../utils/dc-logger.util";
 import { OfferRentItemAttributes, OfferRentItemEntity, OfferRentItemModelName } from '../../app.data-model/sch.rental/offer-rent-item.entity';
 import { RentItemAttributes, RentItemEntity, RentItemModelName } from "../../app.data-model/sch.rental/rent-item.entity";
-import { RecievePointAttributes, RecievePointEntity, RecievePointModelName } from "../../app.data-model/sch.rental/recieve-point.entity";
+import { RecievePointAttributes, RecievePointEntity, RecievePointModelName } from '../../app.data-model/sch.rental/recieve-point.entity';
 import { RentItemDamageAttributes, RentItemDamageEntity, RentItemDamageModelName } from "../../app.data-model/sch.rental/rent-item-damage.entity";
 import { RentOrderAttributes, RentOrderEntity, RentOrderModelName } from '../../app.data-model/sch.rental/rent-order.entity';
 import { RentItem_RentOrder_Hash, RentItemToRentOrderModelName } from "../../app.data-model/sch.rental/hash-tables/rent-item-to-rent-order.hash-entity";
@@ -445,12 +445,11 @@ export abstract class SqliteBuilder
 
 // * [..] RentOffer has [..] OfferRentItems and vice versa
       RentOfferEntity.belongsToMany(OfferRentItemEntity,
-         { through: RentOffer_OfferRentItem_Hash });
-      OfferRentItemEntity.belongsToMany(RentOfferEntity,
-         { through: RentOffer_OfferRentItem_Hash });
+         { through: RentOffer_OfferRentItem_Hash });OfferRentItemEntity.belongsToMany(RentOfferEntity,
+         { through: RentOffer_OfferRentItem_Hash, as: 'OfferRentItems' });
 
 // * [..] RentOffer has [..] RecievePoints and vice versa
-      RentOfferEntity.belongsToMany(RecievePointEntity,
+      let OfferRentItems2 = RentOfferEntity.belongsToMany(RecievePointEntity,
          { through: RentOffer_RecievePoint_Hash});
       RecievePointEntity.belongsToMany(RentOfferEntity,
          { through: RentOffer_RecievePoint_Hash });

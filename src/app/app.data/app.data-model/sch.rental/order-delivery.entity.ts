@@ -1,8 +1,6 @@
 import { DataTypes } from "sequelize";
 import { BaseEntity } from "../_base/_base.entity";
 import { AddressEntity } from "./address.entity";
-import { OrderDeliveryActionEntity } from "./order-delivery-action.entity";
-import { RentItemEntity } from "./rent-item.entity";
 import { RentOrderEntity } from "./rent-order.entity";
 import { propertyOf } from "../../../../utils/type-properties.util";
 
