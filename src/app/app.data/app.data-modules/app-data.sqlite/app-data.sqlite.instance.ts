@@ -21,7 +21,7 @@ export abstract class SqliteInstance
     extends AppModule 
         implements ISqliteInstance
 {
-    protected readonly _forceSync: boolean = false;
+    protected readonly _forceSync: boolean = true;
 
     protected _context: Sequelize | undefined;
     public get context(): Sequelize{

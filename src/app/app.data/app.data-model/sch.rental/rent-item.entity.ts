@@ -5,7 +5,6 @@ import { RecievePointEntity } from "./recieve-point.entity";
 import { RentItemDamageEntity } from './rent-item-damage.entity';
 import { RentOrderEntity } from "./rent-order.entity";
 import { DataTypes, Identifier } from "sequelize";
-import { RentItem_OfferRentItem_Hash } from "./hash-tables/rent-item-to-offer-rent-item.hash-entity";
 import { RentItem_RentOrder_Hash } from "./hash-tables/rent-item-to-rent-order.hash-entity";
 import { propertyOf } from "../../../../utils/type-properties.util";
 
@@ -16,10 +15,10 @@ export class RentItemEntity extends BaseEntity
 {
     public readonly entityName: string = RentItemModelName;
 
-    /** Unikalny alfa-numeryczny kod przedmiotu wynajmu. Kody umieszczane są na naklejce w celu ułatwienia identyfikacji. 
+    /** Alfa-numeryczny kod przedmiotu wynajmu. Kody umieszczane są na naklejce w celu ułatwienia identyfikacji. 
      * TODO: utworzyć serwis do generowania kodów
     */
-    declare code: string;
+    declare procuctCode: string;
     /** Unikalny numeryczny kod przedmiotu wynajmu. Jest jednocześnie cyfrowym zapisem kodu kreskowego umieszczonego na naklejce w celu ułatwienia identyfikacji.
      * TODO: utworzyć serwis do generowania barcodów
     */
@@ -56,24 +55,22 @@ export class RentItemEntity extends BaseEntity
         return this.getOwnedEntity<RecievePointEntity>(
             RecievePointEntity, 
             this.RentalRecievePointId, 
-            propertyOf<RentOrderEntity>('RentalRecievePointId'));
+            propertyOf<RentItemEntity>('RentalRecievePointId'));
     }
 
-    /** Odpytuje bazę i zwraca wszystkie przedmioty wynajmu określone w ofertach dla których ten przedmiot jest fizycznym wystąpieniem. */
-    public async getOfferRentItems(): Promise<OfferRentItemEntity[]>
-    { 
-        const offerRentItemIds = (await RentItem_OfferRentItem_Hash.findAll({
-            where: { rentItemId: this.id }
-        })).filter(x => x.RentalOfferRentItemId);
-        return await OfferRentItemEntity.findAll({
-            where: { id: { in: offerRentItemIds} }
-        });
+    declare RentalOfferRentItem: Identifier;
+    public async getOfferRentItem(): Promise<OfferRentItemEntity> {
+        return this.getOwnedEntity<OfferRentItemEntity>(
+            OfferRentItemEntity, 
+            this.RentalRecievePointId, 
+            propertyOf<RentItemEntity>('RentalRecievePointId'));
     }
+
     /** Odpytuje bazę i zwraca wszystkie uszkodzenia zarejestrowane dla tego przedmiotu. */
     public async getDamages(): Promise<RentItemDamageEntity[]>
     {
         return await RentItemDamageEntity.findAll({
-             where: { 'rentItemId': this.id }
+            where: { 'rentItemId': this.id }
         });
     }
     /** Odpytuje bazę i zwraca wszystkie zlecenia w których brał lub bierze udział ten przedmiot. */
@@ -99,8 +96,12 @@ export const RentItemAttributes =
 
     // fks
     RentalRecievePointId: {
-       type: DataTypes.INTEGER,
-       allowNull: false, 
+        type: DataTypes.INTEGER,
+        allowNull: false, 
+    },
+    RentalOfferRentItemId: {
+        type: DataTypes.INTEGER,
+        allowNull: false, 
     },
 
     // columns

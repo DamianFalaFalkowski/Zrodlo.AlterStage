@@ -24,6 +24,15 @@ export class RecievePointEntity extends BaseEntity
     declare lastOwnerDiscordName: string;
     declare isActive: boolean;
 
+/** Kod punktu odbioru
+** Unikalny kod złozony z kolejno 3 liter oznaczających miasto
+* TODO: utworzyć walidator kodów punktów odbioru */
+    declare recievePointCityCode: string;
+
+    public getRecievePointCode(): string {
+        return this.recievePointCityCode + this.id;
+    }
+
 // ! TODO: na razie kompletność i poprawność nie będzie realizowana. najpierw chcę obsłuyć operacje na strukturze z pominięciem funkcjonalności dostawy 
     declare RentalDeliveryInfoId: Identifier;
     public async getDeliveryInfo(): Promise<DeliveryInfoEntity>
@@ -115,6 +124,10 @@ export const RecievePointAttributes = {
         type: DataTypes.BOOLEAN,
         allowNull: false,
         defaultValue: true,
+    },
+    recievePointCityCode: {
+        type: DataTypes.STRING,
+        allowNull:false
     },
 
     // from base

@@ -13,21 +13,29 @@ export abstract class BaseHashEntity<A extends BaseEntity, B extends BaseEntity>
     ) 
         : Promise<(T[])>
     {
-        const isA = isTypeOfA(new instance()) === true;
+        let isA = false; 
+        if (instance instanceof this.tableA)
+            isA = true; //isTypeOfA(new instance()) === true;
+
         const hashTableName = this.schemaName + '_' + this.modelName;
 
+        const query = `SELECT ${isA ? this.tableA_PK_Name : this.tableB_PK_Name} as 'id' FROM ${hashTableName} WHERE ${isA ? this.tableB_PK_Name : this.tableA_PK_Name } = ${foreginKey}`;
         const foundIds = (await this.sequelize.query(
-            `SELECT ${isA ? this.tableA_PK_Name : this.tableB_PK_Name} 
-            FROM ${hashTableName} 
-            WHERE ${isA ? this.tableB_PK_Name : this.tableA_PK_Name } = ${foreginKey}`, 
+            query, 
             { type: QueryTypes.SELECT }
         )) as Identifier[];
-        
-        const searchOptions = { where: { 'id': { 'in': foundIds}}};
-        if (isA)
-            return await this.tableA.findAll<A>(searchOptions) as T[];
-        else
-            return await this.tableB.findAll<B>(searchOptions) as T[];
+        let intFoundIds: Identifier[] = [];
+        foundIds.forEach(x => intFoundIds.push((x as unknown as BaseEntity).id));
+
+        //onst searchOptions = { where: { id: { in: intFoundIds}}};
+        let results: T[] = [];
+        for (let index = 0; index < intFoundIds.length; index++) {
+            const element = intFoundIds[index];
+            const q = `SELECT * FROM ${isA ? this.tableA.name : this.tableB.name} WHERE id = ${element}`;
+            const r = (await this.sequelize.query(q))[0] as unknown as T;
+            results.push(r);
+        }
+        return results;
     }
     
     protected abstract schemaName: string;

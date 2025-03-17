@@ -4,7 +4,7 @@ import { OfferRentItemEntity, OfferRentItemModelName } from "../offer-rent-item.
 import { RentOfferEntity, RentOfferModelName } from "../rent-offer.entity";
 import { rentalSchemaName } from "../../../app.data-modules/app-data.sqlite/app-data.sqlite.builder";
 
-export const RentOfferToOfferRentItemEntityName = 'RentOfferToOfferRentItemEntity';
+export const RentOfferToOfferRentItemEntityName = 'RentOfferToOfferRentItems';
 
 export class RentOffer_OfferRentItem_Hash 
     extends BaseHashEntity<RentOfferEntity, OfferRentItemEntity>
@@ -15,11 +15,11 @@ export class RentOffer_OfferRentItem_Hash
     protected tableB: ModelStatic<OfferRentItemEntity> = OfferRentItemEntity;
     protected get tableA_PK_Name(): string
     {
-        return `${this.schemaName}${RentOfferModelName}Id`;           
+        return `${this.schemaName}RentOfferId`;           
     }
     protected get tableB_PK_Name(): string
     {
-        return `${this.schemaName}${OfferRentItemModelName}Id`;
+        return `${this.schemaName}OfferRentItemId`;
     }
     public entityName: string = RentOfferToOfferRentItemEntityName;
 

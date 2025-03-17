@@ -3,7 +3,7 @@ import { BaseEntity } from "../_base/_base.entity";
 import { RentItemSize } from "./enums/rent-item-size.enum";
 import { RentItemEntity } from "./rent-item.entity";
 
-export const OfferRentItemModelName = 'OfferDiscounts'
+export const OfferRentItemModelName = 'OfferRentItems'
 export class OfferRentItemEntity extends BaseEntity {
     public readonly entityName = OfferRentItemModelName;
 
@@ -42,7 +42,8 @@ export const OfferRentItemAttributes =
     },
     itemName: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        unique: true
     },
     brandName: {
         type: DataTypes.STRING,

@@ -15,11 +15,11 @@ export class RentOffer_OfferDiscount_Hash extends BaseHashEntity<RentOfferEntity
     protected tableB: ModelStatic<OfferDiscountEntity> = OfferDiscountEntity;
     protected get tableA_PK_Name(): string
     {
-        return `${this.schemaName}${RentOfferModelName}Id`;
+        return `${this.schemaName}RentOfferId`;
     }
     protected get tableB_PK_Name(): string
     {
-        return `${this.schemaName}${RentOfferModelName}Id`;
+        return `${this.schemaName}OfferDiscountId`;
     }
     
     declare RentalRentOfferId: Identifier;

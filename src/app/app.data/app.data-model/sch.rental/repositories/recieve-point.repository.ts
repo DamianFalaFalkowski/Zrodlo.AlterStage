@@ -5,7 +5,7 @@ export class RecievePointRepository{
     private constructor() {
     }
 
-    public static async create(discordUserId: number, addressId: Identifier, deliveryInfoId: Identifier, name: string, phoneNumber: string, email:string, description:string, ownerName:string, ownerLastName:string, ownerDiscordId: number, lastOwnerDiscordName: string, isActive?: boolean): Promise<RecievePointEntity>
+    public static async create(discordUserId: number, addressId: Identifier, deliveryInfoId: Identifier, name: string, phoneNumber: string, email:string, description:string, ownerName:string, ownerLastName:string, ownerDiscordId: number, lastOwnerDiscordName: string, recievePointCityCode: string, isActive?: boolean): Promise<RecievePointEntity>
         {
             return await RecievePointEntity.create({
                 createdDiscordUserId: discordUserId,
@@ -19,7 +19,8 @@ export class RecievePointRepository{
                 ownerLastName: ownerLastName,
                 ownerDiscordId: ownerDiscordId,
                 lastOwnerDiscordName: lastOwnerDiscordName,
-                isActive: isActive
+                isActive: isActive,
+                recievePointCityCode: recievePointCityCode
             });
         }
 }
