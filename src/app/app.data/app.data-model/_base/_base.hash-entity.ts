@@ -1,7 +1,6 @@
-import { Identifier, Model, ModelStatic, QueryTypes, Sequelize } from "sequelize";
+import { Identifier, Model, ModelStatic, QueryTypes } from "sequelize";
 import { BaseEntity } from './_base.entity';
 
-declare function isTypeOfA<A extends BaseEntity, B extends BaseEntity, T extends A | T extends B ? A : B>(ins : T):  T extends A ?  true : never;
 
 /** Abstrakcyjna klasa bazowa dla tabel haszujących */
 export abstract class BaseHashEntity<A extends BaseEntity, B extends BaseEntity>
@@ -15,7 +14,7 @@ export abstract class BaseHashEntity<A extends BaseEntity, B extends BaseEntity>
     {
         let isA = false; 
         if (instance instanceof this.tableA)
-            isA = true; //isTypeOfA(new instance()) === true;
+            isA = true; 
 
         const hashTableName = this.schemaName + '_' + this.modelName;
 
@@ -27,7 +26,7 @@ export abstract class BaseHashEntity<A extends BaseEntity, B extends BaseEntity>
         let intFoundIds: Identifier[] = [];
         foundIds.forEach(x => intFoundIds.push((x as unknown as BaseEntity).id));
 
-        //onst searchOptions = { where: { id: { in: intFoundIds}}};
+        // TODO: srpóbować zoptymalizować query
         let results: T[] = [];
         for (let index = 0; index < intFoundIds.length; index++) {
             const element = intFoundIds[index];
