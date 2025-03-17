@@ -1,15 +1,15 @@
-import { ApplicationError } from "../../app.errors/application.error";
-import { AppModule } from '../app.module';
+import { ApplicationError } from "../../../app.errors/application.error";
+import { AppModule } from '../../../app.modules/app.module';
 
-interface IVersionInstance  
+interface IAppDataInstance  
 {
     appVersion: string | null;
     isAppVersionSetUp(): boolean;
 }
-export abstract class VersionInstance 
+export abstract class AppDataInstance 
     extends AppModule 
     implements 
-        IVersionInstance
+        IAppDataInstance
 {
     protected _appVersion: string | undefined;
 

@@ -2,8 +2,8 @@
 import dotenv from 'dotenv';
 dotenv.config();
 import {__logger} from '../utils/dc-logger.util';
-import versionModule from '../app/app.modules/app-version.module/app.version.module';
-import sqliteModule from '../app/app.data/app.data-modules/app-data.sqlite/app-data.sqlite.module';
+import appDataModule from '../app/app.data/app.data-modules/app-data.module/app-data.module';
+import sqliteModule from '../app/app.data/app.data-modules/rental-data.module/rental-data.module';
 import { Dialect } from 'sequelize';
 import hostModule from '../app/app.modules/host.module/app-module.host.module';
 import paymentModule from '../modules/payment.module/payment.module';
@@ -25,7 +25,7 @@ const data = sqliteModule
       process.env.DATABASE_STORAGE as string)
    .InitAppSchema(() => 
    { 
-      versionModule(data)
+      appDataModule(data)
          .setUpAppVersion(1,0,1);
       hostModule
          .SetUpClient(() => 

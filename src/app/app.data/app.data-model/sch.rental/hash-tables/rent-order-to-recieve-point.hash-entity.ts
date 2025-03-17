@@ -2,7 +2,7 @@ import { Identifier, ModelStatic } from "sequelize";
 import { BaseHashEntity } from "../../_base/_base.hash-entity";
 import { RecievePointEntity, RecievePointModelName } from "../recieve-point.entity";
 import { RentOfferEntity, RentOfferModelName } from "../rent-offer.entity";
-import { rentalSchemaName } from "../../../app.data-modules/app-data.sqlite/app-data.sqlite.builder";
+import { rentalSchemaName } from "../../../app.data-modules/rental-data.module/rental-data.builder";
 
 export const RentOfferToRecievePointName = 'RentOffersToRecievePoint';
 

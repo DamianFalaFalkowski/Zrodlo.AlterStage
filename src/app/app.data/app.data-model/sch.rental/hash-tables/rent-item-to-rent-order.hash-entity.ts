@@ -2,7 +2,7 @@ import { Identifier, Model, ModelStatic } from "sequelize";
 import { RentItemEntity, RentItemModelName } from "../rent-item.entity";
 import { RentOrderEntity, RentOrderModelName } from "../rent-order.entity";
 import { BaseHashEntity } from "../../_base/_base.hash-entity";
-import { rentalSchemaName } from "../../../app.data-modules/app-data.sqlite/app-data.sqlite.builder";
+import { rentalSchemaName } from "../../../app.data-modules/rental-data.module/rental-data.builder";
 
 export const RentItemToRentOrderModelName = 'RentItemsToRentOrders'
 

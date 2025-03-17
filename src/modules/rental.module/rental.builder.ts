@@ -1,5 +1,5 @@
-import { IRentalViewModelIntegration } from "../../app/app.data/app.data-modules/app-data.sqlite/integrations/get-rent-offers-view-model.integration";
-import { RentOfferViewModel } from "../../app/app.data/app.data-modules/app-data.sqlite/view-models/rent-offer.view-model";
+import { IRentalViewModelIntegration } from "../../app/app.data/app.data-modules/rental-data.module/integrations/get-rent-offers-view-model.integration";
+import { RentOfferViewModel } from "../../app/app.data/app.data-modules/rental-data.module/view-models/rent-offer.view-model";
 import { AppModule } from "../../app/app.modules/app.module";
 import { IFillTemplateWithDataIntegration } from "../../app/app.modules/templates.module/integrations/fill-template-with-data.integration";
 import { TemplateModel } from "../../app/app.modules/templates.module/models/template.model";

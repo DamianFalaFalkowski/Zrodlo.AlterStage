@@ -1,15 +1,15 @@
 
-import { ISaveTagIntegration } from "../../app.data/app.data-modules/app-data.sqlite/integrations/save-tag.sqlite.integration";
-import { AppModule } from "../app.module";
-import { VersionInstance } from "./app.version.instance";
+import { ISaveTagIntegration } from "../rental-data.module/integrations/save-tag.sqlite.integration";
+import { AppModule } from "../../../app.modules/app.module";
+import { AppDataInstance } from "./app-data.instance";
 
-interface IVersionBuilder 
+interface IAppDataBuilder 
 {
     setUpAppVersion(major: number, minor: number, patch: number): AppModule;
 }
-export abstract class VersionBuilder extends VersionInstance 
+export abstract class AppDataBuilder extends AppDataInstance 
     implements 
-        IVersionBuilder, ISaveTagIntegration
+        IAppDataBuilder, ISaveTagIntegration
 {
     abstract isRentalSchemaSynced(): boolean;
     abstract isAppSchemaSynced(): boolean ;

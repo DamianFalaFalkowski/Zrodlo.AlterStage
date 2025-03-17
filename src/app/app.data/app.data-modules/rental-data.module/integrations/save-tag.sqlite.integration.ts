@@ -1,4 +1,4 @@
-import { ISqlite } from "../app-data.sqlite.instance";
+import { ISqlite } from "../rental-data.instance";
 
 export interface ISaveTagIntegration extends ISqlite
 {

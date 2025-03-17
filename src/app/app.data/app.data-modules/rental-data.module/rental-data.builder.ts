@@ -1,7 +1,7 @@
 
 import { DataTypes, Dialect, Sequelize } from "sequelize";
-import { ISqliteInstance, SqliteInstance } from './app-data.sqlite.instance';
-import { SqliteModule } from "./app-data.sqlite.module";
+import { ISqliteInstance, SqliteInstance } from './rental-data.instance';
+import { SqliteModule } from "./rental-data.module";
 import { TagsAttributes, TagsModelName, TagsEntity } from '../../app.data-model/sch.app/tags.entity'
 import { __logger } from "../../../../utils/dc-logger.util";
 import { OfferRentItemAttributes, OfferRentItemEntity, OfferRentItemModelName } from '../../app.data-model/sch.rental/offer-rent-item.entity';
