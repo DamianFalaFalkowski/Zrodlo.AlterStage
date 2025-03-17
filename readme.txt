@@ -27,5 +27,9 @@ Opis plików które folder zawiera oraz jego roli:
 
     Zmienne poprzedzone podwójnym podkreśleniem '__' to zmienne globalne moliwe do uycia w całym projekcie
 
+2.1.Nazewnictwo DB
+
+    kolumny będące FK rozpoczynają się od nazwy schematu zaczynając od duzej litery
+
 DOKUMENTAJA POLECEN (/): 
     https://discord.com/developers/docs/interactions/application-commands#contexts

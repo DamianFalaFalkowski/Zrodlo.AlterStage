@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"workbench.editor.tabSizingFixedMinWidth": 190,
+		"typescript.tsdk": "node_modules/typescript/lib"
+	}
+}

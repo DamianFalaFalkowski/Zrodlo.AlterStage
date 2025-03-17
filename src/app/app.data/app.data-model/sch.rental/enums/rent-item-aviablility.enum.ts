@@ -1,7 +1,8 @@
+/** Wartość wyliczeniowa określająca czas dostępności przedmiotu */
 export enum RentItemAviablility {
-    UNAVALIABLE = 0,
-    IMMEDIATELY = 1,
-    ONE_OR_TWO_DAYS = 2,
-    UP_TO_5_DAYS = 3,
-    OVER_5_DAYS = 4
+    UNAVALIABLE = 'UNAVALIABLE',
+    IMMEDIATELY = 'IMMEDIATELY',
+    ONE_OR_TWO_DAYS = 'ONE_OR_TWO_DAYS',
+    UP_TO_5_DAYS = 'UP_TO_5_DAYS',
+    OVER_5_DAYS = 'OVER_5_DAYS'
 }

@@ -1,7 +1,8 @@
 import { AppModule } from '../app.module';
 import { VersionBuilder } from "./app.version.builder";
-import { ISaveTagIntegration } from "../../app.data/app.data-modules/app-data.sqlite/integrations/save-tag.sqlite.integration";
+
 import { ISqlite } from "../../app.data/app.data-modules/app-data.sqlite/app-data.sqlite.instance";
+import { ISaveTagIntegration } from '../../app.data/app.data-modules/app-data.sqlite/integrations/save-tag.sqlite.integration';
 
 interface IVersionDependency<T extends ISaveTagIntegration> 
 {
@@ -19,11 +20,11 @@ class VersionModule<T extends ISaveTagIntegration>
       super();
       this._dependency = dependency;
    }
-   isTableInitialized(tableName: string): boolean {
-      return this._dependency!.isTableInitialized(tableName);
+   isAppSchemaSynced(): boolean {
+      return this._dependency!.isAppSchemaSynced();
    }
-   isDatabaseSynced(): boolean {
-      return this._dependency!.isDatabaseSynced();
+   isRentalSchemaSynced(): boolean {
+      return this._dependency!.isRentalSchemaSynced();
    }
    public static initialize<T extends ISaveTagIntegration>(dependency: T): VersionModule<T> {
       return new VersionModule(dependency)

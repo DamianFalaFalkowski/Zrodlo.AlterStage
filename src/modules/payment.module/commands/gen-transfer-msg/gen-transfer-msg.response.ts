@@ -35,7 +35,7 @@ export class GenerateTransferMessageResponse extends BaseCommandResponse {
     }
 
     public override PrepeareSuccessResponse(reply: InteractionReplyOptions): InteractionReplyOptions {
-        reply.content = `Aby dokonać zakupu produktu ${this.RoleToBuy} wklej tą wiadomość w tytule przelewu:\n\n **${this.RoleToBuy}**\n\n.`;
+        reply.content = `Aby dokonać zakupu produktu ${this.RoleToBuy} wklej tą wiadomość w tytule przelewu:\n\n **${this._reply?.content}**\n\n.`;
         return reply;
     }
 }

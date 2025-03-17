@@ -1,5 +1,5 @@
 import { ChatInputCommandInteraction, GuildMemberRoleManager, InteractionReplyOptions, MessageFlags, SlashCommandBuilder } from "discord.js";
-import { TagsEntity } from "../../../app/app.data/app.data-model/sch.app/tags.model";
+import { TagsEntity } from "../../../app/app.data/app.data-model/sch.app/tags.entity";
 const dcLogger = require('./src/utils/dc-logger.util.ts');
 
 

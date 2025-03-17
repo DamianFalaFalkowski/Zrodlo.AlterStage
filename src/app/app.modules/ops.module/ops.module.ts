@@ -1,5 +1,5 @@
 
-import { OpsResult } from './model/ops-result';
+import { OpsResult } from './model/ops-result.model';
 import { OpsStatus } from './enums/ops-status.enum';
 import __operationsRouterService from './services/ops-router.service';
 

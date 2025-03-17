@@ -1,4 +1,4 @@
-import { IGetClientIntegration as IGetClientIntegration } from "../../app/app.modules/host-module/integrations/get-client.host.integration";
+import { IGetClientIntegration as IGetClientIntegration } from "../../app/app.modules/host.module/integrations/get-client.host.integration";
 import { IPaymentInstance, PaymentInstance } from "./module.payment.instance";
 import { AppModule } from "../../app/app.modules/app.module";
 

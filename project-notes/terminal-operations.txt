@@ -1,5 +1,10 @@
 
 
+1.To list all lines with given text:
+%  grep -r "TODO:" /Applications/Zrodlo.AlterStage.DiscordAppTs
+
+- 'TODO:' can be replaced with any other text
+
 
 node .dist/index.js 
 

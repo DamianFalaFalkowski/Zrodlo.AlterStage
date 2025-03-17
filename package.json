@@ -10,8 +10,8 @@
     "d_opt-adm-cmd-reload_all_host": "tsx watch src/index.ts -adm-cmd-reload=gen-transfer-msg -adm-cmd-reload=tag-create -app-host",
     "d_opt-adm-cmd-reload_gen-transfer-msg": "tsx watch src/index.ts -adm-cmd-reload=gen-transfer-msg",
     "d_opt-adm-cmd-reload_tag-create": "tsx watch src/index.ts -adm-cmd-reload=tag-create",
-    "d_opt-host": "tsx watch src/startup/startup.host-only.ts -app-host",
-    "opt-host": "node .dist/startup/startup-mode.host-only.js -app-host",
+    "d_opt-host": "tsx watch src/startup/host-only.startup.ts -app-host",
+    "opt-host": "node .dist/startup/startup-mode.host-only.startup.js -app-host",
     "opt-adm-cmd-reload_gen-transfer-msg": "node .dist/index.js -adm-cmd-reload=gen-transfer-msg",
     "opt-adm-cmd-reload_tag-create": "node .dist/index.js -adm-cmd-reload=tag-create"
   },
@@ -33,16 +33,20 @@
     "@babel/core": "^7.26.7",
     "@babel/preset-env": "^7.26.7",
     "@babel/preset-typescript": "^7.26.0",
+    "@eslint/js": "^9.22.0",
     "@types/dotenv": "^6.1.1",
     "@types/jest": "^29.5.14",
     "@types/node": "^22.13.1",
     "@types/sinon": "^17.0.3",
     "babel-jest": "^29.7.0",
     "chai": "^5.1.2",
+    "eslint": "^9.22.0",
+    "globals": "^16.0.0",
     "jest": "^29.7.0",
     "sinon": "^19.0.2",
     "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",
-    "tsx": "^4.19.2"
+    "tsx": "^4.19.2",
+    "typescript-eslint": "^8.26.0"
   }
 }
