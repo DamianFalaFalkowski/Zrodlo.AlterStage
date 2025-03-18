@@ -1,4 +1,4 @@
-import { ISqliteInstance } from "../../app/app.data/app.data-modules/rental-data.module/rental-data.instance";
+import { IRentalDataInstance } from "../../app/app.data/app.data-modules/rental-data.module/rental-data.instance";
 import { IRentalViewModelIntegration } from "../../app/app.data/app.data-modules/rental-data.module/integrations/get-rent-offers-view-model.integration";
 import { RentOfferViewModel } from "../../app/app.data/app.data-modules/rental-data.module/view-models/rent-offer.view-model";
 import { AppModule } from "../../app/app.modules/app.module";

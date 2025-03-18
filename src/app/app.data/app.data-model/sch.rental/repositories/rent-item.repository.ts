@@ -1,9 +1,9 @@
 import { Identifier } from "sequelize";
-import { RentItemEntity } from "../rent-item.entity";
+import { RentItemEntity } from "../entities/rent-item.entity";
 import { RentItemAviablility } from "../enums/rent-item-aviablility.enum";
 import { RentItemSize } from "../enums/rent-item-size.enum";
 import { OfferRentItemRepository } from "./offer-rent-item.repository";
-import { RecievePointEntity } from "../recieve-point.entity";
+import { RecievePointEntity } from "../entities/recieve-point.entity";
 
 export class RentItemRepository {
     private constructor(){}

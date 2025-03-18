@@ -1,23 +1,35 @@
-import { TagsEntity } from "../../app.data-model/sch.app/tags.entity";
-import { RentOffer_OfferRentItem_Hash } from "../../app.data-model/sch.rental/hash-tables/rent-offer-to-offer-rent-item.hash-entity";
-import { RentOfferEntity } from "../../app.data-model/sch.rental/rent-offer.entity";
 import { RentOfferRepository } from '../../app.data-model/sch.rental/repositories/rent-offer.repository';
 import { SqliteBuilder } from "./rental-data.builder";
-import { ISqlite } from "./rental-data.instance";
+import { IRentalDataChecks } from "./rental-data.instance";
 import { IRentalViewModelIntegration } from "./integrations/get-rent-offers-view-model.integration";
-import { ISaveTagIntegration } from "./integrations/save-tag.sqlite.integration";
 import { RentOfferViewModel } from "./view-models/rent-offer.view-model";
+import { Sequelize } from 'sequelize';
+import { AppDataModule } from '../app-data.module/app-data.module';
 
-export class SqliteModule 
+interface IRentalDataDependency
+{
+   initializeRental(appData: AppDataModule): RentalDataModule
+}
+export class RentalDataModule 
     extends 
         SqliteBuilder 
     implements 
-        ISaveTagIntegration,
         IRentalViewModelIntegration,
-        ISqlite
+        IRentalDataChecks,
+        IRentalDataDependency
 {
-    private constructor() {
+    private _dependency: AppDataModule
+    get context(): Sequelize
+    {
+        return this._dependency.context!;
+    }
+    isContextSetUp(): boolean
+    {
+        throw new Error('Method not implemented.');
+    }
+    private constructor(appData: AppDataModule) {
         super();
+        this._dependency = appData;
     }
     public async getAllActiveOffersViewModel(): Promise<RentOfferViewModel[]>
     {
@@ -32,22 +44,15 @@ export class SqliteModule
         return activeOffersViewModels;
     }
 
-    async saveTag(tagName: string): Promise<void> {
-        await TagsEntity.create({
-                        name: tagName,
-                        description: 'version tag',
-                        userId: 0,
-                        createdUserId: 0
-                    });
+    public initializeRental(appData: AppDataModule): RentalDataModule {
+        return RentalDataModule.initializeRental(appData);
     }
-    public initialize(): SqliteModule {
-        return SqliteModule.initialize();
-    }
-    public static initialize(): SqliteModule {
-        return new SqliteModule()
+    public static initializeRental(appData: AppDataModule): RentalDataModule {
+        return new RentalDataModule(appData)
     }
 }
 
-const sqliteModule: SqliteModule = SqliteModule.initialize();
-
-export default sqliteModule;
+const rentalDataModule = (appData: AppDataModule):RentalDataModule => {
+    return RentalDataModule.initializeRental(appData);
+}
+export default rentalDataModule;

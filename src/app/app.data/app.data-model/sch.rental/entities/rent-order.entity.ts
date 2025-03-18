@@ -1,16 +1,16 @@
 import { DataTypes, FindOptions, Identifier, INTEGER, ModelStatic } from "sequelize";
-import { BaseEntity } from "../_base/_base.entity";
+import { BaseEntity } from "../../_base/_base.entity";
 import { AddressEntity } from "./address.entity";
 import { CustomerDiscountHistoryEntity } from "./customer-discount-history.entity";
 import { CustomerEntity } from "./customer.entity";
-import { OrderStatus } from "./enums/order-status.enum";
+import { OrderStatus } from "../enums/order-status.enum";
 import { OrderDeliveryEntity } from "./order-delivery.entity";
 import { RentItemDamageEntity } from "./rent-item-damage.entity";
 import { RentOfferEntity } from "./rent-offer.entity";
 import { RecievePointEntity } from "./recieve-point.entity";
-import { propertyOf } from "../../../../utils/type-properties.util";
-import { RentOffer_RentOrder_Hash } from "./hash-tables/rent-offer-to-rent-order.hash-entity";
-import { RentItem_RentOrder_Hash } from "./hash-tables/rent-item-to-rent-order.hash-entity";
+import { propertyOf } from "../../../../../utils/type-properties.util";
+import { RentOffer_RentOrder_Hash } from "../hash-tables/rent-offer-to-rent-order.hash-entity";
+import { RentItem_RentOrder_Hash } from "../hash-tables/rent-item-to-rent-order.hash-entity";
 import { RentItemEntity } from "./rent-item.entity";
 
 export const RentOrderModelName = 'RentOrders'

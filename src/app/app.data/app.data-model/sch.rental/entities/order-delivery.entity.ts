@@ -1,8 +1,8 @@
 import { DataTypes } from "sequelize";
-import { BaseEntity } from "../_base/_base.entity";
+import { BaseEntity } from "../../_base/_base.entity";
 import { AddressEntity } from "./address.entity";
 import { RentOrderEntity } from "./rent-order.entity";
-import { propertyOf } from "../../../../utils/type-properties.util";
+import { propertyOf } from "../../../../../utils/type-properties.util";
 
 // TODO: na razie kompletność i poprawność nie będzie realizowana. najpierw chcę obsłuyć operacje na strukturze z pominięciem funkcjonalności dostawy 
 export const OrderDeliveryModelName = 'OrderDeliveries';

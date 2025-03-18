@@ -1,10 +1,10 @@
 import { RentOrderEntity } from "./rent-order.entity";
 import { AddressEntity } from "./address.entity";
 import { RentItemDamageEntity } from "./rent-item-damage.entity";
-import { BaseEntity } from "../_base/_base.entity";
+import { BaseEntity } from "../../_base/_base.entity";
 import { DataTypes, Identifier } from "sequelize";
-import { propertyOf } from "../../../../utils/type-properties.util";
-import { EntityNotFoundByFkError } from "../../../app.errors/entity-not-found-by-this-fk.error";
+import { propertyOf } from "../../../../../utils/type-properties.util";
+import { EntityNotFoundByFkError } from "../../../../app.errors/entity-not-found-by-this-fk.error";
 
 // TODO: sformatowac opisy
 export const CustomerModelName = 'Customers'

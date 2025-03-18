@@ -1,4 +1,4 @@
-import { RentOfferEntity } from "../rent-offer.entity";
+import { RentOfferEntity } from "../entities/rent-offer.entity";
 
 export class RentOfferRepository{
     private constructor() {

@@ -1,5 +1,5 @@
 import { DataTypes } from "sequelize";
-import { BaseAdddressEntity } from "../_base/_base-address.entity";
+import { BaseAdddressEntity } from "../../_base/_base-address.entity";
 
 export const AddressModelName = 'Addresses'
 

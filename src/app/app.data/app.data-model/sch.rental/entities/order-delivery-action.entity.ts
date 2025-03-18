@@ -1,10 +1,10 @@
 import { DataTypes } from "sequelize";
-import { BaseEntity } from "../_base/_base.entity";
+import { BaseEntity } from "../../_base/_base.entity";
 import { AddressEntity } from "./address.entity";
 import { OrderDeliveryEntity } from "./order-delivery.entity";
 import { RecievePointEntity } from "./recieve-point.entity";
 import { RentItemEntity } from "./rent-item.entity";
-import { propertyOf } from "../../../../utils/type-properties.util";
+import { propertyOf } from "../../../../../utils/type-properties.util";
 import { RentOfferEntity } from "./rent-offer.entity";
 
 export const OrderDeliveryActionModelName = 'OrderDeliveryActions'

@@ -1,4 +1,5 @@
-import { AddressEntity } from "../address.entity";
+import { AddressEntity } from "../entities/address.entity";
+
 
 export class AddressRepository {
     private constructor() {

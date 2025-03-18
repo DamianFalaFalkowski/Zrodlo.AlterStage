@@ -1,6 +1,7 @@
-import { OfferRentItemViewModel } from "./offer-rent-item.view-model";
-import { RentOfferEntity } from '../../../app.data-model/sch.rental/rent-offer.entity';
+
+import { RentOfferEntity } from '../../../app.data-model/sch.rental/entities/rent-offer.entity';
 import { RentOffer_OfferRentItem_Hash } from "../../../app.data-model/sch.rental/hash-tables/rent-offer-to-offer-rent-item.hash-entity";
+import { OfferRentItemViewModel } from './offer-rent-item.view-model';
 
 export class RentOfferViewModel
 {

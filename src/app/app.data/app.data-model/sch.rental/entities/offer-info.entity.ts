@@ -1,7 +1,7 @@
 import { DataTypes, Identifier } from "sequelize";
-import { BaseEntity } from "../_base/_base.entity";
+import { BaseEntity } from "../../_base/_base.entity";
 import { RentOfferEntity } from "./rent-offer.entity";
-import { propertyOf } from "../../../../utils/type-properties.util";
+import { propertyOf } from "../../../../../utils/type-properties.util";
 
 export const OfferInfoModelName = 'OfferInfos'
 /**  Informacja o ofercie

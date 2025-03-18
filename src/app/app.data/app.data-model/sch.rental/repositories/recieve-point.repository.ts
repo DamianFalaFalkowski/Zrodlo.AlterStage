@@ -1,5 +1,5 @@
 import { Identifier } from "sequelize";
-import { RecievePointEntity } from "../recieve-point.entity";
+import { RecievePointEntity } from "../entities/recieve-point.entity";
 
 export class RecievePointRepository{
     private constructor() {

@@ -1,12 +1,12 @@
-import { RentItemAviablility } from "./enums/rent-item-aviablility.enum";
-import { BaseEntity } from "../_base/_base.entity";
+import { RentItemAviablility } from "../enums/rent-item-aviablility.enum";
+import { BaseEntity } from "../../_base/_base.entity";
 import { OfferRentItemEntity } from './offer-rent-item.entity';
 import { RecievePointEntity } from "./recieve-point.entity";
 import { RentItemDamageEntity } from './rent-item-damage.entity';
 import { RentOrderEntity } from "./rent-order.entity";
 import { DataTypes, Identifier } from "sequelize";
-import { RentItem_RentOrder_Hash } from "./hash-tables/rent-item-to-rent-order.hash-entity";
-import { propertyOf } from "../../../../utils/type-properties.util";
+import { RentItem_RentOrder_Hash } from "../hash-tables/rent-item-to-rent-order.hash-entity";
+import { propertyOf } from "../../../../../utils/type-properties.util";
 
 // TODO: sformatować opisy
 export const RentItemModelName = 'RentItems'

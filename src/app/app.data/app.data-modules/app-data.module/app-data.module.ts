@@ -1,47 +1,31 @@
 import { AppModule } from '../../../app.modules/app.module';
-import { AppDataBuilder } from "./app-data.builder";
-
-import { ISqlite } from "../rental-data.module/rental-data.instance";
 import { ISaveTagIntegration } from '../rental-data.module/integrations/save-tag.sqlite.integration';
+import { AppDataBuilder } from "./app-data.builder";
+import { IAppDataChecks } from './app-data.instance';
 
-interface IAppDataDependency<T extends ISaveTagIntegration> 
+interface IAppDataDependency
 {
-   initialize(dependingOnModule: T, major: number, minor: number, patch: number): AppModule
+   initialize(major: number, minor: number, patch: number): AppModule
 }
-class AppDataModule<T extends ISaveTagIntegration>
+export class AppDataModule
    extends
       AppDataBuilder
    implements
-      IAppDataDependency<T>,
-      ISqlite 
+      IAppDataDependency, IAppDataChecks, ISaveTagIntegration
 {
-   private _dependency: T | undefined;
-   private constructor(dependency: T) {
+   public constructor() {
       super();
-      this._dependency = dependency;
    }
-   isAppSchemaSynced(): boolean {
-      return this._dependency!.isAppSchemaSynced();
+   public static initialize(): AppDataModule {
+      return new AppDataModule()
    }
-   isRentalSchemaSynced(): boolean {
-      return this._dependency!.isRentalSchemaSynced();
-   }
-   public static initialize<T extends ISaveTagIntegration>(dependency: T): AppDataModule<T> {
-      return new AppDataModule(dependency)
-   }
-   public initialize<T extends ISaveTagIntegration>(dependency: T): AppDataModule<T> {
-      return new AppDataModule(dependency)
-   }
-   isContextSetUp(): boolean {
-      return this._dependency!.isContextSetUp();
-   }
-   saveTag(tagName: string): void {
-      this._dependency!.saveTag(tagName);
+   public initialize(): AppDataModule {
+      return new AppDataModule();
    }
 }
 
-const appDataModule = <D extends ISaveTagIntegration>(data : D): AppDataModule<D> => 
+const appDataModule = (): AppDataModule => 
 { 
-   return AppDataModule.initialize(data);
+   return AppDataModule.initialize();
 };
 export default appDataModule;

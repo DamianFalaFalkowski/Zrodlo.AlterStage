@@ -1,9 +1,10 @@
 import { DataTypes, Identifier } from "sequelize";
-import { BaseEntity } from "../_base/_base.entity";
-import { CustomerEntity } from "./customer.entity";
-import { OfferDiscountEntity } from "./offer-discount.entity";
 import { RentOrderEntity } from "./rent-order.entity";
-import { propertyOf } from "../../../../utils/type-properties.util";
+import { BaseEntity } from "../../_base/_base.entity";
+import { OfferDiscountEntity } from "./offer-discount.entity";
+import { CustomerEntity } from "./customer.entity";
+import { propertyOf } from "../../../../../utils/type-properties.util";
+
 
 export const CustomerDiscountHistoryModelName = 'CustomerDiscountHistory';
 /** Historyczna znika uzytkownika

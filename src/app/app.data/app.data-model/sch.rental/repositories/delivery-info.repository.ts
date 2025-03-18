@@ -1,4 +1,4 @@
-import { DeliveryInfoEntity } from "../delivery-info.entity";
+import { DeliveryInfoEntity } from "../entities/delivery-info.entity";
 import { RentItemAviablility } from "../enums/rent-item-aviablility.enum";
 
 export class DeliveryInfoRepository {

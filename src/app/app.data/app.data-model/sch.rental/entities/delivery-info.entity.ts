@@ -1,9 +1,9 @@
+
+import { RentItemAviablility } from "./../enums/rent-item-aviablility.enum";
+import { DataTypes } from "sequelize";
+import { EntityNotFoundByFkError } from "../../../../app.errors/entity-not-found-by-this-fk.error";
+import { BaseEntity } from "../../_base/_base.entity";
 import { RecievePointEntity } from "./recieve-point.entity";
-import { RentOfferEntity } from "./rent-offer.entity";
-import { BaseEntity } from "../_base/_base.entity";
-import { RentItemAviablility } from "./enums/rent-item-aviablility.enum";
-import { DataTypes, Identifier } from "sequelize";
-import { EntityNotFoundByFkError } from "../../../app.errors/entity-not-found-by-this-fk.error";
 
 export const DeliveryInfoModelName = 'DeliveryInfos'
 

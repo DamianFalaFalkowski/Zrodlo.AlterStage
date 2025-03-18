@@ -1,36 +1,34 @@
 
-import { DataTypes, Dialect, Sequelize } from "sequelize";
-import { ISqliteInstance, SqliteInstance } from './rental-data.instance';
-import { SqliteModule } from "./rental-data.module";
-import { TagsAttributes, TagsModelName, TagsEntity } from '../../app.data-model/sch.app/tags.entity'
+import { DataTypes} from "sequelize";
+import { IRentalDataInstance, SqliteInstance } from './rental-data.instance';
+import { RentalDataModule } from "./rental-data.module";
 import { __logger } from "../../../../utils/dc-logger.util";
-import { OfferRentItemAttributes, OfferRentItemEntity, OfferRentItemModelName } from '../../app.data-model/sch.rental/offer-rent-item.entity';
-import { RentItemAttributes, RentItemEntity, RentItemModelName } from "../../app.data-model/sch.rental/rent-item.entity";
-import { RecievePointAttributes, RecievePointEntity, RecievePointModelName } from '../../app.data-model/sch.rental/recieve-point.entity';
-import { RentItemDamageAttributes, RentItemDamageEntity, RentItemDamageModelName } from "../../app.data-model/sch.rental/rent-item-damage.entity";
-import { RentOrderAttributes, RentOrderEntity, RentOrderModelName } from '../../app.data-model/sch.rental/rent-order.entity';
+import { RentItemAttributes, RentItemEntity, RentItemModelName } from "../../app.data-model/sch.rental/entities/rent-item.entity";
+import { RecievePointAttributes, RecievePointEntity, RecievePointModelName } from '../../app.data-model/sch.rental/entities/recieve-point.entity';
+import { RentOrderAttributes, RentOrderEntity, RentOrderModelName } from '../../app.data-model/sch.rental/entities/rent-order.entity';
 import { RentItem_RentOrder_Hash, RentItemToRentOrderModelName } from "../../app.data-model/sch.rental/hash-tables/rent-item-to-rent-order.hash-entity";
-import { AddressAttributes, AddressEntity, AddressModelName } from "../../app.data-model/sch.rental/address.entity";
-import { CustomerDiscountHistoryAttributes, CustomerDiscountHistoryEntity, CustomerDiscountHistoryModelName } from "../../app.data-model/sch.rental/customer-discount-history.entity";
-import { CustomerAttributes, CustomerEntity, CustomerModelName } from "../../app.data-model/sch.rental/customer.entity";
-import { DeliveryInfoAttributes, DeliveryInfoEntity, DeliveryInfoModelName } from "../../app.data-model/sch.rental/delivery-info.entity";
-import { OfferDiscountAttributes, OfferDiscountEntity, OfferDiscountModelName } from '../../app.data-model/sch.rental/offer-discount.entity';
-import { OfferInfoAttributes, OfferInfoEntity, OfferInfoModelName } from "../../app.data-model/sch.rental/offer-info.entity";
-import { OrderDeliveryActionAttributes, OrderDeliveryActionEntity, OrderDeliveryActionModelName } from "../../app.data-model/sch.rental/order-delivery-action.entity";
-import { OrderDeliveryAttributes, OrderDeliveryEntity, OrderDeliveryModelName } from "../../app.data-model/sch.rental/order-delivery.entity";
-import { RentOfferAttributes, RentOfferEntity, RentOfferModelName } from "../../app.data-model/sch.rental/rent-offer.entity";
+import { CustomerAttributes, CustomerEntity, CustomerModelName } from "../../app.data-model/sch.rental/entities/customer.entity";
+import { OfferDiscountAttributes, OfferDiscountEntity, OfferDiscountModelName } from '../../app.data-model/sch.rental/entities/offer-discount.entity';
+import { OrderDeliveryActionAttributes, OrderDeliveryActionEntity, OrderDeliveryActionModelName } from "../../app.data-model/sch.rental/entities/order-delivery-action.entity";
+import { OrderDeliveryAttributes, OrderDeliveryEntity, OrderDeliveryModelName } from "../../app.data-model/sch.rental/entities/order-delivery.entity";
+import { RentOfferAttributes, RentOfferEntity, RentOfferModelName } from "../../app.data-model/sch.rental/entities/rent-offer.entity";
 import { RentOffer_OfferDiscount_Hash, RentOfferToOfferDiscountModelName } from '../../app.data-model/sch.rental/hash-tables/rent-offer-to-offer-discount.hash-entity';
 import { RentOffer_RentOrder_Hash, RentOfferToRentOrderModelName } from "../../app.data-model/sch.rental/hash-tables/rent-offer-to-rent-order.hash-entity";
 import { RentOffer_OfferRentItem_Hash, RentOfferToOfferRentItemEntityName } from "../../app.data-model/sch.rental/hash-tables/rent-offer-to-offer-rent-item.hash-entity";
 import { RentOffer_RecievePoint_Hash, RentOfferToRecievePointName } from "../../app.data-model/sch.rental/hash-tables/rent-order-to-recieve-point.hash-entity";
 import { RentOfferRepository } from "../../app.data-model/sch.rental/repositories/rent-offer.repository";
 import { AddressRepository } from "../../app.data-model/sch.rental/repositories/address.repository";
-import { DeliveryInfoRepository } from "../../app.data-model/sch.rental/repositories/delivery-info.repository";
 import { RentItemAviablility } from "../../app.data-model/sch.rental/enums/rent-item-aviablility.enum";
 import { RecievePointRepository } from "../../app.data-model/sch.rental/repositories/recieve-point.repository";
 import { RentItemRepository } from "../../app.data-model/sch.rental/repositories/rent-item.repository";
 import { RentItemSize } from "../../app.data-model/sch.rental/enums/rent-item-size.enum";
 import { OfferRentItemRepository } from "../../app.data-model/sch.rental/repositories/offer-rent-item.repository";
+import { OfferRentItemAttributes, OfferRentItemEntity, OfferRentItemModelName } from "../../app.data-model/sch.rental/entities/offer-rent-item.entity";
+import { DeliveryInfoAttributes, DeliveryInfoEntity, DeliveryInfoModelName } from "../../app.data-model/sch.rental/entities/delivery-info.entity";
+import { CustomerDiscountHistoryAttributes, CustomerDiscountHistoryEntity, CustomerDiscountHistoryModelName } from "../../app.data-model/sch.rental/entities/customer-discount-history.entity";
+import { AddressAttributes, AddressEntity, AddressModelName } from "../../app.data-model/sch.rental/entities/address.entity";
+import { OfferInfoAttributes, OfferInfoEntity, OfferInfoModelName } from "../../app.data-model/sch.rental/entities/offer-info.entity";
+import { RentItemDamageAttributes, RentItemDamageEntity, RentItemDamageModelName } from "../../app.data-model/sch.rental/entities/rent-item-damage.entity";
 
 /** ....
 ** .... */ 
@@ -40,29 +38,13 @@ export const rentalSchemaName = 'Rental'
 /** ....
 ** .... */ 
 export interface ISqliteBuilder 
-   extends ISqliteInstance 
+   extends IRentalDataInstance 
 {
 /** ....
 ** .... */ 
-   SetDbConnection(
-      databaseName: string,
-      userName: string,
-      password: string,
-      host: string,
-      dialect: string,
-      logging: boolean,
-      storage: string
-   ): SqliteModule;
+   InitRentalSchema(afterRentalSchemaSync: () => void): RentalDataModule;
 
-/** ....
-** .... */ 
-   InitAppSchema(afterAppSchemaSync: () => void): SqliteModule;
-   
-/** ....
-** .... */ 
-   InitRentalSchema(afterRentalSchemaSync: () => void): SqliteModule;
-
-   PrepeareTestData_Rental(afterTestDataCreation: () => void): Promise<SqliteModule>;
+   PrepeareTestData_Rental(afterTestDataCreation: () => void): Promise<RentalDataModule>;
 }
 
 
@@ -72,7 +54,7 @@ export abstract class SqliteBuilder
    extends SqliteInstance
    implements ISqliteBuilder 
 {
-   async PrepeareTestData_Rental(afterTestDataCreation: () => void): Promise<SqliteModule>
+   async PrepeareTestData_Rental(afterTestDataCreation: () => void): Promise<RentalDataModule>
    {
       let addressOne = await AddressRepository.create(0, 'city2', 'street', 'house', 'postalCode');
       //let baseRecievePointDeliveryInfo = await DeliveryInfoRepository.create(0, 'na terenie Warszawy', true,RentItemAviablility.IMMEDIATELY, true, true,true, false, false, false, false, false, 300, 30, 2, undefined, 20, 20);
@@ -88,116 +70,75 @@ export abstract class SqliteBuilder
       let offerItems = await offerOne.getOfferRentItems((await RentOffer_OfferRentItem_Hash.findOne({ 'where': { 'RentalRentOfferId': offerOne.id} }))!);
 
       afterTestDataCreation();
-      return this as unknown as SqliteModule;
+      return this as unknown as RentalDataModule;
    }
 
 
 
-/** 
-** 0. SET UP CONNECTION */ 
-   public SetDbConnection(
-      databaseName: string,
-      userName: string,
-      password: string,
-      host: string,
-      dialect: Dialect,
-      logging: boolean,
-      storage: string): SqliteModule
-   {
-      this._context = new Sequelize(
-         databaseName,
-         userName,
-         password,
-         {
-            host: host,
-            dialect: dialect,
-            logging: logging,
-            storage: storage
-         }
-      );
-      return this as unknown as SqliteModule;
-   }
 
 
-/** 
-** I. APP SCHEMA */ 
-   public InitAppSchema(afterAppSchemaSync: () => void): SqliteModule {
-      const schemaName = 'App'
-      TagsEntity.init(
-         TagsAttributes,
-         {
-            sequelize: this._context!,
-            modelName: schemaName + '_' + TagsModelName
-         }
-      );
-      TagsEntity.afterSync(() => {
-         this._isAppSchemaSynced = true;
-         __logger.logInfo('App schema synchronized');
-         afterAppSchemaSync();
-      });
-      TagsEntity.sync({ force: this._forceSync });
-      return this.As<SqliteModule>();
-   }
+
+
 
 
 /** Uruchamia operacje inicializacji bazy danych.
 ** II. RENTAL SCHEMA */ 
-   public InitRentalSchema(afterRentalSchemaSync: () => void): SqliteModule 
+   public InitRentalSchema(afterRentalSchemaSync: () => void): RentalDataModule 
    {
    //--> 1. INIT DATA MODELS
       AddressEntity.init(
          AddressAttributes,
-         { sequelize: this._context!, modelName: rentalSchemaName + '_' + AddressModelName }
+         { sequelize: this.context!, modelName: rentalSchemaName + '_' + AddressModelName }
       );
       CustomerDiscountHistoryEntity.init(
          CustomerDiscountHistoryAttributes,
-         { sequelize: this._context!, modelName: rentalSchemaName + '_' + CustomerDiscountHistoryModelName }
+         { sequelize: this.context!, modelName: rentalSchemaName + '_' + CustomerDiscountHistoryModelName }
       );
       CustomerEntity.init(
          CustomerAttributes,
-         { sequelize: this._context!, modelName: rentalSchemaName + '_' + CustomerModelName }
+         { sequelize: this.context!, modelName: rentalSchemaName + '_' + CustomerModelName }
       );
       DeliveryInfoEntity.init(
          DeliveryInfoAttributes,
-         { sequelize: this._context!, modelName: rentalSchemaName + '_' + DeliveryInfoModelName }
+         { sequelize: this.context!, modelName: rentalSchemaName + '_' + DeliveryInfoModelName }
       );
       OfferDiscountEntity.init(
          OfferDiscountAttributes,
-         { sequelize: this._context!, modelName: rentalSchemaName + '_' + OfferDiscountModelName }
+         { sequelize: this.context!, modelName: rentalSchemaName + '_' + OfferDiscountModelName }
       );
       OfferInfoEntity.init(
          OfferInfoAttributes,
-         { sequelize: this._context!, modelName: rentalSchemaName + '_' + OfferInfoModelName }
+         { sequelize: this.context!, modelName: rentalSchemaName + '_' + OfferInfoModelName }
       );
       OfferRentItemEntity.init(
          OfferRentItemAttributes,
-         { sequelize: this._context!, modelName: rentalSchemaName + '_' + OfferRentItemModelName }
+         { sequelize: this.context!, modelName: rentalSchemaName + '_' + OfferRentItemModelName }
       );
       OrderDeliveryActionEntity.init(
          OrderDeliveryActionAttributes,
-         { sequelize: this._context!, modelName: rentalSchemaName + '_' + OrderDeliveryActionModelName }
+         { sequelize: this.context!, modelName: rentalSchemaName + '_' + OrderDeliveryActionModelName }
       );
       OrderDeliveryEntity.init(
          OrderDeliveryAttributes,
-         { sequelize: this._context!, modelName: rentalSchemaName + '_' + OrderDeliveryModelName }
+         { sequelize: this.context!, modelName: rentalSchemaName + '_' + OrderDeliveryModelName }
       );
       RecievePointEntity.init(
          RecievePointAttributes,
-         { sequelize: this._context!, modelName: rentalSchemaName + '_' + RecievePointModelName }
+         { sequelize: this.context!, modelName: rentalSchemaName + '_' + RecievePointModelName }
       );
       RentItemDamageEntity.init(RentItemDamageAttributes,
-         { sequelize: this._context!, modelName: rentalSchemaName + '_' + RentItemDamageModelName }
+         { sequelize: this.context!, modelName: rentalSchemaName + '_' + RentItemDamageModelName }
       );
       RentItemEntity.init(RentItemAttributes,
-         { sequelize: this._context!, modelName: rentalSchemaName + '_' + RentItemModelName }
+         { sequelize: this.context!, modelName: rentalSchemaName + '_' + RentItemModelName }
       );
       RentOfferEntity.init(
          RentOfferAttributes,
-         { sequelize: this._context!, modelName: rentalSchemaName + '_' + RentOfferModelName }
+         { sequelize: this.context!, modelName: rentalSchemaName + '_' + RentOfferModelName }
       )
       RentOrderEntity.init(
          RentOrderAttributes,
-         { sequelize: this._context!, modelName: rentalSchemaName + '_' + RentOrderModelName }
+         { sequelize: this.context!, modelName: rentalSchemaName + '_' + RentOrderModelName }
       )
 
 
@@ -230,7 +171,7 @@ export abstract class SqliteBuilder
             },
          },
          {
-            sequelize: this._context!,
+            sequelize: this.context!,
             modelName: rentalSchemaName + '_' + RentItemToRentOrderModelName,
          }
       );
@@ -262,7 +203,7 @@ export abstract class SqliteBuilder
             },
          },
          {
-            sequelize: this._context!,
+            sequelize: this.context!,
             modelName: rentalSchemaName + '_' + RentOfferToOfferDiscountModelName,
          }
       );
@@ -294,7 +235,7 @@ export abstract class SqliteBuilder
             },
          },
          {
-            sequelize: this._context!,
+            sequelize: this.context!,
             modelName: rentalSchemaName + '_' + RentOfferToRentOrderModelName,
          }
       );
@@ -326,7 +267,7 @@ export abstract class SqliteBuilder
             },
          },
          {
-            sequelize: this._context!,
+            sequelize: this.context!,
             modelName: rentalSchemaName + '_' + RentOfferToOfferRentItemEntityName,
          }
       );
@@ -358,7 +299,7 @@ export abstract class SqliteBuilder
             },
          },
          {
-            sequelize: this._context!,
+            sequelize: this.context!,
             modelName: rentalSchemaName + '_' + RentOfferToRecievePointName,
          }
       );
@@ -544,6 +485,6 @@ export abstract class SqliteBuilder
       AddressEntity.sync({ force: this._forceSync });
 
    //--> 5. RETURN MODULE WITH RENTAL SCHEMA
-      return this.As<SqliteModule>();
+      return this.As<RentalDataModule>();
    }
 }

@@ -1,10 +1,6 @@
-import { Identifier, Sequelize } from "sequelize";
+import { Identifier } from "sequelize";
 import { RentItemSize } from "../enums/rent-item-size.enum";
-import { OfferRentItemEntity } from "../offer-rent-item.entity";
-import { RentItem_RentOrder_Hash } from "../hash-tables/rent-item-to-rent-order.hash-entity";
-import { RentOffer_OfferRentItem_Hash, RentOfferToOfferRentItemEntityName } from "../hash-tables/rent-offer-to-offer-rent-item.hash-entity";
-import { RentOfferEntity } from "../rent-offer.entity";
-import sequelize from "sequelize/types/sequelize";
+import { OfferRentItemEntity } from "../entities/offer-rent-item.entity";
 
 export class OfferRentItemRepository {
     private constructor(){}

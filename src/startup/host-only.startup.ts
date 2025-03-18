@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 import {__logger} from '../utils/dc-logger.util';
 import appDataModule from '../app/app.data/app.data-modules/app-data.module/app-data.module';
-import sqliteModule from '../app/app.data/app.data-modules/rental-data.module/rental-data.module';
+import rentalDataModule from '../app/app.data/app.data-modules/rental-data.module/rental-data.module';
 import { Dialect } from 'sequelize';
 import hostModule from '../app/app.modules/host.module/app-module.host.module';
 import paymentModule from '../modules/payment.module/payment.module';
@@ -11,10 +11,10 @@ import paymentModule from '../modules/payment.module/payment.module';
 __logger.logInfo('Starting discord chat-bot ...');
 __logger.logInfo('\tApp configuration:');
 __logger.logInfo('\t\t\tDb: SqLite[Tag, Rental]')
-__logger.logInfo('\t\t\tApp: Version, Host, Payment');
+__logger.logInfo('\t\t\tApp: Version, Host, Payment, Rental');
 __logger.logInfo('');
 
-const data = sqliteModule
+const data = appDataModule()
    .SetDbConnection(
       process.env.DATABASE_NAME as string,
       process.env.DATABASE_USER as string,
@@ -25,7 +25,7 @@ const data = sqliteModule
       process.env.DATABASE_STORAGE as string)
    .InitAppSchema(() => 
    { 
-      appDataModule(data)
+      appDataModule()
          .setUpAppVersion(1,0,1);
       hostModule
          .SetUpClient(() => 
@@ -33,12 +33,15 @@ const data = sqliteModule
             __logger.logInfo("Logowanie OK ! ! !");
             try 
             {
-               data.InitRentalSchema(() =>
+               data.InitAppSchema(() =>
                {
-                  data.PrepeareTestData_Rental(() =>
-                  {
-                     __logger.logInfo("Dane testowe utworzone ! ! !");
-                  });
+                  let rentalData = rentalDataModule(data).InitRentalSchema(() => {
+                     rentalData.PrepeareTestData_Rental(() =>
+                     {
+                        __logger.logInfo("Dane testowe utworzone ! ! !");
+                     });
+                  })
+                  
                });
                paymentModule(hostModule)
                   .RegisterPaymentCommands();

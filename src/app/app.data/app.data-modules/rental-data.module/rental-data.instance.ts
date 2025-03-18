@@ -1,41 +1,24 @@
 import { Sequelize } from "sequelize";
-import { AppModule } from "../../../app.modules/app.module";
 import { ApplicationError } from "../../../app.errors/application.error";
+import { AppDataModule } from "../app-data.module/app-data.module";
 
-export interface ISqlite
+export interface IRentalDataChecks
 {
-   isContextSetUp(): boolean;
-
-   isAppSchemaSynced(): boolean;
    isRentalSchemaSynced(): boolean;
 }
 
-//TODO: GLOBAL - Ustrukturyzować działanie i odpowiedzialnosci instancji, buildera, modułu i integracji
-
-
-export interface ISqliteInstance extends ISqlite
+export interface IRentalDataInstance extends IRentalDataChecks
 {
-   context: Sequelize | undefined;
 }
 export abstract class SqliteInstance 
-    extends AppModule 
-        implements ISqliteInstance
+    extends AppDataModule
+    implements IRentalDataInstance
 {
     protected readonly _forceSync: boolean = true;
 
-    protected _context: Sequelize | undefined;
-    public get context(): Sequelize{
-        return this._context ??
-            (() => { throw new ApplicationError("Kontekst bazy danych nie został jeszcze utworzony."); })();
-    }
-    public isContextSetUp(): boolean {
-        return this.context !== undefined;
-    }
-
-    protected _isAppSchemaSynced: boolean = false;
-    public isAppSchemaSynced(): boolean {
-        return this._isAppSchemaSynced;
-    }
+    
+    abstract get context(): Sequelize;
+    abstract isContextSetUp(): boolean ;
 
     protected _isRentalSchemaSynced = false;
     public isRentalSchemaSynced(): boolean {

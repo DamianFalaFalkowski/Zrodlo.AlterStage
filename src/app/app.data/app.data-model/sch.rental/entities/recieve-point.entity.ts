@@ -1,10 +1,10 @@
 import { DataTypes, Identifier } from "sequelize";
-import { BaseEntity } from "../_base/_base.entity";
+import { BaseEntity } from "../../_base/_base.entity";
 import { AddressEntity } from "./address.entity";
 import { DeliveryInfoEntity } from "./delivery-info.entity";
 import { RentOrderEntity } from "./rent-order.entity";
-import { propertyOf } from "../../../../utils/type-properties.util";
-import { RentOffer_RecievePoint_Hash } from "./hash-tables/rent-order-to-recieve-point.hash-entity";
+import { propertyOf } from "../../../../../utils/type-properties.util";
+import { RentOffer_RecievePoint_Hash } from "../hash-tables/rent-order-to-recieve-point.hash-entity";
 import { RentOfferEntity } from "./rent-offer.entity";
 
 export const RecievePointModelName = 'RecievePoints'

@@ -1,6 +1,6 @@
-import { ISqlite } from "../rental-data.instance";
+import { IAppDataChecks } from "../../app-data.module/app-data.instance";
 
-export interface ISaveTagIntegration extends ISqlite
+export interface ISaveTagIntegration extends IAppDataChecks
 {
     saveTag(tagName: string): void;
 }

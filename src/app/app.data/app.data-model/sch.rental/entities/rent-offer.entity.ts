@@ -1,17 +1,17 @@
-import { RentItemAviablility } from './enums/rent-item-aviablility.enum';
-import { BaseEntity } from "../_base/_base.entity";
+import { RentItemAviablility } from '../enums/rent-item-aviablility.enum';
+import { BaseEntity } from "../../_base/_base.entity";
 import { OfferRentItemEntity } from './offer-rent-item.entity';
 import { OfferDiscountEntity } from './offer-discount.entity';
 import { OfferInfoEntity } from './offer-info.entity';
 import { RecievePointEntity } from './recieve-point.entity';
 import { OrderDeliveryEntity } from './order-delivery.entity';
 import { BelongsToMany, DataTypes, HasMany, Model, ModelStatic } from 'sequelize';
-import { RentOffer_RentOrder_Hash } from './hash-tables/rent-offer-to-rent-order.hash-entity';
-import { BaseHashEntity } from '../_base/_base.hash-entity';
+import { RentOffer_RentOrder_Hash } from '../hash-tables/rent-offer-to-rent-order.hash-entity';
+import { BaseHashEntity } from '../../_base/_base.hash-entity';
 import { RentOrderEntity } from './rent-order.entity';
-import { RentOffer_OfferRentItem_Hash } from './hash-tables/rent-offer-to-offer-rent-item.hash-entity';
-import { RentOffer_RecievePoint_Hash } from './hash-tables/rent-order-to-recieve-point.hash-entity';
-import { RentOffer_OfferDiscount_Hash } from './hash-tables/rent-offer-to-offer-discount.hash-entity';
+import { RentOffer_OfferRentItem_Hash } from '../hash-tables/rent-offer-to-offer-rent-item.hash-entity';
+import { RentOffer_RecievePoint_Hash } from '../hash-tables/rent-order-to-recieve-point.hash-entity';
+import { RentOffer_OfferDiscount_Hash } from '../hash-tables/rent-offer-to-offer-discount.hash-entity';
 
 export const RentOfferModelName = 'RentOffers'
 
