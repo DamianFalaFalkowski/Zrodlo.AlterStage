@@ -3,10 +3,11 @@ import dotenv from 'dotenv';
 dotenv.config();
 import {__logger} from '../utils/dc-logger.util';
 import appDataModule from '../app/app.data/app.data-modules/app-data.module/app-data.module';
-import rentalDataModule from '../app/app.data/app.data-modules/rental-data.module/rental-data.module';
 import { Dialect } from 'sequelize';
-import hostModule from '../app/app.modules/host.module/app-module.host.module';
+import hostModule, { HostModule } from '../app/app.modules/host.module/app-module.host.module';
 import paymentModule from '../modules/payment.module/payment.module';
+import { ForumChannel, GuildForumThreadManager } from 'discord.js';
+import { RentalDataModule } from '../app/app.data/app.data-modules/rental-data.module/rental-data.module';
 
 __logger.logInfo('Starting discord chat-bot ...');
 __logger.logInfo('\tApp configuration:');
@@ -14,7 +15,7 @@ __logger.logInfo('\t\t\tDb: SqLite[Tag, Rental]')
 __logger.logInfo('\t\t\tApp: Version, Host, Payment, Rental');
 __logger.logInfo('');
 
-const data = appDataModule()
+const AppDataModule = appDataModule()
    .SetDbConnection(
       process.env.DATABASE_NAME as string,
       process.env.DATABASE_USER as string,
@@ -33,13 +34,31 @@ const data = appDataModule()
             __logger.logInfo("Logowanie OK ! ! !");
             try 
             {
-               data.InitAppSchema(() =>
+               AppDataModule.InitAppSchema(async () =>
                {
-                  let rentalData = rentalDataModule(data).InitRentalSchema(() => {
-                     rentalData.PrepeareTestData_Rental(() =>
-                     {
-                        __logger.logInfo("Dane testowe utworzone ! ! !");
-                     });
+                  
+                  const ch = await hostModule.As<HostModule>().GetGuildChannel<ForumChannel>('1334687740951789638');// RENTAL: dj-equipment
+                  await ch.threads.create({
+                     name: 'test name',
+                     message: {
+                        content: "test msg", 
+                        embeds: [
+                           { image: { url: `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIaJvtk7yUuQ08NP6_ej90WSd5nbsnu5uzxg&s`}  }
+                        ]},
+                     appliedTags: ['1335377426850516992']
+                  })
+                  .then(threadChannel => __logger.logInfo(JSON.stringify(threadChannel)))
+                  .catch(console.error);
+
+                  let rentalData = RentalDataModule
+                     .initializeRental(
+                           AppDataModule, 
+                           (process.env.MODULE_RENTALDATA_FORCESYNC as string) === 'true')
+                     .InitSchema(() => {
+                        rentalData.PrepeareTestData(() =>
+                        {
+                           __logger.logInfo("Dane testowe utworzone ! ! !");
+                        });
                   })
                   
                });

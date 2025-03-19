@@ -1,6 +1,6 @@
 
-import { DataTypes} from "sequelize";
-import { IRentalDataInstance, SqliteInstance } from './rental-data.instance';
+import { DataTypes, Sequelize} from "sequelize";
+import { IRentalDataInstance, RentalInstance, rentalSchemaName } from './rental-data.instance';
 import { RentalDataModule } from "./rental-data.module";
 import { __logger } from "../../../../utils/dc-logger.util";
 import { RentItemAttributes, RentItemEntity, RentItemModelName } from "../../app.data-model/sch.rental/entities/rent-item.entity";
@@ -29,32 +29,33 @@ import { CustomerDiscountHistoryAttributes, CustomerDiscountHistoryEntity, Custo
 import { AddressAttributes, AddressEntity, AddressModelName } from "../../app.data-model/sch.rental/entities/address.entity";
 import { OfferInfoAttributes, OfferInfoEntity, OfferInfoModelName } from "../../app.data-model/sch.rental/entities/offer-info.entity";
 import { RentItemDamageAttributes, RentItemDamageEntity, RentItemDamageModelName } from "../../app.data-model/sch.rental/entities/rent-item-damage.entity";
-
-/** ....
-** .... */ 
-export const rentalSchemaName = 'Rental'
+import { IGetContextIntegrationConsumer } from "../app-data.module/integrations/get-context.integration";
 
 
 /** ....
 ** .... */ 
-export interface ISqliteBuilder 
+export interface IRentalDataBuilder 
    extends IRentalDataInstance 
 {
 /** ....
 ** .... */ 
-   InitRentalSchema(afterRentalSchemaSync: () => void): RentalDataModule;
+   InitSchema(afterRentalSchemaSync: () => void): RentalDataModule;
 
-   PrepeareTestData_Rental(afterTestDataCreation: () => void): Promise<RentalDataModule>;
+   PrepeareTestData(afterTestDataCreation: () => void): Promise<RentalDataModule>;
 }
 
 
 /** ....
 ** .... */ 
-export abstract class SqliteBuilder
-   extends SqliteInstance
-   implements ISqliteBuilder 
+export abstract class RentalDataBuilder
+   extends RentalInstance
+   implements IRentalDataBuilder,
+      // consuming
+      IGetContextIntegrationConsumer
 {
-   async PrepeareTestData_Rental(afterTestDataCreation: () => void): Promise<RentalDataModule>
+   abstract GetContext(): Sequelize
+
+   async PrepeareTestData(afterTestDataCreation: () => void): Promise<RentalDataModule>
    {
       let addressOne = await AddressRepository.create(0, 'city2', 'street', 'house', 'postalCode');
       //let baseRecievePointDeliveryInfo = await DeliveryInfoRepository.create(0, 'na terenie Warszawy', true,RentItemAviablility.IMMEDIATELY, true, true,true, false, false, false, false, false, 300, 30, 2, undefined, 20, 20);
@@ -73,72 +74,64 @@ export abstract class SqliteBuilder
       return this as unknown as RentalDataModule;
    }
 
-
-
-
-
-
-
-
-
 /** Uruchamia operacje inicializacji bazy danych.
 ** II. RENTAL SCHEMA */ 
-   public InitRentalSchema(afterRentalSchemaSync: () => void): RentalDataModule 
+   public InitSchema(afterRentalSchemaSync: () => void): RentalDataModule 
    {
    //--> 1. INIT DATA MODELS
       AddressEntity.init(
          AddressAttributes,
-         { sequelize: this.context!, modelName: rentalSchemaName + '_' + AddressModelName }
+         { sequelize: this.GetContext(), modelName: rentalSchemaName + '_' + AddressModelName }
       );
       CustomerDiscountHistoryEntity.init(
          CustomerDiscountHistoryAttributes,
-         { sequelize: this.context!, modelName: rentalSchemaName + '_' + CustomerDiscountHistoryModelName }
+         { sequelize: this.GetContext(), modelName: rentalSchemaName + '_' + CustomerDiscountHistoryModelName }
       );
       CustomerEntity.init(
          CustomerAttributes,
-         { sequelize: this.context!, modelName: rentalSchemaName + '_' + CustomerModelName }
+         { sequelize: this.GetContext(), modelName: rentalSchemaName + '_' + CustomerModelName }
       );
       DeliveryInfoEntity.init(
          DeliveryInfoAttributes,
-         { sequelize: this.context!, modelName: rentalSchemaName + '_' + DeliveryInfoModelName }
+         { sequelize: this.GetContext(), modelName: rentalSchemaName + '_' + DeliveryInfoModelName }
       );
       OfferDiscountEntity.init(
          OfferDiscountAttributes,
-         { sequelize: this.context!, modelName: rentalSchemaName + '_' + OfferDiscountModelName }
+         { sequelize: this.GetContext(), modelName: rentalSchemaName + '_' + OfferDiscountModelName }
       );
       OfferInfoEntity.init(
          OfferInfoAttributes,
-         { sequelize: this.context!, modelName: rentalSchemaName + '_' + OfferInfoModelName }
+         { sequelize: this.GetContext(), modelName: rentalSchemaName + '_' + OfferInfoModelName }
       );
       OfferRentItemEntity.init(
          OfferRentItemAttributes,
-         { sequelize: this.context!, modelName: rentalSchemaName + '_' + OfferRentItemModelName }
+         { sequelize: this.GetContext(), modelName: rentalSchemaName + '_' + OfferRentItemModelName }
       );
       OrderDeliveryActionEntity.init(
          OrderDeliveryActionAttributes,
-         { sequelize: this.context!, modelName: rentalSchemaName + '_' + OrderDeliveryActionModelName }
+         { sequelize: this.GetContext(), modelName: rentalSchemaName + '_' + OrderDeliveryActionModelName }
       );
       OrderDeliveryEntity.init(
          OrderDeliveryAttributes,
-         { sequelize: this.context!, modelName: rentalSchemaName + '_' + OrderDeliveryModelName }
+         { sequelize: this.GetContext(), modelName: rentalSchemaName + '_' + OrderDeliveryModelName }
       );
       RecievePointEntity.init(
          RecievePointAttributes,
-         { sequelize: this.context!, modelName: rentalSchemaName + '_' + RecievePointModelName }
+         { sequelize: this.GetContext(), modelName: rentalSchemaName + '_' + RecievePointModelName }
       );
       RentItemDamageEntity.init(RentItemDamageAttributes,
-         { sequelize: this.context!, modelName: rentalSchemaName + '_' + RentItemDamageModelName }
+         { sequelize: this.GetContext(), modelName: rentalSchemaName + '_' + RentItemDamageModelName }
       );
       RentItemEntity.init(RentItemAttributes,
-         { sequelize: this.context!, modelName: rentalSchemaName + '_' + RentItemModelName }
+         { sequelize: this.GetContext(), modelName: rentalSchemaName + '_' + RentItemModelName }
       );
       RentOfferEntity.init(
          RentOfferAttributes,
-         { sequelize: this.context!, modelName: rentalSchemaName + '_' + RentOfferModelName }
+         { sequelize: this.GetContext(), modelName: rentalSchemaName + '_' + RentOfferModelName }
       )
       RentOrderEntity.init(
          RentOrderAttributes,
-         { sequelize: this.context!, modelName: rentalSchemaName + '_' + RentOrderModelName }
+         { sequelize: this.GetContext(), modelName: rentalSchemaName + '_' + RentOrderModelName }
       )
 
 
@@ -171,7 +164,7 @@ export abstract class SqliteBuilder
             },
          },
          {
-            sequelize: this.context!,
+            sequelize: this.GetContext(),
             modelName: rentalSchemaName + '_' + RentItemToRentOrderModelName,
          }
       );
@@ -203,7 +196,7 @@ export abstract class SqliteBuilder
             },
          },
          {
-            sequelize: this.context!,
+            sequelize: this.GetContext(),
             modelName: rentalSchemaName + '_' + RentOfferToOfferDiscountModelName,
          }
       );
@@ -235,7 +228,7 @@ export abstract class SqliteBuilder
             },
          },
          {
-            sequelize: this.context!,
+            sequelize: this.GetContext(),
             modelName: rentalSchemaName + '_' + RentOfferToRentOrderModelName,
          }
       );
@@ -267,7 +260,7 @@ export abstract class SqliteBuilder
             },
          },
          {
-            sequelize: this.context!,
+            sequelize: this.GetContext(),
             modelName: rentalSchemaName + '_' + RentOfferToOfferRentItemEntityName,
          }
       );
@@ -299,7 +292,7 @@ export abstract class SqliteBuilder
             },
          },
          {
-            sequelize: this.context!,
+            sequelize: this.GetContext(),
             modelName: rentalSchemaName + '_' + RentOfferToRecievePointName,
          }
       );
@@ -400,7 +393,7 @@ export abstract class SqliteBuilder
    //--> 4. SYNC MODEL WITH DB
       RentOffer_OfferRentItem_Hash.afterSync(() => {
          __logger.logInfo(rentalSchemaName + '_' +RentOfferToOfferRentItemEntityName+' table synchronized');
-         this._isRentalSchemaSynced = true;     
+         this.isRentalSchemaSynced = true;     
          __logger.logInfo(rentalSchemaName + ' schema synchronized'); 
          afterRentalSchemaSync();
       });

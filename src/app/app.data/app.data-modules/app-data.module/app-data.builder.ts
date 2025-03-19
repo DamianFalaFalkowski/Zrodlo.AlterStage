@@ -1,11 +1,11 @@
 
-import { ISaveTagIntegration } from "../rental-data.module/integrations/save-tag.sqlite.integration";
 import { AppModule } from "../../../app.modules/app.module";
 import { AppDataInstance } from "./app-data.instance";
 import { AppDataModule } from "./app-data.module";
 import { Dialect, Sequelize } from "sequelize";
 import { TagsAttributes, TagsEntity, TagsModelName } from "../../app.data-model/sch.app/entities/tags.entity";
 import { __logger } from "../../../../utils/dc-logger.util";
+import { ISaveTagIntegrationProvider } from "../rental-data.module/integrations/save-tag.sqlite.integration";
 
 export const appSchemaName = 'App';
 
@@ -27,9 +27,9 @@ interface IAppDataBuilder
 }
 export abstract class AppDataBuilder extends AppDataInstance
     implements
-    IAppDataBuilder, ISaveTagIntegration
+    IAppDataBuilder
 {
-     async saveTag(tagName: string): Promise<void> {
+    protected async saveTag(tagName: string): Promise<void> {
         await TagsEntity.create({
                         name: tagName,
                         description: 'version tag',

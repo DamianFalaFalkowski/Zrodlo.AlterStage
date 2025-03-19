@@ -1,9 +1,9 @@
 import { Identifier, ModelStatic } from "sequelize";
 import { BaseHashEntity } from "../../_base/_base.hash-entity";
 
-import { RentOfferEntity, RentOfferModelName } from "../entities/rent-offer.entity";
-import { rentalSchemaName } from "../../../app.data-modules/rental-data.module/rental-data.builder";
+import { RentOfferEntity } from "../entities/rent-offer.entity";
 import { OfferRentItemEntity } from "../entities/offer-rent-item.entity";
+import { rentalSchemaName } from "../../../app.data-modules/rental-data.module/rental-data.instance";
 
 export const RentOfferToOfferRentItemEntityName = 'RentOfferToOfferRentItems';
 

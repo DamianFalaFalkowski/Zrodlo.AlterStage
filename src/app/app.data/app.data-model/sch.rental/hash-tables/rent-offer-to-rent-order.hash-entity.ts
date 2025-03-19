@@ -2,8 +2,7 @@ import { Identifier, ModelStatic } from "sequelize";
 import { BaseHashEntity } from "../../_base/_base.hash-entity";
 import { RentOfferEntity, RentOfferModelName } from "../entities/rent-offer.entity";
 import { RentOrderEntity, RentOrderModelName } from "../entities/rent-order.entity";
-import { rentalSchemaName } from "../../../app.data-modules/rental-data.module/rental-data.builder";
-
+import { rentalSchemaName } from "../../../app.data-modules/rental-data.module/rental-data.instance";
 export const RentOfferToRentOrderModelName = 'RentOffersToRentOrders';
 
 /** Tabela Haszującą encje

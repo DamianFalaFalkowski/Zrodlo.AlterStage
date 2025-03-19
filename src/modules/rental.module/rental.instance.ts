@@ -1,6 +1,6 @@
 import { ApplicationError } from "../../app/app.errors/application.error";
 import { AppModule } from "../../app/app.modules/app.module";
-import { TemplateModel } from "../../app/app.modules/templates.module/models/template.model";
+import { TemplateModel } from "../../app/app.modules/host.module/model/template.model";
 
 export interface IRental
 { 

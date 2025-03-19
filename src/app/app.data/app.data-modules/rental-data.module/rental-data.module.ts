@@ -1,35 +1,34 @@
 import { RentOfferRepository } from '../../app.data-model/sch.rental/repositories/rent-offer.repository';
-import { SqliteBuilder } from "./rental-data.builder";
-import { IRentalDataChecks } from "./rental-data.instance";
+import { RentalDataBuilder } from "./rental-data.builder";
 import { IRentalViewModelIntegration } from "./integrations/get-rent-offers-view-model.integration";
 import { RentOfferViewModel } from "./view-models/rent-offer.view-model";
 import { Sequelize } from 'sequelize';
-import { AppDataModule } from '../app-data.module/app-data.module';
+import { IGetContextIntegrationProvider } from '../app-data.module/integrations/get-context.integration';
+import { IAppDataChecks } from '../app-data.module/app-data.instance';
 
-interface IRentalDataDependency
+interface IRentalDataModuleDependency
 {
-   initializeRental(appData: AppDataModule): RentalDataModule
+    initializeRental(
+        dependency: 
+            IGetContextIntegrationProvider | 
+            IAppDataChecks, 
+        shouldForceSync: boolean): RentalDataModule
 }
 export class RentalDataModule 
     extends 
-        SqliteBuilder 
-    implements 
-        IRentalViewModelIntegration,
-        IRentalDataChecks,
-        IRentalDataDependency
+        RentalDataBuilder 
+    implements IRentalDataModuleDependency,
+        // providing
+        IRentalViewModelIntegration
 {
-    private _dependency: AppDataModule
-    get context(): Sequelize
-    {
-        return this._dependency.context!;
-    }
-    isContextSetUp(): boolean
-    {
-        throw new Error('Method not implemented.');
-    }
-    private constructor(appData: AppDataModule) {
-        super();
+    private _dependency: IGetContextIntegrationProvider | IAppDataChecks
+    private constructor(appData: IGetContextIntegrationProvider, shouldForceSync: boolean) {
+        super(shouldForceSync);
         this._dependency = appData;
+    }
+    GetContext(): Sequelize
+    {
+        return (this._dependency as IGetContextIntegrationProvider).GetContext();
     }
     public async getAllActiveOffersViewModel(): Promise<RentOfferViewModel[]>
     {
@@ -44,15 +43,10 @@ export class RentalDataModule
         return activeOffersViewModels;
     }
 
-    public initializeRental(appData: AppDataModule): RentalDataModule {
-        return RentalDataModule.initializeRental(appData);
+    public initializeRental(appData: IGetContextIntegrationProvider, shouldForceSync: boolean): RentalDataModule {
+        return RentalDataModule.initializeRental(appData, shouldForceSync);
     }
-    public static initializeRental(appData: AppDataModule): RentalDataModule {
-        return new RentalDataModule(appData)
+    public static initializeRental(appData: IGetContextIntegrationProvider, shouldForceSync: boolean): RentalDataModule {
+        return new RentalDataModule(appData, shouldForceSync)
     }
 }
-
-const rentalDataModule = (appData: AppDataModule):RentalDataModule => {
-    return RentalDataModule.initializeRental(appData);
-}
-export default rentalDataModule;
