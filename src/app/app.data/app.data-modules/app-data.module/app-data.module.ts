@@ -1,10 +1,10 @@
 import { Sequelize } from 'sequelize';
 import { AppModule } from '../../../app.modules/app.module';
-import { ISaveTagIntegrationProvider } from '../rental-data.module/integrations/save-tag.sqlite.integration';
 import { AppDataBuilder } from "./app-data.builder";
 import { IAppDataChecks } from './app-data.instance';
 import { IGetContextIntegrationProvider } from './integrations/get-context.integration';
 import { ApplicationError } from '../../../app.errors/application.error';
+import { ISaveTagIntegrationProvider } from '../../../../data/modules/rental-data.module/integrations/save-tag.sqlite.integration';
 
 interface IAppDataDependency
 {

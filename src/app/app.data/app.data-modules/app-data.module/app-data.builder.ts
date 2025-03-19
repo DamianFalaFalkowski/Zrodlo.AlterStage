@@ -5,7 +5,6 @@ import { AppDataModule } from "./app-data.module";
 import { Dialect, Sequelize } from "sequelize";
 import { TagsAttributes, TagsEntity, TagsModelName } from "../../app.data-model/sch.app/entities/tags.entity";
 import { __logger } from "../../../../utils/dc-logger.util";
-import { ISaveTagIntegrationProvider } from "../rental-data.module/integrations/save-tag.sqlite.integration";
 
 export const appSchemaName = 'App';
 

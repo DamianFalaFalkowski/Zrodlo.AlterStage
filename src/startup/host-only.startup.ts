@@ -7,7 +7,7 @@ import { Dialect } from 'sequelize';
 import hostModule, { HostModule } from '../app/app.modules/host.module/app-module.host.module';
 import paymentModule from '../modules/payment.module/payment.module';
 import { ForumChannel, GuildForumThreadManager } from 'discord.js';
-import { RentalDataModule } from '../app/app.data/app.data-modules/rental-data.module/rental-data.module';
+import { RentalDataModule } from '../data/modules/rental-data.module/rental-data.module';
 
 __logger.logInfo('Starting discord chat-bot ...');
 __logger.logInfo('\tApp configuration:');
