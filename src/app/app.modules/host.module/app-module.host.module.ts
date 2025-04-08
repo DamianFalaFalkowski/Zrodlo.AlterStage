@@ -3,13 +3,12 @@ import { IHost } from "./app-module.host.instance";
 import { IGetClientIntegration } from "./integrations/get-client.host.integration";
 import { CommandHandlersUtil } from "../../../discord/find-command-handlers-definitions.util";
 import { IGetGuildDataIntegration } from "./integrations/get-guild-channel.integration";
-import { ForumChannel, GuildChannel, GuildForumThreadCreateOptions } from "discord.js";
+import { ForumChannel, GuildChannel } from "discord.js";
 import { __logger } from "../../../utils/dc-logger.util";
 import { ApplicationError } from "../../app.errors/application.error";
 import { IPostThreadInForumChannelIntegrationProvider } from "./integrations/post-thread-in-forum-channel.integration";
 import { IFillTemplateWithDataIntegrationProvider } from "./integrations/fill-template-with-data.integration";
 import { FillTemplateService } from "./services/fill-template.service";
-import { url } from "node:inspector";
 
 export class HostModule
     extends 

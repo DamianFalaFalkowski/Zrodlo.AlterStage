@@ -48,7 +48,7 @@ const AppDataModule = appDataModule()
                         rentalData.PrepeareTestData(() =>
                         {
                            __logger.logInfo("Dane testowe utworzone ! ! !");
-                           rentalModule(rentalData, hostModule, appDataModule(), 100).UpdateRentalChannels(() =>{
+                           rentalModule(rentalData, hostModule, appDataModule(), process.env.OFFER_TEMPLATE_BID as unknown as number, process.env.DJ_EQ_RENTAL_CHANNEL_ID as string).UpdateRentalChannels(() =>{
                               __logger.logInfo("Rental channels updated ! ! !");
                            });
                         });

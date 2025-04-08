@@ -45,7 +45,7 @@ export abstract class AppDataBuilder extends AppDataInstance
     {
         await TemplateEntity.create({
             name: 'Dj EQ Rental Offer Template',
-            bId: 100,
+            bId: 100, // TODO: przeniesc do configa
             description: 'Szablon oferty wynajmu sprzetu DJ',
             content: `
 **Cena:** {{totalPrice}}zł/dzień
@@ -54,7 +54,7 @@ export abstract class AppDataBuilder extends AppDataInstance
 **Kontakt bezpośredni:** tel. 513-762-535
 
 **Dodatkowe info: **
-- rabat -25% dla <@&1334744120509333544>
+- rabat -25% dla <@&{{honoredMemberRoleId}}>
 - możliwość dowozu Warszawa 20zł
 - możliwość dowozu poza Warszawą 20zł + 0,5zł/1km przejechanego dystansu
 - możliwość wypożyczenia pary +30zł https://discord.com/channels/1333153060930846781/1335378156621791324

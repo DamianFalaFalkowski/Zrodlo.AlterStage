@@ -1,4 +1,5 @@
 
+import { ChannelRoleEnum } from '../../../../startup/configurable-enums/channel-role.enum';
 import { OfferRentItemEntity } from '../../../model/sch.rental/entities/offer-rent-item.entity';
 import { RentOfferEntity } from '../../../model/sch.rental/entities/rent-offer.entity';
 import { RentOffer_OfferRentItem_Hash } from "../../../model/sch.rental/hash-tables/rent-offer-to-offer-rent-item.hash-entity";
@@ -13,6 +14,8 @@ export class RentOfferViewModel
     public get imageUrl(): string | undefined { return this._baseEntity.imageUrl; }
     public get applayTags(): string[] { return ['1335377426850516992']; }
     public get id(): number { return this._baseEntity.id as number; }
+
+    public get honoredMemberRoleId(): string { return ChannelRoleEnum['honored-member'];}
 
     public OfferRentItems?: OfferRentItemViewModel[];
 

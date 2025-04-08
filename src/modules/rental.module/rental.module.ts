@@ -11,7 +11,7 @@ import { IPostThreadInForumChannelIntegrationConsumer, IPostThreadInForumChannel
 interface IRentalDependency<T extends IRentalViewModelIntegrationProvider , U extends IPostThreadInForumChannelIntegrationConsumer | IFillTemplateWithDataIntegrationConsumer
     , Z extends IGetTemplateByBidIntegrationConsumer>
 {
-    initialize(sqliteDep: T, hostDep: U, appDataDep: Z, offerTemplateBid: number): AppModule;
+    initialize(sqliteDep: T, hostDep: U, appDataDep: Z, offerTemplateBid: number, djEquipmentRentalChannelId: string): AppModule;
 }
 
 export class RentalModule<T extends IRentalViewModelIntegrationProvider , U extends IPostThreadInForumChannelIntegrationConsumer | IFillTemplateWithDataIntegrationConsumer
@@ -31,9 +31,9 @@ export class RentalModule<T extends IRentalViewModelIntegrationProvider , U exte
     private _dependencyHost: U;
     private _dependencyAppData: Z;
 
-    private constructor(dependency: T, dependencyHost: U, dependencyAppData: Z, offerTemplateBid: number)
+    private constructor(dependency: T, dependencyHost: U, dependencyAppData: Z, offerTemplateBid: number, djEquipmentRentalChannelId: string)
     {
-        super(offerTemplateBid);
+        super(offerTemplateBid, djEquipmentRentalChannelId);
         this._dependency = dependency;
         this._dependencyHost = dependencyHost;
         this._dependencyAppData = dependencyAppData;
@@ -46,23 +46,23 @@ export class RentalModule<T extends IRentalViewModelIntegrationProvider , U exte
     {
         return await (this._dependency as IRentalViewModelIntegrationProvider).getAllActiveOffersViewModel();
     }
-    initialize(sqliteDep: T, dependencyHost: U, dependencyAppData: Z, offerTemplateBid: number): AppModule
+    initialize(sqliteDep: T, dependencyHost: U, dependencyAppData: Z, offerTemplateBid: number, djEquipmentRentalChannelId: string): AppModule
     {
-        return RentalModule.initialize(sqliteDep, dependencyHost, dependencyAppData, offerTemplateBid);
+        return RentalModule.initialize(sqliteDep, dependencyHost, dependencyAppData, offerTemplateBid, djEquipmentRentalChannelId);
     }
     public static initialize
         <T extends IRentalViewModelIntegrationProvider , U extends IPostThreadInForumChannelIntegrationConsumer | IFillTemplateWithDataIntegrationConsumer
     , Z extends IGetTemplateByBidIntegrationConsumer>
-    (dependency: T, dependencyHost: U, dependencyApData: Z, offerTemplateBid: number): RentalModule<T, U, Z> 
+    (dependency: T, dependencyHost: U, dependencyApData: Z, offerTemplateBid: number, djEquipmentRentalChannelId: string): RentalModule<T, U, Z> 
     {
-        return new RentalModule<T, U, Z>(dependency, dependencyHost, dependencyApData, offerTemplateBid)
+        return new RentalModule<T, U, Z>(dependency, dependencyHost, dependencyApData, offerTemplateBid, djEquipmentRentalChannelId);
     }
 }
 
 const rentalModule = <T extends IRentalViewModelIntegrationProvider , U extends IPostThreadInForumChannelIntegrationConsumer | IFillTemplateWithDataIntegrationConsumer
     , Z extends IGetTemplateByBidIntegrationConsumer>
-    (host: T, dependencyHost: U, dependencyAppData: Z, offerTemplateBid: number): RentalModule<T,U,Z> => 
+    (host: T, dependencyHost: U, dependencyAppData: Z, offerTemplateBid: number, djEquipmentRentalChannelId: string): RentalModule<T,U,Z> => 
 {
-    return RentalModule.initialize(host, dependencyHost, dependencyAppData, offerTemplateBid);
+    return RentalModule.initialize(host, dependencyHost, dependencyAppData, offerTemplateBid, djEquipmentRentalChannelId);
 }
 export default rentalModule;

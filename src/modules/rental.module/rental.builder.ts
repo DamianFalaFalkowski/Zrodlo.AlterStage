@@ -27,7 +27,7 @@ export abstract class RentalBuilder
     {
         const viewModels = await this.getAllActiveOffersViewModel();
         viewModels.forEach(async element => {
-            await this.createOrUpdateOfferInChannel(this._djEquipmentRentalChannelId, element);
+            await this.createOrUpdateOfferInChannel(this.DjEquipmentRentalChannelId, element);
         });
         afterUpdateRentalChannels();
         return this.As<AppModule>();

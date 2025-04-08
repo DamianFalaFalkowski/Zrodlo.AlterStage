@@ -6,17 +6,18 @@ export interface IRental
 
 export interface IRentalInstance
 {
-    _djEquipmentRentalChannelId: string;
+    DjEquipmentRentalChannelId: string;
 }
 
 export abstract class RentalInstance
     extends AppModule
     implements IRentalInstance, IRental
 {
-    protected constructor(offerTemplateBid: number) {
+    protected constructor(offerTemplateBid: number, djEquipmentRentalChannelId: string) {
         super();
         this._offerTemplateBid = offerTemplateBid;
+        this.DjEquipmentRentalChannelId = djEquipmentRentalChannelId;
     }
     protected _offerTemplateBid: number;
-    public _djEquipmentRentalChannelId: string = '1334687740951789638';// TODO: przeniesc do konfiguracji
+    public readonly DjEquipmentRentalChannelId: string;
 }

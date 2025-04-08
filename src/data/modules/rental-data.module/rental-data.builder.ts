@@ -32,6 +32,7 @@ import { OfferInfoAttributes, OfferInfoEntity, OfferInfoModelName } from "../../
 import { OfferRentItemAttributes, OfferRentItemEntity, OfferRentItemModelName } from "../../model/sch.rental/entities/offer-rent-item.entity";
 import { OrderDeliveryActionAttributes, OrderDeliveryActionEntity, OrderDeliveryActionModelName } from "../../model/sch.rental/entities/order-delivery-action.entity";
 import { AppModule } from "../../../app/app.modules/app.module";
+import { OfferInfoRepository } from "../../model/sch.rental/repositories/offer-info.repository";
 
 
 /** ....
@@ -64,6 +65,9 @@ export abstract class RentalDataBuilder
       //let baseRecievePointDeliveryInfo = await DeliveryInfoRepository.create(0, 'na terenie Warszawy', true,RentItemAviablility.IMMEDIATELY, true, true,true, false, false, false, false, false, 300, 30, 2, undefined, 20, 20);
       let recievePointOne = await RecievePointRepository.create(0, addressOne.id, 0, 'fala studio RP', '513762535', 'panda.zrodlo@gmail.com', 'pierwszy testowy punkt odbioru', 'Damian', 'Falkowski', 1024238253060145193, 'falalala_wav', 'WAW', true);
 
+      let addressTwo = await AddressRepository.create(0, 'Dubai', 'street', 'house', 'postalCode');
+      let recievePointTwo = await RecievePointRepository.create(0, addressTwo.id, 0, 'Akun', '111222111', 'dubai.zrodlo@gmail.com', 'dubaiski punkt odbioru', 'Damian', 'Falkowski', 1024238253060145193, 'dj_akun', 'DUB', true);
+
       // Oferty
       let offerOne = await RentOfferRepository.create(0, 'Pioneer XDJ-700', 'Pojedyńczy multi-player XDJ-700', 100, 400, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTwSo1PUhaSJoaGMQN40sR_jBHjHl3xBN3DA&s');
 
@@ -83,6 +87,9 @@ export abstract class RentalDataBuilder
          rentItemThree = await RentItemRepository.createWithNewOfferRentItem(0, 'Kabel Ethernet 1m', '', 'Ethernet 1.5m', RentItemSize.SMALL, recievePointOne, 'ETH', 1010010003, RentItemAviablility.IMMEDIATELY);
          await OfferRentItemRepository.attachToRentOffer(await rentItemThree.getOfferRentItem(), offerOne.id, false);
       }
+
+      let offerInfoOne = await OfferInfoRepository.create(0, offerOne.id, `- możliwość dowozu Warszawa {{standardDeliveryPrice}}zł\n`);
+      let offerInfoTwo = await OfferInfoRepository.create(0, offerOne.id, `- możliwość wypożyczenia pary +30zł https://discord.com/channels/1333153060930846781/1335378156621791324\n`);
 
       let offerItems = await offerOne.getOfferRentItems((await RentOffer_OfferRentItem_Hash.findOne({ 'where': { 'RentalRentOfferId': offerOne.id} }))!);
 
