@@ -10,7 +10,7 @@ export class RentOfferViewModel
     public get title(): string { return this._baseEntity.name as string; }
     public get totalPrice(): number { return this._baseEntity.totalPrice; }
     public get depositPrice(): number { return this._baseEntity.totalDepositPrice; }
-    public get imageUrl(): string? { return this._baseEntity.imageUrl; }
+    public get imageUrl(): string | undefined { return this._baseEntity.imageUrl; }
     public get applayTags(): string[] { return ['1335377426850516992']; }
     public get id(): number { return this._baseEntity.id as number; }
 

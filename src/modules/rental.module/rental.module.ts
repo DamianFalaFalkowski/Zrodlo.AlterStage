@@ -24,8 +24,8 @@ export class RentalModule<T extends IRentalViewModelIntegrationProvider , U exte
     {
         return (this._dependencyHost as IFillTemplateWithDataIntegrationConsumer).fillTemplateWithData(templateContent, data)
     }
-    postThreadInForumChannelIfDoesntExist(channelId: string, title: string, content: string, imageUrl: string, applayTags: string[]): Promise<void>{
-        return (this._dependencyHost as IPostThreadInForumChannelIntegrationConsumer).postThreadInForumChannelIfDoesntExist(channelId, title, content, imageUrl, applayTags);
+    postThreadInForumChannelIfDoesntExist(channelId: string, title: string, content: string, applayTags: string[], imageUrl?: string): Promise<void>{
+        return (this._dependencyHost as IPostThreadInForumChannelIntegrationConsumer).postThreadInForumChannelIfDoesntExist(channelId, title, content, applayTags, imageUrl);
     }
     private _dependency: T;
     private _dependencyHost: U;

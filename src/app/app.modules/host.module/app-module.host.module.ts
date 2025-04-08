@@ -9,6 +9,7 @@ import { ApplicationError } from "../../app.errors/application.error";
 import { IPostThreadInForumChannelIntegrationProvider } from "./integrations/post-thread-in-forum-channel.integration";
 import { IFillTemplateWithDataIntegrationProvider } from "./integrations/fill-template-with-data.integration";
 import { FillTemplateService } from "./services/fill-template.service";
+import { url } from "node:inspector";
 
 export class HostModule
     extends 
@@ -28,7 +29,7 @@ export class HostModule
         let templateSrv = new FillTemplateService(templateContent);
         return templateSrv.render(data);
     }
-    public async postThreadInForumChannelIfDoesntExist(channelId: string, title: string, content: string, imageUrl: string, applayTags: string[]): Promise<void>
+    public async postThreadInForumChannelIfDoesntExist(channelId: string, title: string, content: string, applayTags: string[], imageUrl?: string): Promise<void>
     {
         const ch = await hostModule.As<HostModule>().GetGuildChannel<ForumChannel>(channelId);
         let oldThread = (await ch.threads.fetchActive(false)).threads.find(fn => fn.name === title);
@@ -38,9 +39,9 @@ export class HostModule
             name: title,
             message: {
             content: content, 
-            embeds: [
+            embeds: imageUrl ? [
                 { image: { url: imageUrl}  }
-            ]},
+            ] : undefined},
             appliedTags: applayTags
         })
         .then(threadChannel => __logger.logInfo(JSON.stringify(threadChannel)))

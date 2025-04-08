@@ -20,9 +20,9 @@ export abstract class RentalBuilder
     {
         let templateContent = await this.getTemplateContentByBid(this._offerTemplateBid);
         let content = this.fillTemplateWithData(templateContent, offerViewModel);
-        await this.postThreadInForumChannelIfDoesntExist(channelId, offerViewModel.title, content, offerViewModel.imageUrl, offerViewModel.applayTags);
+        await this.postThreadInForumChannelIfDoesntExist(channelId, offerViewModel.title, content,offerViewModel.applayTags, offerViewModel.imageUrl);
     }
-    abstract postThreadInForumChannelIfDoesntExist(channelId: string, title: string, content: string, imageUrl: string, applayTags: string[]): Promise<void>;
+    abstract postThreadInForumChannelIfDoesntExist(channelId: string, title: string, content: string, applayTags: string[],imageUrl?: string,): Promise<void>;
     public async UpdateRentalChannels(afterUpdateRentalChannels: () => void): Promise<AppModule>
     {
         const viewModels = await this.getAllActiveOffersViewModel();
