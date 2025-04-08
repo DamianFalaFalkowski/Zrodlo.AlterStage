@@ -6,6 +6,9 @@ import { OfferRentItemViewModel } from './offer-rent-item.view-model';
 export class RentOfferViewModel
 {
     private readonly _baseEntity: RentOfferEntity;
+    public get title(): string { return this._baseEntity.name as string; }
+    public get imageUrl(): string { return ""; }
+    public get applayTags(): string[] { return [""]; }
     public get id(): number { return this._baseEntity.id as number; }
 
     public OfferRentItems?: OfferRentItemViewModel[];

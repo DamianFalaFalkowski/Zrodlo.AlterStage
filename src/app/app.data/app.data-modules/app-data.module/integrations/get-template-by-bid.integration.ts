@@ -2,5 +2,5 @@ export interface IGetTemplateByBidIntegrationConsumer extends IGetTemplateByBidI
 export interface IGetTemplateByBidIntegrationProvider extends IGetTemplateByBidIntegration {}
 interface IGetTemplateByBidIntegration
 {
-    getTemplateContentByBid(bId: string): Promise<string>;
+    getTemplateContentByBid(bId: number): Promise<string>;
 }

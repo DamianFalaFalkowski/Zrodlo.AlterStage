@@ -6,9 +6,9 @@ import { IGetGuildDataIntegration } from "./integrations/get-guild-channel.integ
 import { ForumChannel, GuildChannel, GuildForumThreadCreateOptions } from "discord.js";
 import { __logger } from "../../../utils/dc-logger.util";
 import { ApplicationError } from "../../app.errors/application.error";
-import { IGuildChannelManagementIntegration } from "./integrations/guild-channel-management.integration";
 import { IPostThreadInForumChannelIntegrationProvider } from "./integrations/post-thread-in-forum-channel.integration";
 import { IFillTemplateWithDataIntegrationProvider } from "./integrations/fill-template-with-data.integration";
+import { FillTemplateService } from "./services/fill-template.service";
 
 export class HostModule
     extends 
@@ -17,7 +17,6 @@ export class HostModule
         IHost,
         IGetClientIntegration,
         IGetGuildDataIntegration,
-        IGuildChannelManagementIntegration,
         IPostThreadInForumChannelIntegrationProvider,
         IFillTemplateWithDataIntegrationProvider
 {
@@ -29,9 +28,12 @@ export class HostModule
         let templateSrv = new FillTemplateService(templateContent);
         return templateSrv.render(data);
     }
-    public async postThreadInForumChannel(channelId: string, title: string, content: string, imageUrl: string, applayTags: string[]): Promise<void>
+    public async postThreadInForumChannelIfDoesntExist(channelId: string, title: string, content: string, imageUrl: string, applayTags: string[]): Promise<void>
     {
         const ch = await hostModule.As<HostModule>().GetGuildChannel<ForumChannel>(channelId);
+        let oldThread = (await ch.threads.fetchActive(false)).threads.find(fn => fn.name === title);
+        if (oldThread !== undefined) 
+            return;
         await ch.threads.create({
             name: title,
             message: {
@@ -43,17 +45,6 @@ export class HostModule
         })
         .then(threadChannel => __logger.logInfo(JSON.stringify(threadChannel)))
         .catch(console.error);
-    }
-
-    async CreateForumThread(channelId: string, options: GuildForumThreadCreateOptions): Promise<boolean>
-    {
-        const ch = await hostModule.As<HostModule>().GetGuildChannel<ForumChannel>(channelId);
-        if((await ch.threads.fetch()).threads.find(x => x.name == options.name) === undefined)
-            return false;
-        await ch.threads.create(options)
-        .then(threadChannel => __logger.logInfo(JSON.stringify(threadChannel)))
-        .catch(console.error);
-        return true;
     }
     public async GetGuildChannel<T extends GuildChannel>(channelId: string): Promise<T>
     {

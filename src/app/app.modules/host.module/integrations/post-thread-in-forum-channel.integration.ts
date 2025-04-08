@@ -2,5 +2,5 @@ export interface IPostThreadInForumChannelIntegrationConsumer extends IPostThrea
 export interface IPostThreadInForumChannelIntegrationProvider extends IPostThreadInForumChannelIntegration {}
 interface IPostThreadInForumChannelIntegration
 {
-    postThreadInForumChannel(channelId: string, title: string, content: string, imageUrl: string, applayTags: string[]): Promise<void>;
+    postThreadInForumChannelIfDoesntExist(channelId: string, title: string, content: string, imageUrl: string, applayTags: string[]): Promise<void>;
 }

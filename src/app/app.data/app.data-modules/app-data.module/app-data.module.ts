@@ -25,7 +25,7 @@ export class AppDataModule
    public constructor() {
       super();
    }
-   public async getTemplateContentByBid(bId: string): Promise<string>
+   public async getTemplateContentByBid(bId: number): Promise<string>
    {
       return (await TemplateEntity.findOne({
          where: {

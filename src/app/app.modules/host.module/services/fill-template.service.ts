@@ -1,6 +1,6 @@
 type TemplateModel = Record<string, any>;
 
-class FillTemplateService
+export class FillTemplateService
 {
     private template: string;
 

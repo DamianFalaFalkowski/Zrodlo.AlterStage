@@ -8,6 +8,7 @@ import hostModule, { HostModule } from '../app/app.modules/host.module/app-modul
 import paymentModule from '../modules/payment.module/payment.module';
 import { ForumChannel } from 'discord.js';
 import { RentalDataModule } from '../data/modules/rental-data.module/rental-data.module';
+import rentalModule from '../modules/rental.module/rental.module';
 
 
 
@@ -46,6 +47,9 @@ const AppDataModule = appDataModule()
                         rentalData.PrepeareTestData(() =>
                         {
                            __logger.logInfo("Dane testowe utworzone ! ! !");
+                           rentalModule(rentalData, hostModule, appDataModule(), 100).UpdateRentalChannels(() =>{
+                              __logger.logInfo("Rental channels updated ! ! !");
+                           });
                         });
                   });
                });
