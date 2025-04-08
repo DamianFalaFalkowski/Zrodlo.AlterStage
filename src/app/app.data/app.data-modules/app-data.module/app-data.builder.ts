@@ -5,6 +5,7 @@ import { AppDataModule } from "./app-data.module";
 import { Dialect, Sequelize } from "sequelize";
 import { TagsAttributes, TagsEntity, TagsModelName } from "../../app.data-model/sch.app/entities/tags.entity";
 import { __logger } from "../../../../utils/dc-logger.util";
+import { TemplateAttributes, TemplateEntity, TemplateModelName } from "../../app.data-model/sch.app/entities/template.entity";
 
 export const appSchemaName = 'App';
 
@@ -73,13 +74,24 @@ export abstract class AppDataBuilder extends AppDataInstance
                 modelName: schemaName + '_' + TagsModelName
             }
         );
+        TemplateEntity.init(
+            TemplateAttributes,
+            {
+                sequelize: this.context!,
+                modelName: schemaName + '_' + TemplateModelName
+            }
+        );
+        TemplateEntity.afterSync(() =>
+        {
+            TagsEntity.sync({ force: this._forceSync });
+        });
         TagsEntity.afterSync(() =>
         {
             this._isAppSchemaSynced = true;
             __logger.logInfo('App schema synchronized');
             afterAppSchemaSync();
         });
-        TagsEntity.sync({ force: this._forceSync });
+        TemplateEntity.sync({ force: this._forceSync });
         return this.As<AppDataModule>();
     }
     private createVersionTag(major: number, minor: number, patch: number): string

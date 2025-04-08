@@ -5,8 +5,7 @@ import { OfferRentItemEntity } from "../entities/offer-rent-item.entity";
 export class OfferRentItemRepository {
     private constructor(){}
 
-    public static async create(discordUserId: number, itemName:string, brandName:string, modelName:string, rentItemSize: RentItemSize,
-        isMainRentItem?: boolean
+    public static async create(discordUserId: number, itemName:string, brandName:string, modelName:string, rentItemSize: RentItemSize
     ): Promise<OfferRentItemEntity>
     {
         return OfferRentItemEntity.create({
@@ -14,15 +13,16 @@ export class OfferRentItemRepository {
             itemName: itemName,
             brandName:brandName,
             modelName:modelName,
-            rentItemSize:rentItemSize,
-            isMainRentItem:isMainRentItem
+            rentItemSize:rentItemSize
         });
     }
 
-    public static async attachToRentOffer(id: Identifier, offerId: Identifier)
+    public static async attachToRentOffer(offerRentItem: OfferRentItemEntity, offerId: Identifier, isMainRentItem: boolean)
     {
-        OfferRentItemEntity.sequelize!.query(`INSERT INTO "main"."Rental_RentOfferToOfferRentItems"
+        await OfferRentItemEntity.sequelize!.query(`INSERT INTO "main"."Rental_RentOfferToOfferRentItems"
 ("RentalRentOfferId", "RentalOfferRentItemId")
-VALUES (${offerId}, ${id});`)
+VALUES (${offerId}, ${offerRentItem.id});`);
+
+        await offerRentItem.update({isMainRentItem: isMainRentItem})
     }
 }

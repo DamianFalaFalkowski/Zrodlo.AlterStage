@@ -7,6 +7,8 @@ import { ForumChannel, GuildChannel, GuildForumThreadCreateOptions } from "disco
 import { __logger } from "../../../utils/dc-logger.util";
 import { ApplicationError } from "../../app.errors/application.error";
 import { IGuildChannelManagementIntegration } from "./integrations/guild-channel-management.integration";
+import { IPostThreadInForumChannelIntegrationProvider } from "./integrations/post-thread-in-forum-channel.integration";
+import { IFillTemplateWithDataIntegrationProvider } from "./integrations/fill-template-with-data.integration";
 
 export class HostModule
     extends 
@@ -15,11 +17,34 @@ export class HostModule
         IHost,
         IGetClientIntegration,
         IGetGuildDataIntegration,
-        IGuildChannelManagementIntegration
+        IGuildChannelManagementIntegration,
+        IPostThreadInForumChannelIntegrationProvider,
+        IFillTemplateWithDataIntegrationProvider
 {
     private constructor() {
         super();
     }
+    fillTemplateWithData(templateContent: string, data: Record<string, any>): string
+    {
+        let templateSrv = new FillTemplateService(templateContent);
+        return templateSrv.render(data);
+    }
+    public async postThreadInForumChannel(channelId: string, title: string, content: string, imageUrl: string, applayTags: string[]): Promise<void>
+    {
+        const ch = await hostModule.As<HostModule>().GetGuildChannel<ForumChannel>(channelId);
+        await ch.threads.create({
+            name: title,
+            message: {
+            content: content, 
+            embeds: [
+                { image: { url: imageUrl}  }
+            ]},
+            appliedTags: applayTags
+        })
+        .then(threadChannel => __logger.logInfo(JSON.stringify(threadChannel)))
+        .catch(console.error);
+    }
+
     async CreateForumThread(channelId: string, options: GuildForumThreadCreateOptions): Promise<boolean>
     {
         const ch = await hostModule.As<HostModule>().GetGuildChannel<ForumChannel>(channelId);

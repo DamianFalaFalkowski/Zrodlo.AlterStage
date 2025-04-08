@@ -58,11 +58,11 @@ export class RentItemEntity extends BaseEntity
             propertyOf<RentItemEntity>('RentalRecievePointId'));
     }
 
-    declare RentalOfferRentItem: Identifier;
+    declare RentalOfferRentItemId: Identifier;
     public async getOfferRentItem(): Promise<OfferRentItemEntity> {
         return this.getOwnedEntity<OfferRentItemEntity>(
             OfferRentItemEntity, 
-            this.RentalRecievePointId, 
+            this.RentalOfferRentItemId, 
             propertyOf<RentItemEntity>('RentalRecievePointId'));
     }
 

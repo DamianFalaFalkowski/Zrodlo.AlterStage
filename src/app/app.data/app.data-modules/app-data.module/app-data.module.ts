@@ -5,6 +5,9 @@ import { IAppDataChecks } from './app-data.instance';
 import { IGetContextIntegrationProvider } from './integrations/get-context.integration';
 import { ApplicationError } from '../../../app.errors/application.error';
 import { ISaveTagIntegrationProvider } from '../../../../data/modules/rental-data.module/integrations/save-tag.sqlite.integration';
+import { IGetTemplateByBidIntegrationProvider } from './integrations/get-template-by-bid.integration';
+import { TemplateEntity } from '../../app.data-model/sch.app/entities/template.entity';
+import { __logger } from '../../../../utils/dc-logger.util';
 
 interface IAppDataDependency
 {
@@ -16,10 +19,18 @@ export class AppDataModule
    implements IAppDataDependency, 
       // providing
       ISaveTagIntegrationProvider,
-      IGetContextIntegrationProvider
+      IGetContextIntegrationProvider,
+      IGetTemplateByBidIntegrationProvider
 {
    public constructor() {
       super();
+   }
+   public async getTemplateContentByBid(bId: string): Promise<string>
+   {
+      return (await TemplateEntity.findOne({
+         where: {
+            bid: bId}
+         }))?.content ?? '';
    }
    public async saveTag(tagName: string): Promise<void> 
    {

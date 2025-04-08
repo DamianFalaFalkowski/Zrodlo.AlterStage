@@ -28,11 +28,11 @@ export class RentItemRepository {
 
     public static async createWithNewOfferRentItem(discordUserId: number,
         itemName:string, brandName:string, modelName:string, rentItemSize: RentItemSize,
-        recievePoint: RecievePointEntity, code:string, barcodeNumber:number, rentItemAviabilityInHomeRecievePoint:RentItemAviablility, isMainRentItem?: boolean,
+        recievePoint: RecievePointEntity, code:string, barcodeNumber:number, rentItemAviabilityInHomeRecievePoint:RentItemAviablility,
         onBuyAmountSpent?:number, isAvaliable?:boolean, isDamaged?:boolean, 
     ): Promise<RentItemEntity>
     {
-        const offerRentItem = await OfferRentItemRepository.create(discordUserId, itemName, brandName, modelName, rentItemSize, isMainRentItem);
+        let offerRentItem = await OfferRentItemRepository.create(discordUserId, itemName, brandName, modelName, rentItemSize);
 
         return this.createWithExistingOfferRentItem(discordUserId, offerRentItem.id, recievePoint, code, barcodeNumber, rentItemAviabilityInHomeRecievePoint, onBuyAmountSpent, isAvaliable, isDamaged)
     }

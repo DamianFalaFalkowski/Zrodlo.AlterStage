@@ -6,8 +6,10 @@ import appDataModule from '../app/app.data/app.data-modules/app-data.module/app-
 import { Dialect } from 'sequelize';
 import hostModule, { HostModule } from '../app/app.modules/host.module/app-module.host.module';
 import paymentModule from '../modules/payment.module/payment.module';
-import { ForumChannel, GuildForumThreadManager } from 'discord.js';
+import { ForumChannel } from 'discord.js';
 import { RentalDataModule } from '../data/modules/rental-data.module/rental-data.module';
+
+
 
 __logger.logInfo('Starting discord chat-bot ...');
 __logger.logInfo('\tApp configuration:');
@@ -36,20 +38,6 @@ const AppDataModule = appDataModule()
             {
                AppDataModule.InitAppSchema(async () =>
                {
-                  
-                  const ch = await hostModule.As<HostModule>().GetGuildChannel<ForumChannel>('1334687740951789638');// RENTAL: dj-equipment
-                  await ch.threads.create({
-                     name: 'test name',
-                     message: {
-                        content: "test msg", 
-                        embeds: [
-                           { image: { url: `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIaJvtk7yUuQ08NP6_ej90WSd5nbsnu5uzxg&s`}  }
-                        ]},
-                     appliedTags: ['1335377426850516992']
-                  })
-                  .then(threadChannel => __logger.logInfo(JSON.stringify(threadChannel)))
-                  .catch(console.error);
-
                   let rentalData = RentalDataModule
                      .initializeRental(
                            AppDataModule, 
@@ -59,8 +47,7 @@ const AppDataModule = appDataModule()
                         {
                            __logger.logInfo("Dane testowe utworzone ! ! !");
                         });
-                  })
-                  
+                  });
                });
                paymentModule(hostModule)
                   .RegisterPaymentCommands();

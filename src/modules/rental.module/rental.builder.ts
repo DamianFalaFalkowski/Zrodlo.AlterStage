@@ -1,7 +1,6 @@
 import { RentOfferViewModel } from "../../data/modules/rental-data.module/view-models/rent-offer.view-model";
 import { AppModule } from "../../app/app.modules/app.module";
-import { IFillTemplateWithDataIntegrationProvider } from "../../app/app.modules/host.module/integrations/fill-template-with-data.integration";
-import { TemplateModel } from "../../app/app.modules/host.module/model/template.model";
+import { IFillTemplateWithDataIntegrationConsumer } from "../../app/app.modules/host.module/integrations/fill-template-with-data.integration";
 import { IRentalInstance, RentalInstance } from "./rental.instance";
 import { IRentalViewModelIntegration } from "../../data/modules/rental-data.module/integrations/get-rent-offers-view-model.integration";
 
@@ -15,7 +14,7 @@ export abstract class RentalBuilder
     implements 
         IRentalBuilder, 
         IRentalViewModelIntegration, 
-        IFillTemplateWithDataIntegrationProvider
+        IFillTemplateWithDataIntegrationConsumer
 {
     public async UpdateRentalChannels(): Promise<AppModule>
     {
@@ -26,6 +25,6 @@ export abstract class RentalBuilder
 
     abstract getAllActiveOffersViewModel(): Promise<RentOfferViewModel[]>;
 
-    abstract fillTemplateWithData<T>(templateId: TemplateModel, data: T): Promise<string>;
+    abstract fillTemplateWithData(templateContent: string, data: Record<string, any>): string;
 }
 

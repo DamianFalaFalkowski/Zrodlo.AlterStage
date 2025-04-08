@@ -1,32 +1,41 @@
-import { DataTypes } from 'sequelize';
-import { BaseEntity } from '../../_base/_base.entity';
+import { DataTypes } from "sequelize";
+import { BaseEntity } from "../../_base/_base.entity";
 
+export const TemplateModelName = 'Template'
 
-export const TagsModelName = 'Tags'
-/*
- * equivalent to: CREATE TABLE tags(
- * name VARCHAR(255) UNIQUE,
- * description TEXT,
- * username VARCHAR(255),
- * usage_count  INT NOT NULL DEFAULT 0
- * );
- */
-export class TagsEntity extends BaseEntity 
+export class TemplateEntity extends BaseEntity
 {
-    public entityName: string= 'Tags';
+    public entityName: string= 'Template';
 
     declare name: string;
     declare description: string;
-    declare userId: string;
+    declare content: string;
+    declare bId: string;
 }
 
-export const TagsAttributes = 
+export const TemplateAttributes =
 {
+    // pk
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
     },
+
+    // columns
+    name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    description: DataTypes.STRING,
+    content: DataTypes.STRING,
+    bId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        secondaryKey: true,
+    },
+
+    // from base
     createdAt: {
         type: DataTypes.DATE,
         secondaryKey: true,
@@ -51,14 +60,4 @@ export const TagsAttributes =
         allowNull: false,
         defaultValue: false
     },
-
-    name: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
-    description: DataTypes.STRING,
-    userId: { 
-        type: DataTypes.NUMBER, 
-        allowNull: false
-    }
-};
+}

@@ -1,0 +1,3 @@
+{{if isVisible}}Widoczny tekst{{/if}}
+{{repeat items <div>{{name}}</div>}}
+Witaj, {{username}}!

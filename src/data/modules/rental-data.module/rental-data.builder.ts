@@ -31,6 +31,7 @@ import { OfferDiscountAttributes, OfferDiscountEntity, OfferDiscountModelName } 
 import { OfferInfoAttributes, OfferInfoEntity, OfferInfoModelName } from "../../model/sch.rental/entities/offer-info.entity";
 import { OfferRentItemAttributes, OfferRentItemEntity, OfferRentItemModelName } from "../../model/sch.rental/entities/offer-rent-item.entity";
 import { OrderDeliveryActionAttributes, OrderDeliveryActionEntity, OrderDeliveryActionModelName } from "../../model/sch.rental/entities/order-delivery-action.entity";
+import { AppModule } from "../../../app/app.modules/app.module";
 
 
 /** ....
@@ -58,16 +59,30 @@ export abstract class RentalDataBuilder
 
    async PrepeareTestData(afterTestDataCreation: () => void): Promise<RentalDataModule>
    {
+      // Punkty odbioru (rezem z adresami)
       let addressOne = await AddressRepository.create(0, 'city2', 'street', 'house', 'postalCode');
       //let baseRecievePointDeliveryInfo = await DeliveryInfoRepository.create(0, 'na terenie Warszawy', true,RentItemAviablility.IMMEDIATELY, true, true,true, false, false, false, false, false, 300, 30, 2, undefined, 20, 20);
       let recievePointOne = await RecievePointRepository.create(0, addressOne.id, 0, 'fala studio RP', '513762535', 'panda.zrodlo@gmail.com', 'pierwszy testowy punkt odbioru', 'Damian', 'Falkowski', 1024238253060145193, 'falalala_wav', 'WAW', true);
 
-      let tentItemOne = await RentItemEntity.findOne({ 'where': { 'code': 'TST01-A0001'}});
-      if(tentItemOne === null)
-         tentItemOne = await RentItemRepository.createWithNewOfferRentItem(0, 'Pioneer XDJ-700 multi-player', 'Pioneer', 'XDJ-700', RentItemSize.MEDIUM, recievePointOne, 'MPLA', 1010010001, RentItemAviablility.IMMEDIATELY, true);
+      // Oferty
+      let offerOne = await RentOfferRepository.create(0, 'Pioneer XDJ-700', 'Pojedyńczy multi-player XDJ-700');
 
-      let offerOne = await RentOfferRepository.create(0, 'offer one', 'the very first offer');
-      await OfferRentItemRepository.attachToRentOffer(tentItemOne.id, offerOne.id);
+      // Utworzenie przedmiotów fizycznych i umieszczenie ich w ofertach
+      let rentItemOne = await RentItemEntity.findOne({ 'where': { 'code': 'WAW1_MPLA1'}});
+      if(rentItemOne === null) {
+         rentItemOne = await RentItemRepository.createWithNewOfferRentItem(0, 'Pioneer XDJ-700 multi-player', 'Pioneer', 'XDJ-700', RentItemSize.MEDIUM, recievePointOne, 'MPLA', 1010010001, RentItemAviablility.IMMEDIATELY);
+         await OfferRentItemRepository.attachToRentOffer(await rentItemOne.getOfferRentItem(), offerOne.id, true);
+      }
+      let rentItemTwo = await RentItemEntity.findOne({ 'where': { 'code': 'WAW1-RCA2'}});
+      if(rentItemTwo === null) {
+         rentItemTwo = await RentItemRepository.createWithNewOfferRentItem(0, 'Kabel RCA 1,5m', '', 'Chinch 1.5m', RentItemSize.SMALL, recievePointOne, 'RCA', 1010010002, RentItemAviablility.IMMEDIATELY);
+         await OfferRentItemRepository.attachToRentOffer(await rentItemTwo.getOfferRentItem(), offerOne.id, false);
+      }
+      let rentItemThree = await RentItemEntity.findOne({ 'where': { 'code': 'WAW1-ETH3'}});
+      if(rentItemThree === null) {
+         rentItemThree = await RentItemRepository.createWithNewOfferRentItem(0, 'Kabel Ethernet 1m', '', 'Ethernet 1.5m', RentItemSize.SMALL, recievePointOne, 'ETH', 1010010003, RentItemAviablility.IMMEDIATELY);
+         await OfferRentItemRepository.attachToRentOffer(await rentItemThree.getOfferRentItem(), offerOne.id, false);
+      }
 
       let offerItems = await offerOne.getOfferRentItems((await RentOffer_OfferRentItem_Hash.findOne({ 'where': { 'RentalRentOfferId': offerOne.id} }))!);
 
@@ -380,8 +395,9 @@ export abstract class RentalDataBuilder
 
 // * [..] RentOffer has [..] OfferRentItems and vice versa
       RentOfferEntity.belongsToMany(OfferRentItemEntity,
-         { through: RentOffer_OfferRentItem_Hash });OfferRentItemEntity.belongsToMany(RentOfferEntity,
-         { through: RentOffer_OfferRentItem_Hash, as: 'OfferRentItems' });
+         { through: RentOffer_OfferRentItem_Hash });
+         OfferRentItemEntity.belongsToMany(RentOfferEntity,
+         { through: RentOffer_OfferRentItem_Hash});
 
 // * [..] RentOffer has [..] RecievePoints and vice versa
       let OfferRentItems2 = RentOfferEntity.belongsToMany(RecievePointEntity,
@@ -479,6 +495,6 @@ export abstract class RentalDataBuilder
       AddressEntity.sync({ force: this._forceSync });
 
    //--> 5. RETURN MODULE WITH RENTAL SCHEMA
-      return this.As<RentalDataModule>();
+      return this as unknown as RentalDataModule;
    }
 }

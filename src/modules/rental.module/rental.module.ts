@@ -1,26 +1,25 @@
 
 import { RentOfferViewModel } from "../../data/modules/rental-data.module/view-models/rent-offer.view-model";
 import { AppModule } from "../../app/app.modules/app.module";
-import { IFillTemplateWithDataIntegrationProvider } from "../../app/app.modules/host.module/integrations/fill-template-with-data.integration";
-import { TemplateModel } from "../../app/app.modules/host.module/model/template.model";
+import { IFillTemplateWithDataIntegrationConsumer } from "../../app/app.modules/host.module/integrations/fill-template-with-data.integration";
 import { RentalBuilder } from "./rental.builder";
 import { IRental } from "./rental.instance";
 import { IRentalViewModelIntegration } from "../../data/modules/rental-data.module/integrations/get-rent-offers-view-model.integration";
 
 interface IRentalDependency<T extends 
     IRentalViewModelIntegration 
-    | IFillTemplateWithDataIntegrationProvider>
+    | IFillTemplateWithDataIntegrationConsumer>
 {
     initialize(sqliteDep: T, offerTemplateName: string): AppModule;
 }
 
-export class RentalModule<T extends IRentalViewModelIntegration | IFillTemplateWithDataIntegrationProvider>
+export class RentalModule<T extends IRentalViewModelIntegration | IFillTemplateWithDataIntegrationConsumer>
     extends RentalBuilder
     implements IRental, IRentalDependency<T>
 {
-    fillTemplateWithData<T>(template: TemplateModel, data: T): Promise<string>
+    fillTemplateWithData(templateContent: string, data: Record<string, any>): string
     {
-        return (this._dependency as IFillTemplateWithDataIntegrationProvider).fillTemplateWithData(template, data)
+        return (this._dependency as IFillTemplateWithDataIntegrationConsumer).fillTemplateWithData(templateContent, data)
     }
     private _dependency: T;
 
@@ -38,7 +37,7 @@ export class RentalModule<T extends IRentalViewModelIntegration | IFillTemplateW
         return RentalModule.initialize(sqliteDep, offerTemplateName);
     }
     public static initialize
-        <T extends IRentalViewModelIntegration | IFillTemplateWithDataIntegrationProvider>
+        <T extends IRentalViewModelIntegration | IFillTemplateWithDataIntegrationConsumer>
     (dependency: T, offerTemplateName: string): RentalModule<T> 
     {
         return new RentalModule<T>(dependency, offerTemplateName)
