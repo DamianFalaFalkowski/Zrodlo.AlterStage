@@ -65,7 +65,7 @@ export abstract class RentalDataBuilder
       let recievePointOne = await RecievePointRepository.create(0, addressOne.id, 0, 'fala studio RP', '513762535', 'panda.zrodlo@gmail.com', 'pierwszy testowy punkt odbioru', 'Damian', 'Falkowski', 1024238253060145193, 'falalala_wav', 'WAW', true);
 
       // Oferty
-      let offerOne = await RentOfferRepository.create(0, 'Pioneer XDJ-700', 'Pojedyńczy multi-player XDJ-700');
+      let offerOne = await RentOfferRepository.create(0, 'Pioneer XDJ-700', 'Pojedyńczy multi-player XDJ-700', 100, 400, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTwSo1PUhaSJoaGMQN40sR_jBHjHl3xBN3DA&s');
 
       // Utworzenie przedmiotów fizycznych i umieszczenie ich w ofertach
       let rentItemOne = await RentItemEntity.findOne({ 'where': { 'code': 'WAW1_MPLA1'}});

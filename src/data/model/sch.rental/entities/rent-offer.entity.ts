@@ -27,6 +27,7 @@ export class RentOfferEntity
 /** czy aktywna
 ** Określa czy oferta jest aktualnie w ofercie */
     declare isActive: boolean;
+    declare imageUrl?: string;
 
 // TODO: zaimplementowac gettery
 
@@ -105,6 +106,10 @@ export const RentOfferAttributes = {
         type: DataTypes.DECIMAL,
         allowNull: false,
         defaultValue: 0
+    },
+    imageUrl: {
+        type: DataTypes.TEXT,
+        allowNull: true,
     },
     isActive: {
         type: DataTypes.BOOLEAN,

@@ -1,4 +1,5 @@
 
+import { OfferRentItemEntity } from '../../../model/sch.rental/entities/offer-rent-item.entity';
 import { RentOfferEntity } from '../../../model/sch.rental/entities/rent-offer.entity';
 import { RentOffer_OfferRentItem_Hash } from "../../../model/sch.rental/hash-tables/rent-offer-to-offer-rent-item.hash-entity";
 import { OfferRentItemViewModel } from './offer-rent-item.view-model';
@@ -6,9 +7,10 @@ import { OfferRentItemViewModel } from './offer-rent-item.view-model';
 export class RentOfferViewModel
 {
     private readonly _baseEntity: RentOfferEntity;
-    public get isTrue(): boolean { return true; }
     public get title(): string { return this._baseEntity.name as string; }
-    public get imageUrl(): string { return 'https://discord.com/channels/1333153060930846781/1356470516369719466/1356470516369719466'; }
+    public get totalPrice(): number { return this._baseEntity.totalPrice; }
+    public get depositPrice(): number { return this._baseEntity.totalDepositPrice; }
+    public get imageUrl(): string? { return this._baseEntity.imageUrl; }
     public get applayTags(): string[] { return ['1335377426850516992']; }
     public get id(): number { return this._baseEntity.id as number; }
 
@@ -22,9 +24,11 @@ export class RentOfferViewModel
     : Promise<RentOfferViewModel>  
     {
         this.OfferRentItems = [];
-        let offerItems =await this._baseEntity.getOfferRentItems(
-            new RentOffer_OfferRentItem_Hash());
-        offerItems.forEach(x => { this.OfferRentItems!.push(new OfferRentItemViewModel(x)); });
+        let offerItems =(await this._baseEntity.getOfferRentItems(
+            new RentOffer_OfferRentItem_Hash()));
+        for (let index = 0; index < offerItems.length; index++) {
+            this.OfferRentItems.push(new OfferRentItemViewModel((offerItems[index] as unknown as OfferRentItemEntity[])[0]));
+        }
         return this;
     }
 }

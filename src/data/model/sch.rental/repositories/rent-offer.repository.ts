@@ -5,12 +5,15 @@ export class RentOfferRepository{
     private constructor() {
     }
 
-    public static async create(discordUserId: number, name: string, description: string): Promise<RentOfferEntity>
+    public static async create(discordUserId: number, name: string, description: string, totalPrice: number, totalDepositPrice: number, imageUrl: string): Promise<RentOfferEntity>
     {
         return await RentOfferEntity.create({
             name: name,
             description: description,
-            createdDiscordUserId: discordUserId
+            createdDiscordUserId: discordUserId,
+            totalPrice: totalPrice,
+            totalDepositPrice: totalDepositPrice,
+            imageUrl: imageUrl,
         })
     }
 
