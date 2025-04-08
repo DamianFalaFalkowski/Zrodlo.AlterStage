@@ -6,6 +6,7 @@ import { Dialect, Sequelize } from "sequelize";
 import { TagsAttributes, TagsEntity, TagsModelName } from "../../app.data-model/sch.app/entities/tags.entity";
 import { __logger } from "../../../../utils/dc-logger.util";
 import { TemplateAttributes, TemplateEntity, TemplateModelName } from "../../app.data-model/sch.app/entities/template.entity";
+import { after } from "node:test";
 
 export const appSchemaName = 'App';
 
@@ -24,6 +25,8 @@ interface IAppDataBuilder
     ): AppDataModule;
 
     InitAppSchema(afterAppSchemaSync: () => void): AppDataModule;
+
+    PrepeareTestData(afterTestDataCreation: () => void): Promise<AppDataModule>;
 }
 export abstract class AppDataBuilder extends AppDataInstance
     implements
@@ -36,6 +39,22 @@ export abstract class AppDataBuilder extends AppDataInstance
                         userId: 0,
                         createdUserId: 0
                     });
+    }
+
+    public async PrepeareTestData(afterTestDataCreation: () => void): Promise<AppDataModule>
+    {
+        await TemplateEntity.create({
+            name: 'Dj EQ Rental Offer Template',
+            bId: 100,
+            description: 'Szablon oferty wynajmu sprzetu DJ',
+            content: `{{if isTrue}}Widoczny tekst{{/if}}
+{{repeat items}}- {{name}}\n{{/repeat}}
+Witaj, {{title}}!`,
+            userId: 0,
+            createdUserId: 0,
+        });
+        afterTestDataCreation();
+        return this as unknown as AppDataModule;
     }
 
     /** 

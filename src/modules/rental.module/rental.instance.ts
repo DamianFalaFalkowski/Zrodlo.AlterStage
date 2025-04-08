@@ -1,4 +1,3 @@
-import { ApplicationError } from "../../app/app.errors/application.error";
 import { AppModule } from "../../app/app.modules/app.module";
 
 export interface IRental

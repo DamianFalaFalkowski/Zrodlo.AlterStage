@@ -11,48 +11,65 @@ export class FillTemplateService
 
     render(model: TemplateModel): string
     {
-        return this.template.replace(/\{\{(.*?)\}\}/g, (_, key) =>
-        {
-            const parts = key.trim().split(' ');
-            const command = parts[0];
-            const args = parts.slice(1);
+        // Process `repeat` blocks first
+        const repeatProcessed = this.processRepeats(this.template, model);
 
-            switch (command)
+        // Process `if` blocks
+        const ifProcessed = this.processConditionals(repeatProcessed, model);
+
+        // Replace variables
+        return this.replaceVariables(ifProcessed, model);
+    }
+
+    private processRepeats(template: string, model: TemplateModel): string
+    {
+        return template.replace(/\{\{repeat (\w+)\}\}([\s\S]*?)\{\{\/repeat\}\}/g, (_, collectionKey, content) =>
+        {
+            const collection = model[collectionKey];
+            if (!Array.isArray(collection))
             {
-                case 'if': {
-                    const [conditionKey] = args;
-                    return model[conditionKey] ? '' : '{{hidden}}';
-                }
-                case 'repeat': {
-                    const [collectionKey, subTemplate] = args;
-                    const collection = model[collectionKey];
-                    if (Array.isArray(collection))
-                    {
-                        return collection
-                            .map(item => new FillTemplateService(subTemplate).render(item))
-                            .join('');
-                    }
-                    return '';
-                }
-                default: {
-                    return model[key.trim()] ?? '';
-                }
+                return ''; // If the collection is not an array, return an empty string
             }
+
+            // Render the content for each item in the collection
+            return collection
+                .map(item => new FillTemplateService(content).render(item))
+                .join('');
+        });
+    }
+
+    private processConditionals(template: string, model: TemplateModel): string
+    {
+        return template.replace(/\{\{if (\w+)\}\}([\s\S]*?)\{\{\/if\}\}/g, (_, conditionKey, content) =>
+        {
+            const condition = model[conditionKey];
+            return condition ? content : ''; // Render content only if the condition is truthy
+        });
+    }
+
+    private replaceVariables(template: string, model: TemplateModel): string
+    {
+        return template.replace(/\{\{(\w+)\}\}/g, (_, variable) =>
+        {
+            return model[variable] ?? ''; // Replace variables with their values from the model
         });
     }
 }
 
-// Przykładowe użycie
+
+// Example usage
 // const template = `
-//   {{if isVisible}}Widoczny tekst{{/if}}
-//   {{repeat items <div>{{name}}</div>}}
-//   Witaj, {{username}}!
+//   {{if isVisible}}Visible text!{{/if}}
+//   {{repeat items}}
+//     <div>{{name}}</div>
+//   {{/repeat}}
+//   Hello, {{username}}!
 // `;
 
 // const model = {
-//     isVisible: true,
-//     username: 'Jan',
-//     items: [{ name: 'Element 1' }, { name: 'Element 2' }],
+//   isVisible: true,
+//   username: 'John',
+//   items: [{ name: 'Item 1' }, { name: 'Item 2' }, { name: 'Item 3' }],
 // };
 
 // const engine = new TemplateEngine(template);

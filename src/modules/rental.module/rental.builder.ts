@@ -19,11 +19,15 @@ export abstract class RentalBuilder
     public async createOrUpdateOfferInChannel(channelId: string, offerViewModel: RentOfferViewModel): Promise<void>
     {
         let templateContent = await this.getTemplateContentByBid(this._offerTemplateBid);
+        let it: Record<string, any>[] = [];
+        offerViewModel.OfferRentItems!.forEach(element => {
+            it.push({ name: 'asd' })
+        });
         let templateModel = { //  TODO: usupelnic pola przy uzyciu modelu
-            isVisible: true,
-            username: 'Jan',
-            items: [{ name: 'Element 1' }, { name: 'Element 2' }],
-        };
+            isTrue: true,
+            title: offerViewModel.title,
+            items: it
+        }; 
         let content = this.fillTemplateWithData(templateContent, templateModel);
         await this.postThreadInForumChannelIfDoesntExist(channelId, offerViewModel.title, content, offerViewModel.imageUrl, offerViewModel.applayTags);
     }

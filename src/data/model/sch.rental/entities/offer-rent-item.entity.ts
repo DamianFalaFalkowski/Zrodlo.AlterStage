@@ -15,6 +15,11 @@ export class OfferRentItemEntity extends BaseEntity {
     declare description?: string;
     declare rentItemSize: RentItemSize;
 
+    public get ItemName(): string
+    {
+        return this.itemName;
+    }
+
     public async getRentItems(): Promise<RentItemEntity[]>
     {
         const entities = await RentItemEntity.findAll(

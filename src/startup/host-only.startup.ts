@@ -4,9 +4,8 @@ dotenv.config();
 import {__logger} from '../utils/dc-logger.util';
 import appDataModule from '../app/app.data/app.data-modules/app-data.module/app-data.module';
 import { Dialect } from 'sequelize';
-import hostModule, { HostModule } from '../app/app.modules/host.module/app-module.host.module';
+import hostModule from '../app/app.modules/host.module/app-module.host.module';
 import paymentModule from '../modules/payment.module/payment.module';
-import { ForumChannel } from 'discord.js';
 import { RentalDataModule } from '../data/modules/rental-data.module/rental-data.module';
 import rentalModule from '../modules/rental.module/rental.module';
 
@@ -39,7 +38,9 @@ const AppDataModule = appDataModule()
             {
                AppDataModule.InitAppSchema(async () =>
                {
-                  let rentalData = RentalDataModule
+                  AppDataModule.PrepeareTestData(() =>{
+                     __logger.logInfo("Dane testowe modułu AppData utworzone ! ! !");
+                     let rentalData = RentalDataModule
                      .initializeRental(
                            AppDataModule, 
                            (process.env.MODULE_RENTALDATA_FORCESYNC as string) === 'true')
@@ -51,6 +52,7 @@ const AppDataModule = appDataModule()
                               __logger.logInfo("Rental channels updated ! ! !");
                            });
                         });
+                  });
                   });
                });
                paymentModule(hostModule)
