@@ -45,3 +45,16 @@ Opis plików które folder zawiera oraz jego roli:
 
 DOKUMENTAJA POLECEN (/): 
     https://discord.com/developers/docs/interactions/application-commands#contexts
+
+
+4. Moduły
+
+4.1 App Data Module
+
+4.2 App Module
+
+4.3 Host Module
+
+...
+
+4.10 Discount Module (Zaplanowany na później)

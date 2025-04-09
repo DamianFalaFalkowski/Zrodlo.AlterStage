@@ -32,7 +32,7 @@ export abstract class BaseHashEntity<A extends BaseEntity, B extends BaseEntity>
             const element = intFoundIds[index];
             const q = `SELECT * FROM ${isA ? this.tableA.name : this.tableB.name} WHERE id = ${element}`;
             const r = (await this.sequelize.query(q))[0] as unknown as T;
-            results.push(r);
+            results = results.concat(r);
         }
         return results;
     }

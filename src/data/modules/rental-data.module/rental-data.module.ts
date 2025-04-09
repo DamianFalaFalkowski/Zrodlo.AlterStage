@@ -39,7 +39,10 @@ export class RentalDataModule
         for (let index = 0; index < activeOffersEntities.length; index++) {
             const offerEntity = activeOffersEntities[index];
             activeOffersViewModels.push(
-                await (new RentOfferViewModel(offerEntity)).IncludeOfferRentItmes()
+                await (await (await (new RentOfferViewModel(offerEntity))
+                    .IncludeOfferRentItmesAndHomeRecievePoint())
+                    .IncludeRecievePointsAviabilities())
+                    .IncludeOfferInfos()
             );
         }
         return activeOffersViewModels;

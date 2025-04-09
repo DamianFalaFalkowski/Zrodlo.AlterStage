@@ -23,4 +23,11 @@ export class RecievePointRepository{
                 recievePointCityCode: recievePointCityCode
             });
         }
+
+    public static async attachToRentOffer(recievePoint: RecievePointEntity, offerId: Identifier): Promise<void> 
+        {
+            await RecievePointEntity.sequelize!.query(`INSERT INTO "main"."Rental_RentOffersToRecievePoints"
+    ("RentalRentOfferId", "RentalRecievePointId")
+    VALUES (${offerId}, ${recievePoint.id});`);
+        }
 }

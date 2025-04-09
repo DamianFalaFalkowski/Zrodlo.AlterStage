@@ -48,22 +48,22 @@ export abstract class AppDataBuilder extends AppDataInstance
             bId: 100, // TODO: przeniesc do configa
             description: 'Szablon oferty wynajmu sprzetu DJ',
             content: `
+*ID: {{id}} UPD: {{lastUpdateDate}}*
+
 **Cena:** {{totalPrice}}zł/dzień
 **Kaucja zwrotna:** {{depositPrice}}zł
-**Dostępność:** od zaraz (Warszawa), 1-2 dni (pozostałe Białystok, Dęblin, Lublin)
-**Kontakt bezpośredni:** tel. 513-762-535
+**Dostępność:** {{repeat recievePointAviabilities}}{{recievePointAviability}}({{cities}}) {{/repeat}}
+**Kontakt bezpośredni:\n**tel. {{contactPhone}}\ne-mail: {{contactEmail}}
 
-**Dodatkowe info: **
-- rabat -25% dla <@&{{honoredMemberRoleId}}>
-- możliwość dowozu Warszawa 20zł
-- możliwość dowozu poza Warszawą 20zł + 0,5zł/1km przejechanego dystansu
-- możliwość wypożyczenia pary +30zł https://discord.com/channels/1333153060930846781/1335378156621791324
+**Dodatkowe informacje: **
+{{repeat DeliveryInfos}}{{infoMessage}}{{/repeat}}{{repeat OfferDisscounts}}{{infoMessage}}{{/repeat}}{{repeat OfferInfos}}{{infoMessage}}{{/repeat}}
+**Opis:**
+{{description}}
 
 Zestaw zawiera:
-{{repeat OfferRentItems}}- {{name}}\n{{/repeat}}
+{{repeat OfferRentItems}}- {{name}}
+{{/repeat}}
 
-
-Id oferty: {{id}}
 `,
             userId: 0,
             createdUserId: 0,

@@ -1,8 +1,8 @@
-import { DataTypes, Identifier } from "sequelize";
+import { DataTypes, Identifier, ModelStatic } from "sequelize";
 import { BaseEntity } from "../../../../app/app.data/app.data-model/_base/_base.entity";
 import { RentOrderEntity } from "./rent-order.entity";
 import { propertyOf } from "../../../../utils/type-properties.util";
-import { RentOffer_RecievePoint_Hash } from "../hash-tables/rent-order-to-recieve-point.hash-entity";
+import { RentOffer_RecievePoint_Hash } from "../hash-tables/rent-offer-to-recieve-point.hash-entity";
 import { RentOfferEntity } from "./rent-offer.entity";
 import { DeliveryInfoEntity } from "./delivery-info.entity";
 import { AddressEntity } from "./address.entity";
@@ -24,26 +24,30 @@ export class RecievePointEntity extends BaseEntity
     declare lastOwnerDiscordName: string;
     declare isActive: boolean;
 
+    declare RentalAddressId: Identifier;
+    declare recievePointCityCode: string;
+    declare RentalDeliveryInfoId: Identifier;
+
 /** Kod punktu odbioru
 ** Unikalny kod złozony z kolejno 3 liter oznaczających miasto
 * TODO: utworzyć walidator kodów punktów odbioru */
-    declare recievePointCityCode: string;
+    
 
     public getRecievePointCode(): string {
         return this.recievePointCityCode + this.id;
     }
 
 // ! TODO: na razie kompletność i poprawność nie będzie realizowana. najpierw chcę obsłuyć operacje na strukturze z pominięciem funkcjonalności dostawy 
-    declare RentalDeliveryInfoId: Identifier;
+    
     public async getDeliveryInfo(): Promise<DeliveryInfoEntity>
     {
-        return await this.getOwnedEntity(DeliveryInfoEntity, 
+        return await (new RecievePointEntity()).getOwnedEntity<DeliveryInfoEntity>(DeliveryInfoEntity, 
             this.RentalDeliveryInfoId, 
             propertyOf<RecievePointEntity>('RentalDeliveryInfoId'));
     };
 
 // ? ok
-    declare RentalAddressId: Identifier;
+    
     public async getAddress(): Promise<AddressEntity>
     {
         return await this.getOwnedEntity(AddressEntity, 
@@ -78,10 +82,10 @@ export const RecievePointAttributes = {
     },
 
     // fks
-    // RentalDeliveryInfoId: {
-    //     type: DataTypes.INTEGER,
-    //     allowNull: false,
-    // },
+    RentalDeliveryInfoId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    },
     RentalAddressId: {
         type: DataTypes.INTEGER,
         allowNull: false,

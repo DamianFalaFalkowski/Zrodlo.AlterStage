@@ -4,7 +4,7 @@ import { DataTypes} from 'sequelize';
 import { RentOffer_RentOrder_Hash } from '../hash-tables/rent-offer-to-rent-order.hash-entity';
 import { RentOrderEntity } from './rent-order.entity';
 import { RentOffer_OfferRentItem_Hash } from '../hash-tables/rent-offer-to-offer-rent-item.hash-entity';
-import { RentOffer_RecievePoint_Hash } from '../hash-tables/rent-order-to-recieve-point.hash-entity';
+import { RentOffer_RecievePoint_Hash } from '../hash-tables/rent-offer-to-recieve-point.hash-entity';
 import { RentOffer_OfferDiscount_Hash } from '../hash-tables/rent-offer-to-offer-discount.hash-entity';
 import { OfferRentItemEntity } from "./offer-rent-item.entity";
 import { OfferDiscountEntity } from "./offer-discount.entity";
@@ -65,7 +65,7 @@ export class RentOfferEntity
     public async getOfferInfos(): Promise<OfferInfoEntity[] | null>
     {
         return await OfferInfoEntity.findAll(
-            { where: { RentalOfferRentItemId: this.id } });
+            { where: { RentalRentOfferId: this.id } });
     }
 
 /**

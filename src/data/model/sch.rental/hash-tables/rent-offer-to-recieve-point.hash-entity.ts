@@ -5,7 +5,7 @@ import { RentOfferEntity, RentOfferModelName } from "../entities/rent-offer.enti
 import { rentalSchemaName } from "../../../modules/rental-data.module/rental-data.instance";
 
 
-export const RentOfferToRecievePointName = 'RentOffersToRecievePoint';
+export const RentOfferToRecievePointName = 'RentOffersToRecievePoints';
 
 export class RentOffer_RecievePoint_Hash 
     extends BaseHashEntity<RentOfferEntity, RecievePointEntity>
@@ -16,11 +16,11 @@ export class RentOffer_RecievePoint_Hash
     protected tableB: ModelStatic<RecievePointEntity> = RecievePointEntity;
     protected get tableA_PK_Name(): string
     {
-        return `${this.schemaName}${RentOfferModelName}Id`;
+        return `${this.schemaName}RentOfferId`;
     }
     protected get tableB_PK_Name(): string
     {
-        return `${this.schemaName}${RecievePointModelName}Id`;
+        return `${this.schemaName}RecievePointId`;
     }
     public entityName: string = RentOfferToRecievePointName;
 

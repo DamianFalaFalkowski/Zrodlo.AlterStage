@@ -13,7 +13,7 @@ import { RentOfferAttributes, RentOfferEntity, RentOfferModelName } from "../../
 import { RentOffer_OfferDiscount_Hash, RentOfferToOfferDiscountModelName } from '../../model/sch.rental/hash-tables/rent-offer-to-offer-discount.hash-entity';
 import { RentOffer_RentOrder_Hash, RentOfferToRentOrderModelName } from "../../model/sch.rental/hash-tables/rent-offer-to-rent-order.hash-entity";
 import { RentOffer_OfferRentItem_Hash, RentOfferToOfferRentItemEntityName } from "../../model/sch.rental/hash-tables/rent-offer-to-offer-rent-item.hash-entity";
-import { RentOffer_RecievePoint_Hash, RentOfferToRecievePointName } from "../../model/sch.rental/hash-tables/rent-order-to-recieve-point.hash-entity";
+import { RentOffer_RecievePoint_Hash, RentOfferToRecievePointName } from "../../model/sch.rental/hash-tables/rent-offer-to-recieve-point.hash-entity";
 import { AddressRepository } from "../../model/sch.rental/repositories/address.repository";
 import { RentItemAviablility } from "../../model/sch.rental/enums/rent-item-aviablility.enum";
 import { RentItemSize } from "../../model/sch.rental/enums/rent-item-size.enum";
@@ -33,6 +33,7 @@ import { OfferRentItemAttributes, OfferRentItemEntity, OfferRentItemModelName } 
 import { OrderDeliveryActionAttributes, OrderDeliveryActionEntity, OrderDeliveryActionModelName } from "../../model/sch.rental/entities/order-delivery-action.entity";
 import { AppModule } from "../../../app/app.modules/app.module";
 import { OfferInfoRepository } from "../../model/sch.rental/repositories/offer-info.repository";
+import { DeliveryInfoRepository } from "../../model/sch.rental/repositories/delivery-info.repository";
 
 
 /** ....
@@ -60,16 +61,20 @@ export abstract class RentalDataBuilder
 
    async PrepeareTestData(afterTestDataCreation: () => void): Promise<RentalDataModule>
    {
-      // Punkty odbioru (rezem z adresami)
+      // Punkty odbioru (rezem z adresem i informacjami o dostawie)
       let addressOne = await AddressRepository.create(0, 'city2', 'street', 'house', 'postalCode');
-      //let baseRecievePointDeliveryInfo = await DeliveryInfoRepository.create(0, 'na terenie Warszawy', true,RentItemAviablility.IMMEDIATELY, true, true,true, false, false, false, false, false, 300, 30, 2, undefined, 20, 20);
-      let recievePointOne = await RecievePointRepository.create(0, addressOne.id, 0, 'fala studio RP', '513762535', 'panda.zrodlo@gmail.com', 'pierwszy testowy punkt odbioru', 'Damian', 'Falkowski', 1024238253060145193, 'falalala_wav', 'WAW', true);
+      let baseRecievePointDeliveryInfo = await DeliveryInfoRepository.create(0, 'na terenie Warszawy', true,RentItemAviablility.IMMEDIATELY, true, true,true, false, false, false, false, false, 300, 30, 2, undefined, 20, 20);
+      let recievePointOne = await RecievePointRepository.create(0, addressOne.id, baseRecievePointDeliveryInfo.id, 'fala studio RP', '513762535', 'panda.zrodlo@gmail.com', 'pierwszy testowy punkt odbioru', 'Damian', 'Falkowski', 1024238253060145193, 'falalala_wav', 'WAW', true);
 
       let addressTwo = await AddressRepository.create(0, 'Dubai', 'street', 'house', 'postalCode');
-      let recievePointTwo = await RecievePointRepository.create(0, addressTwo.id, 0, 'Akun', '111222111', 'dubai.zrodlo@gmail.com', 'dubaiski punkt odbioru', 'Damian', 'Falkowski', 1024238253060145193, 'dj_akun', 'DUB', true);
+      let recievePointTwo = await RecievePointRepository.create(0, addressTwo.id, baseRecievePointDeliveryInfo.id, 'Akun', '111222111', 'dubai.zrodlo@gmail.com', 'dubaiski punkt odbioru', 'Akun', 'Akuński', 1024238253060145193, 'dj_akun', 'DUB', true);
 
-      // Oferty
+      // Oferta
       let offerOne = await RentOfferRepository.create(0, 'Pioneer XDJ-700', 'Pojedyńczy multi-player XDJ-700', 100, 400, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTwSo1PUhaSJoaGMQN40sR_jBHjHl3xBN3DA&s');
+
+      // Attach recieve points to offer
+      await RecievePointRepository.attachToRentOffer(recievePointOne, offerOne.id);
+      await RecievePointRepository.attachToRentOffer(recievePointTwo, offerOne.id);
 
       // Utworzenie przedmiotów fizycznych i umieszczenie ich w ofertach
       let rentItemOne = await RentItemEntity.findOne({ 'where': { 'code': 'WAW1_MPLA1'}});
@@ -90,6 +95,8 @@ export abstract class RentalDataBuilder
 
       let offerInfoOne = await OfferInfoRepository.create(0, offerOne.id, `- możliwość dowozu Warszawa {{standardDeliveryPrice}}zł\n`);
       let offerInfoTwo = await OfferInfoRepository.create(0, offerOne.id, `- możliwość wypożyczenia pary +30zł https://discord.com/channels/1333153060930846781/1335378156621791324\n`);
+
+      
 
       let offerItems = await offerOne.getOfferRentItems((await RentOffer_OfferRentItem_Hash.findOne({ 'where': { 'RentalRentOfferId': offerOne.id} }))!);
 
@@ -151,11 +158,11 @@ export abstract class RentalDataBuilder
       RentOfferEntity.init(
          RentOfferAttributes,
          { sequelize: this.GetContext(), modelName: rentalSchemaName + '_' + RentOfferModelName }
-      )
+      );
       RentOrderEntity.init(
          RentOrderAttributes,
          { sequelize: this.GetContext(), modelName: rentalSchemaName + '_' + RentOrderModelName }
-      )
+      );
 
 
    //--> 2. INIT HASH TABLES
