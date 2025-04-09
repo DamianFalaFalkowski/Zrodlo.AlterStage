@@ -1,4 +1,4 @@
-import { TagsEntity } from '../../../../app/app.data/app.data-model/sch.app/tags.entity';
+import { TagsEntity } from '../../../../app/app.data/app.data-model/sch.app/entities/tags.entity';
 import {__logger} from '../../../../utils/dc-logger.util';
 import { GenerateTransferMessageCommand } from '../../../payment.module/commands/gen-transfer-msg/gen-transfer-msg.command';
 import { GenerateTransferMessageResponse } from '../../../payment.module/commands/gen-transfer-msg/gen-transfer-msg.response';

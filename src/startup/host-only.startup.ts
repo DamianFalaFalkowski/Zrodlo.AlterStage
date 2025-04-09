@@ -2,19 +2,22 @@
 import dotenv from 'dotenv';
 dotenv.config();
 import {__logger} from '../utils/dc-logger.util';
-import versionModule from '../app/app.modules/app-version.module/app.version.module';
-import sqliteModule from '../app/app.data/app.data-modules/app-data.sqlite/app-data.sqlite.module';
+import appDataModule from '../app/app.data/app.data-modules/app-data.module/app-data.module';
 import { Dialect } from 'sequelize';
 import hostModule from '../app/app.modules/host.module/app-module.host.module';
-import paymentModule from '../modules/payment.module/module.payment.module';
+import paymentModule from '../modules/payment.module/payment.module';
+import { RentalDataModule } from '../data/modules/rental-data.module/rental-data.module';
+import rentalModule from '../modules/rental.module/rental.module';
+
+
 
 __logger.logInfo('Starting discord chat-bot ...');
 __logger.logInfo('\tApp configuration:');
 __logger.logInfo('\t\t\tDb: SqLite[Tag, Rental]')
-__logger.logInfo('\t\t\tApp: Version, Host, Payment');
+__logger.logInfo('\t\t\tApp: Version, Host, Payment, Rental');
 __logger.logInfo('');
 
-const data = sqliteModule
+const AppDataModule = appDataModule()
    .SetDbConnection(
       process.env.DATABASE_NAME as string,
       process.env.DATABASE_USER as string,
@@ -25,7 +28,7 @@ const data = sqliteModule
       process.env.DATABASE_STORAGE as string)
    .InitAppSchema(() => 
    { 
-      versionModule(data)
+      appDataModule()
          .setUpAppVersion(1,0,1);
       hostModule
          .SetUpClient(() => 
@@ -33,11 +36,23 @@ const data = sqliteModule
             __logger.logInfo("Logowanie OK ! ! !");
             try 
             {
-               data.InitRentalSchema(() =>
+               AppDataModule.InitAppSchema(async () =>
                {
-                  data.PrepeareTestData_Rental(() =>
-                  {
-                     __logger.logInfo("Dane testowe utworzone ! ! !");
+                  AppDataModule.PrepeareTestData(() =>{
+                     __logger.logInfo("Dane testowe modułu AppData utworzone ! ! !");
+                     let rentalData = RentalDataModule
+                     .initializeRental(
+                           AppDataModule, 
+                           (process.env.MODULE_RENTALDATA_FORCESYNC as string) === 'true')
+                     .InitSchema(() => {
+                        rentalData.PrepeareTestData(() =>
+                        {
+                           __logger.logInfo("Dane testowe utworzone ! ! !");
+                           rentalModule(rentalData, hostModule, appDataModule(), process.env.OFFER_TEMPLATE_BID as unknown as number, process.env.DJ_EQ_RENTAL_CHANNEL_ID as string).UpdateRentalChannels(() =>{
+                              __logger.logInfo("Rental channels updated ! ! !");
+                           });
+                        });
+                  });
                   });
                });
                paymentModule(hostModule)

@@ -17,6 +17,7 @@ export interface IHostInstance extends IHost
     client: Client<boolean> | undefined;
     intends: GatewayIntentBits[];
     commands: any[];
+    
 }
 
 export abstract class HostInstance extends AppModule implements IHostInstance
@@ -48,6 +49,7 @@ export abstract class HostInstance extends AppModule implements IHostInstance
     public rest: REST | undefined;
     public client: Client<boolean> | undefined;
     public commands: any[] = [];
+    
 
     /** Statyczny wewnętrzny dostęp do klasy rest */
     protected static rest

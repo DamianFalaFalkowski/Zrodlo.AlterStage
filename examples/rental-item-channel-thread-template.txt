@@ -1,0 +1,15 @@
+*ID: {{id}} UPD: {{lastUpdateDate}}*
+
+**Cena:** {{totalPrice}}zł/dzień
+**Kaucja zwrotna:** {{depositPrice}}zł
+**Dostępność:** {{repeat recievePointAviabilities}}{{recievePointAviability}}({{cities}}) {{/repeat}}
+**Kontakt bezpośredni:\n**tel. {{contactPhone}}\ne-mail: {{contactEmail}}
+
+**Dodatkowe informacje: **
+{{repeat DeliveryInfos}}{{infoMessage}}{{/repeat}}{{repeat OfferDisscounts}}{{infoMessage}}{{/repeat}}{{repeat OfferInfos}}{{infoMessage}}{{/repeat}}
+**Opis:**
+{{description}}
+
+Zestaw zawiera:
+{{repeat OfferRentItems}}- {{name}}
+{{/repeat}}
