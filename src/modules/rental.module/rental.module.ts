@@ -7,18 +7,22 @@ import { IRental } from "./rental.instance";
 import { IRentalViewModelIntegrationProvider } from "../../data/modules/rental-data.module/integrations/get-rent-offers-view-model.integration";
 import { IGetTemplateByBidIntegrationConsumer, IGetTemplateByBidIntegrationProvider } from "../../app/app.data/app.data-modules/app-data.module/integrations/get-template-by-bid.integration";
 import { IPostThreadInForumChannelIntegrationConsumer, IPostThreadInForumChannelIntegrationProvider } from "../../app/app.modules/host.module/integrations/post-thread-in-forum-channel.integration";
+import { IGetClientIntegration } from '../../app/app.modules/host.module/integrations/get-client.host.integration';
 
-interface IRentalDependency<T extends IRentalViewModelIntegrationProvider , U extends IPostThreadInForumChannelIntegrationConsumer | IFillTemplateWithDataIntegrationConsumer
+interface IRentalDependency<T extends IRentalViewModelIntegrationProvider , U extends IPostThreadInForumChannelIntegrationConsumer | IFillTemplateWithDataIntegrationConsumer | IGetClientIntegration
     , Z extends IGetTemplateByBidIntegrationConsumer>
 {
     initialize(sqliteDep: T, hostDep: U, appDataDep: Z, offerTemplateBid: number, djEquipmentRentalChannelId: string): AppModule;
 }
 
-export class RentalModule<T extends IRentalViewModelIntegrationProvider , U extends IPostThreadInForumChannelIntegrationConsumer | IFillTemplateWithDataIntegrationConsumer
+export class RentalModule<T extends IRentalViewModelIntegrationProvider , U extends IPostThreadInForumChannelIntegrationConsumer | IFillTemplateWithDataIntegrationConsumer | IGetClientIntegration
     , Z extends IGetTemplateByBidIntegrationConsumer>
     extends RentalBuilder
     implements IRental, IRentalDependency<T, U, Z>
 {
+    RegisterCommandHandlers(commandHandlersFolderPaths: [string]): void {
+        return (this._dependencyHost! as IGetClientIntegration).RegisterCommandHandlers(commandHandlersFolderPaths);
+    }
     
     fillTemplateWithData(templateContent: string, data: Record<string, any>): string
     {
@@ -51,7 +55,7 @@ export class RentalModule<T extends IRentalViewModelIntegrationProvider , U exte
         return RentalModule.initialize(sqliteDep, dependencyHost, dependencyAppData, offerTemplateBid, djEquipmentRentalChannelId);
     }
     public static initialize
-        <T extends IRentalViewModelIntegrationProvider , U extends IPostThreadInForumChannelIntegrationConsumer | IFillTemplateWithDataIntegrationConsumer
+        <T extends IRentalViewModelIntegrationProvider , U extends IPostThreadInForumChannelIntegrationConsumer | IFillTemplateWithDataIntegrationConsumer | IGetClientIntegration
     , Z extends IGetTemplateByBidIntegrationConsumer>
     (dependency: T, dependencyHost: U, dependencyApData: Z, offerTemplateBid: number, djEquipmentRentalChannelId: string): RentalModule<T, U, Z> 
     {

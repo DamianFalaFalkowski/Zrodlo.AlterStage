@@ -1,5 +1,6 @@
 import { ApplicationCommandType, ApplicationIntegrationType, InteractionContextType, SlashCommandBuilder } from "discord.js";
 import { baseHandlerExecute } from "../../../../discord/_command-handling-base/base.handler";
+import { permission } from "process";
 
 // DOKUMENTAJA POLECEN (/): https://discord.com/developers/docs/interactions/application-commands#contexts
 

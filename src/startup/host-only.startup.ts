@@ -7,7 +7,7 @@ import { Dialect } from 'sequelize';
 import hostModule from '../app/app.modules/host.module/app-module.host.module';
 import paymentModule from '../modules/payment.module/payment.module';
 import { RentalDataModule } from '../data/modules/rental-data.module/rental-data.module';
-import rentalModule from '../modules/rental.module/rental.module';
+import rentalModule, { RentalModule } from '../modules/rental.module/rental.module';
 
 
 
@@ -48,8 +48,11 @@ const AppDataModule = appDataModule()
                         rentalData.PrepeareTestData(() =>
                         {
                            __logger.logInfo("Dane testowe utworzone ! ! !");
-                           rentalModule(rentalData, hostModule, appDataModule(), process.env.OFFER_TEMPLATE_BID as unknown as number, process.env.DJ_EQ_RENTAL_CHANNEL_ID as string).UpdateRentalChannels(() =>{
+                           rentalModule(rentalData, hostModule, appDataModule(), process.env.OFFER_TEMPLATE_BID as unknown as number, process.env.DJ_EQ_RENTAL_CHANNEL_ID as string).RegisterRentalCommands().UpdateRentalChannels(async () =>{
                               __logger.logInfo("Rental channels updated ! ! !");
+                              await hostModule
+                     .HandleEventInteractionCreate()
+                     .PublishCommands();
                            });
                         });
                   });
@@ -58,9 +61,7 @@ const AppDataModule = appDataModule()
                paymentModule(hostModule)
                   .RegisterPaymentCommands();
                (async () => {
-                  await hostModule
-                     .HandleEventInteractionCreate()
-                     .PublishCommands();
+                  
                })();
             } catch (error: Error | any) 
             // TODO: handle
