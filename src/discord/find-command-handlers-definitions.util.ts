@@ -58,7 +58,7 @@ export class CommandHandlersUtil {
                 Routes.applicationGuildCommands(clientId, guildId),
                 { body: jsonCommands },
             );
-            console.log(`Successfully reloaded ${jsonCommands.length} application (/) commands.`);
+             console.log(`Successfully reloaded ${jsonCommands.length} application (/) commands.`);
         } catch (error) {
             console.error(error);
         }

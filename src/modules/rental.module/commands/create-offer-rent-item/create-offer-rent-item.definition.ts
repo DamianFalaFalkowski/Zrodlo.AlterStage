@@ -34,11 +34,11 @@ class CreateOfferRentItemDefinition {
                     .setDescription('The size of the item.')
                     .setRequired(true)
                     .addChoices(
-                        { name: 'Small', value: 'S' },
-                        { name: 'Medium', value: 'M' },
-                        { name: 'Large', value: 'L' },
-                        { name: 'Extra Large', value: 'XL' },
-                        { name: 'Extra Extra Large', value: 'XXL' }
+                        { name: 'Very Small', value: 'V_SMALL' },
+                        { name: 'Small', value: 'SMALL' },
+                        { name: 'Medium', value: 'MEDIUM' },
+                        { name: 'Large', value: 'LARGE' },
+                        { name: 'Very Large', value: 'LARGE' }
                     ))
         ,
         async execute(interaction: any) {
