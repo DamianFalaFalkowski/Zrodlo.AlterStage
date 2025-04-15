@@ -8,7 +8,7 @@ import { __logger } from '../../../../utils/dc-logger.util';
 
 /**  */
 module.exports = {
-     handle(interaction: any, command: GenerateTransferMessageCommand) {
+    async handle(interaction: any, command: GenerateTransferMessageCommand) : Promise<void> {
         try {
             // Sprawdzenie czy przekazana rola istnieje w systemie ...
             if (command.AllGuildRoles!.find((role: Role) => role.name === command.RoleToBuy.name) === undefined) {

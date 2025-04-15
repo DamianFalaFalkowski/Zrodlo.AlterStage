@@ -1,33 +1,34 @@
 import { ApplicationCommandType, ApplicationIntegrationType, InteractionContextType, SlashCommandBuilder } from "discord.js";
 import { baseHandlerExecute } from "../../../../discord/_command-handling-base/base.handler";
-import { permission } from "process";
 
-// DOKUMENTAJA POLECEN (/): https://discord.com/developers/docs/interactions/application-commands#contexts
+const commandName: string = 'example';
+const commandDescription: string = 'example description';
 
-
-/** Definicja polecenia wygenerowania tresci wiadomosci do platnosci payPal lub blik. */
-const commandName: string = 'gen-transfer-msg';
-const commandDescription: string = 'Generates a transfer message for specific role (role has to begin with \'+\' sign)';
-
-class GenerateTransferMessageDefinition {
-    // TODO: mona te dodać rodzaj produktu (nice to have)
+class ExampleDefinition {
 
     public static __commandDefinition = {
         name: commandName,
         description: commandDescription,
         type: ApplicationCommandType.ChatInput,
-        isEphemeral: true,
-        allowedRoles: ['member', 'admin', 'moderator', 'owner', 'honored-member', 'super-moderator'],
+        isEphemeral: false,
+        allowedRoles: ['admin', 'owner', 'super-moderator'],
         data: new SlashCommandBuilder()
             .setName(commandName)
             .setDescription(commandDescription)
             .setIntegrationTypes(ApplicationIntegrationType.GuildInstall)
             .setContexts(InteractionContextType.Guild)
-            .addRoleOption((option: any) =>
-
-                option.setName('role-to-buy')
-                    .setDescription('The role to buy.')
+            .addStringOption((option: any) =>
+                option.setName('example-name')
+                    .setDescription('example description')
                     .setRequired(true))
+            .addStringOption((option: any) =>
+                option.setName('example-with-options-name')
+                    .setDescription('example with options')
+                    .setRequired(true)
+                    .addChoices(
+                        { name: 'example', value: '0' },
+                        { name: 'e2', value: '1' },
+                    ))
         ,
         async execute(interaction: any) {
             await baseHandlerExecute(
@@ -35,8 +36,8 @@ class GenerateTransferMessageDefinition {
                 require(`./${commandName}.command`)
                     .createCommand(interaction, interaction.ephemeral),
                 require(`./${commandName}.handler`).handle
-            )
+            );
         }
     };
 }
-export const definition = GenerateTransferMessageDefinition.__commandDefinition;
+export const definition = ExampleDefinition.__commandDefinition;

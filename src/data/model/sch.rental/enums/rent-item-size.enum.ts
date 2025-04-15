@@ -4,5 +4,5 @@ export enum RentItemSize {
     SMALL = 'SMALL',
     MEDIUM = 'MEDIUM',
     LARGE = 'LARGE',
-    V_LARGE = 'V_LARGE'
+    V_LARGE = 'LARGE'
 }

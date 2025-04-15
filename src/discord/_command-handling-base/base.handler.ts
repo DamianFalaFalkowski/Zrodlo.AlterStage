@@ -7,15 +7,15 @@ import { ApplicationError } from "../../app/app.errors/application.error";
 
 export const baseHandlerExecute =
    async (interaction: ChatInputCommandInteraction,
-          command: any,
-          handlerMethod: any) => 
+         command: any,
+         handlerMethod: any): Promise<void> => 
       {
       try {
          __logger.logInfo(
             `Interaction '${interaction.commandName}' execution started!`);
          __logger.logCommand(interaction);
 
-         handlerMethod(
+         await handlerMethod(
             interaction,
             command
          );

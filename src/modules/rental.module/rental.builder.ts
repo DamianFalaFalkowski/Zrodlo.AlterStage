@@ -6,7 +6,9 @@ import { ICreateOrUpdateOfferInChannelIntegrationProvider } from "./integrations
 
 export interface IRentalBuilder extends IRentalInstance
 {
-    UpdateRentalChannels(afterUpdateRentalChannels: () => void): Promise<AppModule>; // TODO: przenieść do modułu Host
+    UpdateRentalChannels(afterUpdateRentalChannels: () => Promise<void>): Promise<IRentalBuilder>;
+
+    RegisterRentalCommands(): IRentalBuilder;
 }
 
 export abstract class RentalBuilder
@@ -16,6 +18,14 @@ export abstract class RentalBuilder
         IFillTemplateWithDataIntegrationConsumer,
         ICreateOrUpdateOfferInChannelIntegrationProvider
 {
+    abstract RegisterCommandHandlers(commandHandlersFolderPaths: [string]): void;
+
+    public RegisterRentalCommands(): IRentalBuilder
+    {
+        this.RegisterCommandHandlers(this.getCommandHandlersFolderPaths());
+        this._areCommandsSetUp = true;
+        return this;
+    }
     public async createOrUpdateOfferInChannel(channelId: string, offerViewModel: RentOfferViewModel): Promise<void>
     {
         let templateContent = await this.getTemplateContentByBid(this._offerTemplateBid);
@@ -23,14 +33,14 @@ export abstract class RentalBuilder
         await this.postThreadInForumChannelIfDoesntExist(channelId, offerViewModel.title, content,offerViewModel.applayTags, offerViewModel.imageUrl);
     }
     abstract postThreadInForumChannelIfDoesntExist(channelId: string, title: string, content: string, applayTags: string[],imageUrl?: string,): Promise<void>;
-    public async UpdateRentalChannels(afterUpdateRentalChannels: () => void): Promise<AppModule>
+    public async UpdateRentalChannels(afterUpdateRentalChannels: () => void): Promise<IRentalBuilder>
     {
         const viewModels = await this.getAllActiveOffersViewModel();
         viewModels.forEach(async element => {
             await this.createOrUpdateOfferInChannel(this.DjEquipmentRentalChannelId, element);
         });
         afterUpdateRentalChannels();
-        return this.As<AppModule>();
+        return this;
     }
 
     abstract getAllActiveOffersViewModel(): Promise<RentOfferViewModel[]>;
