@@ -8,6 +8,10 @@ export class OfferRentItemEntity extends BaseEntity {
     public readonly entityName = OfferRentItemModelName;
 
     // TODO: dodać opisy
+
+/** Określa czy dany przedmiot jest głównym obiektem wynajmu. 
+* Jest ustawiany podczas dołączania elementów oferty wynajmu do oferty wynajmu.
+* */
     declare isMainRentItem: boolean;
     declare itemName: string;
     declare brandName?: string;

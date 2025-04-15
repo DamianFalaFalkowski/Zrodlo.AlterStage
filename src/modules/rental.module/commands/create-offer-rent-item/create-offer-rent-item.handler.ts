@@ -4,16 +4,17 @@ import { __logger } from "../../../../utils/dc-logger.util";
 import { CreateOfferRentItemCommand } from "./create-offer-rent-item.command";
 
 module.exports = {
-     handle(interaction: any, command: CreateOfferRentItemCommand) {
+    async handle(interaction: any, command: CreateOfferRentItemCommand): Promise<void> {
         try {
-            OfferRentItemRepository.create(
+            let createdItem = await OfferRentItemRepository.create(
                 interaction.user.id,
                 command.ItemName,
                 command.BrandName,
                 command.ModelName,
                 command.RentItemSize as RentItemSize);
 
-            command.Response.PrepeareSuccessResponseBase('');
+            command.Response.AssignResponseData(createdItem.id)
+            command.Response.PrepeareSuccessResponseBase();
         } catch (error) {
             __logger.logError(error as Error);
             throw error;

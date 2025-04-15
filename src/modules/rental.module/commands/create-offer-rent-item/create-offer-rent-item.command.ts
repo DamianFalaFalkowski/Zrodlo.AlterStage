@@ -6,8 +6,8 @@ import { CreateOfferRentItemResponse } from "./create-offer-rent-item.response";
 export class CreateOfferRentItemCommand extends BaseCommand<CreateOfferRentItemResponse> {
     protected CheckAuthorisationAndValidity(): boolean
     {
-        // TODO: sprawdzenie autoryzacji i poprawności
-        //throw new Error("Method not implemented.");
+        // brak dodatkowych sprawdzen
+        return true;
     }
     public readonly ItemName: string;
     public readonly BrandName: string;

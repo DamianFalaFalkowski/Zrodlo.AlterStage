@@ -55,7 +55,7 @@ export abstract class BaseCommandResponse {
 // Metody publiczne
     /** Przygotowuje i zwraca odpowiedź informującą o sukcesie na poziomie bazowym */
     public PrepeareSuccessResponseBase(
-        content :string, 
+        content? :string, 
         components: any[] | null = null, 
         flags: BitFieldResolvable<"SuppressEmbeds" | "Ephemeral" | "SuppressNotifications", MessageFlags.SuppressEmbeds | MessageFlags.Ephemeral | MessageFlags.SuppressNotifications> | null = null): InteractionReplyOptions
     {
