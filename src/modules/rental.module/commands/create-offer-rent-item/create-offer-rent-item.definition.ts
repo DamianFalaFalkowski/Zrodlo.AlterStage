@@ -1,16 +1,18 @@
 import { ApplicationCommandType, ApplicationIntegrationType, InteractionContextType, SlashCommandBuilder } from "discord.js";
 import { baseHandlerExecute } from "../../../../discord/_command-handling-base/base.handler";
+import { ICommandDefinition } from "../../../../discord/_command-handling-base/base.definition.interface";
+import { __logger } from "../../../../utils/dc-logger.util";
 
-const commandName: string = 'create-offer-rent-item';
+const commandName: string = 'rental-create-offer-rent-item';
 const commandDescription: string = 'Creates offer rent item';
 
-class CreateOfferRentItemDefinition {
-
-    public static __commandDefinition = {
+class CreateOfferRentItemDefinition
+{
+    public static __commandDefinition: ICommandDefinition = {
         name: commandName,
         description: commandDescription,
         type: ApplicationCommandType.ChatInput,
-        isEphemeral: false,
+        isEphemeral: true,
         allowedRoles: ['admin', 'rental-manager', 'owner', 'super-moderator'],
         data: new SlashCommandBuilder()
             .setName(commandName)
@@ -41,11 +43,18 @@ class CreateOfferRentItemDefinition {
                         { name: 'Very Large', value: 'LARGE' }
                     ))
         ,
-        async execute(interaction: any) {
+        async execute(interaction: any) : Promise<void> {
+            try {
+                if (!interaction.isCommand()) return;
+            }
+            catch (error) {
+                /** Obsługa błędów polecenia */
+                __logger.logError(error as Error);
+            }
             await baseHandlerExecute(
                 interaction,
                 require(`./${commandName}.command`)
-                    .createCommand(interaction, interaction.ephemeral),
+                    .createCommand(interaction),
                 require(`./${commandName}.handler`).handle
             );
         }

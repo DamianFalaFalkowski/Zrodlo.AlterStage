@@ -1,6 +1,6 @@
 // DOKUMENTAJA POLECEN (/): https://discord.com/developers/docs/interactions/application-commands#contexts
 
-export interface BaseCommandDefinition {
+export interface ICommandDefinition {
    name: any;
    description: any;
    type: any;

@@ -64,10 +64,10 @@ export abstract class RentalDataBuilder
       // Punkty odbioru (rezem z adresem i informacjami o dostawie)
       let addressOne = await AddressRepository.create(0, 'city2', 'street', 'house', 'postalCode');
       let baseRecievePointDeliveryInfo = await DeliveryInfoRepository.create(0, 'na terenie Warszawy', true,RentItemAviablility.IMMEDIATELY, true, true,true, false, false, false, false, false, 300, 30, 2, undefined, 20, 20);
-      let recievePointOne = await RecievePointRepository.create(0, addressOne.id, baseRecievePointDeliveryInfo.id, 'fala studio RP', '513762535', 'panda.zrodlo@gmail.com', 'pierwszy testowy punkt odbioru', 'Damian', 'Falkowski', 1024238253060145193, 'falalala_wav', 'WAW', true);
+      let recievePointOne = await RecievePointRepository.create(0, addressOne.id, baseRecievePointDeliveryInfo.id, 'fala studio RP', '513762535', 'panda.zrodlo@gmail.com', 'pierwszy testowy punkt odbioru', 'Damian', 'Falkowski', '1024238253060145193', 'falalala_wav', 'WAW', true);
 
       let addressTwo = await AddressRepository.create(0, 'Dubai', 'street', 'house', 'postalCode');
-      let recievePointTwo = await RecievePointRepository.create(0, addressTwo.id, baseRecievePointDeliveryInfo.id, 'Akun', '111222111', 'dubai.zrodlo@gmail.com', 'dubaiski punkt odbioru', 'Akun', 'Akuński', 1024238253060145193, 'dj_akun', 'DUB', true);
+      let recievePointTwo = await RecievePointRepository.create('0', addressTwo.id, baseRecievePointDeliveryInfo.id, 'Akun', '111222111', 'dubai.zrodlo@gmail.com', 'dubaiski punkt odbioru', 'Akun', 'Akuński', '0', 'dj_akun', 'DUB', true);
 
       // Oferta
       let offerOne = await RentOfferRepository.create(0, 'Pioneer XDJ-700', 'Pojedyńczy multi-player XDJ-700', 100, 400, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTwSo1PUhaSJoaGMQN40sR_jBHjHl3xBN3DA&s');

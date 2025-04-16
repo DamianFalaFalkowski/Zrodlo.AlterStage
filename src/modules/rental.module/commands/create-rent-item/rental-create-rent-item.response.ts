@@ -3,17 +3,17 @@ import { BaseCommandResponse } from "../../../../discord/_command-handling-base/
 import { __logger } from "../../../../utils/dc-logger.util";
 import { Identifier } from "sequelize";
 
-export class CreateOfferRentItemResponse extends BaseCommandResponse {
+export class CreateRentItemResponse extends BaseCommandResponse {
 
-    private createdOfferRentItemId?: Identifier;
+    private createdRentItemId?: Identifier;
     constructor(isEphemeral: boolean) {
         super(isEphemeral);
     }
 
-    public AssignResponseData(createdRentOfferId: Identifier)
+    public AssignResponseData(createdRentItemId: Identifier)
         : void
     {
-        this.createdOfferRentItemId = createdRentOfferId;
+        this.createdRentItemId = createdRentItemId;
     }
 
     // sprawdzenie czy komponent został poprawnie zbudowany oraz czy jest kompletny
@@ -21,8 +21,8 @@ export class CreateOfferRentItemResponse extends BaseCommandResponse {
         : boolean 
     {
         try { 
-            if(!(this.createdOfferRentItemId as number) || 
-                this.createdOfferRentItemId as number <= 0)
+            if(!(this.createdRentItemId as number) || 
+                this.createdRentItemId as number <= 0)
                 return false;
             return true;
         } catch (error) {
@@ -35,7 +35,7 @@ export class CreateOfferRentItemResponse extends BaseCommandResponse {
         : InteractionReplyOptions 
     {
         try {
-            reply.content = `Nie udało się dodać elementu oferty najmu. \nSpróbuj ponownie później lub skontaktuj się z administratorem.`;
+            reply.content += `Nie udało się dodać elementu najmu. \nSpróbuj ponownie później lub skontaktuj się z administratorem.`;
         } catch (error) {
             __logger.logError(error as Error);
         }
@@ -45,7 +45,7 @@ export class CreateOfferRentItemResponse extends BaseCommandResponse {
     public override PrepeareSuccessResponse(reply: InteractionReplyOptions)
         : InteractionReplyOptions 
     {
-        reply.content = `Emement oferty najmu został dodany. \nId elementu oferty: ${this.createdOfferRentItemId}`;
+        reply.content = `Emement najmu został dodany. \nId elementu: ${this.createdRentItemId}`;
         return reply;
     }
 }

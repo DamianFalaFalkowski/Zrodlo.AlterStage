@@ -1,6 +1,6 @@
 import { ChatInputCommandInteraction } from "discord.js";
 import { __logger } from "../../utils/dc-logger.util";
-import { ApplicationError } from "../../app/app.errors/application.error";
+import { BaseCommandResponse } from "./base.response";
 
 // TODO: dodać komentarze
 // TODO: poprawić logowanie
@@ -25,8 +25,8 @@ export const baseHandlerExecute =
 
          await interaction.reply({ content: command.Response.Reply.content, components: command.Response.Reply.components, flags: command.Response.Reply.flags });
 
-      } catch (error) {
+      } catch (error: any) {
          __logger.logError(error as Error);
-         throw new ApplicationError('Error while executing command.');
+         (command.Response as BaseCommandResponse).PepeareFailureResponseBase(error.message);
       }
    }

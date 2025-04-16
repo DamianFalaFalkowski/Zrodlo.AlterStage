@@ -1,23 +1,18 @@
 import { ChatInputCommandInteraction } from "discord.js";
 import { BaseCommand } from "../../../../discord/_command-handling-base/base.command";
 import { __logger } from "../../../../utils/dc-logger.util";
-import { CreateOfferRentItemResponse } from "./create-offer-rent-item.response";
 import { ICommandDefinition } from "../../../../discord/_command-handling-base/base.definition.interface";
-import { definition } from './create-offer-rent-item.definition';
+import { ExampleResponse } from "./example-command.response";
 
-export class CreateOfferRentItemCommand extends BaseCommand<CreateOfferRentItemResponse> {
-    public readonly ItemName: string;
-    public readonly BrandName: string;
-    public readonly ModelName: string;
-    public readonly RentItemSize: string;
+export class ExampleCommand extends BaseCommand<ExampleResponse> {
+    public readonly ExampleName: string;
+    public readonly ExampleWithOptions: string;
 
     /** Konstruktor polecenia. Pobiera wartości z przekazanych pól i waliduje je */
     constructor(interaction: any, definition: ICommandDefinition) {
-        super(interaction, new CreateOfferRentItemResponse(definition.isEphemeral), definition);
-        this.ItemName = interaction.options.getString('item-name', true);
-        this.BrandName = interaction.options.getString('brand-name', true);
-        this.ModelName = interaction.options.getString('model-name', true);
-        this.RentItemSize = interaction.options.getString('rent-item-size', true);
+        super(interaction, new ExampleResponse(definition.isEphemeral), definition);
+        this.ExampleName = interaction.options.getString('example-name', true);
+        this.ExampleWithOptions = interaction.options.getString('example-with-options', true);
 
         this.CheckAuthorisationAndValidityBase();
     }
@@ -30,9 +25,9 @@ export class CreateOfferRentItemCommand extends BaseCommand<CreateOfferRentItemR
     }
 }
 module.exports = {
-    createCommand(interaction: ChatInputCommandInteraction) : CreateOfferRentItemCommand
+    createCommand(interaction: ChatInputCommandInteraction) : ExampleCommand
     {
-        return new CreateOfferRentItemCommand(
+        return new ExampleCommand(
             interaction, 
             require(`./${interaction.commandName}.definition`).definition as ICommandDefinition);
     }
