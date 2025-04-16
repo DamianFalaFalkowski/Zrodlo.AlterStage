@@ -5,7 +5,12 @@ export class RecievePointRepository{
     private constructor() {
     }
 
-    public static async create(discordUserId: number, addressId: Identifier, deliveryInfoId: Identifier, name: string, phoneNumber: string, email:string, description:string, ownerName:string, ownerLastName:string, ownerDiscordId: number, lastOwnerDiscordName: string, recievePointCityCode: string, isActive?: boolean): Promise<RecievePointEntity>
+    public static async findByDiscordUserId(id: Identifier): Promise<RecievePointEntity | null> {
+        return await RecievePointEntity.findOne(
+            { where: { ownerDiscordId: id } });
+    }
+
+    public static async create(discordUserId: Identifier, addressId: Identifier, deliveryInfoId: Identifier, name: string, phoneNumber: string, email:string, description:string, ownerName:string, ownerLastName:string, ownerDiscordId: Identifier, lastOwnerDiscordName: string, recievePointCityCode: string, isActive?: boolean): Promise<RecievePointEntity>
         {
             return await RecievePointEntity.create({
                 createdDiscordUserId: discordUserId,

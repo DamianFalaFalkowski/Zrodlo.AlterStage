@@ -16,6 +16,8 @@ export class OfferRentItemEntity extends BaseEntity {
     declare itemName: string;
     declare brandName?: string;
     declare modelName?: string;
+
+    // todop: dodać typ produktu !!!
     declare description?: string;
     declare rentItemSize: RentItemSize;
 

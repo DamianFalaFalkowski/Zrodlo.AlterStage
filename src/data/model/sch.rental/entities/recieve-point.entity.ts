@@ -1,4 +1,4 @@
-import { DataTypes, Identifier, ModelStatic } from "sequelize";
+import { DataTypes, Identifier } from "sequelize";
 import { BaseEntity } from "../../../../app/app.data/app.data-model/_base/_base.entity";
 import { RentOrderEntity } from "./rent-order.entity";
 import { propertyOf } from "../../../../utils/type-properties.util";
@@ -20,7 +20,7 @@ export class RecievePointEntity extends BaseEntity
     declare description: string;
     declare ownerName: string;
     declare ownerLastName: string;
-    declare ownerDiscordId: number;
+    declare ownerDiscordId: Identifier;
     declare lastOwnerDiscordName: string;
     declare isActive: boolean;
 

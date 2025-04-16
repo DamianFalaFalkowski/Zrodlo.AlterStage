@@ -17,6 +17,8 @@ export class OfferRentItemRepository {
         });
     }
 
+    
+
     public static async attachToRentOffer(offerRentItem: OfferRentItemEntity, offerId: Identifier, isMainRentItem: boolean)
     {
         await OfferRentItemEntity.sequelize!.query(`INSERT INTO "main"."Rental_RentOfferToOfferRentItems"

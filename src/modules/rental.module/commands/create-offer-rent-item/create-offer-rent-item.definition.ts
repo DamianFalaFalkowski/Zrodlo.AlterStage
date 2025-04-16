@@ -3,7 +3,7 @@ import { baseHandlerExecute } from "../../../../discord/_command-handling-base/b
 import { ICommandDefinition } from "../../../../discord/_command-handling-base/base.definition.interface";
 import { __logger } from "../../../../utils/dc-logger.util";
 
-const commandName: string = 'create-offer-rent-item';
+const commandName: string = 'rental-create-offer-rent-item';
 const commandDescription: string = 'Creates offer rent item';
 
 class CreateOfferRentItemDefinition
