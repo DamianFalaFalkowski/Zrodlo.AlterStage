@@ -2,11 +2,12 @@ import { ApplicationCommandType, ApplicationIntegrationType, InteractionContextT
 import { baseHandlerExecute } from "../../../../discord/_command-handling-base/base.handler";
 import { ICommandDefinition } from "../../../../discord/_command-handling-base/base.definition.interface";
 import { __logger } from "../../../../utils/dc-logger.util";
+import { ItemKindCodes } from "../../../../data/model/sch.rental/enums/item-kind-code.enum";
 
-const commandName: string = 'example-commandm';
-const commandDescription: string = 'example command description';
+const commandName: string = 'rental-create-offer-rent-item';
+const commandDescription: string = 'Creates offer rent item';
 
-class ExampleDefinition
+class CreateOfferRentItemDefinition
 {
     public static __commandDefinition: ICommandDefinition = {
         name: commandName,
@@ -20,16 +21,37 @@ class ExampleDefinition
             .setIntegrationTypes(ApplicationIntegrationType.GuildInstall)
             .setContexts(InteractionContextType.Guild)
             .addStringOption((option: any) =>
-                option.setName('example-name')
+                option.setName('item-name')
                     .setDescription('The name of the item.')
                     .setRequired(true))
             .addStringOption((option: any) =>
-                option.setName('example-with-options')
-                    .setDescription('example description')
+                option.setName('item-kind')
+                    .setDescription('Rodzaj elementu.')
                     .setRequired(true)
                     .addChoices(
-                        { name: 'x1', value: '0' },
-                        { name: 'x2', value: '1' }
+                        Object.values(ItemKindCodes).map((itemKind) => ({
+                            name: itemKind.name,
+                            value: itemKind.code
+                        }))
+                    ))
+            .addStringOption((option: any) =>
+                option.setName('brand-name')
+                    .setDescription('The brand name of the item.')
+                    .setRequired(true))
+            .addStringOption((option: any) =>
+                option.setName('model-name')
+                    .setDescription('The model name of the item.')
+                    .setRequired(true))
+            .addStringOption((option: any) =>
+                option.setName('rent-item-size')
+                    .setDescription('The size of the item.')
+                    .setRequired(true)
+                    .addChoices(
+                        { name: 'Very Small', value: 'V_SMALL' },
+                        { name: 'Small', value: 'SMALL' },
+                        { name: 'Medium', value: 'MEDIUM' },
+                        { name: 'Large', value: 'LARGE' },
+                        { name: 'Very Large', value: 'LARGE' }
                     ))
         ,
         async execute(interaction: any) : Promise<void> {
@@ -49,4 +71,4 @@ class ExampleDefinition
         }
     };
 }
-export const definition = ExampleDefinition.__commandDefinition;
+export const definition = CreateOfferRentItemDefinition.__commandDefinition;

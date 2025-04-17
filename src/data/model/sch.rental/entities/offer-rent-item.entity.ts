@@ -17,7 +17,7 @@ export class OfferRentItemEntity extends BaseEntity {
     declare brandName?: string;
     declare modelName?: string;
 
-    // todop: dodać typ produktu !!!
+    declare itemKindCode: string;
     declare description?: string;
     declare rentItemSize: RentItemSize;
 
@@ -63,6 +63,10 @@ export const OfferRentItemAttributes =
     modelName: {
         type: DataTypes.STRING,
         allowNull: true
+    },
+    itemKindCode: {
+        type: DataTypes.STRING,
+        allowNull: false
     },
     rentItemSize: {
         type: DataTypes.ENUM(...Object.values(RentItemSize)),

@@ -13,11 +13,12 @@ export class RentItemRepository {
 
     public static async createWithExistingOfferRentItemId(
         discordUserId: Identifier, 
-        offerRentItemId: Identifier, 
-        itemKindCode:string, rentItemAviabilityInHomeRecievePoint:RentItemAviablility, 
+        offerRentItemId: Identifier,
+        rentItemAviabilityInHomeRecievePoint:RentItemAviablility, 
         onBuyAmountSpent?:number
     ): Promise<RentItemEntity>
     {
+        const itemKindCode = await OfferRentItemRepository.getItemKindCode(offerRentItemId);
         const recievePoint = await RecievePointRepository.findByDiscordUserId(discordUserId);
         const itemsCount = await RentItemEntity.findAndCountAll();
         return RentItemEntity.create({
@@ -28,7 +29,7 @@ export class RentItemRepository {
             barcodeNumber: await _barcodeGenerationService.generateUniqueDigitStrings(),
             rentItemAviabilityInHomeRecievePoint:rentItemAviabilityInHomeRecievePoint,
             onBuyAmountSpent:onBuyAmountSpent,
-            isAvaliable:false,
+            isAvaliable:true,
             isDamaged:false
         });
     }
@@ -52,14 +53,20 @@ export class RentItemRepository {
     }
 
     public static async createWithNewOfferRentItem(discordUserId: number,
-        itemName:string, brandName:string, modelName:string, rentItemSize: RentItemSize,
-        recievePoint: RecievePointEntity, code:string, barcodeNumber:number, rentItemAviabilityInHomeRecievePoint:RentItemAviablility,
-        onBuyAmountSpent?:number, isAvaliable?:boolean, isDamaged?:boolean, 
+        itemName:string, 
+        brandName:string, 
+        modelName:string, 
+        rentItemSize: RentItemSize,
+        recievePoint: RecievePointEntity, 
+        itemKindCode:string, 
+        barcodeNumber:number, rentItemAviabilityInHomeRecievePoint:RentItemAviablility,
+        onBuyAmountSpent?:number, 
+        isAvaliable?:boolean, isDamaged?:boolean, 
     ): Promise<RentItemEntity>
     {
-        let offerRentItem = await OfferRentItemRepository.create(discordUserId, itemName, brandName, modelName, rentItemSize);
+        let offerRentItem = await OfferRentItemRepository.create(discordUserId, itemName, brandName, modelName, rentItemSize, itemKindCode);
 
-        return this.createWithExistingOfferRentItem(discordUserId, offerRentItem.id, recievePoint, code, barcodeNumber, rentItemAviabilityInHomeRecievePoint, onBuyAmountSpent, isAvaliable, isDamaged)
+        return this.createWithExistingOfferRentItem(discordUserId, offerRentItem.id, recievePoint, itemKindCode, barcodeNumber, rentItemAviabilityInHomeRecievePoint, onBuyAmountSpent, isAvaliable, isDamaged)
     }
 
     public static async getAllBarcodes(): Promise<string[]> {

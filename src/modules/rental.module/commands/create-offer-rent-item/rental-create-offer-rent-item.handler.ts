@@ -1,7 +1,7 @@
 import { RentItemSize } from "../../../../data/model/sch.rental/enums/rent-item-size.enum";
 import { OfferRentItemRepository } from "../../../../data/model/sch.rental/repositories/offer-rent-item.repository";
 import { __logger } from "../../../../utils/dc-logger.util";
-import { CreateOfferRentItemCommand } from "./create-offer-rent-item.command";
+import { CreateOfferRentItemCommand } from "./rental-create-offer-rent-item.command";
 
 /** Metoda obsługująca polecenie */
 module.exports = {
@@ -11,7 +11,8 @@ module.exports = {
             command.ItemName,
             command.BrandName,
             command.ModelName,
-            command.RentItemSize as RentItemSize);
+            command.RentItemSize as RentItemSize,
+            command.ItemKindCode!.code,);
 
         command.Response.AssignResponseData(createdItem.id)
         command.Response.PrepeareSuccessResponseBase();

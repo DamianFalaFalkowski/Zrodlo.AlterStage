@@ -6,11 +6,10 @@ import { CreateRentItemCommand } from "./rental-create-rent-item.command";
 module.exports = {
     async handle(interaction: any, command: CreateRentItemCommand): Promise<void> {
         let createdItem = await RentItemRepository.createWithExistingOfferRentItemId(
-                    interaction.user.id as number,
-                    command.OfferRentItemId,
-                    command.ItemKindCode!.code,
-                    command.RentItemAviablility,
-                    command.OnBuyAmountSpend);
+            interaction.user.id as number,
+            command.OfferRentItemId,
+            command.RentItemAviablility,
+            command.OnBuyAmountSpend);
 
         command.Response.AssignResponseData(createdItem.id);
         command.Response.PrepeareSuccessResponseBase();

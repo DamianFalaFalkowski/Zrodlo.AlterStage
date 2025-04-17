@@ -27,16 +27,6 @@ class CreateRentItemDefinition
                     .setDescription('Id elementu oferty najmu z którym ma być powiązany nowy element.')
                     .setRequired(true))
             .addStringOption((option: any) =>
-                option.setName('item-kind')
-                    .setDescription('Rodzaj elementu.')
-                    .setRequired(true)
-                    .addChoices(
-                        Object.values(ItemKindCodes).map((itemKind) => ({
-                            name: itemKind.name,
-                            value: itemKind.code
-                        }))
-                    ))
-            .addStringOption((option: any) =>
                 option.setName('rent-item-aviability')
                     .setDescription('Dostępność elementu (opcjonalne). Nieuzupełnienie uzyje dostępności z punktu odbioru')
                     .setRequired(false)
