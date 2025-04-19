@@ -3,7 +3,7 @@ import { baseHandlerExecute } from "../../../../discord/_command-handling-base/b
 import { ICommandDefinition } from "../../../../discord/_command-handling-base/base.definition.interface";
 import { __logger } from "../../../../utils/dc-logger.util";
 
-const commandName: string = 'rental-attach-recieve-point-to-rent-offerm';
+const commandName: string = 'rental-att-recievepoint-to-offer';
 const commandDescription: string = 'example command description';
 
 class ExampleDefinition
