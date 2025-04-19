@@ -3,10 +3,10 @@ import { baseHandlerExecute } from "../../../../discord/_command-handling-base/b
 import { ICommandDefinition } from "../../../../discord/_command-handling-base/base.definition.interface";
 import { __logger } from "../../../../utils/dc-logger.util";
 
-const commandName: string = 'rental-create-offer-rent-item';
-const commandDescription: string = 'Creates offer rent item';
+const commandName: string = 'rental-attach-item-to-offer';
+const commandDescription: string = 'example command description';
 
-class CreateOfferRentItemDefinition
+class ExampleDefinition
 {
     public static __commandDefinition: ICommandDefinition = {
         name: commandName,
@@ -20,27 +20,16 @@ class CreateOfferRentItemDefinition
             .setIntegrationTypes(ApplicationIntegrationType.GuildInstall)
             .setContexts(InteractionContextType.Guild)
             .addStringOption((option: any) =>
-                option.setName('item-name')
+                option.setName('example-name')
                     .setDescription('The name of the item.')
                     .setRequired(true))
             .addStringOption((option: any) =>
-                option.setName('brand-name')
-                    .setDescription('The brand name of the item.')
-                    .setRequired(true))
-            .addStringOption((option: any) =>
-                option.setName('model-name')
-                    .setDescription('The model name of the item.')
-                    .setRequired(true))
-            .addStringOption((option: any) =>
-                option.setName('rent-item-size')
-                    .setDescription('The size of the item.')
+                option.setName('example-with-options')
+                    .setDescription('example description')
                     .setRequired(true)
                     .addChoices(
-                        { name: 'Very Small', value: 'V_SMALL' },
-                        { name: 'Small', value: 'SMALL' },
-                        { name: 'Medium', value: 'MEDIUM' },
-                        { name: 'Large', value: 'LARGE' },
-                        { name: 'Very Large', value: 'LARGE' }
+                        { name: 'x1', value: '0' },
+                        { name: 'x2', value: '1' }
                     ))
         ,
         async execute(interaction: any) : Promise<void> {
@@ -60,4 +49,4 @@ class CreateOfferRentItemDefinition
         }
     };
 }
-export const definition = CreateOfferRentItemDefinition.__commandDefinition;
+export const definition = ExampleDefinition.__commandDefinition;

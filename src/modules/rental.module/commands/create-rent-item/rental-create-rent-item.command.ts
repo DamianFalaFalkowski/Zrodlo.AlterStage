@@ -8,7 +8,6 @@ import { ItemKindCodes } from '../../../../data/model/sch.rental/enums/item-kind
 
 export class CreateRentItemCommand extends BaseCommand<CreateRentItemResponse> {
     public readonly OfferRentItemId: number;
-    public readonly ItemKindCode: {name: string, code: string} | undefined;
     public readonly RentItemAviablility: RentItemAviablility;
     public readonly OnBuyAmountSpend: number = 0;
 
@@ -16,7 +15,6 @@ export class CreateRentItemCommand extends BaseCommand<CreateRentItemResponse> {
     constructor(interaction: any, definition: ICommandDefinition) {
         super(interaction, new CreateRentItemResponse(definition.isEphemeral), definition);
         this.OfferRentItemId = interaction.options.getInteger('offer-rent-item-id', true);
-        this.ItemKindCode = Object.values(ItemKindCodes).find(x => x.code === interaction.options.getString('item-kind', true));
         this.RentItemAviablility = interaction.options.getString('rent-item-aviability', false);
         this.OnBuyAmountSpend = interaction.options.getInteger('on-buy-amount-spent', false);
 

@@ -3,9 +3,10 @@ import { RentItemSize } from "../enums/rent-item-size.enum";
 import { OfferRentItemEntity } from "../entities/offer-rent-item.entity";
 
 export class OfferRentItemRepository {
+
     private constructor(){}
 
-    public static async create(discordUserId: number, itemName:string, brandName:string, modelName:string, rentItemSize: RentItemSize
+    public static async create(discordUserId: number, itemName:string, brandName:string, modelName:string, rentItemSize: RentItemSize, itemKindCode:string
     ): Promise<OfferRentItemEntity>
     {
         return OfferRentItemEntity.create({
@@ -13,11 +14,15 @@ export class OfferRentItemRepository {
             itemName: itemName,
             brandName:brandName,
             modelName:modelName,
-            rentItemSize:rentItemSize
+            rentItemSize:rentItemSize,
+            itemKindCode:itemKindCode,
         });
     }
 
-    
+    static async getItemKindCode(offerRentItemId: Identifier)
+    {
+        return (await OfferRentItemEntity.findByPk(offerRentItemId))?.itemKindCode;
+    }
 
     public static async attachToRentOffer(offerRentItem: OfferRentItemEntity, offerId: Identifier, isMainRentItem: boolean)
     {
