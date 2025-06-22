@@ -25,30 +25,10 @@ export class HostModule
     private constructor() {
         super();
     }
-    OnMessageCreate(handle: (message: Message) => void): void
+    SetUpOnMessageCreate(handle: (message: Message) => void): void
     {
         this.client!.on('messageCreate', handle);
         __logger.logInfo("Zarejestrowano obsługę zdarzenia 'messageCreate'");
-
-        this.client!.on('messageCreate', (message: Message) => {
-            // Sprawdź, czy wiadomość pochodzi z oczekiwanego kanału tekstowego
-            if (message.channel.id === process.env.VERIFICATION_CHANNEL_ID &&
-                !message.author.bot) 
-            {
-                message.attachments.forEach(attachment => {
-                    // Sprawdź, czy załącznik jest obrazkiem
-                    if (attachment.contentType && attachment.contentType.startsWith('image/')) {
-                        __logger.logInfo(`Otrzymano zdjęcie od użytkownika ${message.author.username}: ${attachment.url}`);
-                        // Tutaj możesz dodać logikę do przetwarzania zdjęcia
-                    } else {
-                        __logger.logInfo(`Otrzymano nieobsługiwany załącznik od użytkownika ${message.author.username}: ${attachment.name}`);
-                    }
-                })
-            }
-            else {
-                __logger.logInfo(`Wiadomość na kanale: ${message.content}`);
-            }
-        });
     }
     fillTemplateWithData(templateContent: string, data: Record<string, any>): string
     {

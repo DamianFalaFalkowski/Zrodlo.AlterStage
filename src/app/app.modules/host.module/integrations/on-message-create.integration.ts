@@ -4,5 +4,5 @@ export interface IOnMessageCreateIntegrationConsumer extends IOnMessageCreateInt
 export interface IOnMessageCreateIntegrationProvider extends IOnMessageCreateIntegration {}
 interface IOnMessageCreateIntegration
 {
-    OnMessageCreate(handle: (message: Message) => void): void;
+    SetUpOnMessageCreate(handle: (message: Message) => void): void;
 }

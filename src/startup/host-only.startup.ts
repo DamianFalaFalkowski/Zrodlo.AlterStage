@@ -10,6 +10,7 @@ import { RentalDataModule } from '../data/modules/rental-data.module/rental-data
 import rentalModule, { RentalModule } from '../modules/rental.module/rental.module';
 import { UsersDataModule } from '../data/modules/users-data.module/users-data.module';
 import { Client, GuildChannel } from 'discord.js';
+import { UsersModule } from '../modules/users.module/users.module';
 
 
 
@@ -65,6 +66,8 @@ const AppDataModule = appDataModule()
                         .InitSchema(() => {
                            // Logic after Users schema sync
                         });
+
+                     UsersModule.initialize(hostModule).SetUpRegistration();
                   });
                });
                paymentModule(hostModule)

@@ -6,7 +6,7 @@ import { RentalBuilder } from "./rental.builder";
 import { IRental } from "./rental.instance";
 import { IRentalViewModelIntegrationProvider } from "../../data/modules/rental-data.module/integrations/get-rent-offers-view-model.integration";
 import { IGetTemplateByBidIntegrationConsumer, IGetTemplateByBidIntegrationProvider } from "../../app/app.data/app.data-modules/app-data.module/integrations/get-template-by-bid.integration";
-import { IPostThreadInForumChannelIntegrationConsumer, IPostThreadInForumChannelIntegrationProvider } from "../../app/app.modules/host.module/integrations/post-thread-in-forum-channel.integration";
+import { IPostThreadInForumChannelIntegrationConsumer } from "../../app/app.modules/host.module/integrations/post-thread-in-forum-channel.integration";
 import { IGetClientIntegration } from '../../app/app.modules/host.module/integrations/get-client.host.integration';
 
 interface IRentalDependency<T extends IRentalViewModelIntegrationProvider , U extends IPostThreadInForumChannelIntegrationConsumer | IFillTemplateWithDataIntegrationConsumer | IGetClientIntegration
