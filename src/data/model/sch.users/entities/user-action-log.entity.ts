@@ -1,54 +1,54 @@
 import { DataTypes, Identifier } from "sequelize";
 import { BaseEntity } from "../../../../app/app.data/app.data-model/_base/_base.entity";
+import { UserActionType } from "../enums/user-action-type.enum";
 
-export const UserModelName = 'Users'
+export const UserActionLogModelName = 'UserActionLogs';
 
-/**  Reprezentacja użytkownika w bazie danych
-* * Zawiera informacje dotycące uytkownika kanału */
-export class UserEntity extends BaseEntity 
+export class UserActionLogEntity extends BaseEntity
 {
-    public entityName: string = UserModelName;
+    public entityName: string = UserActionLogModelName;
 
-
-    /** Id użytkownika na Discordzie */
-    declare userDiscordId: Identifier;
-
-    /** Nazwa użytkownika na Discordzie (nazwa globalna) */
-    declare lastUserDisacordName: string;
-
-    /** Ścieżka do zdjęcia weryfikacyjnego użytkownika */
-    declare verificationPhotoPath: string;
-
-    /** Określa czy użytkownik jest zaufany (przeszedł całkowicie weryfikację zdjęciem) */
-    declare isTrusted: boolean;
-
-    /** Data weryfikacji użytkownika (jeśli jest zaufany) */
-    declare trustedDate: Date | null;
+    /** Id użytkownika w bazie danych */
+    declare userId: Identifier;
+    declare userActionType: UserActionType;
+    declare logMessage: string | null;
+    declare actionDate: Date;
+    declare isOutdated: boolean;
+    declare outdatesAfter: Date | null;
 }
 
-export const UserAttributes = {
+export const UserActionLogAttributes = {
     // pk
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
     },
-
+    // fks
+    userId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    },
     // columns
-    userDiscordId: {
-        type: DataTypes.NUMBER,
+    userActionType: {
+        type: DataTypes.ENUM,
+        values: Object.values(UserActionType),
         allowNull: false
     },
-    lastUserDisacordName: {
+    logMessage: {
         type: DataTypes.STRING,
+        allowNull: true
+    },
+    actionDate: {
+        type: DataTypes.DATE,
         allowNull: false
     },
-    isTrusted: {
+    isOutdated: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
-        defaultValue: false,
+        defaultValue: false
     },
-    trustedDate: {
+    outdatesAfter: {
         type: DataTypes.DATE,
         allowNull: true
     },
