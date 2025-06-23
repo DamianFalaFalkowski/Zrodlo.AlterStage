@@ -12,7 +12,7 @@ export abstract class UsersBuilder
         IOnMessageCreateIntegrationConsumer
 {
     public async SetUpRegistration(): Promise<IUsersBuilder> {
-        //await this.RegisterCommandHandlers(this.getCommandHandlersFolderPaths());
+        //await this.RegisterCommandHandlers(this.getCommandHandlersFolderPaths()); // TODO: uncomment when ready
         this.SetUpOnMessageCreate();
         this._isRegistrationEnabled = true;
         return this;

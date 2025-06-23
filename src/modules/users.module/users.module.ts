@@ -35,6 +35,7 @@ export class UsersModule<
                 if (user !== null && user.verificationPhotoPath !== null) {
                     __logger.logStringError(`Użytkownik ${message.author.username} o id ${message.author.id} już istnieje w bazie danych.`);
                     // TODO: dodać obsługę błędu
+                    this.DeleteMessage(message);
                 }
                 else {
                     message.attachments.forEach(attachment => {
@@ -57,7 +58,7 @@ export class UsersModule<
                                         ftpFilePath)
                                     .then(() => {
                                         __logger.logInfo(`Utworzono użytkownika w bazie danych: ${message.author.id}, ${message.author.globalName}, ${ftpFilePath}`);
-                                        
+                                        this.DeleteMessage(message);
                                     })
                                 .catch(err => 
                                     // TODO: dodać obsługę błędu
@@ -70,13 +71,6 @@ export class UsersModule<
                         }
                     });
                 }
-                message.delete()
-                    .then(() => 
-                        __logger.logInfo(`Usunięto wiadomość użytkownika ${message.author.username} po weryfikacji.`))
-                    .catch(err => 
-                        // TODO: dodać obsługę błędu
-                        __logger.logStringError(`Nie udało się usunąć wiadomości użytkownika ${message.author.username}: ${err.message}`)
-                    );
             }
         });
     }
@@ -105,6 +99,18 @@ export class UsersModule<
 
     initialize(hostModule: T, usersData: U): AppModule {
         return UsersModule.initialize(hostModule, usersData);
+    }
+
+
+    private DeleteMessage(message: Message): void
+    {
+        message.delete()
+            .then(() => 
+                __logger.logInfo(`Usunięto wiadomość użytkownika ${message.author.username} po weryfikacji.`))
+            .catch(err => 
+                // TODO: dodać obsługę błędu
+                __logger.logStringError(`Nie udało się usunąć wiadomości użytkownika ${message.author.username}: ${err.message}`)
+            );
     }
 }
 
