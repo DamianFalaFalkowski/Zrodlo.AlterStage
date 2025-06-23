@@ -67,7 +67,7 @@ const AppDataModule = appDataModule()
                            // Logic after Users schema sync
                         });
 
-                     UsersModule.initialize(hostModule).SetUpRegistration();
+                     UsersModule.initialize(hostModule, usersData).SetUpRegistration();
                   });
                });
                paymentModule(hostModule)

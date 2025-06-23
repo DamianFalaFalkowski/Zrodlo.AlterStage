@@ -4,16 +4,83 @@ import { IOnMessageCreateIntegrationConsumer } from "../../app/app.modules/host.
 import { UsersBuilder } from "./users.builder";
 import { IUsers } from "./users.instance";
 import { __logger } from "../../utils/dc-logger.util";
+import { ftpFileUpload } from "../../utils/ftp-file-upload.util";
+import { UsersDataModule } from "../../data/modules/users-data.module/users-data.module";
+import { UserRepository } from "../../data/model/sch.users/repositories/user.repository";
 
-interface IRentalDependency<T extends IOnMessageCreateIntegrationConsumer>
+interface IUsersDependency<
+    T extends IOnMessageCreateIntegrationConsumer,
+    U extends UsersDataModule>
 {
-    initialize(hostModule: T): AppModule;
+    initialize(hostModule: T, usersData: U): AppModule;
 }
 
-export class UsersModule<T extends IOnMessageCreateIntegrationConsumer>
-    extends UsersBuilder
-    implements IUsers, IRentalDependency<T>
+export class UsersModule<
+    T extends IOnMessageCreateIntegrationConsumer,
+    U extends UsersDataModule>
+        extends UsersBuilder
+        implements IUsers, IUsersDependency<T, U>
 {
+    private _dependencyHost: T;
+    private _usersData: U;
+
+    public SetUpOnMessageCreate(): void
+    {
+        this._dependencyHost.SetUpOnMessageCreate(async (message: Message): Promise<void> =>{
+            // Sprawdź, czy wiadomość pochodzi z oczekiwanego kanału tekstowego
+            if (message.channel.id === process.env.VERIFICATION_CHANNEL_ID &&
+                !message.author.bot) 
+            {
+                const user = await UserRepository.findByDiscordUserId(message.author.id);
+                if (user !== null && user.verificationPhotoPath !== null) {
+                    __logger.logStringError(`Użytkownik ${message.author.username} o id ${message.author.id} już istnieje w bazie danych.`);
+                    // TODO: dodać obsługę błędu
+                }
+                else {
+                    message.attachments.forEach(attachment => {
+                        // Sprawdź, czy załącznik jest obrazkiem
+                        if (attachment.contentType && attachment.contentType.startsWith('image/')) 
+                        {
+                            __logger.logInfo(`Otrzymano zdjęcie od użytkownika ${message.author.username}: ${attachment.url}`);
+                            const ftpFilePath = process.env.FTP_PATH + '/' + message.author.id + '.jpg';
+                            ftpFileUpload(
+                                    process.env.FTP_HOST!, 
+                                    process.env.FTP_PORT! as unknown as number, 
+                                    process.env.FTP_USER!, 
+                                    process.env.FTP_PASSWORD, 
+                                    attachment.url, 
+                                    ftpFilePath)
+                                .then(() => {
+                                    UserRepository.create(
+                                        message.author.id, 
+                                        message.author.globalName!, 
+                                        ftpFilePath)
+                                    .then(() => {
+                                        __logger.logInfo(`Utworzono użytkownika w bazie danych: ${message.author.id}, ${message.author.globalName}, ${ftpFilePath}`);
+                                        
+                                    })
+                                .catch(err => 
+                                    // TODO: dodać obsługę błędu
+                                    __logger.logStringError(`Nie udało się utworzyć użytkownika w bazie danych: ${err.message}`)
+                                );
+                            });
+                        }
+                        else {
+                            __logger.logInfo(`Otrzymano nieobsługiwany załącznik od użytkownika ${message.author.username}: ${attachment.name}`);
+                        }
+                    });
+                }
+                message.delete()
+                    .then(() => 
+                        __logger.logInfo(`Usunięto wiadomość użytkownika ${message.author.username} po weryfikacji.`))
+                    .catch(err => 
+                        // TODO: dodać obsługę błędu
+                        __logger.logStringError(`Nie udało się usunąć wiadomości użytkownika ${message.author.username}: ${err.message}`)
+                    );
+            }
+        });
+    }
+
     protected RegisterCommandHandlers(commandHandlersFolderPaths: [string]): void
     {
         throw new Error("Method not implemented.");
@@ -22,46 +89,31 @@ export class UsersModule<T extends IOnMessageCreateIntegrationConsumer>
     {
         throw new Error("Method not implemented.");
     }
-    public SetUpOnMessageCreate(): void
-    {
-        this._dependencyHost.SetUpOnMessageCreate((message: Message) =>{
-            // Sprawdź, czy wiadomość pochodzi z oczekiwanego kanału tekstowego
-            if (message.channel.id === process.env.VERIFICATION_CHANNEL_ID &&
-                !message.author.bot) 
-            {
-                message.attachments.forEach(attachment => {
-                    // Sprawdź, czy załącznik jest obrazkiem
-                    if (attachment.contentType && attachment.contentType.startsWith('image/')) {
-                        __logger.logInfo(`Otrzymano zdjęcie od użytkownika ${message.author.username}: ${attachment.url}`);
-                        // Tutaj możesz dodać logikę do przetwarzania zdjęcia
-                    } else {
-                        __logger.logInfo(`Otrzymano nieobsługiwany załącznik od użytkownika ${message.author.username}: ${attachment.name}`);
-                    }
-                })
-            }
-            else {
-                __logger.logInfo(`Wiadomość na kanale: ${message.content}`);
-            }
-        });
-    }
-    private _dependencyHost: T;
 
-    private constructor(dependencyHost: T) {
+    private constructor(dependencyHost: T, usersData: U) {
         super();
         this._dependencyHost = dependencyHost;
+        this._usersData = usersData;
     }
 
-    public static initialize<T extends IOnMessageCreateIntegrationConsumer>(dependencyHost: T): UsersModule<T> {
-        return new UsersModule<T>(dependencyHost);
+    public static initialize<
+        T extends IOnMessageCreateIntegrationConsumer,
+        U extends UsersDataModule>
+    (dependencyHost: T, usersData: U): UsersModule<T, U> {
+        return new UsersModule<T, U>(dependencyHost, usersData);
     }
 
-    initialize(hostModule: T): AppModule {
-        return UsersModule.initialize(hostModule);
+    initialize(hostModule: T, usersData: U): AppModule {
+        return UsersModule.initialize(hostModule, usersData);
     }
 }
 
-const usersModule = <T extends IOnMessageCreateIntegrationConsumer>(dependencyHost: T): UsersModule<T> => {
-    return UsersModule.initialize(dependencyHost);
+const usersModule = <
+    T extends IOnMessageCreateIntegrationConsumer,
+    U extends UsersDataModule
+    >(dependencyHost: T, usersData: U)
+        : UsersModule<T, U> => {
+        return UsersModule.initialize(dependencyHost, usersData);
 }
 
 export default usersModule;

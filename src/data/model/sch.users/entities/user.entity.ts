@@ -14,7 +14,7 @@ export class UserEntity extends BaseEntity
     declare userDiscordId: Identifier;
 
     /** Nazwa użytkownika na Discordzie (nazwa globalna) */
-    declare lastUserDisacordName: string;
+    declare lastUserDiscordName: string;
 
     /** Ścieżka do zdjęcia weryfikacyjnego użytkownika */
     declare verificationPhotoPath: string;
@@ -39,7 +39,11 @@ export const UserAttributes = {
         type: DataTypes.NUMBER,
         allowNull: false
     },
-    lastUserDisacordName: {
+    lastUserDiscordName: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    verificationPhotoPath: {
         type: DataTypes.STRING,
         allowNull: false
     },
