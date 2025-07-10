@@ -1,23 +1,31 @@
 import { AppModule } from "../../app/app.modules/app.module";
 
-export interface IUsers {
+export interface IUsers
+{
     isRegistrationEnabled(): boolean;
 }
 
-export interface IUsersInstance {
-    
+export interface IUsersInstance
+{
+
 }
 
 export abstract class UsersInstance
-    extends AppModule 
-    implements IUsersInstance, IUsers {
+    extends AppModule
+    implements IUsersInstance, IUsers
+{
     protected _isRegistrationEnabled = false;
 
-    isRegistrationEnabled(): boolean {
+    isRegistrationEnabled(): boolean
+    {
         return this._isRegistrationEnabled;
     }
 
-    protected constructor() {
+    protected constructor()
+    {
         super();
     }
+
+    private readonly _commandHandlersFolderPaths: [string] = [__dirname + "/commands"];
+    protected getCommandHandlersFolderPaths(): [string] { return this._commandHandlersFolderPaths; }
 }

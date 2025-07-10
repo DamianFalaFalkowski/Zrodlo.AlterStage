@@ -9,18 +9,17 @@ export interface IUsersBuilder extends IUsersInstance
 export abstract class UsersBuilder
     extends UsersInstance
     implements IUsersBuilder,
-        IOnMessageCreateIntegrationConsumer
+    IOnMessageCreateIntegrationConsumer
 {
-    public async SetUpRegistration(): Promise<IUsersBuilder> {
-        //await this.RegisterCommandHandlers(this.getCommandHandlersFolderPaths()); // TODO: uncomment when ready
+    public async SetUpRegistration(): Promise<IUsersBuilder>
+    {
+        await this.RegisterCommandHandlers(this.getCommandHandlersFolderPaths());
         this.SetUpOnMessageCreate();
         this._isRegistrationEnabled = true;
         return this;
     }
 
     protected abstract RegisterCommandHandlers(commandHandlersFolderPaths: [string]): void;
-
-    protected abstract getCommandHandlersFolderPaths(): [string];
 
     abstract SetUpOnMessageCreate(): void;
 }

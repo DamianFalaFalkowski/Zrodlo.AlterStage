@@ -1,4 +1,5 @@
 import { BitFieldResolvable, InteractionReplyOptions, MessageFlags } from "discord.js";
+import { NOTFOUND } from "node:dns";
 
 // TODO: dodac komentarze
 // TODO: dodac logowanie
@@ -13,10 +14,11 @@ Klasy dziedziczące powinny zawierać (*):
 
  (*) - (większość z poniszych jest zapewnine przez klasę bazową. Nie nalezy ingerować w sposób jej działania) 
 */
-export abstract class BaseCommandResponse {
-// Metody do implementacji w klasach dziedziczących
+export abstract class BaseCommandResponse
+{
+    // Metody do implementacji w klasach dziedziczących
     /** Przygotowuje i zwraca odpowiedź informującą o błędzie. */
-    protected abstract PepeareFailureResponse(reply: InteractionReplyOptions): InteractionReplyOptions;  
+    protected abstract PepeareFailureResponse(reply: InteractionReplyOptions): InteractionReplyOptions;
 
     /** Przygotowuje i zwraca odpowiedź informującą o sukcesie */
     protected abstract PrepeareSuccessResponse(reply: InteractionReplyOptions): InteractionReplyOptions;
@@ -24,14 +26,15 @@ export abstract class BaseCommandResponse {
     /** Przestrzeń na implementację zasad kompletności specyficznych dla danego polecenia dziedziczącego */
     protected abstract EnsureReadyAndValid(): boolean;
 
-// Zmienne dostępne publicznie
+    // Zmienne dostępne publicznie
     /** Umozliwia wgląd w rygenerowaną odpowiedź. Przed wygenerowaniem odpowiedzi powinna zawsze zwracać wartość 'null' */
-    public get Reply(): InteractionReplyOptions {
-        if(!this._isReady) throw Error("Odpoweidź nie jest gotowa do wysyłki.");
-    return this._reply!;
+    public get Reply(): InteractionReplyOptions
+    {
+        if (!this._isReady) throw Error("Odpoweidź nie jest gotowa do wysyłki.");
+        return this._reply!;
     }
 
-// Zmienne chronione
+    // Zmienne chronione
     /** Określa czy odpowiedz jest przygotowana i poprawna */
     protected get IsReady() { return this._isReady; };
 
@@ -43,59 +46,66 @@ export abstract class BaseCommandResponse {
 
     protected _reply: InteractionReplyOptions | undefined;
 
-// Zmienne prywatne
+    // Zmienne prywatne
     private _isReady: boolean = false;
     private _isFailure: boolean = false;
 
-// Konstruktor
-    constructor(isEphemeral: boolean) {
+    // Konstruktor
+    constructor(isEphemeral: boolean)
+    {
         this._isEphemeral = isEphemeral;
     }
 
-// Metody publiczne
+    // Metody publiczne
     /** Przygotowuje i zwraca odpowiedź informującą o sukcesie na poziomie bazowym */
     public PrepeareSuccessResponseBase(
-        content? :string, 
-        components: any[] | null = null, 
-        flags: BitFieldResolvable<"SuppressEmbeds" | "Ephemeral" | "SuppressNotifications", MessageFlags.SuppressEmbeds | MessageFlags.Ephemeral | MessageFlags.SuppressNotifications> | null = null): InteractionReplyOptions
+        content?: string,
+        components: any[] | undefined = undefined,
+        flags: BitFieldResolvable<"SuppressEmbeds" | "Ephemeral" | "SuppressNotifications" | "IsComponentsV2", MessageFlags.SuppressEmbeds | MessageFlags.Ephemeral | MessageFlags.SuppressNotifications | MessageFlags.IsComponentsV2> | undefined = undefined): InteractionReplyOptions
     {
-        try{
-            this._reply = { 
+        try
+        {
+            this._reply = {
                 content: content,
                 components: components!,
                 flags: flags!
-            }
+            };
             if (this._isEphemeral)
                 this._reply.flags = MessageFlags.Ephemeral;
-            if (!this.ensureReadyAndValidBase()) 
+            if (!this.ensureReadyAndValidBase())
                 throw new Error('Sprawdzanie poprawności odpowiedzi zakonczone niepowodzneiem.');
             this._isReady = true;
             return this.PrepeareSuccessResponse(this._reply);
-        }catch(error){
-            throw error;
-        }      
-    }
-
-    /** Przygotowuje i zwraca odpowiedź informującą o błędzie na poziomie bazowym */
-    public PepeareFailureResponseBase(errorMessage: string): InteractionReplyOptions {
-        try {
-            this._reply = { 
-                content: errorMessage,
-                components: undefined,
-                flags: MessageFlags.Ephemeral
-            }
-            this._isFailure = true;
-            this._isReady = true;
-            return this.PepeareFailureResponse(this._reply!);
-        } catch (error) {
+        } catch (error)
+        {
             throw error;
         }
     }
 
-// Metody prywatne
-    /** sprawdzenie czy komponent został poprawnie zbudowany oraz czy jest kompletny na poziomie bazowym */ 
+    /** Przygotowuje i zwraca odpowiedź informującą o błędzie na poziomie bazowym */
+    public PepeareFailureResponseBase(errorMessage: string): InteractionReplyOptions
+    {
+        try
+        {
+            this._reply = {
+                content: errorMessage,
+                components: undefined,
+                flags: MessageFlags.Ephemeral
+            };
+            this._isFailure = true;
+            this._isReady = true;
+            return this.PepeareFailureResponse(this._reply!);
+        } catch (error)
+        {
+            throw error;
+        }
+    }
+
+    // Metody prywatne
+    /** sprawdzenie czy komponent został poprawnie zbudowany oraz czy jest kompletny na poziomie bazowym */
     // TODO: przerobic tak, zeby zwracalo informacie o problemach
-    private ensureReadyAndValidBase(): boolean {
+    private ensureReadyAndValidBase(): boolean
+    {
         // if(this._reply!.content === undefined ||
         //     (this._isEphemeral && this._reply!.flags !== MessageFlags.Ephemeral))
         //     return false;

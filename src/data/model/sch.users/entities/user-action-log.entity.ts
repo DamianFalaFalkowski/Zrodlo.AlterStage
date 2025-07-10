@@ -78,4 +78,4 @@ export const UserActionLogAttributes = {
         allowNull: false,
         defaultValue: false
     }
-}
+};

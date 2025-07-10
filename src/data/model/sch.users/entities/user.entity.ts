@@ -1,7 +1,8 @@
 import { DataTypes, Identifier } from "sequelize";
 import { BaseEntity } from "../../../../app/app.data/app.data-model/_base/_base.entity";
+import { UserActionLogEntity } from "./user-action-log.entity";
 
-export const UserModelName = 'Users'
+export const UserModelName = 'Users';
 
 /**  Reprezentacja użytkownika w bazie danych
 * * Zawiera informacje dotycące uytkownika kanału */
@@ -24,6 +25,14 @@ export class UserEntity extends BaseEntity
 
     /** Data weryfikacji użytkownika (jeśli jest zaufany) */
     declare trustedDate: Date | null;
+
+    /**  */
+    public async getActionLogs(): Promise<UserActionLogEntity[]>
+    {
+        return await UserActionLogEntity.findAll({
+            where: { 'userId': this.id }
+        });
+    }
 }
 
 export const UserAttributes = {
@@ -82,4 +91,4 @@ export const UserAttributes = {
         allowNull: false,
         defaultValue: false
     }
-}
+};

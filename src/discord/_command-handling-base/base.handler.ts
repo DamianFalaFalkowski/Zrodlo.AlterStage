@@ -7,10 +7,11 @@ import { BaseCommandResponse } from "./base.response";
 
 export const baseHandlerExecute =
    async (interaction: ChatInputCommandInteraction,
-         command: any,
-         handlerMethod: any): Promise<void> => 
+      command: any,
+      handlerMethod: any): Promise<void> => 
+   {
+      try
       {
-      try {
          __logger.logInfo(
             `Interaction '${interaction.commandName}' execution started!`);
          __logger.logCommand(interaction);
@@ -21,12 +22,13 @@ export const baseHandlerExecute =
          );
 
          __logger.logInfo(
-            `Reply content: ${JSON.stringify({ content: command.Response.Reply.content, components: command.Response.Reply.components, flags: command.Response.Reply.flags })}`)
+            `Reply content: ${JSON.stringify({ content: command.Response.Reply.content, components: command.Response.Reply.components, flags: command.Response.Reply.flags })}`);
 
-         await interaction.reply({ content: command.Response.Reply.content, components: command.Response.Reply.components, flags: command.Response.Reply.flags });
+         await interaction.reply({ content: command.Response.Reply.content, components: command.Response.Reply.components, flags: command.Response.Reply.flags, files: command.Response.Reply.files ?? command.Response.Reply.files });
 
-      } catch (error: any) {
+      } catch (error: any)
+      {
          __logger.logError(error as Error);
          (command.Response as BaseCommandResponse).PepeareFailureResponseBase(error.message);
       }
-   }
+   };
