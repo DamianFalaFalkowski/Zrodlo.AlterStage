@@ -14,7 +14,7 @@ export class RentOfferRepository{
             totalPrice: totalPrice,
             totalDepositPrice: totalDepositPrice,
             imageUrl: imageUrl,
-        })
+        });
     }
 
     public static async getAllActiveWithRelations(): Promise<RentOfferEntity[]>

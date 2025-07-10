@@ -1,12 +1,13 @@
-
-import { AppModule } from "../../../app.modules/app.module";
 import { AppDataInstance } from "./app-data.instance";
 import { AppDataModule } from "./app-data.module";
 import { Dialect, Sequelize } from "sequelize";
-import { TagsAttributes, TagsEntity, TagsModelName } from "../../app.data-model/sch.app/entities/tags.entity";
-import { __logger } from "../../../../utils/dc-logger.util";
-import { TemplateAttributes, TemplateEntity, TemplateModelName } from "../../app.data-model/sch.app/entities/template.entity";
+
+
 import { after } from "node:test";
+import { AppModule } from "../app.module";
+import { TagsAttributes, TagsEntity, TagsModelName } from "../../app.data/sch.app/entities/tags.entity";
+import { TemplateAttributes, TemplateEntity, TemplateModelName } from "../../app.data/sch.app/entities/template.entity";
+import { __logger } from "../../../utils/dc-logger.util";
 
 export const appSchemaName = 'App';
 
@@ -32,13 +33,14 @@ export abstract class AppDataBuilder extends AppDataInstance
     implements
     IAppDataBuilder
 {
-    protected async saveTag(tagName: string): Promise<void> {
+    protected async saveTag(tagName: string): Promise<void>
+    {
         await TagsEntity.create({
-                        name: tagName,
-                        description: 'version tag',
-                        userId: 0,
-                        createdUserId: 0
-                    });
+            name: tagName,
+            description: 'version tag',
+            userId: 0,
+            createdUserId: 0
+        });
     }
 
     public async PrepeareTestData(afterTestDataCreation: () => void): Promise<AppDataModule>

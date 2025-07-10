@@ -1,6 +1,6 @@
 
 import { DataTypes, Sequelize} from "sequelize";
-import { IRentalDataInstance, RentalInstance, rentalSchemaName } from './rental-data.instance';
+import { IRentalDataInstance, RentalDataInstance, rentalSchemaName } from './rental-data.instance';
 import { RentalDataModule } from "./rental-data.module";
 import { __logger } from "../../../utils/dc-logger.util";
 import { RentItemAttributes, RentItemEntity, RentItemModelName } from "../../model/sch.rental/entities/rent-item.entity";
@@ -53,12 +53,12 @@ export interface IRentalDataBuilder
 /** ....
 ** .... */ 
 export abstract class RentalDataBuilder
-   extends RentalInstance
+   extends RentalDataInstance
    implements IRentalDataBuilder,
       // consuming
       IGetContextIntegrationConsumer
 {
-   abstract GetContext(): Sequelize
+   abstract GetContext(): Sequelize;
 
    async PrepeareTestData(afterTestDataCreation: () => void): Promise<RentalDataModule>
    {

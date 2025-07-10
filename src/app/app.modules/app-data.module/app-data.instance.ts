@@ -1,7 +1,6 @@
 import { Sequelize } from "sequelize";
-import { ApplicationError } from "../../../app.errors/application.error";
-import { AppModule } from '../../../app.modules/app.module';
-import { __logger } from '../../../../utils/dc-logger.util';
+import { AppModule } from "../app.module";
+import { ApplicationError } from "../../app.errors/application.error";
 
 /** 
  **  */
@@ -22,19 +21,20 @@ interface IAppDataInstance extends IAppDataChecks
 
 /** 
  **  */
-export abstract class AppDataInstance 
-    extends AppModule 
-    implements 
-        IAppDataInstance
+export abstract class AppDataInstance
+    extends AppModule
+    implements
+    IAppDataInstance
 {
-    get context(): Sequelize | undefined { return this._context;}
+    get context(): Sequelize | undefined { return this._context; }
     protected readonly _forceSync: boolean = true;
 
     private _context: Sequelize | undefined;
     protected _appVersion: string | undefined;
     protected _isAppSchemaSynced: boolean = false;
 
-    public isContextSetUp(): boolean {
+    public isContextSetUp(): boolean
+    {
         return this._context !== undefined;
     }
 
@@ -42,11 +42,13 @@ export abstract class AppDataInstance
     {
         this._context = cont;
     }
-    
-    public isAppSchemaSynced(): boolean {
+
+    public isAppSchemaSynced(): boolean
+    {
         return this._isAppSchemaSynced;
     }
-    public isAppVersionSetUp(): boolean {
+    public isAppVersionSetUp(): boolean
+    {
         return this._appVersion !== undefined;
     }
 

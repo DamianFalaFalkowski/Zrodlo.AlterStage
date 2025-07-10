@@ -1,5 +1,5 @@
 import { ChatInputCommandInteraction, GuildMemberRoleManager, InteractionReplyOptions, MessageFlags, SlashCommandBuilder } from "discord.js";
-import { TagsEntity } from "../../../app/app.data/app.data-model/sch.app/entities/tags.entity";
+import { TagsEntity } from "../../../app/app.data/sch.app/entities/tags.entity";
 const dcLogger = require('./src/utils/dc-logger.util.ts');
 
 
@@ -21,12 +21,14 @@ module.exports = {
             option.setName('description')
                 .setDescription('The meaning of the tag or additional notes.'))
     ,
-    async execute(interaction: any) {
-        await execute(interaction)
+    async execute(interaction: any)
+    {
+        await execute(interaction);
     }
 };
 
-export const execute = async (interaction: ChatInputCommandInteraction) => {
+export const execute = async (interaction: ChatInputCommandInteraction) =>
+{
     dcLogger.logCommand(interaction);
     let reply: InteractionReplyOptions = { content: undefined, flags: MessageFlags.Ephemeral };
 
@@ -34,30 +36,35 @@ export const execute = async (interaction: ChatInputCommandInteraction) => {
 
     // Sprawdzenie czy uzytkownik na uprawnienia do uruchomienia polecenia
     const member = interaction.member;
-    if (!member || !('roles' in member)) {
+    if (!member || !('roles' in member))
+    {
         reply.content = 'Brak uprawnień do uruchomienia tego polecenia.';
         return interaction.reply(dcLogger.logReplyAndReturn(interaction, reply));
     }
     const roles = (member.roles as GuildMemberRoleManager).cache;
-    if (!roles.some(role => allowedRoles.includes(role.name))) {
+    if (!roles.some(role => allowedRoles.includes(role.name)))
+    {
         reply.content = 'Brak uprawnień do uruchomienia tego polecenia.';
         return interaction.reply(dcLogger.logReplyAndReturn(interaction, reply));
     }
 
     const { commandName } = interaction;
 
-    if (commandName === 'db-tags-add') {
+    if (commandName === 'db-tags-add')
+    {
         const tagName = interaction.options.getString('name');
         const userId = interaction.options.getUser('user-id')?.id;
         const tagDescription = interaction.options.getString('description');
 
-        try {
+        try
+        {
             if ((await TagsEntity.findAll({
                 where: {
                     name: tagName,
                     userId: userId
                 }
-            })).length > 0) {
+            })).length > 0)
+            {
                 let err = new Error(`Tag with name: ${tagName} and userId: ${userId} already exists.`);
                 err.name = "SequelizeUniqueConstraintError";
                 throw err;
@@ -72,11 +79,13 @@ export const execute = async (interaction: ChatInputCommandInteraction) => {
             });
             reply.content = `Tag ${tag.name} added.`;
         }
-        catch (error: Error | any) {
-            if (error.name === 'SequelizeUniqueConstraintError') {
-                reply.content = error.message === null ? 'That tag already exists.': error.message;
+        catch (error: Error | any)
+        {
+            if (error.name === 'SequelizeUniqueConstraintError')
+            {
+                reply.content = error.message === null ? 'That tag already exists.' : error.message;
             }
-            reply.content = error.message === null ? 'Something went wrong with adding a tag.': error.message;
+            reply.content = error.message === null ? 'Something went wrong with adding a tag.' : error.message;
         }
     }
     else
@@ -84,4 +93,4 @@ export const execute = async (interaction: ChatInputCommandInteraction) => {
 
     // Odeślij odpowiedź
     await interaction.reply(dcLogger.logReplyAndReturn(interaction, reply));
-}
+};

@@ -1,4 +1,4 @@
-import { Client, Events, MessageFlags, REST, Routes } from "discord.js";
+import { Client, Events, Message, MessageFlags, REST, Routes } from "discord.js";
 import { HostInstance, IHostInstance } from "./app-module.host.instance";
 import { HostModule } from './app-module.host.module';
 import { CommandHandlersUtil } from "../../../discord/find-command-handlers-definitions.util";
@@ -58,6 +58,7 @@ export abstract class HostBuilder
         this.client.once('ready', afterLoginCallback);
         __logger.logInfo(`Exevution of event 'ready' has been added`);
         this._isClientSetUp = true;
+
         return this as unknown as HostModule;
     }
 

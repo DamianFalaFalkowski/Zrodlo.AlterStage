@@ -3,12 +3,13 @@ import { IHost } from "./app-module.host.instance";
 import { IGetClientIntegration } from "./integrations/get-client.host.integration";
 import { CommandHandlersUtil } from "../../../discord/find-command-handlers-definitions.util";
 import { IGetGuildDataIntegration } from "./integrations/get-guild-channel.integration";
-import { ForumChannel, GuildChannel } from "discord.js";
+import { ForumChannel, GuildChannel, Message } from "discord.js";
 import { __logger } from "../../../utils/dc-logger.util";
 import { ApplicationError } from "../../app.errors/application.error";
 import { IPostThreadInForumChannelIntegrationProvider } from "./integrations/post-thread-in-forum-channel.integration";
 import { IFillTemplateWithDataIntegrationProvider } from "./integrations/fill-template-with-data.integration";
 import { FillTemplateService } from "./services/fill-template.service";
+import { IOnMessageCreateIntegrationProvider } from "./integrations/on-message-create.integration";
 
 export class HostModule
     extends 
@@ -18,10 +19,16 @@ export class HostModule
         IGetClientIntegration,
         IGetGuildDataIntegration,
         IPostThreadInForumChannelIntegrationProvider,
-        IFillTemplateWithDataIntegrationProvider
+        IFillTemplateWithDataIntegrationProvider,
+        IOnMessageCreateIntegrationProvider
 {
     private constructor() {
         super();
+    }
+    SetUpOnMessageCreate(handle: (message: Message) => void): void
+    {
+        this.client!.on('messageCreate', handle);
+        __logger.logInfo("Zarejestrowano obsługę zdarzenia 'messageCreate'");
     }
     fillTemplateWithData(templateContent: string, data: Record<string, any>): string
     {

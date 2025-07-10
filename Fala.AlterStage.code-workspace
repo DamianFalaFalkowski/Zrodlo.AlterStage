@@ -6,6 +6,39 @@
 	],
 	"settings": {
 		"workbench.editor.tabSizingFixedMinWidth": 190,
-		"typescript.tsdk": "node_modules/typescript/lib"
+		"typescript.tsdk": "node_modules/typescript/lib",
+		"editor.fontSize": 12,
+		"editor.wordWrap": "on",
+		"editor.formatOnPaste": true,
+		"editor.autoClosingComments": "always",
+		"editor.autoIndent": "brackets",
+		"editor.cursorSmoothCaretAnimation": "on",
+		"window.commandCenter": false,
+		"window.density.editorTabHeight": "compact",
+		"window.zoomLevel": -1,
+		"javascript.format.placeOpenBraceOnNewLineForControlBlocks": true,
+		"javascript.format.placeOpenBraceOnNewLineForFunctions": true,
+		"typescript.format.placeOpenBraceOnNewLineForControlBlocks": true,
+		"typescript.format.placeOpenBraceOnNewLineForFunctions": true,
+		"typescript.format.semicolons": "insert",
+		"javascript.inlayHints.functionLikeReturnTypes.enabled": true,
+		"typescript.inlayHints.parameterNames.enabled": "all",
+		"typescript.inlayHints.parameterTypes.enabled": true,
+		"typescript.inlayHints.propertyDeclarationTypes.enabled": true,
+		"typescript.inlayHints.variableTypes.enabled": true,
+		"workbench.activityBar.iconClickBehavior": "focus",
+		"workbench.fontAliasing": "default",
+		"workbench.statusBar.visible": false,
+		"workbench.tips.enabled": false,
+		"workbench.tree.enableStickyScroll": false,
+		"workbench.tree.indent": 6,
+		"workbench.tree.renderIndentGuides": "onHover",
+		"workbench.view.alwaysShowHeaderActions": true,
+		"workbench.view.showQuietly": {
+			"workbench.panel.output": false
+		},
+		"breadcrumbs.showArrays": true,
+		"workbench.editor.decorations.badges": false,
+		"editor.minimap.autohide": false
 	}
 }
