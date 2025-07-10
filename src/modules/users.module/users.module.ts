@@ -8,6 +8,8 @@ import { ftpFileUpload } from "../../utils/ftp-file-upload.util";
 import { UsersDataModule } from "../../data/modules/users-data.module/users-data.module";
 import { UserRepository } from "../../data/model/sch.users/repositories/user.repository";
 import { IGetClientIntegration } from "../../app/app.modules/host.module/integrations/get-client.host.integration";
+import { UserActionLogRepository } from "../../data/model/sch.users/repositories/user-action-log.repository";
+import { UserActionType } from "../../data/model/sch.users/enums/user-action-type.enum";
 
 interface IUsersDependency<
     T extends IOnMessageCreateIntegrationConsumer | IGetClientIntegration,
@@ -64,6 +66,7 @@ export class UsersModule<
                                         ftpFilePath)
                                         .then(() =>
                                         {
+                                            UserActionLogRepository.create(message.author.id, UserActionType.REGISTRATION, `Użytkownik ${message.author.globalName}(${message.author.id}) zarejestrował się poprzez przesłanie zdjęcia.`);
                                             __logger.logInfo(`Utworzono użytkownika w bazie danych: ${message.author.id}, ${message.author.globalName}, ${ftpFilePath}`);
                                             this.DeleteMessage(message);
                                         })
