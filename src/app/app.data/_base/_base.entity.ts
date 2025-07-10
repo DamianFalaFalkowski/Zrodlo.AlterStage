@@ -1,9 +1,9 @@
 import { Identifier, Model, ModelStatic } from "sequelize";
-import { EntityNotFoundByFkError } from "../../../app.errors/entity-not-found-by-this-fk.error";
+import { EntityNotFoundByFkError } from "../../app.errors/entity-not-found-by-this-fk.error";
 
 export abstract class BaseEntity extends Model 
 {
-    public readonly abstract entityName: string
+    public readonly abstract entityName: string;
 
     declare id: Identifier;
     declare createdAt: Date;
@@ -14,15 +14,15 @@ export abstract class BaseEntity extends Model
 
     public async getOwnedEntity<T extends BaseEntity>(
         repository: ModelStatic<T>,
-        fk: Identifier, 
-        fkName: string) 
-    : Promise<T>
+        fk: Identifier,
+        fkName: string)
+        : Promise<T>
     {
         const entity = await repository.findByPk(fk);
-        if (entity === null) 
+        if (entity === null)
             throw new EntityNotFoundByFkError<T>(
                 repository,
-                fkName, 
+                fkName,
                 fk.toString());
         return entity;
     };

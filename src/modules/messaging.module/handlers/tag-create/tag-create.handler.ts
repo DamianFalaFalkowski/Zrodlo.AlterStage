@@ -1,5 +1,5 @@
-import { TagsEntity } from '../../../../app/app.data/app.data-model/sch.app/entities/tags.entity';
-import {__logger} from '../../../../utils/dc-logger.util';
+import { TagsEntity } from '../../../../app/app.data/sch.app/entities/tags.entity';
+import { __logger } from '../../../../utils/dc-logger.util';
 import { GenerateTransferMessageCommand } from '../../../payment.module/commands/gen-transfer-msg/gen-transfer-msg.command';
 import { GenerateTransferMessageResponse } from '../../../payment.module/commands/gen-transfer-msg/gen-transfer-msg.response';
 
@@ -9,51 +9,59 @@ import { GenerateTransferMessageResponse } from '../../../payment.module/command
 
 module.exports = {
     _baseHandler: require('./../c_command-handling-base/base.handler'),
-     async handle(interaction: any, command: GenerateTransferMessageCommand, response: GenerateTransferMessageResponse) {
-        try {
+    async handle(interaction: any, command: GenerateTransferMessageCommand, response: GenerateTransferMessageResponse)
+    {
+        try
+        {
             const { commandName } = interaction;
-            
-                if (commandName === interaction.commandName) {
-                    const tagName = interaction.options.getString('name');
-                    const userId = interaction.options.getUser('user-id')?.id;
-                    const tagDescription = interaction.options.getString('description');
-            
-                    try {
-                        if ((await TagsEntity.findAll({
-                            where: {
-                                name: tagName,
-                                userId: userId
-                            }
-                        })).length > 0) {
-                            let err = new Error(`Tag with name: ${tagName} and userId: ${userId} already exists.`);
-                            err.name = "SequelizeUniqueConstraintError";
-                            throw err;
-                        }
-            
-                        // equivalent to: INSERT INTO tags (name, description, username) values (?, ?, ?);
-                        let tag: TagsEntity = await TagsEntity.create({
+
+            if (commandName === interaction.commandName)
+            {
+                const tagName = interaction.options.getString('name');
+                const userId = interaction.options.getUser('user-id')?.id;
+                const tagDescription = interaction.options.getString('description');
+
+                try
+                {
+                    if ((await TagsEntity.findAll({
+                        where: {
                             name: tagName,
-                            description: tagDescription,
-                            userId: userId,
-                            createdUserId: interaction.user.id
-                        });
-                        return response!.PrepeareSuccessResponseBase("Tag added!");
-                    }
-                    catch (error: Error | any) {
-                        if (error.name === 'SequelizeUniqueConstraintError') {
-                            response!.PepeareFailureResponseBase(error.message === null ? 'That tag already exists.': error.message);
+                            userId: userId
                         }
-                        response!.PepeareFailureResponseBase(error.message === null ? 'Something went wrong with adding a tag.': error.message);
+                    })).length > 0)
+                    {
+                        let err = new Error(`Tag with name: ${tagName} and userId: ${userId} already exists.`);
+                        err.name = "SequelizeUniqueConstraintError";
+                        throw err;
                     }
+
+                    // equivalent to: INSERT INTO tags (name, description, username) values (?, ?, ?);
+                    let tag: TagsEntity = await TagsEntity.create({
+                        name: tagName,
+                        description: tagDescription,
+                        userId: userId,
+                        createdUserId: interaction.user.id
+                    });
+                    return response!.PrepeareSuccessResponseBase("Tag added!");
                 }
-                else
+                catch (error: Error | any)
+                {
+                    if (error.name === 'SequelizeUniqueConstraintError')
+                    {
+                        response!.PepeareFailureResponseBase(error.message === null ? 'That tag already exists.' : error.message);
+                    }
+                    response!.PepeareFailureResponseBase(error.message === null ? 'Something went wrong with adding a tag.' : error.message);
+                }
+            }
+            else
                 response!.PepeareFailureResponseBase(`Nierozpoznana nazwa polecenia: ${commandName}`);
-            
-                // Odeślij odpowiedź
-                await interaction.reply(__logger.logReplyAndReturn(interaction, response!.Reply));
-        } catch (error) {
+
+            // Odeślij odpowiedź
+            await interaction.reply(__logger.logReplyAndReturn(interaction, response!.Reply));
+        } catch (error)
+        {
             __logger.logError(error as Error);
             throw error;
         }
     }
-}
+};
